@@ -16,10 +16,7 @@ head
   meta
     es como metadata de una foto pero de la pagina web
 
-div se usa para secciones de una pagina
-
-
-los normalize.css nacieron porque cada navegador aplica estilos por defecto a los elementos html
+los archivos normalize.css nacieron porque cada navegador aplica estilos por defecto a los elementos html
 
   por ejemplo el h1 en el navegador chrome le pone de font family el Times New Roman
 
@@ -34,5 +31,3 @@ elementos que se vieron
   p
   em
   strong
-
-

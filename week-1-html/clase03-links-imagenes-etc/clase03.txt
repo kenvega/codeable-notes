@@ -27,6 +27,8 @@ elementos html
     code
       formatear texto como codigo
 
+    se pueden usar en conjunto
+
 un link para crear tu octocat por si quieres una foto de perfil
   https://myoctocat.com/build-your-octocat/
 

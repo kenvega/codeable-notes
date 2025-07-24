@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ken</title>
+  </head>
+  <body>
+    <header id="my-profile">
+      <h1>Hola! Soy Ken</h1>
+    </header>
+
+    <section>
+      <h3>Links</h3>
+      <p>
+        Github profile:
+        <a href="https://github.com/kenvega" rel="nofollow">kenvega</a>
+      </p>
+      <p>
+        Linkedin profile:
+        <a href="https://www.linkedin.com/in/kenvegag/" rel="nofollow"
+          >kenvegag</a
+        >
+      </p>
+      <p>Discord username: <strong>ken__v</strong></p>
+      <p>
+        A web that I like where you can check lots of music genres:
+        <a href="https://everynoise.com" rel="nofollow">everynoise.com</a>
+      </p>
+    </section>
+
+    <section id="bio">
+      <h3>Bio</h3>
+      <p>
+        Nací en Lima en Marzo de 1994. Me agradan los juegos de mesa y
+        recientemente estoy entrando al mundo de 3D printing.
+      </p>
+    </section>
+
+    <section id="datos-sobre-mi">
+      <h3>Datos sobre mí</h3>
+
+      <details>
+        <summary>Hobbies</summary>
+        juegos de mesa, conciertos
+      </details>
+      <details>
+        <summary>Tecnologías favoritas</summary>
+        Javascript, React, Ruby on Rails
+      </details>
+      <details>
+        <summary>Curiosidad mía</summary>
+        Me gusta configurar
+        <a href="https://xkcd.com/1319/" rel="nofollow">automatizaciones</a>
+        para ahorrarme tiempo.
+      </details>
+    </section>
+
+    <section id="avatar">
+      <h3>Avatar de Octocat</h3>
+
+      <img
+        height="250"
+        width="250"
+        src="img/octocat-avatar-ken.png"
+        alt="dev octocat"
+        title="avatar image for my profile"
+      />
+    </section>
+
+    <section id="city">
+      <h3>Ciudad</h3>
+
+      <figure>
+        <img height="250" width="250" src="img/lima.png" alt="ciudad de lima" />
+        <figcaption>
+          Lima es una ciudad gris pero hay muy buena comida como en todo Perú
+        </figcaption>
+      </figure>
+    </section>
+
+    <section id="code-example">
+      <h3>Código</h3>
+
+      <pre>
+      <code>
+      &lt;html&gt;
+        &lt;head&gt;
+          &lt;title&gt;Mi primera página&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;p&gt;Este es un ejemplo de código.&lt;/p&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;
+      </code>
+      </pre>
+    </section>
+
+    <section id="other-html-elements">
+      <h3>Ahora aquí unos elementos que quizás no se han visto hasta ahora</h3>
+
+      <p>Un botón con texto subrayado</p>
+      <button>
+        <em><u>Botón</u></em>
+      </button>
+
+      <p>Texto alineado a otros niveles</p>
+      <p>
+        <sup>h</sup><sub>e</sub><sup>l</sup><sub>l</sub><sup>o</sup> <sup>t</sup
+        ><sub>h</sub><sup>e</sup><sub>r</sub><sup>e</sup>
+      </p>
+      <p>Realmente se usaría más para matemáticas o para química</p>
+      <p>C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub></p>
+
+      <p>Boton con popover</p>
+      <button popovertarget="my-popover">Boton con popover</button>
+      <div popover id="my-popover">
+        <p>Texto popover!</p>
+        <p>aqui puede ir más HTML</p>
+        <p>Tipo de display: block</p>
+      </div>
+
+      <p>Dialog - como un modal</p>
+      <dialog id="myDialog">
+        <p>Modal abierto!</p>
+        <p>aqui puede ir más HTML también</p>
+        <p>Tipo de display: block</p>
+        <button onclick="myDialog.close()">Se cierra con otro botón</button>
+      </dialog>
+      <button onclick="myDialog.showModal()">Abre un modal</button>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+ya no se enseña ruby on rails
+
+en codeable pro se checan las tecnologias que ya estan surgiendo
+
+  tambien se mejora tu perfil para exponerte a temas que solo los devs mid senior y senior conocen
+
+  diseño de sistemas
+  devops
+  microservicios
+  testing avanzado
+  performance
+  monitoreo
+
+  estas son las cosas que los mid seniors y seniors ya conocen mejor
+
+
+el proyecto que se haria en fundamentals
+  Full Stock - Tienda Virtual
+  • Página de inicio
+  • Grilla de productos por categoría
+  • Filtrado por rango de precio
+  • Gestión de un carrito de compras
+  • Formulario de checkout
+  • Página de confirmación de orden
+
+este mismo ecommerce se ira evolucionando cuando pases a advanced o a pro
+
+
+
+
+
+
+
+
+
+
+
+
+

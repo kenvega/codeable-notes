@@ -1,0 +1,20 @@
+clases grabadas
+  https://codeablela.notion.site/c-Fundamentals-Julio-2025-22b46e14a97d80ff9eb5d07bf424a466
+
+clases live
+  https://classroom.codeable.la/fundamentals-0725/live
+
+notas del programa
+  https://classroom.codeable.la/fundamentals-0725/program
+
+un link bueno de donde se puede aprender javascript
+  https://javascript.info/
+
+link ejemplo para live share
+  http://127.0.0.1:5501/week-2/01-introduccion/ken/article.html
+
+de aqui se basa codeable para sacar los datos para sus paginas
+  https://web.dev
+
+para subir proyectos
+  https://www.frontendmentor.io

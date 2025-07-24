@@ -58,6 +58,6 @@ copy the pre-commit file created to your repo in .git/hooks/pre-commit
 
 give the update_lines_added.sh executable access
 
-  chmod +x scripts/update_lines_added.sh
+  chmod +x .git/hooks/pre-commit
 
 then every time you do a commit you will update a file

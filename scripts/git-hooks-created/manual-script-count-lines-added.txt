@@ -1,4 +1,4 @@
-create folder script on root
+create folder scripts on root
 
 create folder .metrics on root
 
@@ -6,14 +6,14 @@ create a pre-commit file inside scripts/git-hooks-created (to have a reference f
 
   put this inside the pre-commit
     #!/bin/sh
-    # goes in .git/hooks/pre-commit 
-    # no extension needed in the file
+    # goes in .git/hooks/pre-commit
+    # no extension needed in the file (like .sh for example)
     # but you will need to make it executable -> chmod +x .git/hooks/pre-commit
     #
     # Run the metric updater every commit
     "$(git rev-parse --show-toplevel)/scripts/update_lines_added.sh"
 
-create scripts/update_lines_added.sh
+create a file update_lines_added.sh inside scripts
 
   put this inside the update_lines_added
     #!/usr/bin/env bash
@@ -54,10 +54,11 @@ create scripts/update_lines_added.sh
     # stages the updated metric file
     git add "$FILE"
 
-copy the pre-commit file created to your repo in .git/hooks/pre-commit
+copy the pre-commit file created to your git repo hooks in .git/hooks/pre-commit
 
-give the update_lines_added.sh executable access
+give that copied pre-commit file executable access
 
   chmod +x .git/hooks/pre-commit
 
-then every time you do a commit you will update a file
+after that every time you do a commit you will update a file
+  it will create the total_lines_added file added if there is none

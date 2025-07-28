@@ -1,0 +1,153 @@
+rowspan y colspan
+
+  para definir que unas celdas ocupen mas de un espacio de fila o columna
+
+  rowspan="2"
+    hace que una celda ocupe 2 filas
+
+td
+  es la celda
+
+tr
+  es la fila
+
+caption (de table)
+
+  define descripcion de la tabla
+  por norma va al inicio para indicar de que va la tabla
+
+scope
+  sirve para accessibilidad
+    le indica que elementos definen columnas y filas
+
+    se pone en los th solamente para indicar si es una columna o es una fila
+
+      ejemplo
+        <table>
+          <caption>Directorio de estudiantes</caption>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Correo electrónico</th>
+          </tr>
+          <tr>
+            <th scope="row">Juan</th>
+            <td>30</td>
+            <td>juan@example.com</td>
+          </tr>
+          <tr>
+            <th scope="row">María</th>
+            <td>25</td>
+            <td>maria@example.com</td>
+          </tr>
+        </table>
+
+
+ejercicio
+
+  construir una tabla que con un horario de semana dividido en 3 partes del dia
+
+    con caption y footer
+
+tabla
+
+  hora   lunes  martes  miercoles  jueves  viernes  sabado   domingo
+
+  mañana
+  tarde
+  noche
+
+----
+
+video
+
+  atributo controls
+    te permite ver los controles del video propios del navegador
+
+
+en audio y video puede tener varios <source/>
+
+  eso para que funcionen como fallbacks
+  por si no funciona el primero se muestra el siguiente fallback
+  si ninguno funciona ya se muestra solo un texto por ejemplo
+
+  es mas que todo para asegurarte que el contenido se reproduzca en cualquier navegador
+
+----
+
+html semantico
+
+div y span
+
+  el div y span no se explican por si mismos para que son
+
+    no transmiten significados
+
+    es por eso que se crearon el header, nav, article, figure, footer
+
+
+el h1 puede estar dentro de un header
+
+dependiendo de la pagina se pueden tener varios header
+  antes no era buena practica
+  pero ahora cada contenido deberia tener su propio header
+
+  por ejemplo BBC usa header para el banner
+
+  el header puede tener un nav dentro
+    para navegar entre contenidos
+
+  casi siempre van juntos el header con el nav
+
+  los navs pueden contener anchors para navegacion
+
+  el main envuelve el contenido principal del documento
+    por ejemplo el articulo de la pagina
+    solo deberia haber un main de la pagina
+    una regla de accessibilidad es que pueda ser gestionada por el teclado
+      entonces algunas paginas por ejemplo te permiten ir al contenido principal
+
+  hay articles y sections
+
+  article
+    para agrupar contenido independiente
+    lo extraes y se entenderia por si mismo
+    un foro de discusion. el post de un blog
+
+  section
+    para agrupar contenido tematicamente relacionado
+    siempre tienen que tener su encabezado
+      como seria ese encabezado? un header?
+      en el caso de la bbc era un h2 en lugar de un header
+
+  hace tiempo recomendaban que no se tenga mas de un h1
+    ahora se puede usar mas de un h1
+
+  aside
+    englobar el contenido que le da un soporte a la pagina
+      pero que no sea la parte principal del texto
+
+    en BBC eran: related-topics
+
+      es como para complementar a la pagina
+      no necesariamente que tenga que ver con el articulo en realidad
+
+    pero en BBC habia una parte que tenia de titulo: articulos relacionados
+      y esto era un section. porque si tenia que ver con artistas relacionados. y la pagina estaba hablando de artistas
+
+
+podrias descargar un asistente de voz para ver si realmente el lector puede leer la pagina que te han mandado a hacer
+
+
+
+aside sirve para agrupar categorias que estan repetidas en muchas paginas
+
+  un menu a un lado que viva en varias paginas a la vez
+
+  que no cambie entre las paginas
+
+
+un section podria ser contenido relacionado
+
+  tiene que ver con el main pero si cambia con cada pagina
+

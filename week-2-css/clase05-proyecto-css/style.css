@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 3rem;
+
+  min-height: 100vh;
+
+  font-family: Inter;
+}
+
+:root {
+  --headings: #171717;
+  --body: #171717;
+  --captions: #525252;
+  --bold: #171717;
+  --code: #171717;
+  --pre-background: #171717;
+  --pre-code: #F5F5F5;
+  --hr: #D4D4D4;
+  --td-border: #D4D4D4;
+  --th-border: #A3A3A3;
+  --links: #6D28D9;
+  --markers: #6D28D9;
+  --blockquote-border: #6D28D9;
+  /* podrias agregar aqui incluso tus dimensiones de font-size para que tengas centralizado como van creciendo , tipo:*/
+  /* --fs-h1: 2.25rem;
+  --fs-h2: 1.5rem;
+  --fs-body: 1rem;
+  --fs-caption: 0.875rem; */
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: var(--headings);
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: 0%;
+  /* cr: es el valor por defecto, no es malo pero solo por referencia -- duda: que es cr(?) */
+}
+
+p {
+  /* despues de ver la pagina. creo que es mejor poner margin-top en los demas elementos que en el <p> */
+  font-weight: 400;
+}
+
+h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--headings);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0%;
+}
+
+li {
+  margin-bottom: 0.8rem;
+}
+
+li::marker {
+  color: var(--markers);
+}
+
+table {
+  margin-top: 2rem;
+  text-align: left;
+  table-layout: auto;
+  width: 100%;
+}
+
+table thead {
+  /* duda: como hacer para no usar 'px' aquí cuando ya estoy usando 'rem' en todo el resto? */
+  border-bottom: 1px;
+}
+
+dl {
+  margin-top: 1.25rem;
+}
+
+dl dd {
+  margin-bottom: 1rem;
+}
+
+/* figure seria el container y img seria el elemento a centrar */
+figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* para que quede debajo el texto */
+
+  margin-top: 2rem;
+}
+
+figure figcaption {
+  color: var(--captions);
+  font-size: 0.875rem;
+}
+
+/* duda: no vi mas remedio aqui que poner margin-bottom al 'p' para seguir el diseño */
+/* aunque hasta ahora habia estado resolviendo esto con margin-top en los elementos que le seguian */
+/* esta solucion es correcta? o deberia cambiar todo? */
+section#delivery-times p {
+  margin-bottom: 1.25rem;
+}
+

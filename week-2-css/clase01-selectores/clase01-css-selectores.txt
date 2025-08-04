@@ -1,0 +1,43 @@
+a css se le llama un lenguaje declarativo
+
+  hay declaraciones que componen reglas css
+
+  un selector puede tener una serie de declaraciones
+
+
+css
+
+  selector {
+    declaracion
+  }
+
+  la declaracion es
+
+web.dev/learn/css
+  aqui se pueden ver los temas que se veran en clase
+
+pseudoclases
+
+  cuando el elemento html se encuentra en un estado especifico
+
+    como cuando le haces hover a un boton por ejemplo
+
+
+pseudo elementos
+
+  no recomendables usar por accesibildad
+
+    los lectores no los pueden ver
+
+  realmente no estan en el DOM
+    son como creados por el css
+
+  mientras que se usen para decorar no hay problema mayor
+
+  por ejemplo usar un pseudoelemento para generar un tooltip seria una muy mala forma
+
+
+flukeout.github.io
+
+  para practicar selectores en una pagina
+

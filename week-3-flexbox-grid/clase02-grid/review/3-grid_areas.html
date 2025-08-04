@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid-template-areas - Bento Layout</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f9f9f9;
+        padding: 20px;
+      }
+
+      h1 {
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        margin-bottom: 2rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 150px);
+        gap: 10px;
+        background: #ddd;
+        padding: 10px;
+        /* es reemplazado */
+        grid-template-areas:
+          "a a a"
+          "b c c"
+          "b d e";
+      }
+
+      .grid > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+        font-size: 1rem;
+        border-radius: 8px;
+      }
+
+      .a {
+        background-color: #6d0e42;
+        grid-area: a;
+      }
+
+      .b {
+        background-color: #38d115;
+        grid-area: b;
+      }
+
+      .c {
+        background-color: #ac520d;
+        grid-area: c;
+      }
+
+      .d {
+        background-color: #f4f834;
+        color: black;
+        grid-area: d;
+      }
+
+      .e {
+        background-color: #1953b6;
+        color: #ffffff;
+        grid-area: e;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Grid-template-areas en acción (Diseño tipo Bento)</h1>
+    <p>
+      Este ejemplo muestra cómo construir layouts visuales claros y semánticos
+      usando nombres de área.
+    </p>
+
+    <div class="grid">
+      <div class="a">Header: área "a"</div>
+      <div class="b">Bloque alto</div>
+      <div class="c">Bloque horizontal</div>
+      <div class="d">Bloque pequeño</div>
+      <div class="e">Hasta el final</div>
+    </div>
+  </body>
+</html>

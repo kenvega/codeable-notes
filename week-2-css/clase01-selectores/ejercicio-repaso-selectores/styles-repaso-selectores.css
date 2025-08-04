@@ -1,0 +1,11 @@
+/* Qué estás seleccionando */
+/* Por qué funciona ese selector */
+/* Qué pasaría si cambias el HTML */
+
+section article > h2.title {
+  color: red;
+}
+
+section article > h2.title:hover {
+  color: skyblue;
+}

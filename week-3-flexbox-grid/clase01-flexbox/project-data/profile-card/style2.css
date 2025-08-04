@@ -1,0 +1,82 @@
+/* regular reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #02c8d0;
+  font-family: "Poppins", sans-serif;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.banner {
+  width: 100%;
+  height: 120px;
+  background: url("./images/bg-pattern-card.svg");
+}
+
+.avatar {
+  margin-top: -48px;
+  /* duda: es esta forma la correcta(?) */
+}
+
+.avatar img {
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.5rem 0 0 0;
+}
+.age {
+  font-weight: 200;
+  color: #6b7280;
+}
+.location {
+  color: #6b7280;
+}
+
+.stats {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border-top: 1px solid #e5e7eb;
+  padding: 1.25rem 2rem;
+  list-style: none;
+}
+.value {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  text-align: center;
+}
+.label {
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #6b7280;
+}

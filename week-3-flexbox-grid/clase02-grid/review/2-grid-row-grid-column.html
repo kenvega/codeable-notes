@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid-column y Grid-row - Bento Layout</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f9f9f9;
+        padding: 20px;
+      }
+
+      h1 {
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        margin-bottom: 2rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 150px);
+        gap: 10px;
+        background: #ddd;
+        padding: 10px;
+      }
+
+      .grid > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+        font-size: 1rem;
+        border-radius: 8px;
+      }
+
+      .a {
+        background-color: #6d0e42;
+        /* esto  */
+        grid-column-start: 1;
+        grid-column-end: 4;
+
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+
+      .b {
+        background-color: #38d115;
+        grid-column: 1 / 2;
+        grid-row: 2 / 4;
+      }
+
+      .c {
+        background-color: #ac520d;
+        grid-column: 2 / 4;
+        grid-row: 2 / 3;
+      }
+
+      .d {
+        background-color: #f4f834;
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+      }
+
+      .e {
+        background-color: #1953b6;
+        color: #003366;
+        grid-column: 3 / -1;
+        grid-row: 3 / 4;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Grid-column y Grid-row en acción (Diseño tipo Bento)</h1>
+    <p>
+      Hasta el momento hemos dejado que Grid coloque los elementos
+      automáticamente en la grilla. Pero Grid nos permite manipular este
+      comportamiento a nuestro gusto, podemos ubicar los elementos en la celda
+      que nosotros deseemos y también podemos hacer que un elemento ocupe
+      multiples celdas a la vez.
+    </p>
+
+    <div class="grid">
+      <div class="a">Header: 1 / 4</div>
+      <div class="b">Bloque alto</div>
+      <div class="c">Bloque horizontal</div>
+      <div class="d">Bloque pequeño</div>
+      <div class="e">Footer: Hasta el final (-1)</div>
+    </div>
+  </body>
+</html>

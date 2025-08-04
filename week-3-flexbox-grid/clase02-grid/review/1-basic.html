@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filas implícitas y Espaciado con gap</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        background: #f9f9f9;
+      }
+
+      h1 {
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        /* grid-template-rows: 100px 1fr; */
+        /* grid-auto-rows: 200px; */
+        /* row-gap: 15px; */
+        /* column-gap: 10px; */
+        background-color: #ddd;
+        padding: 10px;
+      }
+
+      .grid > div {
+        background: #f47826;
+        color: white;
+        font-weight: bold;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Filas implícitas y Espaciado en CSS Grid</h1>
+    <p>
+      Este ejemplo muestra cómo las filas implícitas se generan automáticamente
+      cuando hay más ítems que filas definidas, y cómo podemos controlar su
+      altura con <code>grid-auto-rows</code>. También vemos cómo aplicar
+      espaciado uniforme con <code>gap</code>, <code>row-gap</code> y
+      <code>column-gap</code>.
+    </p>
+
+    <div class="grid">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
+    </div>
+  </body>
+</html>

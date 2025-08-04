@@ -1,0 +1,98 @@
+:root {
+  /* ':root' no es un exactamente pseudoelemento
+  :root tampoco es la misma 'raiz' de la que se habla de la que 'rem' se basa */
+  --green-500: hsl(158, 36%, 37%);
+  --green-700: hsl(158, 42%, 18%);
+  --grey: hsl(228, 12%, 48%);
+  --cream: hsl(30, 38%, 92%);
+}
+
+/*rem va a escuchar el font-size definido en este elemento raíz*/
+/* html {
+  font-size: 20px;
+} */
+
+/*  Reset básico para evitar cálculos inesperados con padding y border. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family: "Montserrat", sans-serif;
+  background-color: #f2ebe3;
+
+  /* y lo centramos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1.5rem;
+}
+
+/* si se pinta todo el articulo de blanco ya se tiene la caja de abajo (product-info de blanco) por herencia */
+article {
+  background-color: white;
+}
+
+.product-card {
+  /* tamaño máximo para la carta de texto con imagen. asi no se extiende infinito y se ve bien en tablets verticales */
+  max-width: 600px;
+
+  /* necesario para el border-radius inferior (caja blanca) */
+  border-radius: 5px;
+}
+
+.product-image img {
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.description {
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+
+.price {
+  color: var(--green-500);
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Fraunces";
+}
+
+.old-price {
+  color: var(--grey);
+  text-decoration: line-through;
+  /* falta font-size */
+}
+
+.category {
+  letter-spacing: 0.3rem;
+  color: var(--grey);
+  margin-bottom: 1.5rem;
+}
+
+.product-name {
+  margin-bottom: 1rem;
+}
+
+.price-box {
+  margin-bottom: 1rem;
+}
+
+.add-to-cart {
+  background-color: var(--green-500);
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  width: 100%;
+  color: white;
+}

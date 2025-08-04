@@ -1,0 +1,43 @@
+no todas las propiedades se heredan
+  normalmente las que se heredan son propiedades tipograficas
+    ejm: color, font-size, font-family
+
+en dev tools se puede ver que propiedades se heredaron
+
+menciona que los divs se podrian usar para heredar estilos
+
+se hereda del padre la propiedad heredable si es que no se tiene un valor para esa propiedad ya definida
+
+  por ejemplo un p que recibe herencia de un div porque el p no tenia
+
+
+puedes forzar a que algunas propiedades se hereden
+
+  ejemplo 
+
+    el border no es una propiedad que se herede
+
+      pero si haces
+
+        span {
+          border: inherit
+        }
+
+        harias que el span herede de todos modos el border de su elemento padre
+
+puedes resetear las propiedades que se estan heredando
+
+  ejmplo
+
+    span {
+      border: initial;
+    }
+
+      haria que si ese span estaba dentro de un 
+
+puedes hacer que all: unset
+  para reiniciar todas las propiedades de un elemento
+
+  esto realmente es mas peligroso
+
+

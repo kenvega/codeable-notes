@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        padding: 20px;
+        border: 5px solid black;
+        background-color: lightyellow;
+        margin-bottom: 20px;
+      }
+
+      .content-box {
+        box-sizing: content-box; /* padding + border se suman al width */
+      }
+
+      .border-box {
+        box-sizing: border-box; /* padding y border se incluyen dentro del width */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-box">Content-box</div>
+    <div class="border-box">Border-box</div>
+  </body>
+</html>

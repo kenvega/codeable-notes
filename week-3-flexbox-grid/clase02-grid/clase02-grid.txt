@@ -1,0 +1,101 @@
+bento grid
+  es el grid que usa apple por ejemplo para mostrar los features de su producto
+  viene de 'bento box' que son cajas de comida
+
+con grid se manejan 2 direcciones
+  asi que se pueden crear layouts algo mas complejos
+
+hay varias propiedades que se comparten con flex
+
+para saber si usar grid o flexbox deberias saber si en base al layout que haras
+  usaras 2 direcciones o solo una
+
+asi como con flex, usando el inspector en dev tools te permite ver si un elemento esta usando grid
+
+si no se definen alturas en celdas ni en filas
+  entonces las grillas toman la altura de la celda mas alta
+    pero solo afecta a esa fila. el resto usa el minimo que necesita
+
+
+grid-template-columns
+  defines cuanto ancho ocupa cada columna
+  tambien define cuantas columnas se van a hacer
+
+  ejm
+    grid-template-columns: 100px 1fr
+      significa que habran 2 columnas y la primera sera 100px y la siguiente ocupa todo el espacio
+
+    grid-template-columns: 100px 1fr 1fr 100px
+      4 columnas: 100px, 2 columnas ocupando espacios iguales del resto de espacio que quedaba, 100px
+
+    grid-template-columns: 100px 2fr 4fr 100px
+      4 columnas: 100px, 1 columna, otra columna con el doble de espacio de la columna anterior, 100px
+
+  fr - significa 'fraction'
+    es recomendado empezar de valores intuitivos y basicos como 1fr
+      que 1fr sea el valor mas base
+
+
+
+grid-template-rows
+
+  define el numero de filas
+
+  pero si tienes mas elementos que necesitan mas filas de las que has definido con grid-template-rows
+    entonces en ese caso se ignora esta propiedad
+
+
+  si defines un valor fijo como 30px para la fila pero el contenido dentro de esa celda necesita mas
+    el contenido desborda a la celda
+
+repeat
+
+  grid-template-columns: repeat(3, 150px)
+    serian 3 columnas de 150px
+
+filas o columnas implicitas
+
+  grid-auto-rows
+    le da una altura a esas filas generadas implicitamente
+  
+
+grid-column grid-row
+
+  son propiedades para celdas
+
+  se usan por ejemplo para que una celda pueda usar mas de su espacio regular de celda
+
+  para definir de donde a donde ocupara mas espacio se necesitan las lineas
+
+  es mas recomendable y mas claro usar
+
+    grid-column-start
+    grid-column-end
+    grid-row-start
+    grid-row-end
+
+    asi se puede ver mas claro de que linea a que linea va
+
+    * si se usa grid-column-start sin el end se ocupara solo un espacio por defecto
+
+  grid-row y grid-column son al final del dia propiedades shortcuts como cuando dices border: 1px solid black
+
+
+las lineas y sus numeros
+  se pueden poner valores negativos a las lineas para indicar que se habla de las lineas del otro extremo
+
+span
+  en vez de usar numeros de linea se puede usar span
+
+  tambien se pueden usar en la forma de shortcut como en grid-row
+    grid-row: 3/span 3
+
+grid-area
+  es un shortcut para 
+
+reto
+  https://www.frontendmentor.io/challenges/bento-grid-RMydElrlOj
+
+link de juego
+  https://cssgridgarden.com/
+

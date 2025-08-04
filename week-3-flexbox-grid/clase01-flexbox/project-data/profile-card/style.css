@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+
+  min-height: 100vh; /* without this the body will just take what it needs and won't 'center' vertically the content */
+
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.card {
+  display: flex;
+}

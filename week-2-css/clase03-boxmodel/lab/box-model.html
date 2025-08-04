@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelo de caja (Box Model): visión general</title>
+    <style>
+      .box {
+        box-sizing: content-box;
+        width: 200px;
+        height: 100px;
+        padding: 16px 20px;
+        border: 20px solid navy;
+        margin: 16px 20px 24px 28px;
+        background-color: lightblue;
+        border-radius: 5px;
+      }
+      .box1,
+      .box2 {
+        height: 60px;
+        background-color: lightgray;
+      }
+
+      .box1 {
+        margin-bottom: 30px;
+      }
+
+      .box2 {
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">Contenido</div>
+    <div class="box1">Caja 1</div>
+    <div class="box2">Caja 2</div>
+  </body>
+</html>

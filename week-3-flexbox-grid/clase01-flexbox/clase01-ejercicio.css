@@ -1,0 +1,26 @@
+/* Reset para evitar márgenes y paddings inesperados */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor padre */
+.links {
+  all: unset; /* Los estilos de lista deben ser removidos */
+  display: flex;
+  flex-direction: row; /* Los links deben tener un diseño horizontal */
+  justify-content: space-evenly; /* Los links deben estar separados uniformemente en su contenedor */
+  row-gap: 32px; /* El espacio mínimo entre cada link debe ser de 32px */
+  flex-wrap: wrap; /* Si no hay espacio suficiente, los links deben pasar a una siguiente fila */
+  column-gap: 16px; /* (????) La separación entre filas debe ser de 16px */
+}
+
+/* Ítems dentro del contenedor */
+.links li {
+  all: unset; /* (????) Los estilos de lista deben ser removidos */
+}
+
+
+
+

@@ -1,0 +1,75 @@
+ya se abrio semana 3
+
+se vera grid, flex
+
+puedes seguir subiendo cambios de terminos y condiciones al repo
+
+
+display flex
+  ocupa el espacio disponible en el ancho de la pagina
+
+  pero se puede organizar como se quiere ocupar esa dimension
+
+  le afecta al componente que se le pone display flex y a los hijos directos
+
+    solo afecta a los hijos directos. no a sus nietos ni niveles mas abajo
+
+  se dice que el contenedor es flexible
+
+  los elementos hijos se ubican en un eje que se llama eje principal
+
+    con flex-direction se puede modificar la direccion de los hijos flexibles (flex-items segun la documentacion)
+
+  si el padre no tiene altura definida
+    la altura del contenedor se definira como la altura del hijo mas alto
+
+  flex-wrap: nowrap
+    nowrap es el valor por defecto
+
+      es encoger los items de modo que respeten el width del container
+
+    si usamos 'wrap'
+      le dices a flexbox que cada que no entre un elemento cree un salto de linea para que quepa
+
+  justify-content: flex-start
+    flex-start es el valor por defecto
+
+  align-items: center
+      los centra pero verticalmente (si flex-direction: row)
+
+        si quieres centrarlo pero a nivel horizontal
+          justify-content: center
+
+  justify content
+    alinea en el eje principal
+
+  align items
+    alinea pero en el eje transversal (perpendicular al eje principal)
+
+  align content
+
+    el padre tiene que tener espacio extra en altura con respecto a su hijo mas alto
+
+      sino esta propiedad no funciona
+
+    tambien tendrias que tener el flex-wrap: wrap
+      para crear la cantidad de saltos de linea para que los elementos encajen
+
+  flex-basis
+    auto - valor por defecto
+    
+      el tamaño base es determinado por el contenido
+
+        si es que width y height tampoco estan definidos
+      
+  flex-grow 
+    para rellenar los espacios disponibles
+    solo se aplican a los elementos hijos. no al elemento padre
+    
+  flex-shrink: 0
+    el elemento hijo nunca se encogera a pesar de que se reduzca el espacio
+  
+
+
+flexbox froggy
+

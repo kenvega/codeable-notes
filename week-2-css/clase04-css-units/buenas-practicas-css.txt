@@ -1,0 +1,80 @@
+buenas practicas en css
+
+  nombrar tus colores siempre al inicio
+    :root {
+      --green-500: hsl(158, 36%, 37%);
+      --green-700:hsl(158, 42%, 18%);
+      --grey: hsl(228, 12%, 48%);
+      --cream: hsl(30, 38%, 92%);
+      ...
+    }
+
+    luego ya lo usas cuando necesitas mas abajo
+
+  haz tu reset
+    a todos los elementos le aplicas
+      *｛
+        box-sizing: border-box; // esto para evitar calculos. y que el width incluya el padding y border
+        margin: 0;
+        padding: 0;
+      }
+
+    luego para que no tengas problemas si pones un footer
+
+      body {
+        min-height: 100vh;
+      }
+
+      esto para que body se apropie de todo el espacio que existe de la ventana
+
+
+
+
+
+el reset de hecho puede ser mas complejo
+  hay muchos autores para esto. puedes buscarlo como reset css en google y te saldran varios
+    seguro que hay un estandar
+
+      segun Dina el mas famoso reset es el de erick meyer
+
+        puso las propiedades menos usadas
+
+
+es mejor usar numeros en lugar de nombres cuando hablas de font-weight
+
+  por ejemplo 700 en lugar de bold
+
+    porque se puede controlar mas
+
+
+no uses colores nombrados ni hexadecimal si ya usas variables
+
+
+checa la accesibilidad (el contraste entre 2 colores de texto y background por ejemplo)
+
+  lo ideal seria cubrir el AAA
+
+  webaim.org/resources/contrastchecker/
+
+
+como se centran elementos
+
+  margin auto
+    creo que eso solo centra elementos que tengan display block
+      seria que pruebes si es que centra elementos que tengan display inline
+
+  text-align: center
+    para centrar el texto dentro de una caja
+
+  centrar con flex
+    display: flex;
+    justify-content: center; // para centrar de manera horizontal
+    align items: center; // para centrar de manera vertical
+
+    se necesita una altura fija para el elemento que vayas a centrar con display flex
+      para que puedas centrar
+
+    estas propiedades se le aplican al contenedor, no al contenido que se esta centrando
+
+    estan en box-model/lab/center-box-text
+

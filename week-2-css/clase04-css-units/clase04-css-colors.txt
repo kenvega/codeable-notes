@@ -1,0 +1,20 @@
+el rgba es que tiene un color alfa 
+
+  esto esta en todo. tambien hexadecimal
+
+  tambien en hsl que se usa como hsla
+
+hsl se usa mas en proyectos mas moderno
+
+currentColor
+
+  body {
+    color: blue; /* Define el color del texto */
+    border: 1px solid currentColor; /* El borde tendrá el mismo color que la propiedad 'color'
+    background-color: transparent; /* El fondo será transparento */
+  }
+
+mejores practicas para usar colores
+
+  
+  

@@ -1,0 +1,112 @@
+HTML (HyperText Markup Language)
+  define estructura/esqueleto de una pagina
+
+CSS (Cascading Style Sheets)
+  define la apariencia visual y el diseño del contenido estructurado por HTML
+
+JavaScript
+  agrega interactividad y funcionalidad dinámica 
+
+
+Todas las propiedades de CSS cuentan con valores predeterminados
+  Cada navegador tiene estilos propios para elementos HTML
+
+elemento HTML
+  Consiste en una etiqueta de apertura, contenido y una etiqueta de cierre
+  De ahí el nombre "markup language" (lenguaje de etiquetado)
+
+  Los elementos pueden tener atributos y los valores de estos atributos siempre deben ser strings.
+
+<!DOCTYPE html>
+  no es un elemento de html
+
+  es una declaracion para decirle a html que estamos trabajando en un archivo html con version 5
+
+  poner esto es necesario para garantizar que se use esa versión
+
+html es un lenguaje de etiquetado pero no es un lenguaje de programacion
+
+  toda la estructura se construye con etiquetas
+
+head
+  todo lo que pongas dentro de esta etiqueta no se verá
+    excepto por el <title/> que eso seria el titulo del tab de la pagina
+
+  aqui van referencias a css y referencias a links de font families
+
+  meta
+    es como metadata de una foto pero de la pagina web
+
+body
+  contiene todo lo que muestra la pagina web para el usuario
+
+los archivos normalize.css nacieron porque cada navegador aplica estilos por defecto a los elementos html
+
+  por ejemplo el h1 en el navegador chrome le pone de font family el Times New Roman
+
+la estructura de un documento de html se puede representar como una estructura de arbol
+  a esta representacion se llama DOM (Document Object Model)
+  html es el nodo raiz y head y body son los secundarios
+  los textos dentro de los elementos como <p/> tambien son considerados como nodos
+
+  un link para visualizar el DOM y sus nodos
+    https://0xedward.github.io/dom-visualizer/
+
+head: lo que suele ir dentro de head
+  <meta charset="UTF-8">
+    define la codificación de caracteres del documento
+    UTF-8 es la codificación de caracteres más utilizada
+      admite una amplia gama de caracteres, incluidos símbolos especiales y caracteres internacionales
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    esta línea establece el viewport (área visible de tu página web en diferentes dispositivos)
+    sin esta linea la pagina en mobiles se veria todo pequeño y con zoom out
+
+viewport
+  the visible area of a web page
+
+layout model
+  es la forma en como se organizan los elementos de HTML en la pagina
+    hay varios
+      flow layout
+      flexbox
+      grid
+      table layout
+      positioned layout(absolute/fixed/relative)
+
+  flow layout (diseño de flujo)
+    es el modelo por defecto en html
+
+
+elementos de bloque (display: block)
+  ocupan todo el ancho de su elemento contenedor (elemento padre)
+    si su contenedor/padre es body y body ocupa todo el width entonces el elemento con display block tambien ocupara todo el width
+    cuando pones 2 elementos con "display: block" juntos se pone uno debajo del otro
+
+  ejemplos
+    div
+    h1,h2,...,h6
+    p
+    ul, ol
+    table
+
+elementos de linea (display: inline)
+  ocupan solo el espacio requerido por su contenido
+    si no necesitan mas que 100px de width entonces no se estirarán más que eso
+    cuando pones 2 elementos con "display: inline" juntos se pone uno al lado del otro mientras tengan espacio suficiente. sino debajo del otro
+
+  ejemplos
+    span
+    a
+    img
+    strong, em
+    input
+
+elementos basicos
+  encabezados/headers
+    para jerarquia
+
+  h1 para titulo principal
+  h2 para secciones importantes
+  el resto para subsecciones
+

@@ -1,0 +1,37 @@
+para css todo contenido se entiende como cajas
+
+elementos de la caja que tienen TODOS los elementos de HTML
+
+  contenido
+  padding
+  border
+  margin
+
+cuando se tiene display block
+  el contenido se expandira para ocupar todo el espacio que tiene disponible
+
+cuando se tiene display inline
+  el contenido solo ocupa lo que necesita
+
+tamaño intrinseco
+  el minimo tamaño necesario que requiere un contenido para mostrarse
+
+tamaño extrinseco
+  tamaño que yo le ponga
+
+cuando se define un tamaño fijo pero el contenido necesita mas para mostrarlo
+  ocurre overflow (desbordamiento)
+    basicamente por ejemplo que el contenido salga de la caja (sobrepasa el borde)
+
+hay valores de min-content o algo asi -- no estuve atento
+
+
+frontendmentor.io
+
+  aqui puedes mandar proyectos
+
+
+box-sizing
+  siempre deberias asegurarte de que esto esta en border-box
+
+  es parte del reset

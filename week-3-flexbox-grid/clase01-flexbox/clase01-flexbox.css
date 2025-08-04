@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.parent {
+  display: flex;
+  border: 5px solid rgb(40, 31, 206);
+}
+
+.item {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.item:first-child {
+  background-color: blueviolet;
+}
+
+.item:nth-child(2) {
+  background-color: rgb(15, 137, 146);
+}
+
+.item:last-child {
+  background-color: rgb(214, 226, 43);
+}

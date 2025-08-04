@@ -1,0 +1,73 @@
+https://web.dev/learn/css/the-cascade
+
+css resuelve conflictos de estilos a traves del algoritmo de 'cascada'
+
+  que importa para decidir cual estilo con conflicto aplicar
+
+    origen del estilo
+    importancia
+    especificidad
+    orden en que aparecen
+
+  origen de estilo
+    pueden venir de el agente de usuario (el navegador), el usuario y el autor (que serías tú como desarrollador
+
+      agente de usuario (el navegador) (user agent stylesheet)
+        cada navegador pone estilos propios para los elementos más imporantes
+          por ejemplo el h1
+          otro ejemplo es el P que siempre tiene un margen hacia abajo por defecto.
+
+      estilos de usuario
+        pueden ser personas con discapacidad que tienen configurado su navegador
+        para que puedan poner algunos estilos distintos
+          Por ejemplo, en el navegador se puede definir que el nivel de zoom del texto sea mayor que el regular 100%
+
+      estilos de autor
+        los estilos que los devs definen para su sitio
+
+    la prioridad es
+      estilos de autor (devs)
+        estilos de usuario (extensiones, zoom accesible)
+          agente de usuario (estilos de navegador por defecto)
+
+
+  especificidad
+    de baja / media / alta / muy alta / maxima
+
+    baja
+      selectores: elementos de html (tipo), pseudo-elementos
+
+    media
+      selectores: clase, pseudo-clase, atributo
+
+    alta
+      selectores: id
+
+    muy alta
+      estilos en linea
+
+    maxima
+      important
+
+    * animaciones y transiciones
+        son de alta prioridad mientras la animación ocurre incluso sobre !important
+
+    esta especificidad se puede ver en dev tools
+      hay puntos para alta, media, y baja
+        y si haces hover sobre las reglas de css en dev tools te dice la especificidad
+        y basicamente por que gano una encima de la otra
+
+  orden de aparicion
+
+
+
+buenas practicas
+
+  no exagerar con !important
+
+  ir de selectores menos especificos a mas especificos
+
+  que los selectores especificos queden relegados a casos especiales
+    si todos son casos especificos no sabemos por donde buscar
+
+  

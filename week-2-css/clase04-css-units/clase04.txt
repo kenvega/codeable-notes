@@ -1,0 +1,65 @@
+dina no recomienda usar padding en porcentajes
+
+una pantalla no puede ser mas pequeña que 368px 
+
+em
+  medida que cambia en base al tamaño de la fuente del elemento actual
+
+    ‹style>
+      div {
+        font-size: 14px;
+      }
+
+      p {
+        font-size: 2em;
+        /* Por herencia el tamaño de fuente sería 14px entonces 2em
+      }
+    </ style>
+
+rem
+  medida que cambia en base al tamaño de la fuente del elemento raiz (el html)
+
+em y rem se pueden usar tanto para font-size como para cualquier otra medida como width
+
+
+unidades relativas a la ventana
+
+  vw, vh, 
+
+evita usar alturas fijas para imagenes
+  usa object-fit: cover
+    asi el elemento que contiene esa imagen pueda mostrar todo su ancho y alto
+
+no centres tu diseño usando paddings con porcentajes
+  es mejor usar padding en el body o el component padre
+
+buenas practicas en css
+
+  nombrar tus colores siempre al inicio
+  :root {
+
+  }
+
+  haz tu reset
+    *｛
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+  haz esto
+
+    body {
+      min-height: 100vh;
+    }
+
+    esto para que body se apropie de todo el espacio que existe de la ventana
+
+
+el reset de hecho puede ser mas complejo
+  hay muchos autores para esto. puedes buscarlo como reset css en google y te saldran varios
+    seguro que hay un estandar
+
+      segun Dina el mas famoso reset es el de erick meyer
+
+        puso las propiedades menos usadas

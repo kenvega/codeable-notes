@@ -1,0 +1,74 @@
+/*  Hace falta un reset básico para evitar cálculos inesperados con padding y border. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Ponerlo como unset, puede ser peligroso. El body ya no es un bloque, así que pierde su comportamiento natural */
+  /* all: unset; */
+  /* Si solo queremos quitar márgenes del body y trabajar desde cero, haz esto: */
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f2ebe3;
+  /* y lo centramos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  padding: 1.5rem;
+}
+
+/* si se pinta todo el articulo de blanco ya se tiene la caja de abajo (product-info de blanco) por herencia */
+article {
+  background-color: white;
+}
+.product-card {
+  /*  Los márgenes en % funcionan, pero no hace falta si el elemento de todos modos requeria estar centrado  */
+  /* en su defecto, podemos ponerle un padding al body para darle espacio en mobile */
+
+  /* margin-top: 5%;
+  margin-left: 2%;
+  margin-right: 2%; */
+
+  /* tamaño máximo */
+  max-width: 600px;
+
+  /* necesario para el border-radius inferior (caja blanca) */
+  border-radius: 5px;
+}
+
+.product-image img {
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.product-info {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  /* Padding definido solo en tres lados;/ */
+}
+
+.description {
+  color: hsl(228, 12%, 48%);
+  font-family: "Montserrat";
+}
+
+.price {
+  color: hsl(158, 36%, 37%);
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Fraunces";
+  /* usa font-weight: 700 en lugar de "bold" para mayor consistencia y control */
+}
+
+.old-price {
+  color: hsl(228, 12%, 48%);
+  text-decoration: line-through;
+  /* falta font-size */
+}

@@ -1,0 +1,42 @@
+¿Cuándo usarías este selector?
+  se desea dar un estilo como cambio de color a todos los titulos dentro de todos los articulos que pertenezcan a una section
+
+¿Tiene alguna trampa o malentendido común?
+
+section article > h2.title
+
+    si no se entiende bien la diferencia entre dejar un espacio entre el selector y el uso del '>' entonces podria malinterpretarse la selección
+
+    se tiene que ser consciente que
+      se busca cualquier article de cualquier parte dentro de un elemento section (puede ser mas de un article que cumpla con eso)
+      y al mismo tiempo solo se busca el 'hijo de primer nivel' dentro de ese/esos article que sea h2
+
+duda:
+  en la clase pasada se vio un html ejemplo con un section dentro de article
+    <article>
+      <section>
+        ...
+
+  pero este selector necesitaba un article dentro de un section
+    <section>
+      <article>
+        ...
+
+  es semanticamente correcto en este caso (HTML)?
+
+
+¿Casos de Uso?
+
+✅ Qué hace tu selector y cómo lo implementaste
+🔄 Qué pasa si modificas el HTML
+🚨 Qué errores comunes podrían cometerse al usarlo (Cómo NO usarlo?)
+⭐ Qué te gustó o sorprendió al explorarlo
+
+Puedes combinar tu selector con otros si ayuda a explicar mejor
+
+usar estilos visuales (colores, bordes, contenido insertado) para que el efecto se entienda de inmediato
+
+Agrega una variante extra de tu selector (ej. añade un :hover, o usa un pseudo-elemento para marcar el efecto).
+Escribe una mini guía tipo “cuándo usar y cuándo evitar” tu selector.
+
+| Ken Vega | `section article > h2.title` | Combinador + Clase | Selecciona `<h2 class="title">` hijos de `article` dentro de `section` |

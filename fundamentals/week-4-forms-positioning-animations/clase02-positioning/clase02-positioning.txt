@@ -1,0 +1,81 @@
+alterar la posicion natural de un elemento
+
+el orden natural de los elementos se determina por su display
+  display block ocupa todo el ancho de su contenedor
+  display inline se acomodan en una sola linea mientras tengan espacio
+
+un tooltip se genera cuando haces hover sobre un elemento
+  y ocupa un espacio como en una capa mas arriba
+  asi que no tiene una posicion natural
+
+  con un modal esto tambien ocurre
+
+para cambiar ese orden natural se usa la propiedad css position
+  por defecto todos tienen la posicion static
+
+  pero se puede cambiar a relative
+
+  relative necesita que el padre tenga absolute
+    si el padre esta como position static entonces el hijo no hara el cambio que se necesite
+
+las propiedades de direccionamiento son
+  top, bottom, left, right
+
+  recuerda que estas propiedades no funcionan cuando se tiene un position static
+
+usar otros valores para la propiedad de position
+  puede dificultar las vistas responsive para mobile
+    sobre todo si cuando se usan las propiedades de direccionamiento se usan porcentajes en lugar de pixeles
+
+position absoålute
+  puede romper el flujo del documento
+  los elementos hermanos del elemento al que se le ponga el position absolute
+    terminan ignorando que el elemento con position absolute existe
+      osea ya no le reservan espacio
+
+  las propiedades de direccionamiento con un position absolute
+    afectan al elemento contendor que tenga position relative
+
+      si no encuentra un position relative arriba o mas arriba sube hasta referenciarse con el html
+
+  la posicion de un elemento con position absolute depende de su contenedor con position relative
+    y no depende de donde se encuentra dentro del html
+
+para que es util position absolute
+  para elementos que floten: tooltips, modals
+
+  basicamente cuando se quiere trabajar en 2 capas
+
+
+pregunta
+  note con el proyecto de grid que se puede simplemente poner en cualquier orden los elementos del grid
+    los elementos igual siguen estando en position static?
+
+https://baseweb.design/components/popover/
+  es una libreria de componentes que usa Uber con la que arman su interfaz
+
+
+position fixed
+  casos de uso: botones de canales de soporte
+
+  este tiene propiedades de anclaje en lugar de propiedades de direccionamiento
+
+  esta relacionado con el viewport en lugar de su contenedor
+
+  el scroll no le afecta
+
+  no tiene un espacio reservado. elementos html hermanos no lo reconocen
+
+position sticky
+
+  se queda pegada con el scroll al contendor que lo alberga
+
+  tiene un espacio reservado. elementos html hermanos a este sí lo reconocen
+
+  como tiene su espacio reservado no se necesita crear ningun margen superior/inferior
+    asi que muchos headers pueden usarlo
+
+  solo se queda pegado a un borde mientras su contendor siga visible mientras se hace scroll
+    cuando el contendor padre ya no se ve en el viewport tambien desaparecera el elemento con sticky
+
+  

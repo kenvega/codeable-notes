@@ -1,0 +1,95 @@
+/* ===== Design tokens ===== */
+:root {
+  --clr-purple:  #7356DB;
+  --clr-lilac:   #DBD2FC;
+  --clr-lemon:   #F8CE6D;
+  --clr-cream:   #F8EEE2;
+  --clr-white:   #FFFFFF;
+
+  --radius-card: 1.5rem;
+  --gap:         1.5rem;
+  --shadow:      0 4px 10px rgba(0,0,0,.06);
+
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1a1a1a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* ===== Layout ===== */
+body{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:#f5f5f5;
+  padding: 3rem 1rem;
+}
+
+.bento{
+  /* Max width but fluid on small screens */
+  width: min(1200px, 100%);
+  display:grid;
+  gap: var(--gap);
+
+  /*   4 equal-width columns, 4 unequal rows   */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 3fr 1.5fr 1.5fr 3fr;
+}
+
+/* ===== Cards (shared styles) ===== */
+.card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 2rem;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  overflow:hidden;           /* keeps rounded corners for images */
+}
+
+.card img{
+  width: 75%;
+  height:auto;
+}
+
+/* ===== Individual card tweaks ===== */
+.create{              background: var(--clr-cream);   grid-area: 1 / 1 / 3 / 2;}
+.social-media{        background: var(--clr-purple);  color:#fff; grid-area: 1 / 2 / 2 / 4;}
+.schedule{            background: var(--clr-lilac);   grid-area: 1 / 4 / 4 / 5;}
+.manage-accounts{     background: var(--clr-white);   grid-area: 2 / 2 / 4 / 3;}
+.maintain{            background: var(--clr-lemon);   grid-area: 2 / 3 / 4 / 4;}
+.grow-followers{      background: var(--clr-purple);  color:#fff; grid-area: 4 / 3 / 5 / 5;}
+.faster-audience{     background: var(--clr-white);   grid-area: 4 / 2 / 5 / 3;}
+.ai-content{          background: var(--clr-lemon);   grid-area: 3 / 1 / 5 / 2;}
+
+/* subtle purple italic in first card */
+.accent{color: var(--clr-purple); font-style: italic;}
+
+/* make the headline in the purple hero pop without introducing <h*> tags */
+.social-media .headline{
+  font-size:clamp(1.5rem, 3vw + .5rem, 2.4rem);
+  font-weight:800;
+  line-height:1.1;
+}
+
+.sub{font-size:.875rem; opacity:.85;}
+
+/* emblem stars needs to sit on top */
+.stars{width:5rem; margin-bottom:1rem;}
+
+/* ===== Responsive tweak: single-column stack under 680 px ===== */
+@media (max-width: 680px){
+  .bento{
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+  .card{grid-column: auto; grid-row:auto;}
+  .card img{width:60%;}
+}

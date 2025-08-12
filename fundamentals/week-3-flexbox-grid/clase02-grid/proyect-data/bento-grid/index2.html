@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts in the mock-up -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <title>Bento box - CSS Grid</title>
+
+  <style>
+    :root {
+      --purple-600:#6c4bf4;
+      --purple-100:#ded4ff;
+      --yellow-400:#ffc335;
+      --peach-50:#f9e9d3;
+      --slate-900:#1e1e1e;
+      --radius:1.25rem;
+      --gap:1.5rem;
+
+      --background-body-color: #f5f5f5;
+    }
+
+    * {
+      box-sizing:border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--background-body-color);
+      color: var(--slate-900);
+    }
+
+
+    .bento {
+      display: grid;
+      gap: var(--gap);
+      grid-auto-rows: 180px;                 /* baseline row height           */
+      grid-template-columns: repeat(4,1fr);  /* 4-col desktop                 */
+      grid-template-areas:
+        "create  hero    hero    schedule"
+        "ai      hero    hero    schedule"
+        "ai      accounts consist schedule"
+        "growth  grow    grow    grow";
+    }
+    /* 2-col tablets */
+    @media (max-width: 900px) {
+      .bento{
+        grid-template-columns: repeat(2,1fr);
+        grid-template-areas:
+          "hero      hero"
+          "create    schedule"
+          "ai        schedule"
+          "accounts  consist"
+          "growth    grow"
+          "grow      grow";
+      }
+    }
+    /* 1-col mobiles */
+    @media (max-width:600px) {
+      .bento {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "hero"
+          "create"
+          "schedule"
+          "ai"
+          "accounts"
+          "consist"
+          "growth"
+          "grow";
+        grid-auto-rows: auto;
+      }
+    }
+
+    .card {
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #fff;
+      overflow: hidden;
+    }
+    .card img {
+      width:100%;
+      height:auto;
+      object-fit:contain;
+    }
+
+    /* INDIVIDUAL CARDS */
+    .create   {grid-area:create;  background:var(--peach-50);}
+    .hero     {grid-area:hero;    background:var(--purple-600);color:#fff;}
+    .schedule {grid-area:schedule;background:var(--purple-100);}
+    .ai       {grid-area:ai;      background:var(--yellow-400);}
+    .accounts {grid-area:accounts;background:#fff;}
+    .consist  {grid-area:consist; background:var(--yellow-400);}
+    .growth   {grid-area:growth;  background:#fff;}
+    .grow     {grid-area:grow;    background:var(--purple-600);color:#fff;}
+
+    /* quick styling helpers */
+    .tagline{
+      font:800 clamp(1.4rem,4vw,2.4rem)/1.2 'Plus Jakarta Sans',sans-serif;
+      margin:0;
+    }
+    .tagline .accent{color:var(--yellow-400);}
+    .stars{margin:.5rem 0;font-weight:500;letter-spacing:.3px;}
+
+    .hero img{max-height:100px;margin-inline:auto;margin-top:2rem;}
+    .schedule img{max-height:120px;}
+    .ai img{max-height:130px;}
+    .accounts img,
+    .consist img{max-height:80px;}
+    .growth img{width:70%;align-self:center;max-height:120px;}
+    .grow img{max-height:120px;}
+  </style>
+</head>
+<body>
+
+<div class="bento">
+
+  <div class="card create">
+    <p>Create and schedule content <span class="accent">quicker.</span></p>
+    <img src="./assets/images/illustration-create-post.webp" alt="Create post illustration">
+  </div>
+
+  <div class="card hero">
+    <p class="tagline">
+      Social Media <span class="accent">10×</span> Faster with AI
+    </p>
+    <img src="./assets/images/illustration-five-stars.webp" alt="Five star rating">
+    <p class="stars">Over 4 000 5-star reviews</p>
+  </div>
+
+  <div class="card schedule">
+    <p>Schedule to social media.</p>
+    <img src="./assets/images/illustration-schedule-posts.webp"
+         alt="Bar chart of best posting times">
+    <p style="font-size:.9rem;">
+      Optimize post timings to publish content at the perfect time for your audience.
+    </p>
+  </div>
+
+  <div class="card ai">
+    <p>Write your content using AI.</p>
+    <img src="./assets/images/illustration-ai-content.webp" alt="Chat bubble with AI reply">
+  </div>
+
+  <div class="card accounts">
+    <img src="./assets/images/illustration-multiple-platforms.webp"
+         alt="Logos of multiple social platforms">
+    <p>Manage multiple accounts and platforms.</p>
+  </div>
+
+  <div class="card consist">
+    <p>Maintain a consistent posting schedule.</p>
+    <img src="./assets/images/illustration-multiple-platforms.webp"
+         alt="Calendar with checkmarks">
+  </div>
+
+  <div class="card growth">
+    <p style="font-size:2.3rem;font-weight:700;margin:0;">&gt;56 %</p>
+    <p style="margin:0;">faster audience growth</p>
+    <img src="./assets/images/illustration-audience-growth.webp"
+         alt="Three avatars illustrating audience growth">
+  </div>
+
+  <div class="card grow">
+    <p>Grow followers with non-stop content.</p>
+    <img src="./assets/images/illustration-multiple-platforms.webp"
+         alt="Follower growth bar chart">
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+https://udn.realityripple.com/docs/Web/CSS/CSS_animated_properties
+
+  links para saber a que propiedades se pueden animar
+
+transition no funciona sin transform
+
+timing functions
+  una analogia muy clara es como poder controlar que tan rapido un carro acelera y frena
+
+para ver diferentes tipos de curvas de tiempo
+  https://easings.net/
+
+keyframe animations
+  definir paso a paso como controlar el movimiento
+

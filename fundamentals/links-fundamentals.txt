@@ -12,9 +12,14 @@ un link bueno de donde se puede aprender javascript
 
 link ejemplo para live share
   http://127.0.0.1:5501/week-2/01-introduccion/ken/article.html
+  http://127.0.0.1:5501/week-4/01-forms/
 
 de aqui se basa codeable para sacar los datos para sus paginas
   https://web.dev
 
 para subir proyectos
   https://www.frontendmentor.io
+
+figma de proyecto
+  https://www.figma.com/design/elrVuNqnd2CKUcgC92Y1X0/FullStock?node-id=294-1866&p=f&t=SmUfeJGrVGYfPs6I-0
+

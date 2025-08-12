@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Profile card component</title>
+  </head>
+  <body>
+    <main class="card">
+      <div class="card__header">
+        <img src="./images/bg-pattern-card.svg" alt="Card header background" />
+      </div>
+      <div class="card__profile">
+        <img
+          id="profile-avatar"
+          src="./images/image-victor.jpg"
+          alt="Profile picture"
+        />
+      </div>
+      <div class="card__info">
+        <h1 id="profile-name">Victor Crest <span id="profile-age">26</span></h1>
+        <p id="profile-city">London</p>
+      </div>
+      <div class="card__stats">
+        <div>
+          <strong>80K</strong>
+          <p>Followers</p>
+        </div>
+        <div>
+          <strong>803K</strong>
+          <p>Likes</p>
+        </div>
+        <div>
+          <strong>1.4K</strong>
+          <p>Photos</p>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Creamos un objeto que puede leer los parámetros que vienen en la URL (después del "?")
+      const params = new URLSearchParams(window.location.search);
+
+      // Guardamos cada dato del formulario usando el nombre del parámetro (coincide con los "name" del form)
+      const name = params.get("name");
+      const city = params.get("city");
+      const age = params.get("age");
+      const avatar = params.get("avatar");
+
+      // Verificamos si todos los campos están presentes
+      if (name && city && age && avatar) {
+        // Cambiamos el texto del nombre dentro del <h1> (pero dejamos el span con la edad al costado)
+        document.getElementById("profile-name").childNodes[0].nodeValue =
+          name + " ";
+
+        // Actualizamos el contenido del <span> que muestra la edad
+        document.getElementById("profile-age").textContent = age;
+
+        // Actualizamos el texto del párrafo que muestra la ciudad
+        document.getElementById("profile-city").textContent = city;
+
+        // Cambiamos la imagen de perfil con la URL que el usuario puso
+        document.getElementById("profile-avatar").src = avatar;
+
+        // También cambiamos el texto alternativo de la imagen (accesibilidad)
+        document.getElementById(
+          "profile-avatar"
+        ).alt = `Profile picture of ${name}`;
+      } else {
+        // Si falta algún dato, reemplazamos todo el <body> con un mensaje de error
+        document.body.innerHTML = `
+          <main class="card error">
+            <h2>⚠️ Missing data</h2>
+            <p>Please go back to the <a href="form.html">form</a> and complete all fields.</p>
+          </main>
+        `;
+      }
+    </script>
+  </body>
+</html>

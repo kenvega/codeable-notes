@@ -1,0 +1,161 @@
+:root {
+  --background-body-color: #f5f5f5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+
+  /* center the bento grid */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bento {
+  padding: 5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 33% 17% 17% 33%;
+}
+
+.card {
+  border-radius: 0.5rem;
+  padding: 1.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+
+.card img {
+  height: auto;
+  width: 100%;
+}
+
+.accent-create {
+  color: #7356DB;
+  font-style: italic;
+}
+
+.accent-social-media {
+  color: #f8ce6d;
+  font-style: italic;
+}
+
+.accent-faster-audience {
+  font-size: 3rem;
+  display: block;
+}
+
+.social-media img {
+  width: 50%;
+}
+
+.faster-audience img {
+  margin-top: 1rem;
+}
+
+.grow-followers img {
+  width: 40%;
+}
+
+.create {
+  background-color: #f8eee2;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+
+  font-size: 2rem;
+  font-weight: 600;
+
+  gap: 1rem;
+}
+
+.social-media {
+  background-color: #7356db;
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+
+  color: #ffffff;
+}
+
+.card.social-media > p:first-child {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.card.social-media > p:last-child {
+  font-size: 0.8rem;
+}
+
+.schedule {
+  background-color: #dbd2fc;
+  grid-column: 4 / 5;
+  grid-row: 1 / 4;
+
+  font-size: 2rem;
+}
+
+.card.schedule > p:first-child {
+  font-size: 2rem;
+  text-align: center;
+
+  margin-bottom: 1rem;
+}
+
+.card.schedule > p:last-child {
+  font-size: 1.2rem;
+}
+
+.manage-accounts {
+  background-color: #ffffff;
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;
+
+  font-size: 2rem;
+}
+
+.maintain {
+  background-color: #f8ce6d;
+  grid-column: 3 / 4;
+  grid-row: 2 / 4;
+
+  font-size: 2rem;
+}
+
+.grow-followers {
+  background-color: #7356db;
+  grid-column: 3 / 5;
+  grid-row: 4 / 5;
+
+  flex-direction: row;
+
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.faster-audience {
+  background-color: #ffffff;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+
+  font-size: 1.2rem;
+}
+
+.ai-content {
+  background-color: #f8ce6d;
+  grid-column: 1 / 2;
+  grid-row: 3 / 5;
+
+  font-size: 2rem;
+}

@@ -1,0 +1,98 @@
+/* Reset principal */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Estilos Generales */
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  background-color: hsl(185, 75%, 39%);
+  background-image: url("./images/bg-pattern-top.svg"),
+    url("./images/bg-pattern-bottom.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 50vw bottom 50vh, left 50vw top 50vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen de fondo de los headings */
+.card__header img {
+  width: 100%;
+  display: block;
+}
+
+/* Imagen del perfil */
+.card__profile {
+  display: flex;
+  justify-content: center;
+  margin-top: -47px;
+}
+
+.card__profile img {
+  border-radius: 50%;
+  border: 5px solid white;
+  width: 96px;
+  height: 96px;
+}
+
+/* Nombre y ciudad */
+.card__info {
+  padding: 16px;
+}
+
+.card__info h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: hsl(229, 23%, 23%);
+}
+/* Estilos para el número 26 */
+.card__info h1 span {
+  font-weight: 400;
+  color: hsl(227, 10%, 46%);
+  margin-left: 8px;
+}
+
+.card__info p {
+  font-size: 14px;
+  color: hsl(227, 10%, 46%);
+  margin-top: 8px;
+}
+
+.card__stats {
+  display: flex;
+  border-top: 1px solid hsl(0, 0%, 90%);
+  padding: 16px;
+  justify-content: space-around; /* Espacio entre bloques */
+}
+
+.card__stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card__stats strong {
+  color: hsl(229, 23%, 23%);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card__stats p {
+  font-size: 12px;
+  color: hsl(227, 10%, 46%);
+  margin-top: 4px;
+  letter-spacing: 2px;
+}

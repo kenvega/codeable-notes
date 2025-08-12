@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create your profile</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="form-container">
+      <h1>🪪 Create your profile</h1>
+      <!-- http://127.0.0.1:5500/week-4-forms/clase01-forms/project/form/index.html -->
+
+      <form action="../redirection/index.html" method="GET">
+        <!-- Campo de nombre -->
+        <label for="name">Tu nombre: </label>
+        <input name="name" type="text" required />
+
+        <!-- Campo de Edad -->
+        <label for="age">Tu Edad: </label>
+        <input name="age" type="number" min="3" max="100" required />
+
+        <!-- Campo de ciudad -->
+        <label for="city">Tu ciudad: </label>
+        <input name="city" type="text" required />
+
+        <!-- Campo de avatar -->
+        <label for="avatar">Tu avatar: </label>
+        <input name="avatar" type="url" required />
+
+        <!-- Boton de Generar Tarjeta de Perfil -->
+        <button>Generar</button>
+      </form>
+    </main>
+  </body>
+</html>

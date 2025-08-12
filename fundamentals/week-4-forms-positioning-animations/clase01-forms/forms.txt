@@ -1,0 +1,10 @@
+el placeholder es siempre solo un ejemplo
+el label de un input es necesario para los screen readers
+  los screen readers no leen el placeholder asi que nunca dejes lo que dejarias en un label dentro de un placeholder
+
+los inputs normalmente deberian tener ids y deberian tener el mismo valor que tiene el 'name' del input
+
+se hace un re-render a la pagina cuando se envia el boton de buscar
+  para evitar el re-render es que se hacen las peticiones AJAX
+
+un input sin name no se envia al servidor al enviar el formulario

@@ -1,0 +1,16 @@
+
+practice css selectors
+  https://flukeout.github.io
+
+practice css flexbox
+  https://flexboxfroggy.com/
+
+practice css grid
+  https://cssgridgarden.com/
+
+reference for css flexbox
+  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+reference for css grid
+  https://css-tricks.com/snippets/css/complete-guide-grid/
+

@@ -1,0 +1,31 @@
+shell vs terminal
+  terminal
+    es la interfaz
+
+
+  shell
+    programa
+    ejemplos
+      fish, zsh, bash
+
+simbolos
+  >
+    redirecciona output y sobreescribe
+
+  >>
+    redirecciona output y agrega
+
+otros comandos vistos
+  ls
+  pwd
+  cd
+  mkdir
+  touch
+  cat
+  echo
+  mv
+  rm
+  man
+  clear / Ctrl + L / Cmd + L
+
+

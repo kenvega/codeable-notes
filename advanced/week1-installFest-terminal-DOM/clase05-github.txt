@@ -1,0 +1,13 @@
+que hace el comando
+
+  git push -u origin <branch-name>
+
+    -u es shorthand de --set-upstream
+
+      esto cambia la configuracion en tu repo dentro para que git recuerde
+
+    despues de usar la opcion -u puedes ya solamente hacer git push o git pull
+
+    solo se necesita hacer una vez por rama (normalmente la primera vez que publicas esa rama)
+
+    

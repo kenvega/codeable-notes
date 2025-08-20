@@ -1,0 +1,173 @@
+prototipos
+  si no se encuentra una propiedad/metodo en un elemento se busca en el padre
+    sigue subiendo hasta encontrarlo sino bota error
+
+  EventTarget es el padre de todos los nodos y todos los eventos que existen en la ventana del navegador
+
+    tiene su prototype que se llama Object que es del mismo jabascript
+
+  cualquier nodo puede recibir un evento. escuchar un evento
+
+  de la clase Node
+
+todo esto es solo para saber de donde vienen las funciones que vamos a usar
+
+nodeName
+  <body>
+    <p>Codeable</p>
+    <!-- comentarios -->texto suelto
+    <script>
+      document.body.childNodes[0].nodeName; // #text (los espacios luego de <body>)
+      document.body.childNodes[1].nodeName; // P (el párrafo)
+      document.body.childNodes[2].nodeName; // #text (los espacios luego de </p>)
+      document.body.childNodes[3].nodeName; // #comment (el comentario)
+      document.body.childNodes[4].nodeName; // #text (el 'texto suelto\n    ')
+      document.body.childNodes[5].nodeName; // SCRIPT (el <script> actual)
+    </script>
+  </body>
+
+tagName
+  <body>
+    <p>Codeable</p>
+    <!-- comentarios -->texto suelto
+    <script>
+      document.body.childNodes[0].tagName; // undefined
+      document.body.childNodes[1].tagName; // P
+      document.body.childNodes[2].tagName; // undefined
+      document.body.childNodes[3].tagName; // undefined
+      document.body.childNodes[4].tagName; // undefined
+      document.body.childNodes[5].tagName; // SCRIPT
+    </script>
+  </body>
+
+innerHTML
+  devuelve el contenido HTML del elemento
+
+  es util porque con js puedes usarlo para cambiar el html
+
+outerHTML
+  es el elemento completo con su contenido
+
+data y textContent
+
+  data es exclusiva de los nodos tipo CharacterData
+    es decir de nodos tipo texto y comentarios
+
+  ejm
+    <body><!-- comentario -->
+    <script>
+      document.body.firstChild.data; // ' comentario '
+    </script>
+    </body>
+
+    luego si haces
+
+      document.body.firstChild.data = "<p>Nuevo valor</p>";
+      // No creará un elemento párrafo, solo asignará ese texto al nodo de manera literal
+      // esto mismo le pasa a textContent
+
+
+
+
+atributos vs propiedades
+
+  atributos
+    es cuando nos referimos a html
+
+    ejemplo id, style, class
+
+  propiedades
+    cuando se hable de representaciones en el DOM
+
+    ejm un input seria representado por
+      HTMLInputElement
+        que tendria propiedades
+          .type
+          .placeholder
+          .name
+
+  los atributos se escriben en kebab-case
+  las propiedades se escriben en camelCase
+
+  algunos atributos como checked terminan pasando de ser strings a ser booleanos
+
+  en DOM
+    input.checked // es un booleano true o false
+
+  atributos no estandar
+    si en HTML se tienen atributos no estandar agregados por el usuario por ejemplo
+
+      <div id="estandar" mi-atributo="no-estandar">
+
+      cuando hagamos:
+
+      const div = document.querySelector("#estandar");
+
+      div.miAtributo; // devuelve undefined
+      div["mi-atributo"]; // devuelve undefined
+
+    pero se puede hacer
+      div.hasAttribute("mi-atributo"); // true
+      div.getAttribute("mi-atributo"); // 'no-estandar'
+
+      for (let attribute of div.attributes) {
+        console.log(attribute.name); // 'id' | 'mi-atributo'
+        console.log(attribute.value); // || 'estandar' | 'no-estandar'
+      }
+
+      // funciona para atributos estándar también
+      div.hasAttribute("id"); // true
+      div.getAttribute("id"); // 'estandar'
+
+    los metodos son
+      elem.hasAttribute(name): verifica si el atributo name está definido y retorna un booleano.
+      elem.getAttribute(name): obtiene el valor del atributo name
+      elem.setAttribute(name, value): asigna el valor value al atributo name
+      elem.removeAttribute(name): quita el atributo name del elemento
+      elem.attributes: retorna una colección NamedNodeMap (parecido a un arreglo) de objetos del tipo Attr. Estos objetos tienen las propiedades name y value con el nombre y valor del atributo.
+
+    se sugiere manipular atributos estándar utilizando sus correspondientes propiedades del DOM y utilizar los métodos mencionados solo en situaciones particulares.
+
+      ejemplo
+        <input type="checkbox" id="terms" name="terms" value="yes" checked />
+
+        <script>
+          // usando el id por brevedad
+          terms.getAttribute("checked"); // ''
+        </script>
+
+        A pesar de que el input esta "chequeado" (marcado), getAttribute("checked") retorna un string vacío. Esto es porque literalmente, al atributo checked en HTML no tiene un valor y por lo tanto su valor por defecto es el string vacío. Por otro lado, la propiedad terms.checked retorna true.
+
+style en DOM
+
+  <div style="background-color: red; font-size: 16px">Hola</div>
+
+  <script>
+    const div = document.querySelector("div");
+
+    div.style; // CSSStyleDeclaration {...}
+    div.style.backgroundColor; // 'red'
+    div.style.fontSize; // '16px'
+  </script>
+
+dataset
+  se crearon data attributes para dejar claro que son propiedades para los elementos de usos propios de tu aplicacion
+
+  ejemplo
+    <div class="order" data-order-id="abc123" data-order-status="new">Orden nueva</div>
+
+    <script>
+      // Obtener orden por su id:
+      const order = document.querySelector("[data-order-id='abc123']");
+
+      // Consultar data attributes
+      order.dataset; // DOMStringMap {...}
+      order.dataset.orderId; // 'abc123'
+      order.dataset.orderStatus; // 'new'
+
+      // Modificar el dataset
+      order.dataset.orderStatus = "in-process";
+    </script>
+
+  se usaban propiedades empezando con data- para que si en un futuro saliesen nuevos atributos del estandar de HTML no tendria conflicto
+

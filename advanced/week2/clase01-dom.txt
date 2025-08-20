@@ -1,0 +1,59 @@
+metodos espeicificos para el navegador
+  solo funcoinarian en el navegador. no en node o deno por ejemplo
+
+  objeto window
+    es el objeto raiz cuando estamos en el navegador
+
+      window.console
+      window.alert
+
+    aqui se definen los metodos
+    aqui se definen los strings, arrays. sus constructores estan aqui
+
+    que no existen en window
+      if, loops, igualdad, sumas... todo esto es parte de javascript como lenguaje
+
+    en window se guardan los web APIs
+
+    todo metodo definido en el navegador es parte de window tambien 
+
+      por ejemplo si defines una funcion
+        funtion miFuncion() {}
+
+      esa funcion sera parte de window. y eso lo puedes comprobar con esto:
+        miFuncion === window.miFuncion // esto saldra true
+
+  antes se guardaban antes en window tambien
+    pero luego eso podia crear colisiones de variables con el mismo nombre
+      todos tus scripts tenian que tener variables con nombres distintos
+
+      luego se soluciono con el concepto de modulos
+        porque con modulos se necesita exportar e importar explicitamente
+
+      lo mismo paso con las variables con var
+        pero se soluciono con variables con let y const
+
+DOM
+  la representacion del documento HTML en forma de un arbol
+  se convierte el HTML en un objeto estructurado cuando se carga la pagina
+    esto pasa a ser 'document' dentro de 'window.document'
+
+  es gracias a esto que javascript puede interactuar
+    con cualquier elemento de la pagina
+
+  los nodos de texto que son saltos de linea tambien estan representados en el DOM
+
+
+BOM (browser object model)
+  funcionalidades que tiene javascript dentro del navegador
+    por ejemplo
+      window - representa la ventana del navegador
+      navigator - informacion de navegador y OS
+      location - obtener y modificar la URL del navegador
+      history - interactua con el historial de navegacion
+      screen - ofrece detalles de la pantalla de usuario
+
+
+
+
+

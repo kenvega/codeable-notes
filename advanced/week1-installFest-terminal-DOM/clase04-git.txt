@@ -1,0 +1,12 @@
+que quiere decir que git sea distribuido?
+
+  no es un sistema central
+  todos tienen una copia de todos el historial de versiones
+
+
+
+HEAD indica donde estamos actualmente en nuestro working directory
+
+  si en git log aparece (HEAD -> main)
+    es que estas en lo ultimo de main
+

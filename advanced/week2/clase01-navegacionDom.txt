@@ -1,0 +1,64 @@
+coleccion viva
+
+para acceder a los nodos mas principales
+  document.documentElement
+  document.head
+  document.body
+
+los nodelists o colecciones son 'objetos vivos'
+  porque siempre reflejan la lista de nodos actual
+    incluso si haces console log de eso y luego lo cambias deberian cambiar su valor (?)
+
+
+
+las colecciones no son arreglos
+  parecen arreglos pero no son
+
+  se les llama solamente iterables
+    o tambien puedes llamarles arrayLike
+
+  puedes hacer un
+    for(let node of nodeList) {
+      console.log(node)
+    }
+
+  se puede crear un verdadero array a partir de un nodo
+    const nodeArray = Array.from(document.body.childNodes)
+
+    nodeArray instanceof Array // true
+
+    nodeArray.map // este si es un arreglo con metodos map
+
+  metodos de las colecciones
+    nodeList.firstchild lo mismo que nodeList[0]
+    lastChild (lo mismo que firstchild)
+
+    parentNode
+    nextSibling
+    previousSibling
+
+  para el codigo
+    <html>
+      <head></head>
+      <body></body>
+    </html>
+
+    supuestamente nextSibling de head seria body
+      pero te daria el nodo de texto de salto de linea
+
+  para eso existen metodos para cuando solo se quieren hablar de elementos en lugar de nodos
+
+    entonces en vez de document.head.nextSibling
+      usarias document.head.nextSiblingElement
+
+    y asi para cada que quieras moverte entre elementos
+
+      | navega por nodos          | navega por elementos              |
+      | ------------------------- | --------------------------------- |
+      | childNodes -> NodeList    | children -> HTMLCollection        |
+      | firstChild -> Node        | firstElementChild -> Element      |
+      | lastChild -> Node         | lastElementChild -> Element       |
+      | nextSibling -> Node       | nextElementSibling -> Element     |
+      | previous Sibling  -> Node | previousElementSibling -> Element |
+      | parentNode -> Node        | parentElement -> Element          |
+

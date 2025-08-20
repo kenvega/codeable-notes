@@ -1,0 +1,67 @@
+printenv
+  imprime todas las variables
+
+printenv SHELL
+  solo imprime el nombre y valor de la variable SHELL
+
+env
+  tiene capacidad de correr un programa con una variable diferente
+    se podrian editar valores de esas variables solo para ese comando
+
+variables de entorno utiles
+  PATH
+    donde estan los ejecutables de los programas que tenemos
+  HOME
+
+  SHELL
+
+una forma de ver variables con otros comandos
+  con un $ adelante
+    ejemplo
+      echo $HOME
+        se reemplazara el nombre de $HOME por el valor de la variable
+
+diferencia entre printenv y echo para ver variables que no existen
+  printenv INVALID
+    si no existe la variable te devolvera un codigo de error (en la shell se nota la flecha roja)
+
+  echo $INVALID
+    se imprime un salto de linea vacio y no te da un codigo de error asi no exista la variable
+
+variables de entorno temporales
+  puedes establecer variables temporales asi
+    export NOMBRE_VARIABLE=valor
+
+      si luego haces
+        echo $NOMBRE_VARIABLE
+          existe, pero solo para esta sesion
+          si abres una terminal nueva ya no tendrias acceso a esa variable
+
+donde se almacenan las variables de entorno persistentes
+  si estas en bash
+    ~/.bashrc o ~/.bash_profile
+
+  si estas en zshrc
+    ~/.zshrc
+
+  si defines variables en esos archivos basicamente las haces persistentes en cada sesion
+    tambien se pueden definir con el mismo comando de export dentro de esos archivos
+
+al ejecutar un programa. por ejemplo 'clear' se busca en estas rutas
+
+  /usr/local/bin
+  /usr/bin
+  /bin
+  /usr/sbin
+  /sbin
+
+
+pregunta
+  diferencia entre resultado de 'printenv' y 'env' (solo esos comandos sin opciones)?
+
+  diferencia entre 'sesion' y 'terminal'. contexto: variables temporales con export solo duran para una sesion de terminal
+    sesion se puede entender como: desde que se abre la terminal hasta que se cierra la terminal
+
+  que pasa si tengo variables en bashrc y bash_profile a la vez? uno toma prioridad?
+
+  asi como se busca en varias rutas para cuando se ejecuta un program. cuales son las rutas en las que se busca en macOS?

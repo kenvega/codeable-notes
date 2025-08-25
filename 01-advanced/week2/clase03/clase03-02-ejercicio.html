@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+
+  <body>
+    <style>
+      .box {
+        border: solid 1px black;
+      }
+      .big {
+        padding: 1rem;
+        font-size: 1.25rem;
+      }
+      .special {
+        background-color: lightblue;
+      }
+      .small {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+      }
+    </style>
+
+    <h1>Blog 1</h1>
+    <div class="box">Una caja grande</div>
+    <div class="box">Una caja chica</div>
+    <div class="box">Una caja dinamica</div>
+    <article class="article"></article>
+    <script>
+      // agregar clase .big a la caja grande
+      const firstBox = document.querySelector(".box:first-of-type")
+      firstBox.classList.add('big')
+
+      // agregar clase .small a la caja pequeña
+      const secondBox = document.querySelector(".box:nth-of-type(2)")
+      secondBox.classList.add('small')
+
+      // agregar clase .special a la caja dinamica, intercalar entre big y small cada 2s y va a tener la clase .special 5s si 5s no.
+      const thirdBox = document.querySelector(".box:last-of-type")
+      thirdBox.classList.add('special')
+
+      setInterval(() => {
+        if (thirdBox.classList.contains('big')) {
+          thirdBox.classList.add('small')
+        } else {
+          thirdBox.classList.add('big')
+        }
+      }, 2000)
+
+      setInterval(() => {
+        thirdBox.classList.toggle('special')
+      })
+    </script>
+  </body>
+</html>

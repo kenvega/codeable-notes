@@ -1,0 +1,83 @@
+puedes agregar handlers por html
+  <button onclick="console.log('Recibí un click!')">Click Me</button>
+
+  aunque su limitacion es que agregar funciones complejas de este modo es mas dificil
+  tambien no se separan las responsabilidades
+
+puedes agregar un handler con javascript manualmente
+
+  <button onclick="console.log('Handler en HTML')">Click Me</button>
+ 
+  <script>
+    const button = document.querySelector("button");
+
+    // la siguiente expresión sobrescribe el handler del HTML
+    button.onclick = function (event) {
+      console.log("Primer handler en JS");
+    };
+
+    // esta expresión sobrescribe el handler previo
+    button.onclick = function (event) {
+      console.log("Segundo handler en JS");
+    };
+  </script>
+
+  su limitacion es que solo puedes tener una funcion de handler
+
+puedes agregar usando addEventListener
+
+  <button>Click Me</button>
+ 
+  <script>
+    const button = document.querySelector("button");
+
+    button.addEventListener("click", function (event) {
+      console.log("Primer handler!");
+    });
+
+    button.addEventListener("click", function (event) {
+      console.log("Segundo handler!");
+    });
+
+    button.addEventListener("click", function (event) {
+      console.log("Tercer handler!");
+    });
+  </script>
+
+  con addEventListener podemos agregar múltiples handlers al evento "click" del botón
+
+
+En el contexto del navegador, los términos "handler" y "listener" son prácticamente intercambiables.
+
+para quitar los handlers
+
+  function onButtonClick(event) {
+    console.log("Recibí un click");
+  }
+
+  button.addEventListener("click", onButtonClick);
+
+  // Para remover el listener pasamos 'la misma' función
+  button.removeEventListener("click", onButtonClick);
+
+  se tiene que especificar por nombre el handler porque se pueden agregar multiples
+
+objeto event en los handlers
+
+  button.addEventListener("click", function onButtonClick(event) {
+    console.log(event);
+  });
+
+  ahi veras bastantes propiedades del objeto
+
+  propiedades importantes de ese objeto event
+    target - elemento del DOM que inicio el evento. 
+    type
+    currentTarget - elemento del DOM que esta respondiendo al evento. puede ser diferente al target
+    timestamp
+    isTrusted
+
+pregunta
+  dame un ejemplo de codigo donde target y currentTarget sean distintos y eso pueda llevar a un bug
+
+

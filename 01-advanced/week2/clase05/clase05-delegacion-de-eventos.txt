@@ -1,0 +1,60 @@
+para evitar crear tantos listeners que hagan cosas similares
+
+se define solo un listener
+  luego usando event.target
+    se checa quien fue el elemento que origino el evento y actuar en base a eso
+
+  ejm
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>DOM</title>
+        <link rel="stylesheet" href="styles.css" />
+      </head>
+      <body>
+        <div class="grid">
+          <div class="card"><button>close</button></div>
+          <div class="card"><button>close</button></div>
+          <div class="card"><button>close</button></div>
+          <div class="card"><button>close</button></div>
+          <div class="card"><button>close</button></div>
+          <div class="card"><button>close</button></div>
+          <div class="card"><button>close</button></div>
+          <div class="card"><button>close</button></div>
+          <div class="card"><button>close</button></div>
+        </div>
+        <script src="index.js"></script>
+      </body>
+    </html>
+
+  se tendria algo asi
+    const buttons = document.querySelectorAll("button");
+
+    // Agregamos a cada botón un listener:
+    for (const button of buttons) {
+      button.addEventListener("click", function (event) {
+        const button = event.target;
+        const card = button.parentElement;
+        card.remove();
+      });
+    }
+
+  pero podrias hacer algo asi
+
+    const grid = document.querySelector(".grid");
+
+    grid.addEventListener("click", function (event) {
+      if (event.target.matches("button")) {
+        const card = event.target.parentElement; // o event.target.closest(".card");
+        card.classList.add("remove");
+        card.addEventListener("transitionend", () => card.remove());
+      }
+    });
+
+
+ejemplos donde seria util
+  por ejemplo si tienes que poner un evento a todos los iconos
+    del calendario de github de commits
+      cuando haces click a uno de esos dias se selecciona entonces
+        en vez de generar 365 listeners puedes usar un listener y usar event delegation
+

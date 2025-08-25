@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Blog 1</h1>
+  <article class="article"></article>
+  <script>
+    // agrega un parrafo de texto. agrega clase que modifique el tamaño del texto a 12px
+    // agrega una lista desordenada con 3 items
+    // deben ser hijos directos del article
+    // no usar innerHTML ni tampoco outerHTML
+    const p = document.createElement('p')
+    p.className = 'text'
+    p.textContent = 'hello there'
+
+    const ul = document.createElement('ul')
+
+    const articleTarget = document.querySelector('article.article')
+    articleTarget.append(p)
+    articleTarget.append(ul)
+
+    const item1  = document.createElement('li')
+    const item2  = document.createElement('li')
+    const item3  = document.createElement('li')
+    item1.textContent = 'item 1'
+    item2.textContent = 'item 2'
+    item3.textContent = 'item 3'
+
+    // const ulTarget = document.querySelector('ul') // se puede hacer query de elementos html que fueron creados con js
+    ul.append(item1)
+    ul.append(item2)
+    ul.append(item3)
+  </script>
+</body>
+</html>

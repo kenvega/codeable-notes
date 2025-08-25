@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+
+  <body>
+    <h1>Todo list</h1>
+    <input type="text" id="task-input" />
+    <button type="button" id="add-task-button">Add task</button>
+    <section class="tasks"></section>
+
+    <script>
+      // Agregar un parrafo al <section> con el contenido del input cada vez que se haga click en el boton
+      const button = document.querySelector('button')
+      const input = document.querySelector('input')
+      const section = document.querySelector('section')
+      let pElement
+
+      button.addEventListener('click', () => {
+        pElement = document.createElement('p')
+        pElement.textContent = input.value
+        section.append(pElement)
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+      }
+
+      .overview {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 0.5rem;
+        border-radius: 1rem;
+        background-color: lightgray;
+        padding: 1rem;
+      }
+
+      .box {
+        /* min-width: 0.5rem; */
+        /* min-height: 0.4rem; */
+        border-radius: 100%;
+        background-color: white;
+        padding: 0.5rem;
+      }
+
+      /* .active {
+        background-color: greenyellow;
+      } */
+    </style>
+
+    <h1>Grid</h1>
+    <div class="overview"></div>
+    <script>
+      const overview = document.querySelector(".overview");
+
+      for (let i = 1; i <= 365; i++) {
+        const box = document.createElement("div");
+        box.className = "box";
+
+        const count = document.createElement('p')
+        count.textContent = 0
+        box.append(count)
+
+        overview.append(box);
+      }
+
+      // un solo event listener
+      overview.addEventListener("click", (event) => {
+        // event target te permite saber donde se hizo el click
+        console.log('overview clicked')
+        const box = event.target.closest(".box") // closest busca hacia arriba o igual
+
+        if (box) {
+          console.log('box clicked')
+          console.log(event.target)
+
+          const count = box.querySelector('p')
+          count.textContent = parseInt(count.textContent) + 1
+          // target.classList.toggle("active");
+        }
+
+        // si no se encuentra el box significa que hicimos el click fuera de algun box. osea por el overview
+        // pero si entra al if(box) significa que hiciste click en el box o el 'p'
+
+        // para cuando se hace un click:
+        // target: element donde se hizo el click
+        // currentTarget: elemento donde se definio el listener
+      });
+    </script>
+  </body>
+</html>

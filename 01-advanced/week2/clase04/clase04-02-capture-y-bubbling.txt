@@ -1,0 +1,84 @@
+si tienes algo como
+
+  <div onclick="console.log('DIV recibió un click')">
+    <button>Click Me</button>
+  </div>
+
+  el evento funcoina igual cuando se haga click en el div
+  o tambien en cualquier elemento dentro del div como el boton
+
+  osea darle click al boton tambien hara un console.log
+
+  eso es bubbling
+    los eventos tienen origen en un elemento de HTML
+    pero luego se propagan por toda la cadena de ancestros
+      hasta que lleguen al elemento 'html' (incluso al objeto 'window')
+
+es en estos casos donde los target y currentTarget pueden ser distintos
+
+  ejemplo
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Events</title>
+
+        <style>
+          div {
+            text-align: center;
+            max-width: 150px;
+            border: 2px solid tomato;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            cursor: pointer;
+          }
+        </style>
+      </head>
+      <body>
+        <div onclick="alert('DIV 1 recibió el click')">
+          DIV 1
+          <div onclick="alert('DIV 2 recibió el click')">
+            DIV 2
+            <div onclick="alert('DIV 3 recibió el click')">DIV 3</div>
+          </div>
+
+          <div onclick="alert('DIV 4 recibió el click')">DIV 4</div>
+        </div>
+      </body>
+    </html>
+
+    cuando se hace click en div3
+
+      al inicio el target y currentTarget seran div3
+
+      cuando se escucha en div2 el target sigue siendo div3 pero el currentTarget seria div2
+
+      y asi va subiendo el currentTarget dependiendo de donde estamos escuchando el evento
+
+
+stopPropagation
+
+  evita que el evento siga subiendo a los padres
+    ejm
+      <body>
+        <div onclick="alert('Ya no recibe el click')">
+          <div onclick="event.stopPropagation()">
+            <div onclick="alert('Recibe el click')">
+              <div onclick="alert('Recibe el click')">Click!</div>
+            </div>
+          </div>
+        </div>
+      </body>
+
+  no es muy recomendable usarlo porque podria tener efectos inesperados en otro lado
+    por ejemplo si usamos algun paquete que chequee analytics y hacemos stopPropagation de un click
+      ese paquete podria no recibir donde se hizo clicks por ejemplo
+
+fase de captura
+
+  cuando se dispara un evento se va de 'document' hasta el elemento
+  luego es que ocurre el bubbling
+  en la practica este concepto no se usa mucho. pero los listeners pueden conseguirlo
+
+
+

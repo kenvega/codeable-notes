@@ -1,0 +1,38 @@
+se crea el elemento
+se define su contenido
+se busca donde se inserta
+se inserta
+
+ejemplo
+  const divElement = document.createElement('div')
+  divElement.className = ''
+  divElement.innerHTML = '<h1>hello</h1>'
+
+metodos para insertar
+
+  append
+  prepend
+  before
+    inserta antes pero como un nodo hermano y ya no como un nodo hijo
+  after
+  replaceWith
+
+  esta estructura define como iria si usas esas funciones con un main
+
+    doctype
+    html
+      head
+        title
+      body
+        before
+        main
+          prepend
+          div
+          div
+          append
+        after
+
+para eliminar
+
+  solo usa el metodo remove
+

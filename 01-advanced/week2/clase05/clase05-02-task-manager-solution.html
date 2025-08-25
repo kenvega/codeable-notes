@@ -1,0 +1,138 @@
+<!-- todos los clicks se van a procesar por un solo listener -->
+<!-- refactorizar el codigo para usar event delegation -->
+<!-- es decir todos los eventos van a ser manejados por un solo listener -->
+<!-- con excepcion del de crear tasks -->
+<!-- 2 listeners en total -->
+
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>Todo list</h1>
+
+    <style>
+      p {
+        margin: 0;
+      }
+
+      .tasks {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .task {
+        background-color: #f4f4f4;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 0.25rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .important {
+        color: red;
+      }
+
+      .done {
+        text-decoration: line-through;
+      }
+    </style>
+
+    <input type="text" id="task-input" />
+    <button type="button" id="addtask-button">Add task</button>
+
+    <section class="tasks"></section>
+
+    <script>
+      const inputElement = document.querySelector("#task-input");
+      const addTaskButton = document.querySelector("#addtask-button");
+      const tasksSectionElement = document.querySelector(".tasks");
+
+      addTaskButton.addEventListener("click", () => {
+        const inputValue = inputElement.value.trim();
+        if (!inputValue) return;
+
+        // crea container
+        const taskContainer = document.createElement("div");
+        taskContainer.className = "task";
+
+        // crea texto de task y lo agrega al container
+        const taskText = document.createElement("p");
+        taskText.textContent = inputValue;
+        taskContainer.append(taskText);
+
+        // crea el boton important
+        const importantButton = document.createElement("button");
+        importantButton.textContent = "Important";
+
+        // agrega evento de click al boton important
+        importantButton.addEventListener("click", () => {
+          taskContainer.classList.toggle("important");
+        });
+
+        // agregar el boton important al container
+        taskContainer.append(importantButton);
+
+        // agrega el evento de click a todo el container
+        taskContainer.addEventListener("click", (event) => {
+          if (event.target.tagName === "BUTTON") {
+            return;
+          }
+          taskText.classList.toggle("done");
+        });
+
+        // crea el boton de delete
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+
+        // agrega evento de click al boton de delete
+        deleteButton.addEventListener("click", () => {
+          taskContainer.remove();
+        });
+
+        // agregar el boton delete al container
+        taskContainer.append(deleteButton);
+
+        // agrega el container a la pagina
+        tasksSectionElement.append(taskContainer);
+
+        // reinicia el valor del input
+        inputElement.value = "";
+      });
+
+
+      function createTask (text, id) {
+
+      }
+
+      function createButton (text, id) {
+        // ahora en vez del listener recibes el id
+      }
+
+      tasksSection.addEventListener('click', (event) => {
+      if (event.target.matches('button')) {
+        const button = event.target;
+        const task = button.closest('.task');
+
+        if (button.matches('#delete-button')) {
+          task.remove();
+        } else if (button.matches('#important-button')) {
+          task.classList.toggle('important');
+        }
+      } else {
+        const task = event.target.closest('.task');
+
+        if (task) {
+          const p = task.querySelector('p');
+          p.classList.toggle('done');
+        }
+      }
+    });
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>DOM</title>
+  </head>
+  <body>
+    <h1>Todo list</h1>
+
+    <style>
+      p {
+        margin: 0;
+      }
+
+      .tasks {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .task {
+        background-color: #f4f4f4;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 0.25rem;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+
+    <input type="text" id="task-input" />
+    <button type="button" id="add-task-button">Add task</button>
+
+    <section class="tasks"></section>
+
+    <script>
+      const input = document.querySelector('#task-input');
+      const button = document.querySelector('#add-task-button');
+      const tasksSection = document.querySelector('.tasks');
+
+      button.addEventListener('click', () => {
+        const inputValue = input.value.trim();
+
+        if (inputValue) {
+          // cuando se haga click en el div se marcara la tarea como completada tachando el texto en el parrafo
+          const div = document.createElement('div');
+          div.className = 'task';
+
+          const p = document.createElement('p');
+          p.textContent = inputValue;
+          div.append(p);
+
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+          deleteButton.addEventListener('click', () => {
+            div.remove();
+          });
+          div.append(deleteButton);
+
+          // agregar otro boton para marcar la tarea como importante (le cambiamos el color de fondo a rojo)
+          // cuando marcamos como importante no se debe marcar como completada. No usar stopPropagation()
+
+          tasksSection.append(div);
+          input.value = '';
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+classList es mejor que className
+  porque cuando se quiere agregar o remover clases dinamicamente con javascript
+  se puede simplemente usar los metodos que classList ofrece
+    ejem
+      const div = document.querySelector('div')
+      div.classList
+
+        se tiene acceso ahora a estos metodos
+          div.classList.add(newClass)
+          div.classList.remove(newClass)
+          div.classList.replace(oldClass, newClass)
+          div.classList.toggle(newClass)
+          div.classList.contains(newClass)
+
+cuidado cuando se lee propiedades de css con js
+
+  ej
+    <style>
+      .big {
+        font-size: 32px;
+      }
+    </style>
+    
+    <body>
+      <p class="big">Texto grande</p>
+    
+      <script>
+        const p = document.querySelector("p");
+    
+        p.style.fontSize; // ??? ¿Qué valor retorna?
+      </script>
+    </body>
+
+  en este caso si uno hace
+    p.style.fontSize
+      no devuelve 32px
+
+    porque style como atributo no esta en el elemento html
+      sino mas bien en este caso el elemento p tiene propiedades css
+
+  para poder leerlo correctamente tendrias que hacer
+    getComputedStyle
+
+    ejm
+      const p = document.querySelector("p");
+      const computedStyles = getComputedStyle(p);
+      computedStyles.fontSize; // "32px"
+
+    lo que se devuelve es un objeto del tipo CSSStyleDeclaration
+      lleno de valores CSS 'finales' luego de aplicar todas las reglas css como herencia, espeicificidad, origen, etc
+

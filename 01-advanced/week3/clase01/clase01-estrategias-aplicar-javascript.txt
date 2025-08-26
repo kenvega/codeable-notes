@@ -1,0 +1,96 @@
+estrategias para aplicar javascript
+
+  posibles formas
+    interactividad sencilla
+    generando contenido dinamico
+    utilizando patrones de diseño avanzados
+
+  * los nombres de estas estrategias no son estandar. puedes encontrarlas con otros nombres
+
+  estatica
+    html solo contenido
+    css solo estilos
+    js solo agrega interactividad
+
+    ventajas
+      separacion de responsabilidades
+        el codigo es mas facil de entender y manejable cuando esta separado por responsabilidades
+      optimizacion de carga
+        contenido estatico en HTML carga mas rapido
+      compatibilidad
+        si un navegador tiene js desactivado igual podria mostrarse la pagina
+
+    desventajas
+      dificil hacer contenido dinamico
+      dificil hacer contenido basado en componentes
+        no la hace optima en desarrollo para grupos
+
+  dinamica basica
+    se construye elementos desde cero usando javascript
+
+    ventajas
+      flexibilidad
+      menos dependencia de codigo estatico
+      integracion de datos
+        datos dinamicos de un API pueden construir el DOM mas facilmente sin buscar elementos especificos
+      reutilizacion de componentes
+        se pueden crear funciones que generen componentes
+        asegurar consistencia y reduce repeticion de codigo
+
+    desventajas
+      es mas lento en la carga inicial
+        esta se considera importante para el SEO de la pagina
+      no compatibilidad con paginas que no ejecuten javascript
+
+  estrategia de clases
+
+    crear clases por cada componente que quieras crear
+
+    basada en programacion orientada a objetos
+      javascript no es un lenguaje que haya sido creado pensado en programacion orientada a objetos
+
+    aqui entra el concepto de estado
+      se tienen valores guardados en memoria en lugar de elementos de html con una clase
+        ejem. el toggle de una clase puede depender de un estado de la instancia de la clase
+
+    ventajas
+      encapsulacion
+        clase que encapsula lo que hace un componente
+      reutilizacion
+        una clase puede crear varias instancias de un mismo componente
+      extensibilidad
+        las clases se pueden extender para generar nuevas clases
+      mantenibilidad
+        cualquier cambio se realiza en un solo lugar
+
+  estrategia de closures
+    basada en programacion funcional
+
+    closures
+      funcion que retorna un objeto
+        tiene el acceso por medio de la referencia
+          no puede editarlo
+
+        no puede ser accedido mas que por la misma funcion
+
+    ventajas
+      encapsulacion de estado
+        se pueden crear variables o metodos privado
+      menor sobrecarga
+        no se usan clases ni prototipos asi que es un poco mas ligero
+      flexibilidad
+        se pueden extender las funcionalidades solo que de otra manera
+      claridad
+        la logica puede notarse mas facil de leer
+
+      permite limitar accesos a variables privadas
+
+
+* patrones de diseño
+    estructuras para usar en cualquier lenguaje de programacion para resolver un problema
+    
+    ejm
+      un observer se suscribe a un evento
+      cuando el evento se ejecuta avisa a todos los observer
+      
+        

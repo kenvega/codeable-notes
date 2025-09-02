@@ -1,0 +1,127 @@
+typescript
+  es un superset de js
+    osea que cualquier codigo de js es typescript valido
+      pero no viceversa
+
+  necesita ser compilado a js para que funcione en el navegador
+
+  permite escribir js especificando los tipos de datos de las variables
+
+    ejm de js sin typescript
+
+      function combine(a, b) {
+        return a + b;
+      }
+
+      // Podemos pasar dos strings sin problemas
+      combine("Java", "Script"); // "JavaScript"
+
+      // Podemos pasar un solo string
+      combine("Es:"); // ""Es:undefined"
+
+      // Podemos pasar booleanos
+      combine(true, false); // 1
+
+    ejm de js con typescript
+
+      function combine(a: number, b: number) {
+        return a + b;
+      }
+
+      combine("Java", "Script");
+      // Error! Argument of type 'string' is not assignable to parameter of type 'number'
+
+  typescript te puede dar errores antes de que se ejecute el codigo
+    esto se llama tipado estatico
+
+  tambien puede darte mas compatibilidad con navegadores antiguos
+
+  los archivos .d.ts
+    son definiciones de typescript que sirven para librerias
+
+  
+como instalarlo y probarlo
+  crea una carpeta
+    ejm
+      mkdir ts-playground
+      cd ts-playground
+
+  inicia un proyecto de node con valores por defecto
+    npm init -y
+
+  dentro de ese proyecto instala la dependencia de typescript
+    npm install -D typescript
+
+  crea tu primer src/index.ts (crea archivo index.ts dentro de una carpeta src)
+    ejm
+      function combine(a: number, b: number) {
+        return a + b;
+      }
+
+      const result = combine(10, 20);
+      console.log(result);
+
+  manualmente
+    compila el codigo
+      npx tsc src/index.ts
+
+    cuando ejecutes ese archivo te aparecera un index.js
+
+  tambien se puede usar un script en package.json (recomendado)
+    en el package.json pon esto
+      {
+        // ...
+        "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "tsc": "tsc"
+        }
+      }
+
+    luego corre este comando
+
+      npm run tsc src/index.ts
+
+como generar un archivo de configuracion para el compilador typescript
+
+  usando npx
+    npx tsc --init
+
+  usando el script en package.json
+    npm run tsc -- --init
+      *el doble -- es para que la opcion --init pase para tsc y no para run
+
+  se genera un tsconfig.json como este
+    {
+      "compilerOptions": {
+        "target": "es2016",
+        "module": "commonjs",
+        "esModuleInterop": "true",
+        "forceConsistentCasingInFileNames": "true",
+        "strict": "true",
+        "skipLibCheck": "true"
+      }
+    }
+
+    target
+      El código emitido (compilado) de JavaScript que se creará seguirá la especificación "ES2016" conocido también como "ES7"
+    module
+      El código emitido utilizará el sistema de módulo de Node.js (CommonJS) que utiliza las palabras clave require y module.exports
+    esModuleInterop
+      permite interoperatividad entre sistemas de módulos
+    forceConsistentCasingInFileNames
+      se asegura que las mayúsculas y minúsculas sean correctas en las sentencias de importación
+    strict
+      habilita todas las opciones estrictas a la revisión de tipos (tipos estrictos)
+    skipLibCheck
+      no revisa tipos en archivos con extensión .d.ts
+
+existen 2 directorios comunes que se tiene para los archivos compilados
+  build y dist
+
+  son los nombres mas comunes
+
+
+8:40
+8:58
+  la configuracion de hoy es una mas estricta para cuando se esta empezando
+    noImplicitReturns da error si es que tienes funciones que tienen efectos secundarios

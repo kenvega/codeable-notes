@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const url = "https://jsonplaceholder.typicode.com/users";
+
+      async function fetchData() {
+        const data = await new Promise((resolve, reject) => {
+          if (Math.random() > 0.5) {
+            const newPromise = new Promise((res) => res("success"));
+            resolve(newPromise);
+          } else {
+            reject("Failure!");
+          }
+        });
+
+        // con await se espera que la promesa se resuelva antes de seguir con la sgte linea
+        console.log(data)
+        const processedData = await data.processedData()
+        console.log('processedData: ', processedData);
+      }
+
+      fetchData()
+    </script>
+  </body>
+</html>

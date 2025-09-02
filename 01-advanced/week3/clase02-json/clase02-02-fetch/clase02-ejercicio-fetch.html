@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* template code for dark mode */
+      :root {
+        color-scheme: dark; /* dark mode for scrollbar and input color */
+        --bg-0: #232323;
+        --text-0: #e6e7eb;
+        --link: #8ab4f8;
+      }
+      html,
+      body {
+        background: var(--bg-0) !important;
+        color: var(--text-0) !important;
+      }
+      h1,h2,h3,h4,h5,h6 {
+        color: var(--text-0) !important;
+      }
+      a {
+        color: var(--link) !important;
+      }
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      /* specific css code for web */
+      .card {
+        background-color: #292929;
+        border: 1px solid #8ab4f8;
+        border-radius: 5px;
+        margin: 20px;
+        padding: 5px 20px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        max-width: 75vw;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .card img {
+        border-radius: 50%;
+        max-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const url = "https://rickandmortyapi.com/api/character";
+
+      fetch(url)
+        .then((response) => {
+          // verificar si la respuesta fue exitosa
+          if (!response.ok) throw new Error(response.status);
+
+          // Procesar el cuerpo como JSON
+          return response.json();
+        })
+        .then((response) => {
+          console.log(response.results);
+          const characters = response.results;
+
+          for (const character of characters) {
+            const characterCard = createCharacterCard(character);
+            document.body.appendChild(characterCard);
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+
+      function createCharacterCard(character) {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const containerLeft = document.createElement('div')
+        card.appendChild(containerLeft);
+
+        const name = document.createElement("p");
+        name.textContent = `name: ${character.name}`
+        containerLeft.appendChild(name);
+
+        const gender = document.createElement("p");
+        gender.textContent = `gender: ${character.gender}`
+        containerLeft.appendChild(gender);
+
+        const species = document.createElement("p");
+        species.textContent = `species: ${character.species}`
+        containerLeft.appendChild(species);
+
+        const image = document.createElement("img");
+        image.src = character.image
+        card.appendChild(image);
+
+        return card;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+localStorage
+  es un APIweb (solo existe en navegadores)
+  puedes guardar info en formato clave-valor en el navegador
+  persiste la data incluso si cierras el navegador
+  ejemplo de uso
+    se podria guardar la preferencia de tema del usuario en localStorage
+    podrias guardar si es que el usuario ha hecho la primera visita a la pagina para mostrar un tutorial
+
+metodos basicos
+  localStorage.setItem('nombre', 'Juan')
+  localStorage.getItem('nombre')
+  localStorage.removeItem('nombre')
+  localStorage.clear() // elimina todos los pares clave-valor del dominio actual
+
+al guardar siempre se guarda en strings asi que si guardas un valor complejo
+  puedes hacer JSON.stringify(valorComplejo) para guardarlo
+  y cuando ya lo lees de localStorage
+    pasarle JSON.parse()
+
+con dev tools/herramientas de desarrollo puedes ver los pares clave-valor
+  estan normalmente dentro la pestaña de Application
+    desde esta parte puedes hacer CRUD a localStorage
+
+  siempre se guardan valores como string aunque chrome puede que los procese y muestre como arrays/objetos/etc
+
+precauciones
+  no guardar datos sensibles porque se guardan como texto directamente
+  existe un limite de 5 a 10MB por dominio
+
+ventajas
+  facil de usar
+  persiste incluso si se cierra el navegador
+  funciona en todos los navegadores
+
+
+*
+  ({}).toString()
+    cuando pasas un objeto a string te sale [object Object]
+
+  sessionStorage
+    guarda valores al igual que localStorage pero se cierra cada que cierras ese tab de navegador
+
+

@@ -1,0 +1,79 @@
+JSON
+  javascript object notation
+
+  es un formato para compartir informacion
+    al hacer requests no se pueden enviar objetos ni funciones
+      se mandan solo datos en texto plano
+
+  basicamente json sirve para pasar objetos de js a string y viceversa
+
+  ya es estandar apra compartir informacion en otros lenguajes tambien
+
+  ventajas de usar json
+    json es legible por humanos - se decidio legibilidad sobre desempeño
+
+    idenpendiente de lenguaje - no esta amarrado a usar js
+
+    ligero - transferencia eficiente
+
+sintaxis json
+  '{"escuela": "Codeable"}'; // String con formato JSON válido
+
+  '{escuela: "Codeable"}'; // String con formato JSON inválido
+
+  - las llaves tambien son strings (deben usar commillas)
+
+tipos de datos/valores posibles
+
+  cadenas - "" , "hola"
+  numeros - 23, 43.2
+  booleanos - true o false
+  nulo - null
+  objetos y arrays - [2,'sdf'] , {}
+
+  no se pueden enviar 'undefined' o funciones por json
+    si una libreria tiene estos valores al transformarlo normalmente lo omite
+
+metodos json en js
+
+  JSON.stringify - convertir objeto a string con formato json 
+    strings con formato JSON son llamados JSON-encoded
+  JSON.parse - convertir string con formato json en un objeto
+
+  ejemplo JSON.stringify
+      let escuela = {
+        nombre: 'Codeable',
+        fundacion: '2019',
+        graduados: 300,
+        cohortsActuales: ['C11', 'C12'],
+      };
+
+      let json = JSON.stringify(escuela);
+      console.log(typeof json); // string
+      console.log(json);
+
+      /* String con formato JSON:
+      '{
+        "nombre": "Codeable",
+        "fundacion": "2019",
+        "graduados": 300,
+        "cohortsActuales": ["C11", "C12"]
+      }'
+      */
+
+  ejemplo con JSON.parse
+      // datosJson es un string con formato JSON
+      let datosJson = '["manzana", "pera", "fresa"]';
+
+      let frutas = JSON.parse(datosJson);
+
+      console.log(frutas[1]); // "pera"
+
+simulacion request que retorna json
+  jsonplaceholder.typicode.com
+
+
+
+preguntas
+  si json fue creado para javascript para enviar informacion
+    que se usaba antes de que sea creado?

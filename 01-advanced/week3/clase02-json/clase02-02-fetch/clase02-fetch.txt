@@ -1,0 +1,65 @@
+fetch
+
+  retorna una promesa
+    pasara a ser fulfilled si se tiene respuesta del servidor
+    rejected si hubo problema de comunicacion y no se logra recibir respuesta
+
+obtener el cuerpo de respuesta
+
+  ejemplo
+
+      let url = "https://jsonplaceholder.typicode.com/users";
+
+      fetch(url)
+        .then((response) => {
+          // verificar si la respuesta fue exitosa
+          if (!response.ok) throw new Error(response.status);
+
+        // Procesar el cuerpo como JSON
+          return response.json();
+        })
+        .then((users) => {
+          console.log(users); // Imprime la lista de usuarios como una arreglo de JS 🚀
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+
+  se procesa el body con response.json()
+    porque por eficiencia el body es un readablestream
+      ya cuando se tiene listo el body y se resuelve la promesa se puede acceder a su data
+
+  ejemplo con await
+
+      let url = "https://jsonplaceholder.typicode.com/users";
+
+      try {
+        const response = await fetch(url)
+        if (!response.ok) throw new Error(response.status);
+        const users = await response.json()
+        console.log(users)
+
+        for (const user of users) {
+          const userCard = createUserCard(user)
+          document.body.appendChild(userCard)
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+
+      function createUserCard(user) {
+        const card = document.createElement('div')
+        card.className = 'use-card'
+
+        const name = document.createElement('h2')
+        name.textContent = user.name
+        card.appendChild(name)
+
+        return card
+      }
+
+pregunta
+  una promesa a se pasa fulfilled incluso si un server responde con un error como por ejemplo 401? o en esos casos pasa rejected?
+
+  cuando se hace un request a un servidor con una promesa cuando es que se considera rejected? si por ejemplo 
+

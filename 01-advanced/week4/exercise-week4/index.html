@@ -1,0 +1,175 @@
+<!-- haz una lista de pokemons con nombres e imagenes y filtra -->
+<!-- usa el url pokeapi.co para el api -->
+<!-- pokemon?limit=100 -->
+<!-- tendras un select para filtrar por tipo (fuego, agua, etc) -->
+<!-- tambien en el README.md escribe el flujo. escuchas eventos, etc -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* template code for dark mode */
+      :root {
+        color-scheme: dark; /* dark mode for scrollbar and input color */
+        --bg-0: #232323;
+        --text-0: #e6e7eb;
+        --link: #8ab4f8;
+      }
+      html,
+      body {
+        background: var(--bg-0) !important;
+        color: var(--text-0) !important;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--text-0) !important;
+      }
+      a {
+        color: var(--link) !important;
+      }
+
+      .card {
+        background-color: #292929;
+        border: 1px solid #8ab4f8;
+        border-radius: 5px;
+        margin: 20px;
+        padding: 5px 20px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        max-width: 75vw;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pokemons by type</h1>
+
+    <form>
+      <label for="pokemontype">Select a pokemon type</label>
+      <select name="pokemontype" id="pokemontype"></select>
+    </form>
+
+    <div id="container"></div>
+
+    <script>
+      // fetch the pokemons by default
+      const baseURL = "https://pokeapi.co/api/v2/";
+      let pokemonsData = [];
+      let remaining;
+
+      const validateAndParseJson = (response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      };
+
+      const createPokemonCard = (pokemonData) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const containerLeft = document.createElement("div");
+        card.appendChild(containerLeft);
+
+        const name = document.createElement("p");
+        name.textContent = `name: ${pokemonData.name}`;
+        containerLeft.appendChild(name);
+
+        const types = document.createElement("p");
+        types.textContent = `types: ${pokemonData.types
+          .map((e) => e.type.name)
+          .join(", ")}`;
+        containerLeft.appendChild(types);
+
+        const image = document.createElement("img");
+        image.src = pokemonData.sprites.front_default;
+        card.appendChild(image);
+
+        return card;
+      };
+
+      fetch(`${baseURL}/pokemon`)
+        .then(validateAndParseJson)
+        .then((response) => {
+          const pokemons = response.results;
+          remaining = pokemons.length;
+          console.log("pokemons without data: ", pokemons);
+          pokemons.forEach((pokemon) => {
+            fetch(pokemon.url)
+              .then(validateAndParseJson)
+              .then((response) => {
+                pokemonsData.push(response);
+                remaining--;
+                if (remaining === 0) {
+                  console.log("pokemonsData: ", pokemonsData);
+
+                  const containerElement = document.querySelector("#container");
+                  for (const pokemonData of pokemonsData) {
+                    const pokemonCard = createPokemonCard(pokemonData);
+                    containerElement.appendChild(pokemonCard);
+                  }
+                  pokemonsData = []
+                }
+              });
+          });
+        });
+
+      const selectElement = document.querySelector("#pokemontype");
+
+      fetch(`${baseURL}/type`)
+        .then(validateAndParseJson)
+        .then((response) => {
+          console.log("pokemon types: ", response.results);
+          const pokemonTypes = response.results;
+
+          for (const pokemonType of pokemonTypes) {
+            const pokemonOption = document.createElement("option");
+            pokemonOption.textContent = pokemonType.name;
+            pokemonOption.value = pokemonType.url;
+            selectElement.appendChild(pokemonOption);
+          }
+        });
+
+      selectElement.addEventListener("change", (event) => {
+        console.log("event.target.value: ", event.target.value);
+        const pokemonTypeUrl = event.target.value
+
+        fetch(pokemonTypeUrl)
+          .then(validateAndParseJson)
+          .then((response) => {
+            console.log("pokemon from this type: ", response.pokemon);
+            const pokemonsOfTypeSelected = response.pokemon.map(p => p.pokemon)
+
+            remaining = pokemonsOfTypeSelected.length;
+            pokemonsOfTypeSelected.forEach((pokemon) => {
+              fetch(pokemon.url)
+                .then(validateAndParseJson)
+                .then((response) => {
+                  pokemonsData.push(response);
+                  remaining--;
+                  if (remaining === 0) {
+                    console.log("pokemonsData: ", pokemonsData);
+
+                    const containerElement = document.querySelector("#container");
+                    containerElement.replaceChildren();
+                    for (const pokemonData of pokemonsData) {
+                      const pokemonCard = createPokemonCard(pokemonData);
+                      containerElement.appendChild(pokemonCard);
+                    }
+                    pokemonsData = []
+                  }
+                });
+            });
+          });
+      });
+    </script>
+  </body>
+</html>

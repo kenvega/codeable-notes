@@ -1,0 +1,34 @@
+UNION
+  operador union es el `|`
+
+    es como el operador logico de || de javascript
+      pero aplicado a tipos en lugar de valores
+
+    combina todos los posibles valores de ambos tipos
+
+    puedes usar valores literales para poder limitar a ciertos posibles valores
+      ejm
+        let impares: 1 | 3 | 5 | 7 | 9;
+
+        impares = 1; // OK
+        impares = 3; // OK
+        impares = 4;
+        //  ^ Type '4' is not assignable to type '1 | 3 | 5 | 7 | 9'
+
+        si fueran strings podria servirte para posibles y unicos "success", "failure", etc
+
+
+INTERSECCION
+  operador interseccion es el &
+    es como el operador logico de && de javascript
+
+    identifica elementos comunes entre ambos conjuntos
+
+* 'as const'
+    conviertes a una tupla en readonly
+
+    pregunta
+      por que se usa as const y no directamente se usa readonly?
+
+TYPE GUARDS
+    se tiene certeza de ciertos tipos cuando se hace una comparacion

@@ -1,0 +1,112 @@
+aliases
+  ejm
+    type Identificador = string | number;
+
+  ejm
+    type User = { name: string; email: string };
+
+    elementos
+      declarador -- type
+      identificador -- Product
+        nombres unicos
+        en PascalCase
+      tipo -- { name: string; email: string }
+
+  ventajas de usar aliases
+    se puede dar un nombre mas significativo al tipo
+    se declara en un solo lugar
+    se puede reusar
+    se puede importar/exportar
+
+interfaces
+  ejm
+    interface User {
+      name: string;
+      email: string;
+    }
+
+  elementos
+    declarador -- interface
+
+    identificador -- User
+
+    tipo -- { name: string; email: string }
+
+  las interfaces siempre son objetos
+    pregunta:
+      es necesario que cada linea del objeto no termine en ';'? que sucede si no lo hace?
+
+  a primera vista funciona igual que un alias type
+
+  pero se puede declarar varias veces y se van agregando las propiedades que se declaren
+
+  tienen palabras claves que son 'extends' y 'implements'
+
+  herencia de interfaces
+
+  extends
+    una interfaz puede 'extends'(extender) otra interfaz
+
+    
+
+  implements
+    una clase puede implementar varias interfaces
+    una int erfaz no puedeimplementar otra interfaz (8:05pm)
+
+  las interfaces se pueden redeclarar
+    se agregan nuevos tipos asi
+
+    * pregunta
+        que pasa si se abre una interfaz y se redefine de nuevo parte de su tipo o metodo?
+          se sobreescribe o typescript te da algun error?
+
+
+type vs interface
+
+
+
+  en general se usa interfaces cuando se este trabajando con clases para programar (no es tan comun)
+    si necesitamos definir los tipos y queremos usarlos en una clase se usa una interfaz
+
+  las interfaces son abiertas asi que si quieres que la gente que consuma tu programa
+    se pueda ampliar entonces en ese caso se podria usar una interfaz
+      * aunque los tipos tambien se pueden ampliar con los operadores de union
+
+  en cualquier otro caso generalmente de preferencia se usa los alias type o tipos
+
+
+recursividad de tipos
+
+  los type aliases pueden tener algun tipo que se referencia a si mismos en su definicion
+
+    ejm
+      // unión de tipo 'base' y el tipo 'recursivo'
+      type NestedNumbers = number | NestedNumbers[];
+
+      const nested: NestedNumbers = [1, 2, 3, [4, 5], 6, [[7, [8, 9, [10]]]]]; // OK
+
+  no es algo tan comun de usar
+
+
+
+pregunta
+
+* la interface Error no se tiene que declarar en typescript. ya viene built in
+    en el fondo viene de la clase Error de javascript
+
+    la interface Error tiene valores
+      cause?
+      message
+      name
+      stack?
+
+        puedes acceder a estos si haces data.message cuando en el if estabas en el error en el codigo
+
+        si haces cmd Click dentro de la interface Error te llevara a su definicion
+          recuerda que una interfaz se puede construir con mas interfaces una encima de otra. asi esta construido el error
+
+
+
+type annotations
+type alias
+interfaz

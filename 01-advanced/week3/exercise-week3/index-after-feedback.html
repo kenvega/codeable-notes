@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* template code for dark mode */
+      :root {
+        color-scheme: dark; /* dark mode for scrollbar and input color */
+        --bg-0: #232323;
+        --text-0: #e6e7eb;
+        --link: #8ab4f8;
+      }
+      html,
+      body {
+        background: var(--bg-0) !important;
+        color: var(--text-0) !important;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--text-0) !important;
+      }
+      a {
+        color: var(--link) !important;
+      }
+
+      .card {
+        background-color: #292929;
+        border: 1px solid #8ab4f8;
+        border-radius: 5px;
+        margin: 20px;
+        padding: 5px 20px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        max-width: 75vw;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pokemons by type</h1>
+
+    <form>
+      <label for="pokemontype">Select a pokemon type</label>
+      <select name="pokemontype" id="pokemontype"></select>
+    </form>
+
+    <div id="container"></div>
+
+    <script>
+      const baseURL = "https://pokeapi.co/api/v2/";
+      let pokemonsData = [];
+      let remaining;
+
+      function fetchJSON(url) {
+        return fetch(url).then((response) => {
+          if (!response.ok)
+            throw new Error(`HTTP ${response.status} by this url: ${url}`);
+          return response.json();
+        });
+      }
+
+      const validateAndParseJson = (response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      };
+
+      const createPokemonCard = (pokemonData) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const containerLeft = document.createElement("div");
+        card.appendChild(containerLeft);
+
+        const name = document.createElement("p");
+        name.textContent = `name: ${pokemonData.name}`;
+        containerLeft.appendChild(name);
+
+        const types = document.createElement("p");
+        types.textContent = `types: ${pokemonData.types
+          .map((e) => e.type.name)
+          .join(", ")}`;
+        containerLeft.appendChild(types);
+
+        const image = document.createElement("img");
+        image.src = pokemonData.sprites.front_default;
+        card.appendChild(image);
+
+        return card;
+      };
+
+      // fetch the pokemons by default
+      fetchJSON(`${baseURL}/pokemon`)
+        .then(({ results }) => {
+          const pokemonDetailsUrls = results.map((p) => p.url);
+          const pokemonDetailsPromises = pokemonDetailsUrls.map((url) => {
+            return fetch(url).then(validateAndParseJson);
+          });
+          return Promise.all(pokemonDetailsPromises);
+        })
+        .then((pokemonsData) => {
+          console.log("pokemonsData by default:", pokemonsData);
+
+          const containerElement = document.querySelector("#container");
+          for (const pokemonData of pokemonsData) {
+            const card = createPokemonCard(pokemonData);
+            containerElement.appendChild(card);
+          }
+        })
+        .catch((err) => {
+          console.error("Failed to load Pokémon:", err);
+        });
+
+      // select element
+      const selectElement = document.querySelector("#pokemontype");
+
+      // fetch all pokemon types
+      fetchJSON(`${baseURL}/type`).then((response) => {
+        console.log("pokemon types: ", response.results);
+        const pokemonTypes = response.results;
+
+        for (const pokemonType of pokemonTypes) {
+          const pokemonOption = document.createElement("option");
+          pokemonOption.textContent = pokemonType.name;
+          pokemonOption.value = pokemonType.url;
+          selectElement.appendChild(pokemonOption);
+        }
+      });
+
+      selectElement.addEventListener("change", (event) => {
+        const pokemonTypeUrl = event.target.value
+
+        // fetch pokemons by a specific type
+        fetchJSON(pokemonTypeUrl)
+          .then((response) => {
+            const pokemonsUrlsOfTypeSelected = response.pokemon.map(p => p.pokemon.url)
+            const pokemonsDetailsFromTypePromises = pokemonsUrlsOfTypeSelected.map((url) => {
+              return fetch(url).then(validateAndParseJson);
+            });
+            return Promise.all(pokemonsDetailsFromTypePromises);
+          }).then((pokemonsData) => {
+            console.log("pokemonsData:", pokemonsData);
+
+            const containerElement = document.querySelector("#container");
+            containerElement.replaceChildren();
+            for (const pokemonData of pokemonsData) {
+              const pokemonCard = createPokemonCard(pokemonData);
+              containerElement.appendChild(pokemonCard);
+            }
+            pokemonsData = []
+          })
+      });
+    </script>
+  </body>
+</html>

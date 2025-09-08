@@ -1,0 +1,82 @@
+objetos
+  // Inferido por TS
+  const book = { title: "Hamlet", author: "Shakespeare" };
+  //     ^ const book: { title: string; author: string; }
+
+  // Anotación de tipo para 'student'
+  let student: { name: string; age: number; }
+
+  book.title = "The Art of War"; // OK
+  book.author = true;
+  //  ^ Type 'boolean' is not assignable to type 'string'.
+
+  student = { name: "Testino" };
+  // ^ Property 'age' is missing in type '{ name: string; }' but required in type '{ name: string; age: number; }'
+
+
+  existe autocompletado para las propiedades de un objeto
+    porque typescript ya sabes cuales son todas las posibles propiedades
+
+  existen propiedades opcionales tambien dentro de un objeto
+
+array
+    const countries = ["PE", "MX", "CO", "CL"];
+    //        ^ const countries: string[]
+
+    const evenNumbers = [2, 4, 6, 8];
+    //        ^ const evenNumbers: number[]
+
+    const tasks = [{ title: "Estudiar" }, { title: "Dormir" }];
+    //      ^ const tasks: { title: string; }[]
+
+    const fruits = [];
+    //      ^ const fruits: any[]
+
+
+  lo mas importante para cuando se definen arrays
+    es cuando se definen arrays vacios
+      especificar que tipo de valores tendria
+
+tuplas
+  un tipo de valor que no existe primitivamente en js
+  se puede considerar un tipo de arreglo pero tiene unas cualidades especificas
+  es un arreglo que es ordenada (el orden delos objetos importa)
+  es de tamaño definido. desde un inicio se sabe cuantos objetos debe tener ese arreglo
+
+  const student = ["Testino", 25, true];
+  //       ^ const student: (string | number | boolean)[]
+
+
+  lo importante de la tupla es el orden de sus valores porque a partir de esos se puede leer
+
+  porque en typescript no se puede lograr lo siguiente:
+    tener una tupla que me permite cambiar valores pero que no me deja agregar mas elementos
+
+  entonces la regla de que sea de un tamaño fijo de elementos no importa mucho
+
+  sino el orden de sus elementos 
+
+  Object.entries
+    devuelve una tupla
+      siempre son arreglos de 2 elementos
+      y el orden en esos arreglos siempre es llave y luego valor
+
+readonly
+  viene gracias a typescript
+    te permite evitar agregar elementos a un array o cambiar cualquiera de sus elementos
+      es lo mas cerca de hacer un array a una tupla
+
+
+
+preguntas
+  como se podria hacer si mi objeto puede tener propiedades dinamicas que no conozco de antemano
+    ejm quisiera en un objeto contar la cantidad de veces que aparece cada letra
+
+      'hello'
+
+      {
+        'h': 1,
+        'e': 1,
+        'l': 2,
+        'o': 1
+      }

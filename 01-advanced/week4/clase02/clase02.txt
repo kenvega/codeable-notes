@@ -1,0 +1,71 @@
+typescript infiere los tipos de datos
+
+  ejm
+    let temperature = 24;
+    //      ^ let temperature: number
+
+    por el valor asignado inicialmente se puede inferir que tipo de valor tiene esa variable
+
+
+cuando dejar que la inferencia funcione y cuando aplicar el tipo nosotros mismos
+
+  cuando typescript no lo puede inferir por si mismo el tipo de dato es bueno declararlo
+
+elementos cuando se declaran
+  let temperature: number
+
+  let -- declarador
+    puede ser let, const, function, class
+    en typescript tambien se cuenta con
+      type, interface, enum, namespace
+
+  temperature -- identificador
+
+  number -- tipo
+
+si se usa const
+  const temperature = 800
+    como const no deja cambiar al valor se le pone el tipo literal de 800
+    que pertenece al tipo number
+
+    esto no ocurre cuando se usan arrays u objetos
+      porque estos no son inmutables. se pueden agregar valores despues
+      en esos casos typescript no le da un tipo literal
+
+definir una variable sin un valor que inferir en la misma linea ni un tipo puede generar bugs
+  ejm
+    let temperature
+
+    temperature = 200
+    temperature = 'hot'
+
+  eso no te da error porque en let temperature se asigno un tipo any
+
+definicion de tipo
+  el conjunto de todos los posibles valores que pueden ser asignados al identificador
+
+
+cuando se le da un tipo a una variable por ejemplo de 'number'
+  se puede prevenir viendo que una funcion a esa variable no existe
+    porque typescript sabe que funciones existen para ciertos tipos de variables
+
+
+funciones
+  ejm
+    function combine(a: number, b: number): number {
+    //               ^ (parameter) a: number
+      return a + b;
+    }
+
+    combine(10, "invalid");
+    //             ^ Argument of type 'string' is not assignable to parameter of type 'number'.
+
+  en funciones se puede solo inferir el tipo de dato de una variable si es que le das un valor por defecto
+    pero si haces eso tambien lo tomaria siempre como un parametro opcional
+      entonces es mejor siempre especificar el tipo de dato de los parametros
+
+  se puede poner el tipo de dato que queremos que retorne la funcion tambien
+
+extension recomendada
+  pretty typescript errors
+    para cuando se tiene mucho texto en los hovers y se hace dificil de leer

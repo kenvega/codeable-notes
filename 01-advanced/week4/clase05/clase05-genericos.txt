@@ -1,0 +1,24 @@
+genericos
+  para que sirven?
+    el mejor ejemplo es en React.useState()
+
+      cuando su valor inicial es un numero
+        el primer valor de la tupla tiene tipo number
+          y si es un string entonces ese valor de tupla es string
+
+    entonces el tipo de retorno
+      depende de lo que le enviamos de parametro a la funcion
+
+
+
+pregunta
+  TODO: ponerlo en ai-log
+    yo tengo dudas sobre esta nueva sintaxis de typescript. los '<' y '>' no los habiamos visto para definiciones de tipos hasta hoy creo. son exclusivos de genericos o tambien otro concepto de typescript usa esos caracteres de '<' y '>'?
+
+
+otra pregunta
+  los genericos se usan en declaracion de funciones y declaracion de clases pero tambien he notado que se pueden usar al invocar funciones como por ejemplo
+
+  let val3 = echo<string>(4);
+
+  imagino que se puede usar al instanciar clases y de ahi habrían otros casos donde se pueden usar?

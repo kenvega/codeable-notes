@@ -1,0 +1,39 @@
+type queries
+  cuando no tenemos acceso directo a los tipos especificos
+    y se quiere acceder a un valor especifico de un tipo mas grande
+      caso de uso: cuando se este usando librerias
+
+  se accede con la palabra reservada 'keyof'
+
+  typeof
+    se usa sobre algun valor de javascript
+    en js existe para saber el tipo de una variable literal
+    pero en ts se extiende su funcioanlidad para que ahora se pueda
+      capturar el tipo inferido a partir de una variable
+
+    antes typeof ({a: 'b'}) te daria 'object' 
+    en typescript 
+
+    no funcionaria con valores que tendrian un tipo de valor definido en la ejecucion
+
+  indexed access types / acceso a tipo por su indice
+
+    se puede extraer parte de un tipo objeto o de un tipo arreglo por su 'indice'
+
+    puedes entrar a partes de un type como si fuera un objeto
+
+      type PhoneCode = User["phone"]["code"];
+
+* como sabe typescript distinguir cuando usar el typeof nativo de js 
+    y en otros casos el typeof de typescript
+
+      lo sabe por el contexto del codigo
+
+        if (typeof testino == 'string') {
+          // aqui por contexto saca que es string
+          testino
+        }
+
+      al igual para ejemplos cuando se use typeof en typescript
+
+        

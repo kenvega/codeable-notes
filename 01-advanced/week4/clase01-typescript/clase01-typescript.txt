@@ -34,12 +34,14 @@ typescript
   typescript te puede dar errores antes de que se ejecute el codigo
     esto se llama tipado estatico
 
+  tambien puede darte errores de typo que podrian ser dificiles de debuggear sin typescript
+
   tambien puede darte mas compatibilidad con navegadores antiguos
 
   los archivos .d.ts
     son definiciones de typescript que sirven para librerias
 
-  
+
 como instalarlo y probarlo
   crea una carpeta
     ejm
@@ -61,7 +63,7 @@ como instalarlo y probarlo
       const result = combine(10, 20);
       console.log(result);
 
-  manualmente
+  manualmente compilando el typescript
     compila el codigo
       npx tsc src/index.ts
 
@@ -80,6 +82,16 @@ como instalarlo y probarlo
     luego corre este comando
 
       npm run tsc src/index.ts
+
+  como ejecutar el codigo ya compilado de typescript a javascript
+    comando para correr codigo
+      node src/index.js
+
+cuando se compila sin archivo de configuracion
+
+  se usan valores de config por defecto
+
+  esto no es recomendado para cuando se empieza en un proyecto
 
 como generar un archivo de configuracion para el compilador typescript
 
@@ -114,6 +126,21 @@ como generar un archivo de configuracion para el compilador typescript
       habilita todas las opciones estrictas a la revisión de tipos (tipos estrictos)
     skipLibCheck
       no revisa tipos en archivos con extensión .d.ts
+
+se recomienda cambiar algunas de las configuraciones por defecto que aparecen en tsconfig.json
+  "esModuleInterop": "true",
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "noImplicitReturns": true,
+  "noFallthroughCasesInSwitch": true,
+
+  esas opciones suelen venir comentadas
+  se recomienda descomentarlas para tener un proyecto al iniciar
+    para ser mas estricto
+
+luego de hacer los cambios de typescript
+  se vuelve a correr el comando para compilar
+    npm run tsc
 
 existen 2 directorios comunes que se tiene para los archivos compilados
   build y dist

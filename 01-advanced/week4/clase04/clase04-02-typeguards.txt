@@ -1,0 +1,18 @@
+typeguards
+  con algunas condicionales
+    se puede tenermayor seguridad del tipo de dato que se tiene
+
+typeguards personalizados
+  value is Type
+    se espera a que la funcion personalizada devuelva un true
+  assert is Type
+    se espera a que el metodo no bote una excepcion
+
+cuando tu haces typeguards personalizados
+  typescript esta confiando en ti y se deshabilita
+    asi que haz esto en casos muy especificos
+      porque se pierde funcionalidad de typescript en estos casos
+
+  si escribes un typeguards que no verifique todas las caracteristicas
+    estamos en riesgo de generar bugs por no cumplir
+

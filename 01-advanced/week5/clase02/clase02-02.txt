@@ -1,0 +1,7 @@
+renderizar listas
+  se usa map para renderizar listas
+
+
+named import
+
+  import { Card } from "./componentes/Card"

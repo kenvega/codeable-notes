@@ -1,0 +1,63 @@
+crear componentes
+
+se tiene un app component que viene por defecto
+
+llamar a los diferentes componentes que vamos a crear
+
+no se enfoquen tanto en los estilos sino en la funcionalidad
+
+componentes
+  counter
+    ahi en la pagina se tienen los requerimientos
+
+  filter component
+    se tendra el archivo pokemon.json (no se trabajara con un API)
+
+    habra un select para seleccionar los tipos
+
+    cuando se seleccione el valor se actualicen los pokemones que tienen ese tipo
+
+  shopping cart
+    incluye varios componentes pequeños
+
+    ahi se pone en la pagina los requerimientos
+
+
+    github.com/codeableorg/react-components
+      src/data/pokemons.json -- para el componente de filtrar pokemons
+      src/data/products.json -- para el ejercicio opcional
+
+    tienes que entrar a este link
+      https://classroom.github.com/a/WfJO6mzj
+
+      para crear
+
+        es un classroom de github
+
+          escojes tu nombre
+
+
+            react-ui-components-kenvega - sera el nombre de tu repo
+
+                luego puedes clonar ese repo en tu compu local
+
+      
+Your assignment is due by Sep 16, 2025, 00:00 UTC
+
+
+      cuando clones
+        instala dependencias
+          npm install
+
+        corre el proyecto con
+          npm run dev
+
+
+      ya luego ahi haces todo del counter y lo de los pokemons y lo que es opcional
+
+
+
+
+
+ya marcaste asistencia
+

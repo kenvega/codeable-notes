@@ -1,0 +1,9 @@
+co-locazicacion de estado
+
+  si es que el estado no necesita ser pasado de un padre a un hijo
+
+    entonces realmente solo pon ese estado en el componente hijo y ya
+      no lo pases innecesariamente del padre al hijo si solo el hijo lo necesita
+
+
+

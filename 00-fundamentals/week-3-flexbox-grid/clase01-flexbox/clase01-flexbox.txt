@@ -73,3 +73,17 @@ display flex
 
 flexbox froggy
 
+
+
+
+----
+
+
+condiciones que se deben cumplir para poder usar la propiedad "align-content"
+
+  que exista espacio extra en el eje transversal
+
+  puede haber múltiples líneas de elementos flex
+
+  se necesita un alto fijo
+

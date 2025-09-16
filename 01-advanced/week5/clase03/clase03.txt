@@ -1,0 +1,100 @@
+los eventos son sinteticos en react pero funcionan practicamente igual
+
+ejm
+  export default function App() {
+    function handleClick(event) {
+      console.log("Evento click recibido");
+      console.log(event.type);
+      console.log(event.target);
+    }
+
+    return <button onClick={handleClick}>Click me</button>;
+  }
+
+consideraciones
+  nuestras funciones que escuchan eventos las llamaremos handlers
+    handleClick
+    handleBlur
+    etc
+
+  esos handlers se pasan como prop con nombre onClick
+
+pasar argumentos a un handler
+  un boton que cambie un tema de tema claro a tema oscuro en un solo click
+
+  ejm
+    export default function App() {
+      function setTheme(theme) {
+        console.log("Cambiando al tema: " + theme);
+      }
+
+      return (
+        <div>
+          <button>Light Theme</button>
+          <button>Dark Theme</button>
+        </div>
+      );
+    }
+
+sobre el onClick en los botones
+
+  o pasas una referencia de funcion o envuelves en una funcion anonima
+
+  porque el onClick recibe un callback (osea una funcion que invocar)
+
+  por eso no puedes hacer onClick={setTheme('light')}
+
+  porque a ese punto estas invocando la funcion
+    y enviarle al onclik lo que el setTheme devuelve cuando es invocado
+
+  pero si puedes hacer esto onClick={setThemeDark}
+    porque ahi le estas pasando una referencia
+    porque ahi no estas invocandolo (no hay parentesis que indiquen que se esta invocando la funcion)
+
+
+si el evento del handler no lo estas usando entonces puedes ponerlo como
+  _event
+    con guion bajo al inicio para indicar que la variable no se usa
+
+
+syntheticBaseEvent
+  isTrusted - para saber si fue por consola o un click real de usuario
+
+  curentTarget
+  target
+
+  screenX, screenY
+
+  shiftKey - para saber si estabas presionando la tecla
+
+  type - el tipo de evento. puede ser 'click' por ejemplo
+
+
+no tengas funciones anonimas grandes
+  por ejemplo en un mismo handler de onClick
+    no hagas un fetch con then, catch, etc.. hace que el codigo sea menos legible
+
+  tambien si es anonima y es grande no puedes ponerle un nombre a la funcion que diga que hace
+
+* un callback es una funcion
+    pero no todas las funciones son callback
+      a una funcion se le llama callback cuando se envia como parametro de referencia para que se ejecute despues por otro metodo
+        por ejemplo para el array.map se envia un callback
+          y es que esa funcion sera ejecutada por el map
+
+
+manejo de estados
+
+  el setState permite crear una variable que permite persistir el valor entre render y render
+    pero cualquier otra variable que no haya sido creada con setState se reinciaria a su valor inicial entre cada render
+
+  
+
+*
+  diferencia entre
+    import React from "react";
+
+  y
+    import * as React from "react"
+
+  importan lo mismo?

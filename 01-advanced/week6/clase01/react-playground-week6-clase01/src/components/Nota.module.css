@@ -1,0 +1,19 @@
+/* se evita usar :root para no romper con el tema de componentes */
+/* :root {
+  --info: 210, 100%, 95%;
+  --info-border: 210, 100%, 70%;
+} */
+
+.wrapper {
+  --info: 210, 100%, 95%;
+  --info-border: 210, 100%, 70%;
+  padding: 24px;
+  border-left: 3px solid hsl(var(--info-border));
+  border-radius: 3px 6px 6px 3px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}

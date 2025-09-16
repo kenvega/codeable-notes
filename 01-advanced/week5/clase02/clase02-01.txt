@@ -1,0 +1,59 @@
+se usa npm/vite en vez de importar las librerias de js
+  asi tienes estas ventajas
+    optimiza tus archivos
+    transpila tus archivos automaticamente
+    tienes mas compatibilidad con navegadores antiguos
+    hot-reloading: cambios en codigo se reflejan en navegador
+      con typescript tenias que transpilar manualmente y recargar pagina
+
+antes de usaba webpack/parcel/snowpack/etc
+  pero ahora se usa vite por ser mas rapida
+    vite: es una herramienta de desarrollo
+      no requiere una configuracion compleja
+
+
+como crear proyecto de react con vite
+  npm create vite@latest
+
+  project name
+  react
+  typescript
+
+  estos pasos te dan unos cuantos archivos
+    index.html
+    package.json
+      las dependencias importantes que trae son react y react-dom
+      luego trae dev dependencies como
+        eslint
+        plugins de typescript para react
+
+
+  hay 2 archivos de tsconfig.app.json y tsconfig.node.json
+    app para el front y node para el server que hara que funcione react
+      el server es lo que hace que haya hot-reloading
+
+como instalar el proyecto
+  npm install
+
+como correr el proyecto
+  npm run dev
+
+comandos que se pueden correr con npm
+  npm run dev
+  npm run build
+  npm run lint
+  npm run preview
+
+vite usa ES modules asi que se usa 'import' y 'export'
+
+
+
+
+pregunta
+  que es typescript swc (sale en vite al crear proyecto)
+
+  hay una linea que dice asi
+    import App from "./app"; // buscará un archivo ./app.js (o similar)
+
+    pero a veces app sera tsx . en esos casos tenemos que cambiar algo en la config para que agarre app.tsx en lugar de app.js?
+

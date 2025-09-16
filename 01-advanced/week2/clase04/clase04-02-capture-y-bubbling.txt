@@ -55,6 +55,27 @@ es en estos casos donde los target y currentTarget pueden ser distintos
 
       y asi va subiendo el currentTarget dependiendo de donde estamos escuchando el evento
 
+    otra forma de verlo
+      donde se ha definido el listener - currentTarget
+      donde se ha disparado el evento - target
+
+      depende de lo que necesites es que usaras una o la otra
+
+    propiedades que se usan mas de target y currentTarget dependiendo del elemento html
+
+      input
+
+        type -- por si es un input tipo password. podrias cambiarlo a tipo texto
+        value
+        name
+        disabled
+        readonly
+        title
+        required
+
+      puedes ir a mdn html reference attributes para encontrar mas propiedades a las que quieras acceder
+
+
 
 stopPropagation
 

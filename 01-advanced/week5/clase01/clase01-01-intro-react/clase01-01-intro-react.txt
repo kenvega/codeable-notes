@@ -1,0 +1,60 @@
+con js estabamos trabajando interactividad paso por paso asi
+  buscamos un elemento
+  añadimos un listener
+  insertamos un elemento, etc
+
+esto podia ser mas complejo cuando la aplicacion crece mucho
+
+para eso se creo react
+
+  se creo para simplificar la creacion de interfaces de usuario
+
+  se basan en reactividad y encapsular
+
+  cada pieza encapsulada ahora se llama componente
+
+  crear interfaces de una manera declarativa
+    en vez de escribir paso a paso
+    describimos el resultado que queremos
+    asi el codigo es mas legible
+    asi nos enfocamos mas en como queremos que se vea la interfaz
+    en lugar de como queremos que se vea la interfaz
+
+como funciona react
+  creas un componente
+  renderizas el componente en un nodo de DOM
+  basandose en el estado react cambia las partes de ese componente y refresca cambios en el DOM
+
+que se necesita para react
+  la liberia react
+  y liberia react-dom
+
+React.createElement(elementType, [elementProperties], [...children])
+  elementType
+    puede ser una etiqueta
+    tambien puede ser una funcion que retorne un elemento de react
+
+  elementProperties
+    propiedades (conocidas como props) para pasar al elemento
+    escritas en formato javascript: className en vez de class, htmlFor en vez for, etc
+
+  children
+    uno o mas argumentos que sean hijos del elemento
+    puede ser solo un texto tambien
+    es lo que va entre la etiqueta de apertura y cierre
+
+describir la UI/interfaz
+  * no entendi esta parte. checala de nuevo en el texto
+
+ejercicio
+  crear esta parte con react.createElement
+    <div id="root">
+      <div class="counter">
+        <p class="counter__display">0</p>
+        <div class="counter__actions">
+          <button class="counter__button">Decrement</button>
+          <button class="counter__button">Increment</button>
+          <button class="counter__button">Reset</button>
+        </div>
+      </div>
+    </div>

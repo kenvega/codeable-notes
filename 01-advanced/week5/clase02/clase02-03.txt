@@ -1,0 +1,4 @@
+un ternario si se puede poner en jsx
+  porque al contrario que un if
+    un ternario sí es una expresion
+

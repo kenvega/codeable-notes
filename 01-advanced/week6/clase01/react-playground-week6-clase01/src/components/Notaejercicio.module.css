@@ -1,0 +1,49 @@
+/* se evita usar :root para no romper con el tema de componentes */
+/* :root {
+  --info: 210, 100%, 95%;
+  --info-border: 210, 100%, 70%;
+} */
+
+.wrapper {
+  --info: 210 100% 95%;
+  --info-border: 210 100% 70%;
+
+  --warning: 45 100% 95%;
+  --warning-border: 45 100% 70%;
+
+  --danger: 0 100% 95%;
+  --danger-border: 0 100% 70%;
+
+  --success: 120 100% 95%;
+  --success-border: 120  100% 70%;
+
+  padding: 24px;
+  border-left: 3px solid;
+  border-radius: 3px 6px 6px 3px;
+  margin-bottom: 32px;
+}
+.title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/*
+  Estilos específicos para cada tipo (prop type).
+*/
+.info {
+  background-color: hsl(var(--info));
+  border-color: hsl(var(--info-border));
+}
+.warning {
+  background-color: hsl(var(--warning));
+  border-color: hsl(var(--warning-border));
+}
+.danger {
+  background-color: hsl(var(--danger));
+  border-color: hsl(var(--danger-border));
+}
+.success {
+  background-color: hsl(var(--success));
+  border-color: hsl(var(--success-border));
+}

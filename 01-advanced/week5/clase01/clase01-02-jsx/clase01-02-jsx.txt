@@ -1,0 +1,42 @@
+babel compila jsx a el codigo de react que usa React.createElement
+
+tienes que declarar que estas usando babel en el script
+
+jsx son expresiones de javascript
+  TODO: revisar esta parte 
+
+diferencias de jsx con html
+  atributos
+  se convierten en un objeto props que se pasa al React.createElement
+
+  todas las reglas de atributos html que se usan en las propiedades de etiqueta
+    se aplican en este caso
+
+  se usa className en vez de class
+
+  los atributos estan ahora en camelCase
+    como className y como tabIndex en lugar de tab-index
+
+  todos los elementos tienen que tener una etiqueta de cierre
+
+    en html el elemento img se puede escribir sin etiqueta de cierre
+      tambien pasa con el input
+
+* grabacion aqui
+
+crear componentes funcionales
+
+
+
+en jsx cuando se abre llaves para usar javascript
+  solo se pueden poner expresiones en esas llaves
+    las expresiones son sentencias que al final del dia devuelven un valor
+      por ejemplo un if no es una expresion
+      pero un arreglo.map devuelve un valor
+
+    esto lo puedes recordar porque detras de jsx
+      hay React.createElement
+        que recibia unos parametros con props y otros children
+          y esos parametros pueden ser solo expresiones
+
+        

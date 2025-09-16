@@ -1,0 +1,126 @@
+estilos en react
+
+  antes la separacion de concerns estaba en 3 archivos diferentes
+    js - interactividad
+    css - estilos
+    html - estructura
+
+  ahora que estamos en react con componentes
+    cada componente se vuelve un concern
+      y cada concern incluye estructura, interactividad y estilos
+
+  como se deciden los estilos en react?
+
+    hay varias formas y algunas tienen problemas
+
+    BEM
+      no es tan eficiente
+        hay muchos estilos y no se necesita cargar todos para cierta pagina al inicio
+      dependes de BEM para evitar colisiones
+        tus estilos aplican a toda la pagina y no a un especifico componente
+      desacoplo de estilos y componentes
+        eso rompe con lo que react quiere en general
+        si haces una libreria de estilos
+          como te aseguras que no colisione con otros estilos
+
+    la idea es que cada componente de react
+      tenga lo que necesita en si mismo para implementarlo en cualquier ambiente
+
+    modulos CSS
+      se evita usar :root para no romper con el tema de componentes
+
+      react convierte cada clase con un identificador unico
+        le pone un sufijo
+          por ejemplo
+            .wrapper se convierte en algo como ._wrapper_i3ixf_1
+
+          asi las clases no chocan con ninguna otra clase
+
+      que una linea como
+        import styles from "./Nota.module.css";
+          funcione es por que Vite lo empaqueta para que puedas importar archivos module.css
+
+      en el src/index.css se harian aun los resets de css
+        los que resetean los margenes y demas cosas
+          ese archivo de css esta importado por ./src/main.tsx
+
+      en App.css ya seria css especifico para App.tsx
+        cosas de layout por ejemplo
+
+  como organizar la estructura de los archivos de componentes de react
+    ahora que tambien debemos considerar los archivos de estilos
+      creas una carpeta por cada componente y pones el jsx y el estilo
+
+        components/
+        ├─ Header
+        |  ├─ Header.jsx
+        |  ├─ styles.module.css
+        ├─ Footer
+        |  ├─ Footer.jsx
+        |  ├─ styles.module.css
+        ├─ Counter
+        |  ├─ Counter.jsx
+        |  ├─ styles.module.css
+        ├─ Cart
+        |  ├─ Cart.jsx
+        |  ├─ styles.module.css
+        ...
+
+  si quieres evitar escribir algo como
+    import Counter from "./components/Counter/Counter"
+
+    entonces
+      dentro de cada carpeta creas un index.tsx con este contenido
+        export * from './Counter'; // exporta todo lo que exporta Counter
+        export { default } from './Counter'; // export especial para Note
+
+    y asi solo tendrias que escribir
+      import Counter from "./components/Counter"
+
+    puedes ver mas razones de por que usar este formato aqui
+      https://www.joshwcomeau.com/react/file-structure/
+
+
+* ITCSS
+    es una solucion de organizacion de estructura de archivos de css
+      settings
+      tools
+      generic
+      elements
+      objects
+      components
+      trumps
+
+    mientras mas abajo estemos en el triangulo invertido
+      los selectores de clases tienen que ser mas especificos
+
+    tiene globales propuestos
+      settings, generic, elements, utilities y objects
+
+
+* repaso de lo que se puede exportar
+
+    se puede exportar una funciones, constantes, y tipos
+      export const NoteConst = 'Note'
+
+    existe el export nombrado y export por default
+
+      export por default
+        solo se puede tener 1 por archivo
+
+        cuando se importa no se necesita usar los '{}' sino directo lo importas y le pones un nombre a ese default
+
+        de la solucion de index en cada carpeta
+          funciona gracias a la linea asi
+            export { default } from './Counter'; // exporta por default el export por default que hay en el archivo ./Counter (basicamente una redireccion)
+
+      export nombrado
+        cuando importas ahi debes usar los '{}'
+          import { Note, NoteConst as Const, type NoteProps }
+          // puedes tambien renombrar cuando importas por nombre
+          // cuando importas tipos es recomendado poner el 'type' para indicar que es un type de typescript
+
+        de la solucion de index en cada carpeta
+            funciona gracias a la linea asi
+              export * from './Counter'; // exporta todos los exports nombrados que hay en ./Counter (una redireccion)
+

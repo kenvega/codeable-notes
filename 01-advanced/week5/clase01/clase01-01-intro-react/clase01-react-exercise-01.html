@@ -1,0 +1,62 @@
+<!--
+  with React.createElement make code that renders this:
+    <div id="root">
+      <div class="counter">
+        <p class="counter__display">0</p>
+        <div class="counter__actions">
+          <button class="counter__button">Decrement</button>
+          <button class="counter__button">Increment</button>
+          <button class="counter__button">Reset</button>
+        </div>
+      </div>
+    </div>
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>React single-file playground</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- <script>
+      const { createElement } = React;
+
+      const element = createElement(
+        "div",
+        { className: "counter" },
+        createElement("p", { className: "counter__display" }, 0),
+        createElement(
+          "div",
+          { className: "counter__actions" },
+          createElement("button", { className: "counter__button" }, "Decrement"),
+          createElement("button", { className: "counter__button" }, "Increment"),
+          createElement("button", { className: "counter__button" }, "Reset")
+        )
+      );
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(element);
+    </script> -->
+
+    <script>
+      function createElement(type, props, ...children) {
+        console.log({type, props, children})
+      }
+
+      createElement("div",
+        { className: "container" },
+        createElement('h1', null, 'Hello, world'),
+        createElement('p', null, 'helo there')
+      )
+    </script>
+  </body>
+</html>

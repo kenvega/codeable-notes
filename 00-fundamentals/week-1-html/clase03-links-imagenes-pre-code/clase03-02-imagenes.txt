@@ -1,0 +1,40 @@
+imagenes
+
+  img es un elemento vacio asi que no necesita etiqueta de cierre
+    puedes escribirlo asi
+      <img>
+    o también asi (recomendado)
+      <img />
+
+  el atributo alt
+    es muy util para el SEO de la pagina
+      los motores de busqueda no entienden imagenes
+        pero con alt al menos se dan una idea de asociar que estas mostrando con lo que se busca un usuario
+
+    tambien sirve como fallback de texto por si la imagen no llega a cargar
+
+    si la imagen no agrega informacion importante lo mejor es dejar el alt vacio como ""
+      los lectores de pantalla ignoraran esa imagen
+
+    consejos para el texto alternativo de imagenes en el atributo alt
+      transmite el proposito y contenido de la imagen concisamente
+      idealmente menos de 125 caracteres (lectores de pantalla suelen parar en 125 caracteres)
+      evita redundancias: no pongas "imagen de.."
+      no intentes poner palabras claves no relacionadas a la imagen para mejorar el SEO
+
+    ejm de uso de alt
+      <img
+        src="ruta/a/foto-de-perfil.jpg"
+        alt="Un retrato de Maria, sonriendo y vistiendo una camisa azul"
+      />
+
+  css sobre img/imagen (quizas mover a buenas practicas)
+    si la imagen no describe nada para la pagina entonces puede ir como src dentro del css
+
+    pero si la imagen es algo critico de la pagina como la pagina de perfil de un usuario
+    entonces si es necesario que este el src
+
+
+* un link para crear tu octocat por si quieres una foto de perfil
+    https://myoctocat.com/build-your-octocat/
+

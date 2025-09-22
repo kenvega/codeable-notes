@@ -1,0 +1,34 @@
+links - anchors - <a />
+
+  atributo href
+    la ruta de este anchor puede ser relativa o absoluta
+      puede ser relativa a la raiz tambien
+
+    puedes referenciar ids para hacer scroll a otras secciones de la pagina
+      ejm
+        <h2 id="educacion">Educación</h2>
+
+        <a href="#educacion">Ir a la sección de Educación</a>
+
+    puedes descargar archivos directamente
+      ejm
+        <a href="/files/resume.pdf" download>Descarga mi currículum (PDF)</a>
+
+    puedes direccionar a una app de correo directamente
+      ejm
+        <a href="mailto:maria@example.com">Envíame un correo electrónico</a>
+
+  por el atributo rel puedes saber cual es la ventana hija y la ventana padre
+    esto se usa para medios de pago con tarjeta por ejemplo
+
+
+
+* vscode live server extension
+
+  es mejor usar esta extension a solo abrir un archivo html directamente en el navegador
+    porque cuando querramos traer css o imagenes sera mas sencillo
+
+  otras extensiones recomendadas
+    prettier, live server, live share
+
+

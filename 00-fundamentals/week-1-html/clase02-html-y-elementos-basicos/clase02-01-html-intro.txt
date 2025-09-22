@@ -10,6 +10,13 @@ JavaScript
 
 Todas las propiedades de CSS cuentan con valores predeterminados
   Cada navegador tiene estilos propios para elementos HTML
+    por ejemplo para el h1 suelen tener estas propiedades por defecto
+      h1 {
+        display: block; /* define elemento de bloque */
+        font-size: 2em; /* incrementa el tamaño del texto [1]  */
+        margin-block-start: 0.67em; /* agrega un margen superior [1] */
+        margin-block-end: 0.67em; /* agrega un margen inferior [1] */
+      }
 
 elemento HTML
   Consiste en una etiqueta de apertura, contenido y una etiqueta de cierre
@@ -29,7 +36,7 @@ html es un lenguaje de etiquetado pero no es un lenguaje de programacion
   toda la estructura se construye con etiquetas
 
 head
-  todo lo que pongas dentro de esta etiqueta no se verá
+  todo lo que pongas dentro de esta etiqueta no se verá en la pagina
     excepto por el <title/> que eso seria el titulo del tab de la pagina
 
   aqui van referencias a css y referencias a links de font families
@@ -75,7 +82,8 @@ layout model
       positioned layout(absolute/fixed/relative)
 
   flow layout (diseño de flujo)
-    es el modelo por defecto en html
+    es el Layout Model por defecto en html
+      los elementos de la pagina se organizan de arriba hacia abajo y de izquierda a derecha
 
 
 elementos de bloque (display: block)
@@ -83,7 +91,7 @@ elementos de bloque (display: block)
     si su contenedor/padre es body y body ocupa todo el width entonces el elemento con display block tambien ocupara todo el width
     cuando pones 2 elementos con "display: block" juntos se pone uno debajo del otro
 
-  ejemplos
+  ejemplos de elementos con display block 
     div
     h1,h2,...,h6
     p
@@ -95,18 +103,10 @@ elementos de linea (display: inline)
     si no necesitan mas que 100px de width entonces no se estirarán más que eso
     cuando pones 2 elementos con "display: inline" juntos se pone uno al lado del otro mientras tengan espacio suficiente. sino debajo del otro
 
-  ejemplos
+  ejemplos de elementos con display inline
     span
     a
     img
     strong, em
     input
-
-elementos basicos
-  encabezados/headers
-    para jerarquia
-
-  h1 para titulo principal
-  h2 para secciones importantes
-  el resto para subsecciones
 

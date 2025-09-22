@@ -1,0 +1,135 @@
+efectos secundarios
+  es cualquier interaccion que salga del evento de nuestro scope de funcion
+    ejm
+      modificar una variable global
+      acciones de entrada y salida (ejm usar console.log, localStorage)
+      manipulacion del DOM (cualquier cambio en el DOM)
+      llamadas de red (cualquier solicitud HTTP)
+      mutar un parametro de tu funcion (ejm. modificar un array de parametro)
+
+  * cualquier funcion que no tenga efecto secundario se llama funcion pura
+
+para que react sea optimo
+  se desea que los componentes no tengan efectos secundarios
+    cuando es inevitable un efecto secundario
+      se tiene el hook llamado useEffect
+
+react useEffect
+  React.useEffect(callback)
+
+  cualquier efecto secundario que el componente necesite usar
+    tiene que ser parte del callback que le pasemos al hook useEffect
+
+  cuando se ejecuta
+    se ejecuta despues de cada render
+      esto incluye el primer render y luego en cada re-render
+
+    * tienes que borrar el componente StrictMode
+        sirve comentarlo/eliminarlo cuando se aprende de useEffect
+          porque React usa StrictMode renderiza 2 veces para comprobar posibles bugs
+
+  como controlar cuando ejecutarlo
+    como ocurre en cada render
+      podrias estar haciendo un efecto secundario en cada re-render
+        incluso en algunos re-renders que no quieres que se ejecute el efecto secundario
+          si el efecto secundario es una operacion costosa seria ineficiente ejecutarla en cada re-render
+
+    entonces para filtrar en que re-renders se pueda ejecutar el callback
+      se puede decir que unos efectos dependen de valores de unas variables
+        esas variables se usarian entonces en el 2do parametro del useEffect
+          ese parametro se llama arreglo de dependencias
+            React.useEffect(callback, [...deps])
+
+          ese array de dependencias es opcional
+            si no lo pasas entonces el callback del useEffect se ejecuta en cada render
+            si lo pasas entonces solo se ejecuta cuando cambia una de esas variables del array de dependencias
+
+    si quieres que el efecto solo se ejecute en el primer render
+      podria ser por ejemplo agregar un listener global cuando se presione escape
+        el listener solo tiene que agregarse una vez
+
+      entonces solo se necesita pasar un arreglo dependencias vacio
+        React.useEffect(callback, [])
+
+    en resumen para controlar cuando ejecutar los efectos secundario
+
+      sin arreglo de dependecias
+        el efecto se ejecuta en cada render
+
+      arreglo de dependencias lleno
+        el efecto se ejecuta en el primer render y cada vez que una de sus dependencias cambie
+
+      arreglo de dependencias vacío
+        el efecto se ejecuta solo en el primer render
+
+  como limpiar los efectos secundarios
+    el primer render de un componente puede ocurrir mas de una vez
+      si dejas de renderizar un componente y luego lo renderizas de nuevo 
+        con logica condicional
+          cada que se desmonte y luego vuelvas a mostrar y montar
+            sera como la primera vez que renderizas un componente
+              los efectos secundarios no desaparecen por si solos cuando desmontas un componente
+                asi que tendrias que limpiarlos manualmente
+                  eso lo logras con funciones de limpieza/clean up functions
+
+                  existe solo una funcion de limpieza por cada useEffect
+                    se define el callback que retorne el useEffect
+
+                      React.useEffect(() => {
+                        // efecto...
+
+                        return () => {}; // <- esta sería la cleanUp function del efecto
+                      }, [deps])
+
+    cuándo se ejecuta la clean up function
+
+      en estos casos
+        en un re-render del componente
+          se ejecuta justo antes de ejecutar el efecto
+            primero limpia y luego ejecuta el efecto
+
+        cuando el componente se desmonta
+
+      en ambos casos React se asegura que
+        de existir una operación que agrega un "proceso persistente" fuera de React
+          el desarrollador tenga un mecanismo para
+            limpiar/borrar dicho proceso entre renders
+
+*
+  recuerda
+    los efectos no hacen que se re-renderize el componente
+      para eso estan los cambios en state o props
+
+
+* preguntas
+
+    al agregar listeners, al final se deben remover cierto?
+      en que momento se deben remover?
+        respuesta
+          con el clean up function
+
+    tiene un nombre la forma de representar el arreglo de dependencias?
+      por que se representa como [...deps]
+
+    escribir en localStorage es un efecto secundario
+      leer de localStorage seria un efecto secundario?
+
+    cuando deberiamos limpiar?
+      aparte de cuando usamos event listeners?
+        respuesta
+          si por alguna razon quieres tener un valor especifico en localStorage mientras que un componente esta montado y mostrado en la pagina
+            pero cuando se borra no quieres tener ese valor en localStorage
+          si quieres cambiar el titulo de tu pagina cuando un componente esta montado
+            y quieres volverlo al titulo original cuando ya no está montado
+
+          en general cuando quieres que un efecto solo viva cuando el componente esta montado
+
+    el strictMode que se mencionaba que hacia que los componentes hagan un doble render
+      respuesta
+        strictMode te dara warnings si hay fugas de memoria
+          o si hay un efecto que no se esta dando de manera correcta
+
+        se recomienda tenerlo prendido siempre desde el punto que ya se entiende como funciona useEffect
+
+
+

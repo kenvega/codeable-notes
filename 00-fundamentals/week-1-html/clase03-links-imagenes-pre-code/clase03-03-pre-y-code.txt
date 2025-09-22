@@ -1,0 +1,10 @@
+
+pre y code
+
+  pre
+    para respetar saltos de linea
+
+  code
+    formatear texto como codigo
+
+  se pueden usar en conjunto

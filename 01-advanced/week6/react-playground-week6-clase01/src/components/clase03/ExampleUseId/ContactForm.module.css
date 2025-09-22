@@ -1,0 +1,32 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 320px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.875rem;
+}
+
+.field {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid lightslategray;
+}
+
+.submit-button {
+  border-radius: 0.25rem;
+  border: 1px solid lightslategray;
+  padding: 0.5rem 0.75rem;
+}
+
+.submit-button:active {
+  background-color: whitesmoke;
+}

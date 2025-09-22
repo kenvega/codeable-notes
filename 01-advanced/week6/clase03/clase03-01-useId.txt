@@ -1,0 +1,18 @@
+useId
+  son identificadores unicos que persisten entre renders
+
+  se usan para asignarlos a los ids de elementos que lo necesiten
+
+  que problema resuelve?
+    por ejemlpo en un form
+      si tienes un label con htmlFor con cierto valor
+      y luego tienes un input con id de ese mismo cierto valor
+      entonces ese label y ese input estan conectados
+
+    pero que pasa si necesitas mostrar ese formulario 2 veces en la pagina
+
+  todos los identificadores que se generan son simples y genericos
+    se basan en el arbol de componentes de react
+
+pregunta
+  no seria lo mismo que guardar un valor unico con useState?

@@ -1,0 +1,104 @@
+useRef
+  recuerda que escribimos en jsx en react, no es HTML
+
+  estos se traducen a componentes de react
+    asi que despues de procesos de render
+      recien se convierten en el html que se ve en el navegador
+
+  si se quiere manipular el DOM o ver una referencia a algo entonces
+    se puede usar el useRef para llegar a ese elemento
+
+  ejemplo
+    una interfaz que tenga un boton y un input
+      cuando se hace click en el boton que haga focus al input
+
+        con js y html puro seria facil
+          const button = document.querySelector("button");
+          const input = document.querySelector("input");
+
+          button.onclick = () => input.focus();
+
+      como se haria en react?
+
+        se puede hacer lo mismo que con js
+        pero no funcionara cuando tengas varios componentes que apunten con ids
+          se podria solucionar con useId tambien
+            pero se recomienda siempre evitar manipular el DOM directamente con React (esto es guideline de React)
+              asi que en este caso es mejor usar useRef
+
+      como solucionarlo con useRef
+        que hace useRef
+
+          crea un objeto que persiste entre renders
+
+          piensalo como una caja donde guardas valores o referencias que necesitas que sobrevivan cuadno se re-renderiza
+
+          se le pasa un valor inicial de cualquier cosa
+            y luego eso que le pasas quedara como el valor de una propiedad current
+              dentro de un objeto. y eso es lo que guarda el useRef
+
+          ejm
+            const someRef = React.useRef();
+            // el valor de someRef será: { current: undefined }
+
+            const someRef = React.useRef(10);
+            // el valor de someRef será: { current: 10 }
+
+            const someRef = React.useRef({ year: 3000 });
+            // el valor de someRef será: { current: { year: 3000 } }
+
+          luego ese objeto que devuelve el useRef
+            se lo pasas como valor de prop a la propieda ref de un elemento
+
+          como el primer render no esta normalmente tienes que esperar a un efecto
+            para poder ver el useRef
+
+pregunta
+  no se podria guardar un valor en useState? y asi tambien persistiría el valor entre re-renders?
+
+    la diferencia con useState
+
+      cuando se modifique la referencia creada con useRef
+
+          no se hara un trigger de re-render como ocurre cuando se hace con useState
+
+    checa la referencia de hooks en apis React
+
+      useRef
+        react.dev/reference/react/useRef
+
+        es una referencia que no se necesite para renderizar el componente
+
+        segun la docu
+          si cambias el valor de ref.current no hay problema, es mutable.
+            el state de useState no es mutable
+
+          refs sirven para guardar informacion que no afecten la parte visual de tu componente
+            porque si el valor de current cambia no sera trigger de un re-render
+
+          podrias guardar tambien por ejemplo el intervalId que devuelve un setInterval
+            si guardaras esto en un state harias trigger de un re-render
+            pero si lo guardas con useRef no haras trigger de un re-render
+
+          como los refs no hacen trigger de un re-render
+            no es recomendable que los refs se usen para mostrar en pantalla
+            se usa mas que todo para guardar info de logica del componente
+              y que cuando cambia no necesita hacer trigger de un re-render
+
+          otra advertencia que tiene es mejor usarlo cuando estas seguro que no estas en un render
+            usar en useEffects
+            usar en handleClicks
+
+            no usar entre renders
+
+    creo que en general se deberia usar useRef si es que
+      tienes que referenciar partes del DOM
+      necesitas guardar valores de 
+
+
+
+
+
+  en el ejemplo de SomeComp si se prueba ese componente con typecript sale este error
+
+    Type RefObject<unknown> is not assignable to type Ref<HTMLDivElement> | undefined

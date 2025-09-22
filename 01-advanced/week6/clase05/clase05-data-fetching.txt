@@ -1,0 +1,112 @@
+herramientas disponibles
+  fetch -- herramienta basica para iniciar
+
+  otras mas complejas (se recomienda averiguar de ello)
+    tanstack react query
+    swr
+
+  se empezara a hacer pruebas con un API de prueba
+
+  solicitudes se retrasan artificialmente entre 1 y 2 segundos
+    para estados de carga
+
+  podemos simular errores si pasas
+    query string, simulatedError=true.
+
+  datos random son los que devuelven
+
+fetch en un evento
+
+  cuando se hace click en un boton, usuario, popover
+    ahi se hace el request de la data (el trigger es el evento)
+
+  proceso
+
+    se hace prevent default
+
+    se arma el request con sus opciones
+
+    se espera por la data con async/await o then
+
+  pero aparte de tiene que mostrar estados para que el usuario se entere
+
+    loading, success, error
+
+    se setea el loading antes del fetch
+
+    se hace el fetch
+
+    una vez que se checa que todo bien en la data de regreso se pone success
+
+    si falla el fetch o si la data del fetch no esta bien se pone status error
+
+fetch al montar un componente
+
+  se usa useEffect y ahi se hace fecth
+
+    al callback de ese fetch no se puede agregar async/await
+
+      asi que necesariamente tienes que usar el then().catch
+
+
+  para poder usar async await dentro del callback del useEffect
+
+  es crear una funcion dentro del callback y luego ejecutar la funcion
+
+consideraciones
+
+  ahorita no estamos haciedno cache de la data que se jala
+
+  se esta manejando declarativamente en cada componente el error-handling y el loading status
+    como se repite esta logica en varios componentes se puede fallar en algunos casos
+
+  se pueden generar cascadas de red
+    el componente padre obtiene datos y luego sus hijos tmb
+
+  los efectos no se ejecutan en el servidor
+    seria mas rapido si es que el servidor ya cargue los datos iniciales
+      esto se hace en server side rendering
+
+        si estuviera del lado del server
+          el efecto no existiria
+            renderizar todo el componente de react del lado del servidor y devolver simplemente html
+              esto es mas rapido porque ya recibe directo
+                puede mostrar ya directo contenido
+                  en lugar de lo tradicional que es cargar js que te de instrucciones de montar js
+
+
+  algunas de estas cosas mejoran cuando se usa react router
+
+  100% de estas cosas se resuelven con un meta-framework de react
+    como nextJS o remix (ambos incluyen SSR server side rendering)
+
+
+* recuerda
+
+    la convencion de types creados es que empiecen con mayuscula siempre
+
+      aunque no necesariamente tienen que tener la palabra 'type' en su nombre
+
+
+** proyecto
+
+  descarga insomnia
+
+    ahi hay un json en el proyecto
+
+    parece que insomnia funciona como un API que funciona
+      que define los requests
+
+    es como hacer un clon de google keep
+
+    accede con un nombre de usuario
+
+    deadline: hasta el lunes hasta que empiece la clase
+
+    el link del proyecto
+      https://classroom.github.com/a/fs3Ql7Uh
+
+    https://github.com/codeableorg/codeable-keep-kenvega
+
+
+

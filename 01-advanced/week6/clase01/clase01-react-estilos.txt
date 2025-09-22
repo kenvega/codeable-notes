@@ -81,6 +81,11 @@ estilos en react
       https://www.joshwcomeau.com/react/file-structure/
 
 
+para unir clases puedes usar clsx
+
+  asi evitas usar bastante logica
+    y solo se pasas 
+
 * ITCSS
     es una solucion de organizacion de estructura de archivos de css
       settings

@@ -1,0 +1,130 @@
+elementos basicos de HTML
+
+  encabezados/headers
+    para estructura y jerarquia del contenido de la pagina
+
+    h1 para titulo principal
+    h2 para secciones importantes
+    el resto para subsecciones
+
+  parrafos
+
+    para separar bloques de texto
+
+  listas
+
+    para agrupar elementos relacionados
+
+    listas no ordenadas
+      ejm
+        <ul>
+          <li>Elemento 1</li>
+          <li>Elemento 2</li>
+        </ul>
+
+    listas ordenadas
+      ejm
+        <ol>
+          <li>Elemento 1</li>
+          <li>Elemento 2</li>
+        </ol>
+
+    se puede anidar listas dentro de otras
+      ejm
+        <ul>
+          <li>Elemento 1</li>
+          <li>Elemento 2
+            <ul>
+              <li>Elemento anidado 1</li>
+              <li>Elemento anidado 2</li>
+            </ul>
+          </li>
+          <li>Elemento 3</li>
+        </ul>
+
+  énfasis (em) e importancia (strong)
+
+    para enfatizar ciertos detalles
+
+    su real propósito es transmitir significado semántico al contenido
+      los estilos pueden modificarse usando CSS
+
+    em - enfasis ligero
+
+    strong - importancia fuerte
+
+
+  elementos vacíos
+
+    algunos elementos no requieren etiqueta de cierre porque no tienen contenido dentro
+      ejm: br, hr, img, input
+
+    br - salto de linea
+
+      dentro de un <p> semanticamente se sigue considerando que se está en el mismo parrafo
+
+    hr - regla horizontal
+
+      para separar el contenido visualmente
+
+      recuerda que hr es un elemento de bloque
+
+  elementos contenedores
+
+    normalmente se usan para agregar estilos CSS a un grupo
+
+    no proporcional informacion adicional sobre su contenido
+      son neutrales en terminos semanticos asi que no se recomienda mucho su uso para el SEO
+
+    div
+
+      antes se solia usar divs para organizar contenido
+        ejemplo
+          <div class="header">
+            <!-- contenido del encabezado aquí -->
+          </div>
+
+          <div class="main">
+            <!-- contenido principal aquí -->
+            <p>Mi nombre es...</p>
+            ...
+          </div>
+
+          <div class="footer">
+            <!-- contenido del pie de página aquí -->
+          </div>
+
+      pero ahora
+        se recomienda usar <header>, <main> y <footer>
+
+    span
+
+      normalmente usado para darle estilos a partes especificas de parrafos
+
+  entidades html
+    secuencias especiales de caracteres
+    para mostrar caracteres que no se pueden escribir en un teclado
+      o que tienen un significado especial en HTML
+
+    ejemplos
+      &lt; < - menor que
+      &gt; > - mayor que
+      &nbsp; ( ) - espacio en blanco
+      &copy; © - símbolo de copyright
+      &reg; ® - símbolo de marca registrada
+      &trade; ™ - símbolo de marca comercial
+      &pound; £ - símbolo de la libra esterlina
+      &euro; € - símbolo del euro
+
+    ejemplo de uso
+      <div class="footer">
+        <p>&copy; 2023 - Web Dev</p>
+      </div>
+
+      mostraria el texto © 2023 Web Dev
+
+
+* colapso de espacio en blanco
+
+  si tienes espacios seguidos o saltos de linea seguidos o tabulaciones seguidas
+    normalmente se renderizaran en el html como un solo espacio

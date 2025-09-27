@@ -1,0 +1,35 @@
+app de notas
+
+se pueden guardar
+
+
+se puede cambiar de color
+
+se tiene un api
+
+se tiene un archivo llamado 
+
+insomnia-codeable-keep.json
+
+te instalas la app de insomnia
+
+es para hacer requests de manera mas amigable
+
+una vez logueados puedes almacenar tus colecciones de requests
+
+puedes crear notas, borrar, etc
+
+con eso se tiene un API funcionando. solo es integrarlo con la app
+
+guardas el nombre de usuario en localstorage. si hay un localstorage ya guardado entocnes directo a la interfaz principal
+
+si no hay ninguna nota le dices que no se han añadido notas
+
+la propiedad de color se manda al API
+
+eliminar una nota
+
+barra lateral para vista principal y notas eliminadas
+
+si esta en la carpeta de trash debo poder eliminarla por completo
+

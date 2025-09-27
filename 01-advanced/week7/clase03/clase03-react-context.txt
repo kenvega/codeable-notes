@@ -1,0 +1,105 @@
+context
+  repaso de como se comparte la data entre componentes
+    con prop drilling que es pasar props a componentes de abajo
+
+    pero solo sirve para aplicaciones pequeñas y medianas
+
+  para cuando se pasa por muchos componentes
+    para pasar algun estado a los componentes
+    ahi es cuando se puede usar react context
+
+como funciona context
+  se delimita un context o en el componente padre
+
+    se provee el contexto en un nivel de arriba
+
+      con eso podria acceder al estado dentro de cualquiera de los componentes
+        sin tener que pasar por el medio de los otros componentes
+
+como usar react context
+
+  crear context
+
+  proveer context
+    delimitar donde y con que valores se comparte ese contexto
+
+  consumir context
+
+cuando se crea el contexto la propiedad mas importante es Provider
+  esta es la que tiene el objeto con la data que te importa pasar abajo
+
+    YourContext.Provider
+      ese componente tiene que tener el valor que te importa mas abajo en los componentes
+
+        los componentes que esten envueltos en este provider y sus hijos son los que pueden consumir este contexto
+
+se recomienda tambien crear un componente llamado CountProvider
+  7:48pm TODO: revisar y armar estos archivos
+
+
+cuando usar context
+  por ejemplo para decir si el usuario ha iniciado sesion
+
+  context se usa como para el estado global de la aplicacion
+
+  el contexto tiene mas alcance pero a la vez es un poco mas complejo
+    los props son faciles de pasar pero tienen el problema del alcance
+
+consideraciones
+
+  por typescript siempre tienes que pasar un valor por defecto cuando crees el contexto
+    cuando uses createContext typescript te pedira que pases el valor inicial
+
+  si intentas consumir el contexto fuera del provider te da el valor por defecto que pusiste
+    * esto quiere decir que puedes consumir un contexto incluso si no estas dentro de un provider
+        esto fue confirmado por el profe
+
+  pero si estas dentro del provider, te dara el valor que hayas pasado al provider
+
+  el valor por defecto tiene que tener la misma forma que el valor que le mandes al provider
+    para mantener la consistencia
+
+* este problema que soluciona react context
+    viene por la arquitectura que tenemos basada en componentes
+
+* puedes con eso checar
+    react.dev/learn/thinking-in-react
+
+preguntas
+  mencionaba que con react-router tambien se resuelve este problema?
+    cuando se usa react router ya no se usa react context?
+
+  lo que lleva el contexto es considerado state?
+    si cambia hay re-render? de quien seria el re-render? solo los que consumen?
+
+  cual es la razon por la que react context tiene que recibir un valor inicial?
+    cuando se consume digo, por que tengo que pasarle el contexto?
+
+      yo personalmente me imagino que es porque puedes tener mas de un contexto
+
+  por convencion los contexts deben empezar con mayuscula?
+    el profe mencionaba que cree que sí porque siempre lo habia visto así
+    aunque igual probo con minuscula y parece que funciona
+
+    me dio la duda porque como va en jsx
+      se decia que si hay jsx en minuscula se trataria de otra forma
+
+        *preguntar a chatgpt
+
+  por que no se tiene toda la data debajo pasada con react context?
+    imagino que por que harias re-render de todo el componente con todos sus hijos
+
+  a partir de cuantos saltos de componentes se recomienda usar context?
+
+  para confirmar, se puede consumir un contexto en un componente
+    incluso si ese componente no esta dentro del provider?
+
+      te daría solo el valor por defecto
+
+      aunque esto no es comun que suceda
+        seria muy confuso mantener como codigo en general
+
+          porque seria un valor que en teoria va cambiando pero que no cambia
+
+
+

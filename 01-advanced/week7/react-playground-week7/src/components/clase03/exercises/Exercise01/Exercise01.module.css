@@ -1,0 +1,51 @@
+section {
+  margin-top: 24px;
+}
+
+nav {
+  min-height: 76px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  max-width: 35ch;
+  margin: auto;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input,
+button {
+  padding: 8px 12px;
+  font: inherit;
+}
+
+table {
+  font-size: 14px;
+  font-family: monospace;
+  position: relative;
+  width: 100%;
+  margin-top: 24px;
+}
+
+thead th {
+  text-align: left;
+}
+
+th,
+td {
+  padding: 4px 8px;
+}

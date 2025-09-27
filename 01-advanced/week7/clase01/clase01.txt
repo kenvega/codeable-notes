@@ -1,0 +1,68 @@
+custom hooks
+  hasta ahora hemos visto
+    useState, useEffect, useRef, useId
+
+  hay mas pero tmb se pueden crear hooks personalizados
+
+  antes los componentes que tenian logica se seguian escribiendo como clases 
+    hasta que se introdujeron los hooks
+      en ese momento se pudieron crear componentes funcionales con logica
+
+  hay logica que se puede compartir entre componentes
+    de ahi se puede obtener un custom hook
+      extraer esa logica repetida y tenerla en un solo lugar
+
+  ejemplos de logica que se puede abstraer
+
+    manejar el toggle (alternado) de un valor booleano
+
+    tener un campo de un formulario que se quiere controlar entonces se quiere crear un estado
+
+    detectar cuando se haga click fuera de un elemento asi que creas un ref para obtener una referncia
+      y agregas un eventListener al documento para que un callback se ejecute cada que se hace click a la pantalla
+
+
+  que es un custom hook
+
+    es una funcion cualquiera
+
+    pero en el fondo usa los hooks de react
+
+    la convencion es que estos custom hooks empiezan con la palabra 'use'
+      asi como los useEffect
+
+      ejm
+        useToggle, useForm, etc
+
+  se puede devolver lo que sea en el custom hook
+
+    en general se devuelve una tupla
+      si se trabaja con mas valores se devuelve un objeto
+
+    pero para mas detalles revisar este doc
+      https://dev.to/namick/writing-your-own-react-hooks-the-return-value-3lp6
+
+
+cuando crear un custom hook
+  la logica se ha vuelto muy larga y dificil de leer
+
+  la logica es reutilizable en otros lugares
+
+  quieres darle un nombre legible a un trozo de logica
+
+recuerda
+  los hooks no son mas que funciones
+  pero en el fondo estan usando un hook de react
+
+  si no lo usan entonces realmente son helpers o utilidades, no custom hooks
+
+
+
+preguntas
+  hay una convencion para los nombres de los valores que retorna un custom hook?
+    en el ejemplo de useToggle el toggle (el setter) debe seguir alguna regla de nombre?
+      respuesta
+        no es necesario una convencion, solo asegurate que te
+          igual cuando usas el custom hook ya en un componente
+            puedes cambiarle de nombre al array
+

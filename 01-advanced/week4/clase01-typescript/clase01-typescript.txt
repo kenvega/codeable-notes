@@ -152,3 +152,22 @@ existen 2 directorios comunes que se tiene para los archivos compilados
 8:58
   la configuracion de hoy es una mas estricta para cuando se esta empezando
     noImplicitReturns da error si es que tienes funciones que tienen efectos secundarios
+
+
+
+hay algunos tipos que tienes que acordarte
+
+  React.ReactNode -- es para children por ejemplo
+
+  onClick: () => void;
+
+
+
+TODO: poner en lift state in react
+
+    pasar el setter no es una practica recomendada
+      por que?
+        en general es por limitar el poder que tiene tu componente hijo
+          sobre tu estado
+
+        y tambien es por los tipos que es mas sencillo asi

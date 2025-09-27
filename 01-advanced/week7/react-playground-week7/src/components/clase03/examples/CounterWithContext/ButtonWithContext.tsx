@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { CountContext } from "./CounterWithContext";
 
-function IncrementButton() {
+const ButtonWithContext = () => {
   const { onIncrement } = useContext(CountContext);
 
   return (
     <button type="button" className="button" onClick={onIncrement}>
-      Increment
+      Increment button
     </button>
   );
-}
+};
 
-export default IncrementButton;
+export default ButtonWithContext;

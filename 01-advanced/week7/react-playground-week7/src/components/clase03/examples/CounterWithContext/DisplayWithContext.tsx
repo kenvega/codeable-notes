@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { CountContext } from "./CounterWithContext";
 
-function Display() {
+const DisplayWithContenxt = () => {
   const { count } = useContext(CountContext);
-  return <p className="count">{count}</p>;
-}
+  return <p className="count">Count: {count}</p>;
+};
 
-export default Display;
+export default DisplayWithContenxt;

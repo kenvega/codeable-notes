@@ -33,9 +33,22 @@ cuando se crea el contexto la propiedad mas importante es Provider
 
         los componentes que esten envueltos en este provider y sus hijos son los que pueden consumir este contexto
 
-se recomienda tambien crear un componente llamado CountProvider
-  7:48pm TODO: revisar y armar estos archivos
+se recomienda tambien crear un componente llamado componente proveedor
+  encapsula la logica de creacion y de asignar valores del contexto
 
+  toda la data que esta relacionada al contexto iría en este componente directamente fuera para que pueda diferenciarse
+    en nuestro ejemplo la data que se provee y se consume en el contexto es
+      count y onIncrement
+
+  el componente proveedor tambien recibe de props children
+    y se arma como un componente que retorna children envuelto por el Context.Provider
+
+  en este componente proveedor
+    se crea el contexto
+    se provee el contexto
+
+  ya en los componentes hijos ya solo se consume ese contexto
+    se tendra que importa el contexto creado que se exporta del componente proveedor tmb para poder consumir ese contexto
 
 cuando usar context
   por ejemplo para decir si el usuario ha iniciado sesion
@@ -101,5 +114,5 @@ preguntas
 
           porque seria un valor que en teoria va cambiando pero que no cambia
 
-
+  hay alguna forma de ver el valor de context con react dev tools?
 

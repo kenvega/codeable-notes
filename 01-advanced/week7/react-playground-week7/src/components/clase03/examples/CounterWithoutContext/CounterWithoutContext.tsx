@@ -1,6 +1,6 @@
 import * as React from "react";
-import Display from "./Display";
-import IncrementButton from "./IncrementButton";
+import DisplayWithoutContext from "./DisplayWithoutContext";
+import ButtonWithoutContext from "./ButtonWithoutContext";
 
 function CounterWithoutContext() {
   const [count, setCount] = React.useState(0);
@@ -11,9 +11,9 @@ function CounterWithoutContext() {
 
   return (
     <div className="container">
-      <h1>Counter App</h1>
-      <Display count={count} />
-      <IncrementButton onIncrement={onIncrement} />
+      <h1>Counter Component without using context</h1>
+      <DisplayWithoutContext count={count} />
+      <ButtonWithoutContext onIncrement={onIncrement} />
     </div>
   );
 }

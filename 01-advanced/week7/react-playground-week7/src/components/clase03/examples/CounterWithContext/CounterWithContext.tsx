@@ -1,8 +1,8 @@
 import { useState, createContext } from "react";
-import Display from "./Display";
-import IncrementButton from "./IncrementButton";
+import DisplayWithContext from "./DisplayWithContext";
+import ButtonWithContext from "./ButtonWithContext";
 
-// 1. creas el contexto y le pasas un valor por defecto
+// 1. creas el contexto y le pasas un valor por defecto -- necesitas exportarlo para consumirlo en los hijos
 export const CountContext = createContext({
   count: 0,
   onIncrement: () => {},
@@ -15,13 +15,13 @@ const CounterWithContext = () => {
     setCount(count + 1);
   };
 
-  // 2. provees el contexto con CountContext.Provider -- llegara a todo lo que esté debajo
+  // 2. provees el contexto con los valores que consumiran los hijos a traves de CountContext.Provider -- llegara a todo los componentes que estén debajo
   return (
     <CountContext.Provider value={{ count: count, onIncrement: onIncrement }}>
       <div className="container">
-        <h1>Counter App</h1>
-        <Display />
-        <IncrementButton />
+        <h1>Counter Component using context</h1>
+        <DisplayWithContext />
+        <ButtonWithContext />
       </div>
     </CountContext.Provider>
   );

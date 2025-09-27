@@ -3,8 +3,11 @@
 // import Exercise01 from "./components/clase01/Exercise01";
 // import Solution01 from "./components/clase01/Solution01";
 import "./App.css";
+import CounterWithContext from "./components/clase03/examples/CounterWithContext/CounterWithContext";
+import CounterWithContextOutside from "./components/clase03/examples/CounterWithContextOutside/CounterWithContextOutside";
+import CounterWithoutContext from "./components/clase03/examples/CounterWithoutContext/CounterWithoutContext";
 // import ExampleWithContext01 from "./components/clase03/ExampleWithContext01";
-import Exercise01 from "./components/clase03/exercises/Exercise01/Exercise01";
+// import Exercise01 from "./components/clase03/exercises/Exercise01/Exercise01";
 
 function App() {
   return (
@@ -15,8 +18,11 @@ function App() {
       {/* <Exercise01 /> */}
       {/* <Solution01 /> */}
       {/* clase 03 */}
+      <CounterWithoutContext />
+      <CounterWithContext />
+      <CounterWithContextOutside />
       {/* <ExampleWithContext01 /> */}
-      <Exercise01 />
+      {/* <Exercise01 /> */}
     </>
   );
 }

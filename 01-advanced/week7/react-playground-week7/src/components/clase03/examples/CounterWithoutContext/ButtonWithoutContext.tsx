@@ -1,4 +1,5 @@
 type ButtonProps = {
+  // onIncrement: React.MouseEventHandler<HTMLButtonElement>;
   onIncrement: () => void;
 };
 

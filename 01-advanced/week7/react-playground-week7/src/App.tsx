@@ -17,7 +17,7 @@ function App() {
       <ToggleUsingCustomHook /> */}
       {/* <Exercise01 /> */}
       {/* <Solution01 /> */}
-      {/* clase 03 */}
+      {/* clase 03 - react context */}
       <CounterWithoutContext />
       <CounterWithContext />
       <CounterWithContextOutside />

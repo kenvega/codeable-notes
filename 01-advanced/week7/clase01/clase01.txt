@@ -1,25 +1,35 @@
+22-09-25
+
 custom hooks
   hasta ahora hemos visto
     useState, useEffect, useRef, useId
 
-  hay mas pero tmb se pueden crear hooks personalizados
+  hay más hooks pero tmb se pueden crear hooks personalizados o tmb llamados custom hooks
 
-  antes los componentes que tenian logica se seguian escribiendo como clases 
-    hasta que se introdujeron los hooks
-      en ese momento se pudieron crear componentes funcionales con logica
+  antes los componentes que tenian algun estado se escribian como clases
+    los componentes que solo recibian props podian escribirse como funcionales
+      hasta que se introdujeron los hooks
+        en ese momento se pudieron crear componentes funcionales que tengan estados
+          y luego se hicieron mas populares por los custom hooks que permiten compartir logica entre componentes
 
-  hay logica que se puede compartir entre componentes
+  hay logica/codigo que se puede compartir entre componentes
     de ahi se puede obtener un custom hook
       extraer esa logica repetida y tenerla en un solo lugar
 
-  ejemplos de logica que se puede abstraer
+  ejemplos de logica/codigo que se puede abstraer
 
-    manejar el toggle (alternado) de un valor booleano
+    manejar el toggle (alternado) de un valor booleano cuando el usuario hace click en algun lugar
 
-    tener un campo de un formulario que se quiere controlar entonces se quiere crear un estado
+    tener un campo de formulario que se quiere controlar por React entonces creas un estado para ese campo
 
-    detectar cuando se haga click fuera de un elemento asi que creas un ref para obtener una referncia
+    detectar cuando se haga click fuera de un elemento (ejm. un dropdown)
+      asi que creas un ref para obtener una referncia a ese elemento
       y agregas un eventListener al documento para que un callback se ejecute cada que se hace click a la pantalla
+
+    tienes un formulario completo que quieres manejar
+      asi que creas un estado que maneje todos sus inputs
+      y creas un manejador de eventos que usa el 'name' y 'value' del event.target
+        para saber cual campo cambia y actualizar su estado
 
 
   que es un custom hook

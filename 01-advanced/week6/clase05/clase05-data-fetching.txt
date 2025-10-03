@@ -55,7 +55,7 @@ fetch al montar un componente
 
 consideraciones
 
-  ahorita no estamos haciedno cache de la data que se jala
+  ahorita no estamos haciendo cache de la data que se jala
 
   se esta manejando declarativamente en cada componente el error-handling y el loading status
     como se repite esta logica en varios componentes se puede fallar en algunos casos

@@ -1,0 +1,26 @@
+useCallback
+  preservar una referencia de un objeto entre renders
+
+  recuerda que
+    const fn1 = () => {};
+    const fn2 = () => {};
+    fn1 === fn2; // false
+
+    la referencia a cada funcion vive en diferentes lugares
+      a pesar de que hagan lo mismo
+
+  asi que si quieres recordar una funcion entre renders
+    se usa useCallback
+
+  como se crea en cada render una funcion 
+    a pesar de que se tenga React.memo
+
+      se hara un render de todos modos
+
+      asi que en lugar de usar React.memo
+
+      se puede usar useCallback
+
+  * tambien se podria usar useMemo
+
+  

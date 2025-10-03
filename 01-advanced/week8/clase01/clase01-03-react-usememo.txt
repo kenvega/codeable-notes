@@ -1,0 +1,27 @@
+react useMemo
+
+  es para 'recordar' un valor calculado entre renders
+
+  cuando usar useMemo
+
+    para reducir la cantidad de veces que
+      se hace calculos costosos durante el render
+        ejemplo
+          calculo de numeros primos
+
+    para reducir la cantidad de veces que
+      un componente se vuelve a renderizar (objetivo similar a react.memo)
+
+
+
+
+
+
+
+preguntas
+  el segundo caso para usarlo es lo mismo que react.memo
+    entonces cual usar?
+
+
+
+

@@ -1,0 +1,44 @@
+react memo
+
+  para indicar a react que un componente es puro
+    componente puro: dados ciertos props siempre renderiza lo mismo
+
+  asi que no re-renderizes este componente a menos de que cambien sus props
+
+  en otras palabras
+    es para evitar re-renders de un componente puro
+      cuando su componente padre hace re-render
+        y envia los mismos props que en el render pasado
+
+  un componente que no tenga estado no lo hace automaticamente un componente puro
+    ejm: un componente que muestra la hora sin necesidad de un estado
+      no renderizarias exactamente siempre lo mismo porque la hora cambia cada segundo
+
+  recuerda componente puro significa
+    dados ciertos props siempre se renderizara lo mismo
+
+  se comparan los props para saber si re-renderizar o no
+
+  no es tan buena idea memoizar todos los componentes
+    cuando un componente es memoizado estamos al final dando un trabajo extra a react
+      porque tiene que compoarar los props antiguos con los nuevos
+
+    asi que solo memoiza cuando sientas que hay lentitud en los componentes
+
+ejemplos en playground week 8
+
+preguntas
+  los compnentes puros pueden tener side effects?
+    como hacer un log, o una llamada a un API
+
+      respuesta
+        siempre y cuando no afecten el renderizado
+          un console log no afectara por ejemplo
+
+  sobre esa comparacion de props antiguos y props nuevos
+    para saber si re-renderiza
+      que pasa si el prop es un objeto anidado?
+        se compara todas las propiedades de ese objeto anidado?
+
+* con React.memo se puede
+    pasar una funcion de comparacion para ser mas especifico si deberia hacer render o no

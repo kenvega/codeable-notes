@@ -1,0 +1,48 @@
+memoization
+
+  son optimizaciones de rendimiento
+
+  mientras tu app crece en complejidad
+    tienes mas componentes hijos re-renderizandose
+      esto puede ser un problema si es muy costoso el re-render de estos hijos
+
+  recuerda
+    react renderiza un componente cuando cambie una variable de estado
+      ya sea en el mismo componente
+      o en algun componente mas arriba de su jerarquia
+
+  react.memo
+    para que un componente puro se re-renderize solo si que sus props cambien
+      * componente puro: dados ciertos props siempre renderiza lo mismo
+
+  react.usememo
+    para preservar valores calculados entre renders
+
+  react.useCallback
+    para presevar el valor referencial de una funcion entre renders
+
+  cuando se re-renderiza?
+    cuando una variable de etsado cambia de valor
+    cuando se re-renderiza
+
+  lo de que react re-renderize en base a props
+    no es tan real (?)
+
+  si el componente cambia todos los hijos se re-renderizan
+
+  componente puro
+    siempre que renderizes el componente será lo mismo
+
+  componente impuro
+    ejm: un componente que muestra un boton con la hora que cambia
+          cada que renderizes sería distinto el valor que muestra
+
+  react no tiene forma de saber si un componente es puro o no
+
+
+  8:30pm
+    a partir de aqui en general deberias revisar de nuevo la clase
+
+preguntas
+  no entendi bien a que se referia con lo de no ser tan real
+

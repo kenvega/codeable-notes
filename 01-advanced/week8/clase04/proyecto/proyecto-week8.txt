@@ -1,0 +1,3 @@
+el proyecto se habla a las 8:35
+  tienes que tener traducciones para toda la pagina
+    si bien hay librerias, hazlo manulamente

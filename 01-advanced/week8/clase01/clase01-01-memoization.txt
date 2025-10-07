@@ -6,10 +6,10 @@ memoization
     tienes mas componentes hijos re-renderizandose
       esto puede ser un problema si es muy costoso el re-render de estos hijos
 
-  recuerda
-    react renderiza un componente cuando cambie una variable de estado
-      ya sea en el mismo componente
-      o en algun componente mas arriba de su jerarquia
+  * recuerda
+      react renderiza un componente cuando cambie una variable de estado
+        ya sea en el mismo componente
+        o en algun componente mas arriba de su jerarquia
 
   react.memo
     para que un componente puro se re-renderize solo si que sus props cambien

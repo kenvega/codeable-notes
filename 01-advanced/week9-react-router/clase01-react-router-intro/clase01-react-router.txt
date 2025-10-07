@@ -1,0 +1,8 @@
+react router
+
+  instals react-router-dom
+
+  para decirle a react que estamos usando rutas
+
+  tenemos que englobarlo en BrowserRouter
+

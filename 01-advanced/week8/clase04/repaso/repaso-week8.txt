@@ -1,0 +1,34 @@
+
+repaso jueves 2 de octubre antes de ver proyecto de react
+
+  se vio un formulario no controlado
+
+  y luego se vio un formulario controlado
+    se vio el useForm
+      ahi se usa el T para recordar que lo que se recibe es lo que se bota tambien (?)
+
+      aqui tambien se puede ver como se usa un tipo de union en el useForm
+        para que el custom hook pueda usarse en varios tipos de inputs y sea mas general
+
+
+
+2 casos de uso de useMemo
+
+  - para recordar entre renders un valor dificil de calcular
+
+  - para no re-renderizar si un prop realmente no cambia en valor
+      recuerda que
+        const a = { value: 'test' };
+        const b = { value: 'test' };
+        console.log(a === b); // false
+
+
+      entonces si ese fuese un prop igual se haria un re-render
+        incluso si usaramos react.memo se haria un re-render
+          porque la comparacion daria false
+
+            en ese caso se usa usememo
+
+            para que la comparacion se haga como
+              const a = { value: 'test' };
+              const b = a;

@@ -1,8 +1,57 @@
 react router
 
-  instals react-router-dom
+  que problema resuelve react router?
+    evita recargar toda la pagina
 
-  para decirle a react que estamos usando rutas
+  que hace
+    gestiona navegacion
 
-  tenemos que englobarlo en BrowserRouter
+
+react router maneja 3 modos
+
+  reactrouter.com/home
+  reactrouter.com/start/modes
+    selecciona cual usar. por ahora el declarativo
+
+  estos modos son ( de menos a mas caracteristicas )
+    declarativo
+      es el que se estuvo usando con BrowserRouter
+      es la primera version que salio para hacer uso de react router
+    data
+      se agregan mas caracteristicas
+
+    framework
+      este no se vera
+
+
+* 8:20
+    habla de programacion asincronica y sincrona
+
+
+
+
+feedback
+  no viene con una clase preparada
+  siento que va muy lento
+  no se apega a lo que se ve en las clases
+  menciona que varios puntos son importantes pero no se mete tanto a detalles y explica de manera muy general todo
+    da la impresion de que no quiere enseñar o no conoce de los detalles
+
+  no me dan ganas de preguntar porque siento que por la forma tan general en la que se habla
+    no me dara respuestas especificas o se tomara mucho mas tiempo del que ya se esta tomando para las clases
+
+  no se dio cuenta que habia creado un repo como privado
+
+  hace preguntas demasiado basicas a mi parecer
+    creo que podria medir el nivel de conocimiento del resto y en base a eso realmente tomar tiempo para hacer preguntas
+      e.g. pregunta por que se usa async en una funcion
+
+  no conoce lo suficiente de react router como para resolver problemas y acude a github copilot
+    yo mismo puedo preguntarle a copilot. entonces para que esta la clase si no es un profesor que conoce sobre los temas a detalle?
+      e.g. pregunta a copilot sobre un detalle de como hacer rutas anidadas cuando vio que no le funcionaba
+
+
+
+codigo del profe esta en
+  https://github.com/jhonattan/playgroud-react-router
 

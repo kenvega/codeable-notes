@@ -1,0 +1,26 @@
+react router
+
+  para manejar enrutamiento de aplicaciones de una sola pagina (SPA)
+
+  con esto se tiene una experiencia mas fluida
+
+  el contenido se carga dinamicamente sin recargar la pagina
+
+  react router gestiona la navegacion e historial
+    asi la pagina se comporta como una tradicional
+    pero con la ventaja de sentirse mas fluida
+
+  react router permite que la SPA
+    mantenga sincronizacion entre el URL y lo que se muestra en pantalla
+    cada pagina/vista tiene su propio URL unico
+
+  otros pros
+    compartir enlaces o generar marcadores
+    mejora el SEO: hace el contenido mas accesible para motores de busqueda
+
+  se hara el tutorial
+    https://reactrouter.com/6.28.0/start/tutorial#tutorial
+    que actualmente se ve version 6.28.0
+
+      se crea un BrowserRouter
+      

@@ -2,6 +2,7 @@
   "editor.formatOnSave": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "explorer.confirmDragAndDrop": false,
+  "files.autoSave": "onFocusChange",
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

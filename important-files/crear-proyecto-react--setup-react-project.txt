@@ -1,0 +1,6 @@
+como crear proyecto de react con vite
+  npm create vite@latest
+
+  project name
+  react
+  typescript

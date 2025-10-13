@@ -23,4 +23,41 @@ react router
     que actualmente se ve version 6.28.0
 
       se crea un BrowserRouter
+
+      Outlet se usa para decirle a un componente de React
+        donde es que se quiere renderizar a sus componentes hijos en terminos de ruta
+          e.g. tienes un componente padre con toda la vista principal
+                quieres cambiar el contenido principal pero mantener el sidebar
+                  ese contenido principal cambiaria dependiendo de la ruta nested que tengas como
+                    /contacts/:contactId
+                      para poder indicarle al padre donde renderizar ese contenido principal
+                        para eso se usa <Outlet />
+
+        otra forma de decirlo
+          <Outlet /> is a placeholder in a parent route’s element where
+            the matched child route’s element is rendered
+
+        por que se llama Outlet
+          piensa en electrical outlets
+          es un lugar fijo donde se conecta algo
+            en este caso seria tu componentes de ruta hija
+          es un lugar designado a que fluya algo de alli (electricidad)
+            en este caso serian tus componentes de ruta hija
+
+      en lugar de usar <a /> se usa <Link />
+        para evitar requests de un documento completo para el siguiente URL
+          esto en el fondo lo hace con
+            prevent default
+            cambiando el history del navegador
+            sabiendo que renderizar
+
+      lo que se relaciona en general con react-router es
+        segementos de url -- contacts/:id
+        componentes -- <Contact />
+        data -- un contacto en especifico
+
+      los formularios tambien pueden manipular el historial del navegador
       
+      cuando se envian formularios se usa metodo POST
+
+

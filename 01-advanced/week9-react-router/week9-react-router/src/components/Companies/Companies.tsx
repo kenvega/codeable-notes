@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 function Companies() {
   useEffect(() => {
-    //monta el componente en la pagina
-    document.body.style.backgroundColor = "#4e5358ff";
+    // al montar el componente en la pagina
+    document.body.style.backgroundColor = "#a9c26aff";
 
-    //desmonta el componente de la pagina
+    // al desmontar el componente de la pagina
     return () => {
       document.body.style.backgroundColor = "";
     };
@@ -15,7 +15,8 @@ function Companies() {
   return (
     <div>
       <h1>Companies</h1>
-      <p>Shows a list of companies</p>
+      <p>Shows a list of fetched companies.</p>
+
       <Link to="/">Home</Link>
     </div>
   );

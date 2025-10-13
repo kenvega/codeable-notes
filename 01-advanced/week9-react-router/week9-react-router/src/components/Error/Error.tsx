@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 function Error() {
   useEffect(() => {
-    //monta el componente en la pagina
+    // al montar el componente en la pagina
     document.body.style.backgroundColor = "#b53316ff";
 
-    //desmonta el componente de la pagina
+    // al desmontar el componente de la pagina
     return () => {
       document.body.style.backgroundColor = "";
     };

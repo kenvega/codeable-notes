@@ -57,7 +57,11 @@ react router
         data -- un contacto en especifico
 
       los formularios tambien pueden manipular el historial del navegador
-      
+
       cuando se envian formularios se usa metodo POST
 
+  tambien hay otra pagina que habla de conceptos principales
+    https://reactrouter.com/6.30.1/start/concepts#main-concepts
+
+  
 

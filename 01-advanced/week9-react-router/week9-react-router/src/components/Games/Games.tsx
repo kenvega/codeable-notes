@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getGames } from "../../services/games";
+import { getGames } from "../../services/gamesService";
 
 type Game = {
   id: number;
@@ -12,14 +12,14 @@ function Games() {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    //monta el componente en la pagina
+    // al montar el componente en la pagina
     document.body.style.backgroundColor = "#407dc4ff";
 
     getGames().then((gamesData) => {
       setGames(gamesData as Game[]);
     });
 
-    //desmonta el componente de la pagina
+    // al desmontar el componente de la pagina
     return () => {
       document.body.style.backgroundColor = "";
     };
@@ -28,7 +28,7 @@ function Games() {
   return (
     <div>
       <h1>Games page</h1>
-      <p>Shows a list of games</p>
+      <p>Shows a list of fetched games.</p>
 
       <ul>
         {games.map((game) => (

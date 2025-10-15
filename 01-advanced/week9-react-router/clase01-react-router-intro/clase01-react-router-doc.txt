@@ -63,5 +63,9 @@ react router
   tambien hay otra pagina que habla de conceptos principales
     https://reactrouter.com/6.30.1/start/concepts#main-concepts
 
-  
+
+useLoader
+
+  nota que cuando se usa ya no se renderiza el componente hasta que se haya cargado la data
+    asi que se queda la pagina congelada hasta que cargue la otra data
 

@@ -34,6 +34,8 @@ react router
         https://reactrouter.com/start/modes#api--mode-availability-table
 
   * en clase se usará en react-router algunas partes del modo data
+      se estará mostrando las partes de react-router data en games
+        para companies se usara una manera regular mas declarativa
 
   useLoader
     nota que cuando se usa ya no se renderiza el componente hasta que se haya cargado la data

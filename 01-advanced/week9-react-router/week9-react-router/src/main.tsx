@@ -1,12 +1,13 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App.tsx";
 import Login from "./components/Login";
 import Games from "./components/Games";
 import Companies from "./components/Companies";
-import Error from "./components/Error";
-import { getGames } from "./services/gamesService.ts";
+import ErrorPage from "./components/ErrorPage";
+import { getGames, getGame } from "./services/gamesService.ts";
+import GameDetail from "./components/GameDetail";
+import CompanyDetail from "./components/CompanyDetail";
 
 const router = createBrowserRouter([
   {
@@ -19,19 +20,48 @@ const router = createBrowserRouter([
   },
   {
     path: "/games",
-    element: <Games />,
-    // if you set a loader alone it will feel that the app freezes until the data is loaded
-    loader: async () => {
-      return await getGames();
-    },
+    children: [
+      {
+        index: true,
+        element: <Games />,
+        // if you set a loader alone it will feel that the app freezes until the data is loaded
+        loader: async () => {
+          return await getGames();
+        },
+      },
+      {
+        path: ":gameId",
+        element: <GameDetail />,
+        loader: async ({ params }) => {
+          // show an error if game in url is not a number or is missing
+          const { gameId } = params;
+          if (!gameId) {
+            throw new Error("gameId is required");
+          }
+
+          const game = await getGame(parseInt(gameId));
+          if (!game) {
+            throw new Error("Game not found");
+          }
+
+          return game;
+        },
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
+  // otra forma de renderizar las rutas anidadas es por separado
   {
     path: "/companies",
     element: <Companies />,
   },
   {
+    path: "/companies/:companyId",
+    element: <CompanyDetail />,
+  },
+  {
     path: "*",
-    element: <Error />,
+    element: <ErrorPage />,
   },
 ]);
 
@@ -39,6 +69,9 @@ createRoot(document.getElementById("root")!).render(
   <RouterProvider router={router} />
 );
 
+// declarative routing
+
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
 // createRoot(document.getElementById("root")!).render(
 //   <BrowserRouter>
 //     <Routes>

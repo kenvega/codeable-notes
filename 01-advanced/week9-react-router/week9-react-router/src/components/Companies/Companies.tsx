@@ -33,7 +33,7 @@ function Companies() {
       <ul>
         {companies.map((company) => (
           <li key={company.id}>
-            {company.name}:{company.description}
+            <Link to={`/companies/${company.id}`}>{company.name}</Link>
           </li>
         ))}
       </ul>

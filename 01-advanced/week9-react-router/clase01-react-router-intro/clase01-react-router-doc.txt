@@ -18,7 +18,30 @@ react router
     compartir enlaces o generar marcadores
     mejora el SEO: hace el contenido mas accesible para motores de busqueda
 
-  se hara el tutorial
+  modos
+    hay modos para react-router
+      declarative
+        se usa <Routes><Route /></Routes>
+        se hace fetch en los componentes con useEffect por ejemplo
+      data
+        se usa createBrowserRouter
+        aparte se usa loaders/actions; navigation-driven fetching, errors, and revalidation
+      framework
+        file-based routing + server loaders/actions (e.g., Remix or a RR-based framework)
+        same mental model, but handled on the server too
+
+      cosas que se puedan usar o no en cada modo estan aqui
+        https://reactrouter.com/start/modes#api--mode-availability-table
+
+  * en clase se usará en react-router algunas partes del modo data
+
+  useLoader
+    nota que cuando se usa ya no se renderiza el componente hasta que se haya cargado la data
+      asi que se queda la pagina congelada hasta que cargue la otra data
+      esto se puede mitigar si muestras componentes skeleton mientras se carga
+
+
+  hay un proyecto de tutorial que se avanzó
     https://reactrouter.com/6.28.0/start/tutorial#tutorial
     que actualmente se ve version 6.28.0
 
@@ -63,9 +86,4 @@ react router
   tambien hay otra pagina que habla de conceptos principales
     https://reactrouter.com/6.30.1/start/concepts#main-concepts
 
-
-useLoader
-
-  nota que cuando se usa ya no se renderiza el componente hasta que se haya cargado la data
-    asi que se queda la pagina congelada hasta que cargue la otra data
 

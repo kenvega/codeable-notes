@@ -20,6 +20,7 @@ const router = createBrowserRouter([
   {
     path: "/games",
     element: <Games />,
+    // if you set a loader alone it will feel that the app freezes until the data is loaded
     loader: async () => {
       return await getGames();
     },

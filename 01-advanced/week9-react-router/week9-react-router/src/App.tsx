@@ -29,6 +29,9 @@ function App() {
             <Link to="/companies">Companies</Link>
           </li>
           <li>
+            <Link to="/movies">Movies</Link>
+          </li>
+          <li>
             <Link to="/*">Invalid Page</Link>
           </li>
           <li>

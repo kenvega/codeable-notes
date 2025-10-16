@@ -8,6 +8,9 @@ import ErrorPage from "./components/ErrorPage";
 import { getGames, getGame } from "./services/gamesService.ts";
 import GameDetail from "./components/GameDetail";
 import CompanyDetail from "./components/CompanyDetail";
+import Movies from "./components/Movies";
+import MovieDetail from "./components/MovieDetail";
+import MovieEdit from "./components/MovieEdit";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +61,18 @@ const router = createBrowserRouter([
   {
     path: "/companies/:companyId",
     element: <CompanyDetail />,
+  },
+  // para mostrar funcionamiento de Outlet
+  {
+    path: "/movies",
+    element: <Movies />,
+    children: [
+      { path: ":movieId", element: <MovieDetail /> },
+      {
+        path: ":movieId/edit",
+        element: <MovieEdit />,
+      },
+    ],
   },
   {
     path: "*",

@@ -11,6 +11,11 @@ import CompanyDetail from "./components/CompanyDetail";
 import Movies from "./components/Movies";
 import MovieDetail from "./components/MovieDetail";
 import MovieEdit from "./components/MovieEdit";
+import "./index.css";
+import Books from "./components/Books/index.ts";
+import BookDetail from "./components/BookDetail/index.ts";
+import { getBook } from "./services/booksService.ts";
+import { destroyBook } from "./routes/book/destroyBook.ts";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +76,30 @@ const router = createBrowserRouter([
       {
         path: ":movieId/edit",
         element: <MovieEdit />,
+      },
+    ],
+  },
+  // to show useNavigation and useLoaderData
+  {
+    path: "/books",
+    element: <Books />,
+    children: [
+      {
+        path: ":bookId",
+        element: <BookDetail />,
+        loader: async ({ params }) => {
+          const { bookId } = params;
+          console.log("bookId params: ", bookId);
+          if (!bookId) {
+            throw new Error("bookId is required");
+          }
+          return await getBook(parseInt(bookId));
+        },
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: ":bookId/destroy",
+        action: destroyBook,
       },
     ],
   },

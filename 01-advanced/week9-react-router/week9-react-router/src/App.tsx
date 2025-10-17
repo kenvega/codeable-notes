@@ -32,6 +32,9 @@ function App() {
             <Link to="/movies">Movies</Link>
           </li>
           <li>
+            <Link to="/books">Books</Link>
+          </li>
+          <li>
             <Link to="/*">Invalid Page</Link>
           </li>
           <li>

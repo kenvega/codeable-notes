@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 
 type Game = {
   id: number;
@@ -8,6 +8,8 @@ type Game = {
 
 function GameDetail() {
   const game = useLoaderData() as Game;
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -24,6 +26,12 @@ function GameDetail() {
           <strong>Description:</strong> {game.description}
         </li>
       </ul>
+
+      <div>
+        <button type="button" onClick={() => navigate(-1)}>
+          go back
+        </button>
+      </div>
 
       <Link to="/">Home</Link>
     </div>

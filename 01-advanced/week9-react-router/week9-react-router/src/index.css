@@ -1,3 +1,11 @@
+/* para NavLink si se usa de manera global y no con estilos para componentes especificos */
+/* .active {
+  border: 2px solid red;
+  box-shadow: 0 0 10px red;
+  border-radius: 5px;
+  text-decoration: none;
+} */
+
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

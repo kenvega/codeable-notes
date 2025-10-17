@@ -1,7 +1,0 @@
-NavLink
-  es como Link pero mejorado
-  puedes definir que enlace esta activo
-
-  sin tener que agregarle un className
-    si hay un .active en clase entonces lo lee automaticamente
-

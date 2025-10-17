@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { getMovies } from "../../services/moviesService";
-import styles from "./Movies.module.css";
+import { getBooks } from "../../services/booksService";
+import styles from "./Books.module.css";
 
-type Movie = {
+type Book = {
   id: number;
   name: string;
   description: string;
 };
 
-function Movies() {
-  const [movies, setMovies] = useState<Movie[]>([]);
+function Books() {
+  const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
     // al montar el componente en la pagina
     document.body.style.backgroundColor = "#a9c26aff";
 
-    getMovies().then((moviesData) => {
-      setMovies(moviesData as Movie[]);
+    getBooks().then((booksData) => {
+      setBooks(booksData as Book[]);
     });
 
     // al desmontar el componente de la pagina
@@ -28,19 +28,19 @@ function Movies() {
 
   return (
     <div>
-      <h1>Movies</h1>
-      <p>Shows a list of fetched movies.</p>
+      <h1>Books</h1>
+      <p>Shows a list of fetched books.</p>
 
       <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
+        {books.map((book) => (
+          <li key={book.id}>
             <NavLink
               className={({ isActive }) => {
                 return isActive ? styles.active : "";
               }}
-              to={`/movies/${movie.id}`}
+              to={`/books/${book.id}`}
             >
-              {movie.name}
+              {book.name}
             </NavLink>
           </li>
         ))}
@@ -53,4 +53,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default Books;

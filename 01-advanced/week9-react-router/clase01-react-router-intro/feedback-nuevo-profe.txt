@@ -1,35 +1,3 @@
-react router
-
-  que problema resuelve react router?
-    evita recargar toda la pagina
-
-  que hace
-    gestiona navegacion
-
-
-react router maneja 3 modos
-
-  reactrouter.com/home
-  reactrouter.com/start/modes
-    selecciona cual usar. por ahora el declarativo
-
-  estos modos son ( de menos a mas caracteristicas )
-    declarativo
-      es el que se estuvo usando con BrowserRouter
-      es la primera version que salio para hacer uso de react router
-    data
-      se agregan mas caracteristicas
-
-    framework
-      este no se vera
-
-
-* 8:20
-    habla de programacion asincronica y sincrona
-
-
-
-
 feedback
   no viene con una clase preparada
   siento que va muy lento

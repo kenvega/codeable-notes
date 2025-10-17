@@ -42,6 +42,43 @@ react router
       asi que se queda la pagina congelada hasta que cargue la otra data
       esto se puede mitigar si muestras componentes skeleton mientras se carga
 
+  useNavigate
+    para redirigirte entre rutas. para ir a /login por ejemplo ir de /movies/5/edit a movies/5
+
+    puedes usarlo para ir a la pagina/ruta anterior con navigate(-1)
+
+    const navigate = useNavigate();
+      es navigate la funcion que puedes usar para la redireccion
+
+  useNavigation
+    hook que se dispara cuando ocurre una navegacion
+      * navegacion como concepto
+          es que cambie el valor del concepto de Location
+            Location es un 'record en la historia de donde estuvo el usuario'
+
+
+          
+    ??? para manejar los estados cuando te mueves entre rutas
+      en teoria para evitar crear estados de loading dentro del componente
+        y usar ya el estado de navegacion que se tiene por react-router
+
+  useLocation
+
+  navLink
+    es lo mismo que Link pero
+      a los <a /> en los que NavLink se convierte al final les aplica automaticamente clases de 'active'
+        puedes agregar css para la clase active y asi mostrar cual link esta activo
+      tiene el className prop sobreescrito para poder soportar recibir funciones
+        estos props que recibe className se pueden usar para darle estilo
+        sirve para poder darle estilos cuando creas estilos para cada componente en lugar de darle estilos globales
+    * recuerda que en realidad los unicos props realmente reservados en componentes son key y ref
+        className, style, onClick, children, etc. — are just normal props on custom components
+
+  preguntas
+
+    como mostrar un loading para el usuario cuando se usa loader API de react-router
+
+    cuando se usa useNavigation solo funciona si se usa con loader API?
 
   hay un proyecto de tutorial que se avanzó
     https://reactrouter.com/6.28.0/start/tutorial#tutorial

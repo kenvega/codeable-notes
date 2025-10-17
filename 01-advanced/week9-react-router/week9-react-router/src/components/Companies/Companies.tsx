@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { getCompanies } from "../../services/companiesService";
+import styles from "./Companies.module.css";
 
 type Company = {
   id: number;
@@ -33,7 +34,14 @@ function Companies() {
       <ul>
         {companies.map((company) => (
           <li key={company.id}>
-            <Link to={`/companies/${company.id}`}>{company.name}</Link>
+            <NavLink
+              className={({ isActive }) => {
+                return isActive ? styles.active : "";
+              }}
+              to={`/companies/${company.id}`}
+            >
+              {company.name}
+            </NavLink>
           </li>
         ))}
       </ul>

@@ -1,0 +1,27 @@
+se nota que quiere que entiendan las bases
+  tambien es que hay personas en el curso que no saben algunas bases
+  es raro que hasta este punto no se les haya enseñado a usar github y git
+    tampoco es que esta en el temario
+
+  pero nuevamente se ha tomado mucho tiempo para este tema que no estaba en el temario
+
+  a este paso no creo que lleguemos a tiempo a ver los temas con el detalle que se espera
+
+no ayuda que cada que cada que se vaya a ver algo nuevo
+  se vaya a la documentacion en lugar de que lo explique con sus palabras
+    a mi me da la sensacion de que en realidad no conoce las herramientas y las aprende de paso en la clase
+      yo esperaria a un profresor que estuviera preparado con los conceptos que ya vienen
+
+tampoco ayuda que los documentos de react router en general estan muy pobres en comparacion a los de otras clases
+  solo se mencionan vagamente conceptos sin explicacion en los documentos. no se explican algunos conceptos alli como useFetcher
+
+sabe las cosas fundamentales, pero hay cosas demasiado basicas que me dicen que no hace codigo a diario
+  e.g. no darse cuenta que la BASE_URL tenia el '<' y '>' por ejemplo
+
+  y encima en ese ejemplo dice que se debe usar las tildes inversas cuando no hay concatenacion
+
+
+
+cuando quiere hacer un punto se mete a algo como si estuviera viendolo en su tiempo libre
+  divaga mucho en esos casos
+    ejm. se pone a buscar en que esta hecho ciertas aplicaciones y toma demasiado tiempo en eso

@@ -1,0 +1,109 @@
+razon de component api design
+  las aplicaciones complejas necesitan estrategias
+    para desarrollar los componentes de mantera mantenible
+    y asi evitar que el desarrollo se haga mas lento a la larga
+
+productores y consumidores
+  productor: genera una pieza de codigo
+              puede ser un modulo o un APi o un componente de React
+              son creados para ser consumidos por otros desarrolladores
+
+    el productor tiene una interfaz que se usa de puente
+      entre el codigo del productor y el consumirdor
+      permite que el consumidor use y manipule el codigo que necesite
+
+    ejemplo
+      en React el productor crea markup y estilos y comportamiento
+      proporciona itnerfaz a traves de props
+      los props son basicamente su API
+        esto permite al consumidor interactuar con el componente y personalizarlo
+
+    es el productor quien diseña la interfaz que se usara
+      dependiendo del contexto puede hacerla muy flexible (e.g. muchos props)
+        o mas rigido (menos props expuestos para personalizar)
+
+    los consumidores son los que deben entender como usar la interfaz
+      para integrar efectivamente el codigo en sus aplicaciones
+
+espectro de componentes
+  los componentes de React varian amplicamente
+    en terminos de generalidad y proposito
+
+  ejemplos de categorias de componentes
+    primitivos y genericos (son reutilizables e independientes a la logica de la app)
+      es importante no sobrecargarlos de tantos props que los haga menos intuitivos y mas dificiles de mantener
+    ejemplos
+      <Button />
+      <Input />
+      <Aside />
+      <Card />
+      <Modal />
+
+    especificos de un contexto
+
+      <Header />
+      <UserProfileCard />
+
+    altamente especializados y atados a la logica del negocio
+      (no reutilizables y dependen de la logica de la app)
+      altamente especializados y profundamente entrelazados con la logica de negocio
+      hechos para tareas bien especificas y por tanto suelen ser menos reutilizables fuera de su contexto original
+
+      ejemplos
+        <PaymentProcessor />
+
+
+evita sobre carga usando composicion
+  recuerda que pasaras mas tiempo consumiendo un componente que produciendolo
+    asi que siempre toma tiempo para diseñar una interfaz robusta en tus componentes
+
+    un componente que pueda estar en ambas partes del espectro de especificidad realmente puede serpararse en 2 o mas
+
+    ejm
+      de este Banner
+        function Banner({ user, type, children }) {
+          const bannerClassName = clsx(s.banner, s[type]);
+
+          return (
+            <div className={bannerClassName}>
+              <p className={s.user}>{user ? user.name : "Anonymous"}</p>
+              {children}
+            </div>
+          );
+        }
+
+      se puede pasar a un Banner regular y un UserBanner
+        function Banner({ type, children }) {
+          const bannerClassName = clsx(s.banner, s[type]);
+
+          return <div className={bannerClassName}>{children}</div>;
+        }
+
+        function UserBanner({ user, type, children }) {
+          return (
+            <Banner type={type}>
+              <p className={s.user}>{user ? user.name : "Anonymous"}</p>
+              {children}
+            </Banner>
+          );
+        }
+
+
+* preguntas
+    como se define lógica de negocio
+      necesito que me des varios ejemplos reales de la vida sea de aplicaciones o cualqueir cosa que conozcas
+        y dime cual seria la logica de negocio y que no seria logica de negocio en cada uno de esos casos
+
+
+  que es alta cohesion
+  que es bajo acoplamiento
+    facilidad para cambiar del proyecto
+    los componentes son facilmente reemplazables
+    si estan muy amarrados no se pueden separar
+      e.g. componentes Login/Logout
+
+    lo ideal es que los sistemas esten diseñados con bajo acoplamiento
+      porque la tecnologia cambia muy seguido asi que debe ser facil actualizar tu sistema
+
+
+

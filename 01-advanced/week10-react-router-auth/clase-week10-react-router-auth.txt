@@ -1,0 +1,11 @@
+useFetcher
+
+
+en formularios no es recomendable que
+  se usen datos sensibles para tipo hidden
+    ejemplo en 01-advanced/week10-react-router-auth/react-router-auth/src/routes/Login.tsx
+
+pokedex project
+  de react-review
+    esta para ver videos y revisar figma y el codigo
+

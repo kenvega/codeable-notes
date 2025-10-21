@@ -33,6 +33,7 @@ export default async function apiFetch(
   const response = await fetch(BASE_URI + endpoint, config);
 
   let data;
+
   if (!response.ok) {
     try {
       data = await response.json();
@@ -40,7 +41,9 @@ export default async function apiFetch(
       console.error("Error parsing JSON:", error);
       throw new Error(response.statusText);
     }
+
     // para tener un error mas visible en el front y que no salga object Object
+    // se convierte el objeto de errores en un array de strings
     if (typeof data.errors === "object") {
       // Object into array of arrays
       const errors = Object.entries(data.errors);
@@ -48,6 +51,7 @@ export default async function apiFetch(
       const messages = errors.map(([key, value]) => `${key} ${value}`);
       data.errors = messages;
     }
+
     throw new Error(data.errors);
   }
 

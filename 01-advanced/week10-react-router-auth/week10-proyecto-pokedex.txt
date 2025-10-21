@@ -11,3 +11,4 @@ cuando se tiene formularios con inputs controlados
 en api-fetch
   para evitar que la consola en el front te muestre object Object como error
     puedes aplicar el codigo que convierte el error objeto en un array y luego en un string
+

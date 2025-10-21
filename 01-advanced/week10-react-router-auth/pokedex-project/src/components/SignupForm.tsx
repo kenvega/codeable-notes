@@ -1,9 +1,17 @@
 import { useState } from "react";
-
 import Input from "./Input";
-import { createUser } from "../services/user-service";
+// import { createUser } from "../services/user-service";
 
-const SignupForm = () => {
+type SignUpFormProps = {
+  onSignUp: (userData: {
+    email: string;
+    password: string;
+    first_name: string;
+    last_name: string;
+  }) => void;
+};
+
+const SignUpForm = ({ onSignUp }: SignUpFormProps) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,9 +22,10 @@ const SignupForm = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
-    createUser(formData)
-      .then((user) => console.log(user))
-      .catch((error) => console.log(error));
+    onSignUp(formData);
+    // createUser(formData)
+    //   .then((user) => console.log(user))
+    //   .catch((error) => console.log(error));
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,4 +68,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default SignUpForm;

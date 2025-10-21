@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { login } from "../services/auth-service";
+// import { login } from "../services/auth-service";
 import Input from "./Input";
 
-const LoginForm = () => {
+type LoginFormProps = {
+  onLogin: (credentials: { email: string; password: string }) => void;
+};
+
+const LoginForm = ({ onLogin }: LoginFormProps) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -11,9 +15,10 @@ const LoginForm = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
-    login(formData)
-      .then((user) => console.log(user))
-      .catch((error) => console.log(error));
+    onLogin(formData);
+    // login(formData)
+    //   .then((user) => console.log(user))
+    //   .catch((error) => console.log(error));
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

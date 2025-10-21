@@ -13,3 +13,12 @@ export function createUser(userData: {
     return user;
   });
 }
+
+export function getUser() {
+  return apiFetch("/profile").then((userData) => {
+    console.log("userData from getUser: ", userData);
+    const { _token, ...user } = userData;
+    // sessionStorage.setItem(tokenKey, token);
+    return user;
+  });
+}

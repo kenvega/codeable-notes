@@ -1,0 +1,13 @@
+cuando se tiene formularios con inputs controlados
+  recomendable es tener solo una variable de estado con todos los inputs asociados en una variable
+
+  porque el formulario puede tener multiples inputs y eso llevaria a tener bastantes variables de estado
+
+  tambien se puede crear una funcion handleChange para cada input cuando son muchos
+    para evitar repetirte en el onChange de cada input de tu formulario
+      te puedes apoyar del hecho de que event.target no solo te da el value sino tambien el 'name'
+        con ese valor puedes reconocer a que input nos referimos
+
+en api-fetch
+  para evitar que la consola en el front te muestre object Object como error
+    puedes aplicar el codigo que convierte el error objeto en un array y luego en un string

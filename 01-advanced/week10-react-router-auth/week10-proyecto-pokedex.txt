@@ -12,3 +12,9 @@ en api-fetch
   para evitar que la consola en el front te muestre object Object como error
     puedes aplicar el codigo que convierte el error objeto en un array y luego en un string
 
+se puede mostrar un login y signup form sin react router
+  y luego cuando ya se esta logueado tmb se puede mostrar otros componentes sin react router
+    en App se hace un get de /profile y si hay data es porque tenemos el token configurado
+      si se tiene configurado entonces es que esta logueado y se muestra un componente llamado AuthenticatedApp
+      sino entonces mostrar login y signup dentro de un componente llamado UnauthenticatedApp
+

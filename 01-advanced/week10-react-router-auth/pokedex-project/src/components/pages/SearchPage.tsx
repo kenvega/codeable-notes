@@ -6,6 +6,10 @@ import { RiStarFill } from "react-icons/ri";
 import { LiaRulerVerticalSolid } from "react-icons/lia";
 import { FaWeightScale } from "react-icons/fa6";
 import { colors, typography } from "../../styles";
+import {
+  createFavorite,
+  removeFavorite,
+} from "../../services/favorites-service";
 
 type pokemonDataProps = {
   dataPokemon: {
@@ -54,6 +58,14 @@ type StateProps = {
   error: string | null;
 };
 
+type FavoriteProps = {
+  id?: number;
+  pokemon_name: string;
+  pokemon_id: number;
+  pokemon_type: string;
+  pokemon_avatar_url: string;
+};
+
 const SearchPage = () => {
   const [query, setQuery] = useState("");
   const [state, setState] = useState<StateProps>({
@@ -65,7 +77,63 @@ const SearchPage = () => {
   // variables derivadas (status, data, error)
   const { status, data: pokemon, error } = state;
 
-  function PokemonData({ dataPokemon }: pokemonDataProps) {
+  const [favorites, setFavorites] = useState<FavoriteProps[]>([]);
+
+  // TODO: me quede approx en 1:15:00 en el video
+
+  function handleAddFavorite() {
+    if (!pokemon) return;
+    const data: FavoriteProps = {
+      pokemon_name: pokemon.name,
+      pokemon_id: pokemon.id,
+      pokemon_type: pokemon.types[0].type.name,
+      pokemon_avatar_url:
+        pokemon.sprites.other["official-artwork"].front_default,
+    };
+    createFavorite(data)
+      .then((newFavorite) => setFavorites([...favorites, newFavorite]))
+      .catch((error) => console.log(error));
+  }
+
+  function handleRemoveFavorite() {
+    if (!pokemon) return;
+
+    const favoriteToRemove = favorites.find(
+      (favorite) => favorite.pokemon_name === pokemon.name
+    );
+
+    if (!favoriteToRemove || !favoriteToRemove.id) return;
+
+    removeFavorite(favoriteToRemove.id).then(() => {
+      const newFavorites = favorites.filter((fav) => {
+        return fav.pokemon_name !== favoriteToRemove.pokemon_name;
+      });
+      setFavorites(newFavorites);
+    });
+  }
+
+  function PokemonData({
+    dataPokemon,
+    onAddFavorite,
+    onRemoveFavorite,
+    isFavorite,
+  }: pokemonDataProps & {
+    onAddFavorite: () => void;
+    onRemoveFavorite: () => void;
+    isFavorite: boolean;
+  }) {
+    const regularContent = (
+      <>
+        <RiStarFill color={colors.gray.light} /> Mark as favorite
+      </>
+    );
+
+    const favoriteContent = (
+      <>
+        <RiStarFill color={colors.yellow[500]} /> Remove Favorite
+      </>
+    );
+
     return (
       <div>
         <h2>{dataPokemon.name}</h2>
@@ -83,9 +151,8 @@ const SearchPage = () => {
         <p>
           <FaWeightScale /> Weight: {dataPokemon.weight / 10} kg
         </p>
-        <FavoriteButton>
-          <RiStarFill color={colors.gray.light} />
-          Mark as favorite
+        <FavoriteButton onClick={isFavorite ? onRemoveFavorite : onAddFavorite}>
+          {isFavorite ? favoriteContent : regularContent}
         </FavoriteButton>
       </div>
     );
@@ -109,6 +176,11 @@ const SearchPage = () => {
         });
       });
   }
+
+  const isFavorite = favorites.find((fav) => fav.pokemon_name === pokemon?.name)
+    ? true
+    : false;
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -121,7 +193,14 @@ const SearchPage = () => {
         <button>Search</button>
       </form>
       {status === "idle" && "Ready to search"}
-      {status === "success" && pokemon && <PokemonData dataPokemon={pokemon} />}
+      {status === "success" && pokemon && (
+        <PokemonData
+          dataPokemon={pokemon}
+          onAddFavorite={handleAddFavorite}
+          onRemoveFavorite={handleRemoveFavorite}
+          isFavorite={isFavorite}
+        />
+      )}
       {status === "error" && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );

@@ -18,3 +18,10 @@ se puede mostrar un login y signup form sin react router
       si se tiene configurado entonces es que esta logueado y se muestra un componente llamado AuthenticatedApp
       sino entonces mostrar login y signup dentro de un componente llamado UnauthenticatedApp
 
+si quieres verificar si una variable se esta llenando con el tiempo
+  puedes agregar un useEffect. algo asi:
+    useEffect(() => {
+      console.log("favorites", favorites);
+    }, [favorites]);
+
+  si quieres ver tu variable de estado loguearse cada que la actualizas puedes usar eso

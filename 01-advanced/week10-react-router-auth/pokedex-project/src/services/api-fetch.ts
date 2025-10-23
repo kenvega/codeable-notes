@@ -35,6 +35,13 @@ export default async function apiFetch(
   let data;
 
   if (!response.ok) {
+    // por si el token ya no es valido, se elimina y se recarga la pagina
+    // al no tener token nos redirigira al login despues del reload
+    if (sessionStorage.getItem(tokenKey) && response.status === 401) {
+      sessionStorage.removeItem(tokenKey);
+      window.location.reload();
+    }
+
     try {
       data = await response.json();
     } catch (error) {

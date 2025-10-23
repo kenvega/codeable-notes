@@ -48,10 +48,22 @@ const FavoriteButton = styled.button`
   cursor: pointer;
 `;
 
+type StateProps = {
+  status: "idle" | "success" | "error" | "pending";
+  data: pokemonDataProps["dataPokemon"] | null;
+  error: string | null;
+};
+
 const SearchPage = () => {
   const [query, setQuery] = useState("");
-  const [pokemon, setPokemon] = useState(null);
-  const [error, setError] = useState(null);
+  const [state, setState] = useState<StateProps>({
+    status: "idle",
+    data: null,
+    error: null,
+  });
+
+  // variables derivadas (status, data, error)
+  const { status, data: pokemon, error } = state;
 
   function PokemonData({ dataPokemon }: pokemonDataProps) {
     return (
@@ -81,15 +93,20 @@ const SearchPage = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (query.length === 0) {
+      return;
+    }
     getPokemon(query)
       .then((data) => {
-        setPokemon(data);
-        setError(null);
+        setState({ status: "success", data, error: null });
       })
       .catch((error) => {
         console.error("Pokemon no existe! Intenta de nuevo", error);
-        setError(error.message);
-        setPokemon(null);
+        setState({
+          status: "error",
+          data: null,
+          error: "El pokemon no existe! Intenta de nuevo",
+        });
       });
   }
   return (
@@ -103,24 +120,9 @@ const SearchPage = () => {
         />
         <button>Search</button>
       </form>
-      {!pokemon && !error && "Ready to search"}
-      {pokemon && <PokemonData dataPokemon={pokemon} />}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {/* {pokemon ? <PokemonData dataPokemon={pokemon} /> : "Ready to search"} */}
-
-      {/* {pokemon ? (
-        <div>
-          <h2>{pokemon.name}</h2>
-          <p>{pokemon.id}</p>
-          <img
-            src={pokemon.sprites.other["official-artwork"].front_default}
-            alt={pokemon.name}
-          />
-        </div>
-      ) : (
-        "Ready to search"
-      )} */}
+      {status === "idle" && "Ready to search"}
+      {status === "success" && pokemon && <PokemonData dataPokemon={pokemon} />}
+      {status === "error" && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };

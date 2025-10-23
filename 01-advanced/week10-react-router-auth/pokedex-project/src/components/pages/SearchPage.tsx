@@ -87,6 +87,7 @@ const SearchPage = () => {
     if (query.length === 0) {
       return;
     }
+    setState({ status: "pending", data: null, error: null });
     getPokemon(query)
       .then((data) => {
         setState({ status: "success", data, error: null });
@@ -117,6 +118,7 @@ const SearchPage = () => {
         <button>Search</button>
       </form>
       {status === "idle" && "Ready to search"}
+      {status === "pending" && "Loading..."}
       {status === "success" && pokemon && (
         <PokemonData
           dataPokemon={pokemon}

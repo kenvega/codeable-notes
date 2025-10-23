@@ -34,9 +34,10 @@ const PokemonData = ({
   onAddFavorite,
   onRemoveFavorite,
   isFavorite,
-}: PokemonDataProps & {
-  onAddFavorite: () => void;
-  onRemoveFavorite: () => void;
+}: {
+  dataPokemon: PokemonDataProps;
+  onAddFavorite: (favorite: PokemonDataProps) => void;
+  onRemoveFavorite: (favorite: PokemonDataProps) => void;
   isFavorite: boolean;
 }) => {
   const regularContent = (
@@ -68,7 +69,13 @@ const PokemonData = ({
       <p>
         <FaWeightScale /> Weight: {dataPokemon.weight / 10} kg
       </p>
-      <FavoriteButton onClick={isFavorite ? onRemoveFavorite : onAddFavorite}>
+      <FavoriteButton
+        onClick={() =>
+          isFavorite
+            ? onRemoveFavorite(dataPokemon)
+            : onAddFavorite(dataPokemon)
+        }
+      >
         {isFavorite ? favoriteContent : regularContent}
       </FavoriteButton>
     </div>

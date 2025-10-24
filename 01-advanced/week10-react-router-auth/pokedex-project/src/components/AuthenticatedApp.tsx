@@ -1,11 +1,19 @@
 import SearchPage from "./pages/SearchPage";
 import FavoritesPage from "./pages/FavoritesPage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { FavoriteProps, PokemonDataProps } from "./pages/SearchPage";
-import { createFavorite, removeFavorite } from "../services/favorites-service";
+import {
+  createFavorite,
+  getFavorites,
+  removeFavorite,
+} from "../services/favorites-service";
 
 const AuthenticatedApp = () => {
   const [favorites, setFavorites] = useState<FavoriteProps[]>([]);
+
+  useEffect(() => {
+    getFavorites().then((data) => setFavorites(data));
+  }, []); //?? favorites
 
   function handleAddFavorite(pokemon: PokemonDataProps) {
     if (!pokemon) return;
@@ -45,7 +53,7 @@ const AuthenticatedApp = () => {
       onRemoveFavorite={handleRemoveFavorite}
     />
   );
-  // return <FavoritesPage />;
+  return <FavoritesPage favorites={favorites} />;
 };
 
 export default AuthenticatedApp;

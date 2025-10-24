@@ -12,3 +12,7 @@ export function createFavorite(data: {
 export function removeFavorite(id: number) {
   return apiFetch(`/favorites/${id}`, { method: "DELETE" });
 }
+
+export function getFavorites() {
+  return apiFetch("/favorites");
+}

@@ -1,5 +1,6 @@
 import type { FavoriteProps } from "./SearchPage";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 type FavoritesPageProps = {
   favorites: FavoriteProps[];
@@ -59,6 +60,7 @@ const Wrapper = styled("div")`
 const FavoritesPage = ({ favorites }: FavoritesPageProps) => {
   return (
     <Wrapper>
+      <Link to="/">Go to Search</Link>
       <h3>Favorites</h3>
       <Favorites>
         {favorites.map((favorite) => (

@@ -2,6 +2,7 @@ import { getPokemon } from "../../services/pokeapi-service";
 import Input from "../Input";
 import { useState } from "react";
 import PokemonData from "../PokemonData";
+import { Link } from "react-router-dom";
 
 export type PokemonDataProps = {
   id: number;
@@ -77,6 +78,7 @@ const SearchPage = ({
 
   return (
     <div>
+      <Link to="/favorites">Go to Favorites</Link>
       <form onSubmit={handleSubmit}>
         <Input
           name="query"

@@ -7,6 +7,7 @@ import {
   getFavorites,
   removeFavorite,
 } from "../services/favorites-service";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const AuthenticatedApp = () => {
   const [favorites, setFavorites] = useState<FavoriteProps[]>([]);
@@ -47,13 +48,25 @@ const AuthenticatedApp = () => {
   }
 
   return (
-    <SearchPage
-      favorites={favorites}
-      onAddFavorite={handleAddFavorite}
-      onRemoveFavorite={handleRemoveFavorite}
-    />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <SearchPage
+              favorites={favorites}
+              onAddFavorite={handleAddFavorite}
+              onRemoveFavorite={handleRemoveFavorite}
+            />
+          }
+        />
+        <Route
+          path="/favorites"
+          element={<FavoritesPage favorites={favorites} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
-  return <FavoritesPage favorites={favorites} />;
 };
 
 export default AuthenticatedApp;

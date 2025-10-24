@@ -9,3 +9,7 @@ export function login(credentials: { email: string; password: string }) {
     return user;
   });
 }
+
+export function logout() {
+  return apiFetch("/logout", { method: "DELETE" });
+}

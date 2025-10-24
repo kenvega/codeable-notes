@@ -1,21 +1,19 @@
 import { useState } from "react";
-// import { login } from "../services/auth-service";
 import Input from "./Input";
+import { useAuth } from "../context/AuthContext";
 
-type LoginFormProps = {
-  onLogin: (credentials: { email: string; password: string }) => void;
-};
-
-const LoginForm = ({ onLogin }: LoginFormProps) => {
+const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
+  const { login } = useAuth();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
-    onLogin(formData);
+    login(formData);
     // login(formData)
     //   .then((user) => console.log(user))
     //   .catch((error) => console.log(error));

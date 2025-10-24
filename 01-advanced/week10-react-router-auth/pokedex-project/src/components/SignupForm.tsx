@@ -1,17 +1,9 @@
 import { useState } from "react";
 import Input from "./Input";
-// import { createUser } from "../services/user-service";
 
-type SignUpFormProps = {
-  onSignUp: (userData: {
-    email: string;
-    password: string;
-    first_name: string;
-    last_name: string;
-  }) => void;
-};
+import { useAuth } from "../context/AuthContext";
 
-const SignUpForm = ({ onSignUp }: SignUpFormProps) => {
+const SignUpForm = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,10 +11,12 @@ const SignUpForm = ({ onSignUp }: SignUpFormProps) => {
     last_name: "",
   });
 
+  const { signUp } = useAuth();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
-    onSignUp(formData);
+    signUp(formData);
     // createUser(formData)
     //   .then((user) => console.log(user))
     //   .catch((error) => console.log(error));

@@ -13,17 +13,7 @@ const CustomLinkButton = styled.button`
   }
 `;
 
-type UnauthenticatedAppProps = {
-  onLogin: (credentials: { email: string; password: string }) => void;
-  onSignUp: (userData: {
-    email: string;
-    password: string;
-    first_name: string;
-    last_name: string;
-  }) => void;
-};
-
-const UnauthenticatedApp = ({ onLogin, onSignUp }: UnauthenticatedAppProps) => {
+const UnauthenticatedApp = () => {
   const [showLogin, setShowLogin] = useState(true);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -34,11 +24,7 @@ const UnauthenticatedApp = ({ onLogin, onSignUp }: UnauthenticatedAppProps) => {
   return (
     <div>
       <h1>Welcome to Poke Collection</h1>
-      {showLogin ? (
-        <LoginForm onLogin={onLogin} />
-      ) : (
-        <SignUpForm onSignUp={onSignUp} />
-      )}
+      {showLogin ? <LoginForm /> : <SignUpForm />}
       <CustomLinkButton onClick={handleClick}>
         {showLogin ? "Go to Sign Up" : "Go to Login"}
       </CustomLinkButton>

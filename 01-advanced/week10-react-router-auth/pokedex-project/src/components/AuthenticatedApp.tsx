@@ -8,13 +8,12 @@ import {
   removeFavorite,
 } from "../services/favorites-service";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-type AuthenticatedAppProps = {
-  onLogout: () => void;
-};
-
-const AuthenticatedApp = ({ onLogout }: AuthenticatedAppProps) => {
+const AuthenticatedApp = () => {
   const [favorites, setFavorites] = useState<FavoriteProps[]>([]);
+
+  const { logout } = useAuth();
 
   useEffect(() => {
     getFavorites().then((data) => setFavorites(data));
@@ -54,7 +53,7 @@ const AuthenticatedApp = ({ onLogout }: AuthenticatedAppProps) => {
   return (
     <div>
       {/* este boton estaria en todas las vistas */}
-      <button onClick={onLogout}>Logout</button>
+      <button onClick={logout}>Logout</button>
       <BrowserRouter>
         <Routes>
           <Route

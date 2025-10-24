@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { createUser, getUser } from "./services/user-service";
 import AuthenticatedApp from "./components/AuthenticatedApp";
 import UnauthenticatedApp from "./components/UnauthenticatedApp";
-import { login } from "./services/auth-service";
+import { login, logout } from "./services/auth-service";
+import { tokenKey } from "./config";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,6 +20,13 @@ function App() {
       .catch((error) => console.log(error));
   }
 
+  function handleLogout() {
+    logout().then(() => {
+      sessionStorage.removeItem(tokenKey);
+      setUser(null);
+    });
+  }
+
   function handleSignUp(userData: {
     email: string;
     password: string;
@@ -31,7 +39,7 @@ function App() {
   }
 
   return user ? (
-    <AuthenticatedApp />
+    <AuthenticatedApp onLogout={handleLogout} />
   ) : (
     <UnauthenticatedApp onLogin={handleLogin} onSignUp={handleSignUp} />
   );

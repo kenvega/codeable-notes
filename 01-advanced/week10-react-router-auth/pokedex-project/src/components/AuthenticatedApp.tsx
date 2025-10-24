@@ -9,7 +9,11 @@ import {
 } from "../services/favorites-service";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const AuthenticatedApp = () => {
+type AuthenticatedAppProps = {
+  onLogout: () => void;
+};
+
+const AuthenticatedApp = ({ onLogout }: AuthenticatedAppProps) => {
   const [favorites, setFavorites] = useState<FavoriteProps[]>([]);
 
   useEffect(() => {
@@ -48,24 +52,28 @@ const AuthenticatedApp = () => {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <SearchPage
-              favorites={favorites}
-              onAddFavorite={handleAddFavorite}
-              onRemoveFavorite={handleRemoveFavorite}
-            />
-          }
-        />
-        <Route
-          path="/favorites"
-          element={<FavoritesPage favorites={favorites} />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      {/* este boton estaria en todas las vistas */}
+      <button onClick={onLogout}>Logout</button>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <SearchPage
+                favorites={favorites}
+                onAddFavorite={handleAddFavorite}
+                onRemoveFavorite={handleRemoveFavorite}
+              />
+            }
+          />
+          <Route
+            path="/favorites"
+            element={<FavoritesPage favorites={favorites} />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 

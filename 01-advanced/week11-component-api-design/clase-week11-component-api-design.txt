@@ -22,35 +22,37 @@ productores y consumidores
       dependiendo del contexto puede hacerla muy flexible (e.g. muchos props)
         o mas rigido (menos props expuestos para personalizar)
 
+  consumidor:
     los consumidores son los que deben entender como usar la interfaz
       para integrar efectivamente el codigo en sus aplicaciones
 
 espectro de componentes
-  los componentes de React varian amplicamente
+  los componentes de React varian ampliamente
     en terminos de generalidad y proposito
 
   ejemplos de categorias de componentes
-    primitivos y genericos (son reutilizables e independientes a la logica de la app)
-      es importante no sobrecargarlos de tantos props que los haga menos intuitivos y mas dificiles de mantener
-    ejemplos
-      <Button />
-      <Input />
-      <Aside />
-      <Card />
-      <Modal />
+    1. primitivos y genericos (son reutilizables e independientes a la logica de la app)
+        es importante no sobrecargarlos de tantos props que los haga menos intuitivos y mas dificiles de mantener
 
-    especificos de un contexto
+        ejemplos
+          <Button />
+          <Input />
+          <Aside />
+          <Card />
+          <Modal />
 
-      <Header />
-      <UserProfileCard />
+    2. especificos de un contexto
 
-    altamente especializados y atados a la logica del negocio
-      (no reutilizables y dependen de la logica de la app)
-      altamente especializados y profundamente entrelazados con la logica de negocio
-      hechos para tareas bien especificas y por tanto suelen ser menos reutilizables fuera de su contexto original
+          <Header />
+          <UserProfileCard />
 
-      ejemplos
-        <PaymentProcessor />
+    3. altamente especializados y atados a la logica del negocio
+        (no reutilizables y dependen de la logica de la app)
+        altamente especializados y profundamente entrelazados con la logica de negocio
+        hechos para tareas bien especificas y por tanto suelen ser menos reutilizables fuera de su contexto original
+
+        ejemplos
+          <PaymentProcessor />
 
 
 evita sobre carga usando composicion

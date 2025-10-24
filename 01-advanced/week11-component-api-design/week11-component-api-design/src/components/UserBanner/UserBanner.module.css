@@ -1,0 +1,28 @@
+.banner {
+  border: 1px solid;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: whitesmoke;
+}
+
+.user {
+  opacity: 0.8;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.success {
+  background-color: PaleGreen;
+  border-color: DarkGreen;
+}
+
+.warning {
+  background-color: LemonChiffon;
+  border-color: Gold;
+}
+
+.error {
+  background-color: LightPink;
+  border-color: Crimson;
+}

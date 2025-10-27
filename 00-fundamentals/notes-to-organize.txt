@@ -10,4 +10,5 @@ la especificidad de las propiedades de las animaciones tienen mayor prioridad qu
   por eso que si pones animacion de opacity de 0 a 1 pero tenias un opacity 0 en el elemento original
     al final despues de la animacion volvera de 1 a 0 en opacidad
 
-  
+
+adding some lines to test script

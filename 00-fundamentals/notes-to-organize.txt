@@ -12,3 +12,5 @@ la especificidad de las propiedades de las animaciones tienen mayor prioridad qu
 
 
 adding some lines to test script
+
+adding more lines to test script with fundamentals and advanced

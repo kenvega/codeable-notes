@@ -1,5 +1,5 @@
 #!/bin/sh
-# goes in .git/hooks/pre-commit 
+# goes in .git/hooks/pre-commit
 # no extension needed in the file
 # but you will need to make it executable -> chmod +x .git/hooks/pre-commit
 #

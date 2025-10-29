@@ -1,0 +1,112 @@
+Prop delegation
+  permite mayor flexibilidad y reusabilidad de los componentes
+
+  consiste en pasar props de un componente a otro
+    permitiendo que los componentes hijos reciban y utilicen datos o funciones definidos en componentes padres
+
+  útil cuando múltiples componentes comparten características similares o necesitan acceder a los mismos datos
+
+  ejemplo: un componente InputField podría ser así:
+    function InputField({ label, id, name }) {
+      return (
+        <div className={s.field}>
+          <label htmlFor={id}>{label}</label>
+          <input type="text" id={id} name={name} />
+        </div>
+      );
+    }
+
+    pero
+      siempre sería un input tipo text. tendrias problemas si quieres usar un tipo password
+      podrias querer controlar los valores del input con React usando value y onChange
+      no puedes indicar que el input es requerido
+      podrias no querer pasar un id especifico y esperar a que el id se cree solo con React.useId
+
+    asi que inputField realmente podria verse asi
+      function InputField({ label, id, name, type, value, onChange, required }) {
+        const generatedId = React.useId();
+        const inputId = id || generatedId;
+
+        return (
+          <div className={s.field}>
+            <label htmlFor={inputId}>{label}</label>
+            <input
+              id={inputId}
+              type={type}
+              name={name}
+              value={value}
+              onChange={onChange}
+              required={required}
+            />
+          </div>
+        );
+      }
+
+    pero
+      aun hay muchos mas props que podrian tomarse en cuenta del html input. ejm: disabled, checked, min, max, etc
+        todos esos props estan aqui https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
+
+    asi que se puede en este caso usar prop delegation: todo lo que llegue demas lo pasaremos directo al <input />
+
+      function InputField({ label, id, ...delegated }) {
+        const generatedId = React.useId();
+        const inputId = id || generatedId;
+
+        return (
+          <div className={s.field}>
+            <label htmlFor={inputId}>{label}</label>
+            <input id={inputId} {...delegated} />
+          </div>
+        );
+      }
+
+  para evitar conflictos
+    siempre envia los delegated props primero que todo para que no sobreescribas otros props internos que tengas
+
+  para los tipos de typescript para tus componentes que reciben props delegated
+    siempre usa
+      Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick">;
+
+      Omit -- para omitir partes de un elemento de html que ya sabes que recibes
+
+      ejemplo de codigo en ./week11-component-api-design/src/components/components_clase2/ToggleDelegated/ToggleDelegated.tsx
+
+  se puede hacer prop delegation con estilos tambien
+
+    puedes hacer que te pase un objeto con los estilos
+      function Component({ children, style = {}, ...delegated }) {
+        const internalStyles = {
+          padding: "16px",
+          fontWeight: "700",
+        };
+
+        const appliedStyles = {
+          ...internalStyles,
+          ...style,
+        };
+
+        return <div style={appliedStyles}>{children}</div>;
+      }
+
+    puedes hacer que te pase un className
+      function Range({ label, id, className, ...delegated }) {
+        const generatedId = React.useId();
+        const appliedId = id || generatedId;
+        const appliedClassName = `${s.slider} ${className}`;
+
+        return (
+          <div className={s.wrapper}>
+            <label htmlFor={appliedId} className={s.label}>
+              {label}
+            </label>
+            <input
+              {...delegated}
+              style={inputStyles}
+              type="range"
+              id={appliedId}
+              className={appliedClassName}
+            />
+          </div>
+        );
+      }
+  

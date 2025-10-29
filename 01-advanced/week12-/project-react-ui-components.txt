@@ -1,0 +1,12 @@
+button
+  props
+    size
+    variant
+
+
+usar lucide icons
+https://lucide.dev/guide/packages/lucide-react
+
+
+entrega hasta el dia viernes
+

@@ -1,0 +1,14 @@
+recuerda
+  ref se usaba con useRef para tener referencias a elementos entre renders
+    luego se usaba para hacer focus por ejemplo
+
+pero hay problemas cuando se usa prop delegation y se quiere pasar ref a ese tipo de componentes
+  resulta que ref no es tecnicamente un prop (esto tambien pasa con el 'prop' especial llamado key)
+    ref y key en realidad son como propiedades al mismo nivel del objeto 'props' que se envian al componente
+      entonces cuando haces prop delegation realmente el ref y key nunca llegan como parte de los props al componente
+
+entonces para pasar realmente el ref al componente hijo donde se esta haciendo prop delegation
+  se debe exportar de cierta manera el componente
+    export default React.forwardRef(ComponentName)
+      asi puedes tener acceso a tu objeto props y ademas aparte de eso al ref como otro parametro que reciba el componente
+

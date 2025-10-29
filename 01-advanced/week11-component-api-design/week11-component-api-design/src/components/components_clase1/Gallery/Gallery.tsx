@@ -1,5 +1,5 @@
-import * as React from "react";
-import s from "./BadApartmentDetails.module.css";
+import { useState } from "react";
+import s from "./Gallery.module.css";
 import clsx from "clsx";
 
 type GalleryProps = {
@@ -13,7 +13,7 @@ type GalleryProps = {
 };
 
 function Gallery({ apartment }: GalleryProps) {
-  const [currentPhotoIndex, setCurrentPhotoIndex] = React.useState(0);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
   return (
     <div className={s["photos-wrapper"]}>

@@ -1,4 +1,5 @@
-import s from "./ProductCard.module.css";
+import styles from "./ProductCard.module.css";
+import Card from "../Card";
 
 type ProductCardProps = {
   product: {
@@ -12,18 +13,18 @@ type ProductCardProps = {
 
 function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className={s.card}>
-      <div className={s.wrapper}>
+    <Card elevation={3}>
+      <div className={styles.wrapper}>
         <img
-          className={s.productPhoto}
+          className={styles.productPhoto}
           alt={product.imageAlt}
           src={product.imageSrc}
         />
         <h2>{product.title}</h2>
-        <p className={s.price}>${product.price}</p>
+        <p className={styles.price}>${product.price}</p>
         <button>Add to cart</button>
       </div>
-    </div>
+    </Card>
   );
 }
 

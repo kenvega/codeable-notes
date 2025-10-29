@@ -1,0 +1,21 @@
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/*
+  The following css variables are defined in the
+  “styles.css” file.
+*/
+.elevation-1 {
+  box-shadow: var(--elevation-1);
+}
+
+.elevation-2 {
+  box-shadow: var(--elevation-2);
+}
+
+.elevation-3 {
+  box-shadow: var(--elevation-3);
+}

@@ -1,0 +1,14 @@
+polymorfismo
+  tus consumidores quisieran a veces usar tu componente como otro elemento
+    ejemplo quisieran que tu componente que se ve como un boton realmente sea al final un link <a />
+
+  ejemplo de como en bootstrap podrias mostrar lo mismo para la pagina pero en el fondo es distinto
+    <a class="btn btn-primary" href="#" role="button">Link</a>
+    <button class="btn btn-primary" type="submit">Button</button>
+
+  ejemplo de como podrian ser las reglas para este tipo de componente ejemplo
+    si el consumidor nos pasa un prop href entonces nuestro componente debe usar un <a>
+    de lo contrario, usaremos un <button> con normalidad
+    implementamos prop delegation para que nuestro <Button> se pueda usar como un <button> nativo.
+
+  

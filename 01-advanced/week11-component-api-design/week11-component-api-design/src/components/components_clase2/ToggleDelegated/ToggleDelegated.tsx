@@ -7,6 +7,8 @@ type ToggleDelegatedProps = {
   checked: boolean;
   onClick: () => void;
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick">;
+// Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> is equal to say:
+//   all the normal <button /> props (className, disabled, aria-*, etc.) except onClick
 
 const ToggleDelegated = ({
   label,

@@ -1,0 +1,24 @@
+.header {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.body {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer button {
+  font-size: 16px;
+  line-height: 24px;
+  height: 40px;
+  padding-inline: 16px;
+  border: none;
+  border-radius: 8px;
+}

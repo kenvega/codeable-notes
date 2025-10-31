@@ -1,11 +1,15 @@
 import { createContext, useContext, useState } from "react";
 import styles from "./Tabs.module.css";
-import { clsx } from "clsx";
 
-const TabsContext = createContext({
-  // initial values
+type TabsContextValue = {
+  selectedTab: string;
+  changeTab: (tab: string) => void;
+};
+
+const TabsContext = createContext<TabsContextValue>({
+  // initial values (don't matter much because the provider will override them)
   selectedTab: "",
-  changeTab: (tab: string) => {},
+  changeTab: () => {},
 });
 
 const Tabs = ({ children }: { children: React.ReactNode }) => {
@@ -36,11 +40,8 @@ const TabsTrigger = ({
   value: string;
 }) => {
   const { selectedTab, changeTab } = useContext(TabsContext);
-  console.log("selectedTab on <TabsTrigger>: ", selectedTab);
-  console.log("value on <TabsTrigger>: ", value);
 
   const handleClick = (value: string) => {
-    console.log("Clicked tab on <TabsTrigger>: ", value);
     changeTab(value);
   };
 
@@ -64,8 +65,6 @@ const TabsContent = ({
   value: string;
 }) => {
   const { selectedTab } = useContext(TabsContext);
-  console.log("selectedTab on <TabsContent>: ", selectedTab);
-  console.log("value on <TabsContent>: ", value);
   // depending on value we get context to show/hide content
   return value === selectedTab ? <div>{children}</div> : null;
 };

@@ -1,0 +1,12 @@
+{
+  "app-title": "React Showcase",
+  "language-english": "English",
+  "language-spanish": "Spanish",
+  "next-player": "Next Player",
+  "move-0": "Game Start",
+  "move": "Move",
+  "reset-button": "Reset",
+  "won-game": "Winner",
+  "tied-game": "Tied Game",
+  "go-to": "Go to:"
+}

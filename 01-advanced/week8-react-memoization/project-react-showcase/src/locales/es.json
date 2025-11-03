@@ -1,0 +1,12 @@
+{
+  "app-title": "Muestra de React",
+  "language-english": "Inglés",
+  "language-spanish": "Espanol",
+  "next-player": "Siguiente Jugador",
+  "move-0": "Inicio del Juego",
+  "move": "Movimiento",
+  "reset-button": "Reiniciar",
+  "won-game": "Ganador",
+  "tied-game": "Juego Empatado",
+  "go-to": "Ir a movimiento:"
+}

@@ -1,0 +1,22 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameStatus {
+  font-family: Nunito;
+  font-weight: 700;
+  font-size: 2.25rem;
+
+  margin-bottom: 10px;
+}
+
+.boardGame {
+  display: flex;
+  flex-direction: column;
+}
+
+.boardRow {
+  display: flex;
+}

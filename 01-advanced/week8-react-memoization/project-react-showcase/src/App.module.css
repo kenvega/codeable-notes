@@ -1,0 +1,9 @@
+.mainContainer {
+  background-color: #f8fafc;
+  min-height: calc(100vh - 64px);
+
+  padding-left: 15%;
+  padding-right: 15%;
+
+  padding-top: 2rem;
+}

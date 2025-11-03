@@ -1,0 +1,56 @@
+.gameMovesContainer {
+  margin-left: 20px;
+}
+
+.gameMoves {
+  height: 15rem;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.moveButton {
+  min-width: 10rem;
+  height: 2rem;
+  background-color: #3b76f6;
+
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+
+  border-radius: 8px;
+
+  color: #ffffff;
+
+  font-family: Nunito;
+  font-weight: 700;
+  font-size: 1rem;
+
+  border: unset;
+}
+
+.resetButton {
+  background-color: #b91c1c;
+  color: #ffffff;
+
+  font-family: Nunito;
+  font-weight: 700;
+  font-size: 1rem;
+
+  border: unset;
+
+  padding: 0.5rem 2.25rem;
+
+  border-radius: 8px;
+
+  margin-bottom: 1rem;
+}
+
+.goTo {
+  font-family: Nunito;
+  font-weight: 700;
+  font-size: 1.5rem;
+
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: #eff4ff;
+}
+
+.headerTitle {
+  color: #0f172a;
+  font-family: Nunito;
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 40px;
+}
+
+.languages {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.langIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.25rem;
+}
+
+.langIconActive {
+  color: #fff;
+  border: 2px solid #6090fa;
+  border-radius: 100rem;
+}

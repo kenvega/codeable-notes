@@ -1,0 +1,93 @@
+recuerda
+  esto es lo que se envia al cliente desde el servidor en el achivo html
+    <div id="root"></div>
+
+  y tambien envias un archivo de javascript con toda la logica que crea los componentes (aparte de la libreria de react)
+    a este archivo se le llama bundle
+
+  mientras que el navegador procesa este archivo de react se muestra una pantalla en blanco
+    si tienes muchos componentes o componentes muy pesados esta pantalla en blanco se queda mas tiempo
+      para eso esta react lazy y react suspense
+
+lazy loading o carga diferida
+  cargar los componentes solo cuando son necesarios
+    y asi reducir el tamaño del bundle y mejorar la carga de la app
+
+  esto se logra con React.lazy y React.suspense
+
+React.lazy y React.Suspense
+
+  React.lazy
+    una función que permite importar dinámicamente un componente como un módulo JavaScript
+
+    el componente se carga solo cuando se necesita
+      osea cuando va a ser renderizado y mostrado en el documento HTML
+
+    útil para componentes grandes o que no son críticos para la carga inicial de la página
+
+  React.Suspense
+    es un componente que permite gestionar el renderizado de componentes cargados de forma diferida (usando React.lazy)
+
+    con React.Suspense se puede especificar un elemento de React a mostrar (e.g. Spinner o mensaje de carga)
+      mientras el elemento se está cargando
+
+  la idea seria identificar en dev tools en el tab de network cual es el componente que es mas pesado cargar al inicio
+    y ese se podria cargar de manera diferida
+
+Como implementarlo
+
+  - se importa primero un componente usando React.lazy
+
+      ejm
+        import * as React from 'react';
+        const SomeComponent = React.lazy(() => import('./SomeComponent'));
+
+  - se envuelve el componente diferido con React.Suspense
+      y se da un fallback para mostrar mientras el componente carga
+
+        ejm
+          import * as React from 'react';
+          import OneComponent from "./OneComponent"
+          import OtherComponent from "./OtherComponent"
+
+          const SomeComponent = React.lazy(() => import('./SomeComponent'));
+
+          function App() {
+            return (
+              <div>
+                <OneComponent>
+                <OtherComponent>
+                <React.Suspense fallback={<div>Loading...</div>}>
+                  <SomeComponent />
+                </React.Suspense>
+              </div>
+            );
+          }
+
+Buenas practicas
+  los fallbacks pueden mostrar spinners, esqueletos de carga u otros para indicar la carga
+
+  usa react lazy/suspense para componentes complejos que aparecen en la carga inicial de la pantalla
+    asi evitas una pantalla blanca al inciio por mucho tiempo
+
+  recuerda usar un error boundary por si ocurre un error en la carga diferida
+    ejm
+      import * as React from 'react';
+
+      const SomeComponent = React.lazy(() => import('./SomeComponent'));
+
+      function App() {
+        return (
+          <div>
+            <React.ErrorBoundary fallback={<div>Something went wrong</div>}>
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <SomeComponent />
+              </React.Suspense>
+            </React.ErrorBoundary>
+          </div>
+        );
+      }
+
+
+
+

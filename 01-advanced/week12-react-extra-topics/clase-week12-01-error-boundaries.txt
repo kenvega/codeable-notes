@@ -1,0 +1,53 @@
+Error boundaries
+
+  Nuestra aplicación debería ser lo suficientemente robusta para manejar los potenciales errores inesperados
+  Para ello React introduce un concepto conocido como "Error Boundaries"
+
+  Un Error Boundary es un componente (usualmente llamada <ErrorBoundary>)
+    que captura errores de JavaScript en cualquier componente descendiente
+    y muestra una UI alternativa (un "fallback")
+    ofreciendo un mensaje de error al usuario
+    y, posiblemente, un mecanismo para recuperar la aplicación a un estado sin error.
+
+  con esto el error ya no salta hasta App sino que se queda en el ErrorBoundary y se muestra un fallback en ese caso
+    es como mostrar el alt para las imagenes cuando falla
+
+  entonces para que sirve
+    - evita que toda la app se caiga y se muestre una pantalla blanca
+    - muestran interfaces de error personalizados
+    - aisla partes de la aplicacion que puedan fallar sin afectar al resto
+
+  ya existe el componente ErrorBoundary que se puede usar
+    https://github.com/bvaughn/react-error-boundary
+
+    se puede instalar con
+      npm install react-error-boundary
+
+
+  ejemplo de uso
+    <ErrorBoundary
+      fallback={<p className="error">Lo siento, algo falló...</p>}
+    >
+      <Peligro />
+    </ErrorBoundary>
+
+  se puede tener un fallback que reciba props para acceder a detalles del error y resetear el arbol de componentes que fallo
+    ese fallback llega a ErrorBoundary como prop llamado FallbackComponent. y ese componente recibira recibe 2 props de ErrorBoundary
+      error
+        para acceder a los detalles del error que ocurrio
+
+      resetErrorBoundary
+        una función que al ejecutarla reiniciará el Error Boundary
+        haciendo que React vuelva a renderizar el arbol de componentes que ocasionó el error
+        básicamente es un "re-intentar"
+
+        los argumentos que le pases a esta funcion
+          seran parte de los argumentos que recibe el prop onReset (otro prop del componente ErrorBoundary)
+
+  tambien ErrorBoundary puede recibir otros props
+
+    onReset
+      puedes pasar un callback que se ejecutará cuando se ejecute el reset del component tree
+
+
+

@@ -10,3 +10,6 @@ https://lucide.dev/guide/packages/lucide-react
 
 entrega hasta el dia viernes
 
+al final lo deje tambien en este repo
+  https://github.com/kenvega/react-miniproject-component-api-design
+

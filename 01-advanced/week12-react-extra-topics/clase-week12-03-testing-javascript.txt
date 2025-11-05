@@ -1,0 +1,125 @@
+por que importa el testing
+
+  asegura la calidad y fiabilidad:
+
+  facilita la mantenibilidad
+    a medida que una aplicación crece, el testing se vuelve crucial para
+      asegurar que los nuevos cambios no rompan funcionalidades existentes (conocido como 'regresiones')
+
+  mejora la experiencia del usuario
+
+  reduce costos a largo plazo
+    detectar y solucionar errores en las etapas iniciales del desarrollo es mucho menos costoso
+      que hacerlo después de que el software ha sido desplegado
+
+  apoya el desarrollo ágil
+    es un pilar en metodologías ágiles como Scrum o Kanban
+    permite a los equipos desarrollar iterativamente y responder a cambios con mayor agilidad
+      sabiendo que los tests proporcionan una red de seguridad contra errores inadvertidos
+
+fundamentos de testing
+  la forma más fundamental de escribir un test es
+    simplemente un código que lanzará un error cuando el resultado no sea lo que esperamos
+
+  si no se lanza un error entonces el test pasa
+
+
+aserciones (afirmaciones) y bibliotecas de aserciones
+
+  aserción o afirmación en el contexto de testing se refiere a una expresión que describe qué esperamos que ocurra
+
+    ejm: "Espero que el valor actual de sum(3, 4) sea el número 7"
+
+  una biblioteca de aserciones ayuda a que el código de prueba se lea de manera similar a la frase de arriba
+
+    esto ayuda a que el código refleje de manera clara la intención del desarrollador al escribir el test
+
+  ejm de como hacer una biblioteca de aserciones
+
+    // La función 'expect' recibe un valor y retorna un objeto con métodos para ejecutar afirmaciones sobre ese valor:
+    function expect(actual) {
+      return {
+        toBe(expected) {
+          if (actual !== expected) {
+            throw new Error(`${actual} no es igual a ${expected}`);
+          }
+        },
+        //... otras afirmaciones como toBeGreaterThan, toBeNull, toBeTruthy, etc.
+      };
+    }
+
+    // Funciones a probar
+    function sum(a, b) {
+      return a + b;
+    }
+
+    function substract(a, b) {
+      return a - b;
+    }
+
+    // probando la función 'sum'
+    expect(sum(3, 4)).toBe(7);
+
+    // Prueba substract
+    expect(substract(10, 6)).toBe(4);
+
+construir un framework de testing
+
+  si un expect falla/lanza un error entonces no se ejecutaran los siguientes
+
+  ejemplo de testing framework:
+
+    // test recibe un titulo (string) y una función callback
+    // que encapsula la lógica del test
+
+    function test(title, callback) {
+      try {
+        callback();
+        console.log(`✓ ${title}`);
+      } catch (error) {
+        console.error(`✕ ${title}`);
+        console.error(error);
+      }
+    }
+
+    // ...
+    // ... el mismo codigo ejemplo de la biblioteca de aserciones y definicion de funciones
+    // ...
+
+    // usando test al ejecutar todo el codigo se puede ver si cierto test paso pero ya con la intencion de cada test en los logs
+    // Prueba sum
+    test("sum suma 2 números", () => {
+      const result = sum(3, 4);
+      const expected = 7;
+      expect(result).toBe(expected);
+    });
+
+    // Prueba substract
+    test("substract resta 2 números", () => {
+      const result = substract(10, 6);
+      const expected = 4;
+      expect(result).toBe(expected);
+    });
+
+soportar pruebas asincronas
+  tendrias que cambiar la funcion test para soportar cosas asincronas
+
+    async function test(title, callback) {
+      try {
+        await callback();
+        console.log(`✓ ${title}`);
+      } catch (error) {
+        console.error(`✕ ${title}`);
+        console.error(error);
+      }
+    }
+    // ...
+    async function sumAsync(a, b) {
+      return a + b;
+    }
+    // ...
+    test("sum suma 2 números de manera asíncrona", async () => {
+      const result = await sumAsync(3, 4);
+      const expected = 7;
+      expect(result).toBe(expected);
+    });

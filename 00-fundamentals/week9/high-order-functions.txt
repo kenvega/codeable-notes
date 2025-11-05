@@ -1,0 +1,22 @@
+qué es una función de orden superior?
+
+  es una función que cumple al menos una de las siguientes condiciones
+    recibe una o más funciones como argumentos
+    devuelve una función como resultado
+
+*
+  cuando una función se pasa como argumento a otra función, se le llama callback
+
+    ejm
+      function miFuncion(otraFuncion) {
+        otraFuncion() // ¡Llamamos a la función!
+      }
+
+      function externa() {
+        console.log("Función como argumento");
+      }
+
+      miFuncion(externa); // imprimiria en la consola "Función como argumento"
+
+    en ese ejemplo la función 'externa' sería la función callback de 'miFuncion'
+

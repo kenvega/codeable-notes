@@ -1,0 +1,29 @@
+for-of itera sobre objetos iterables como strings y arrays
+  permite obtener directamente el valor de cada elemento en el valor iterable
+
+  ejm
+    const cadena = "Chau"
+
+    for (const letra of cadena) {
+      console.log(letra);
+    }
+
+    const frutas = ["manzana", "plátano", "cereza"];
+
+    for (const fruta of frutas) {
+      console.log(fruta);
+    }
+
+for-in iterar sobre propiedades enumerables de un objeto
+  permite obtener el nombre de cada propiedad (normalmente un string)
+
+  ejm
+    const persona = {
+      nombre: "Angélica",
+      edad: 30,
+      profesion: "Desarrolladora"
+    };
+
+    for (const propiedad in persona) {
+      console.log(`Propiedad: ${propiedad}; Valor: ${persona[propiedad]}`);
+    }

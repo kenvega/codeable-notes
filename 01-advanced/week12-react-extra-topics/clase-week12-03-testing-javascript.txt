@@ -123,3 +123,114 @@ soportar pruebas asincronas
       const expected = 7;
       expect(result).toBe(expected);
     });
+
+jest and vitest
+
+  ambos son framework de pruebas
+
+  jest
+    más popular biblioteca de testing para JavaScript
+    conocida por su simplicidad y facilidad de uso, especialmente en aplicaciones desarrolladas con React
+    solución completa para pruebas en JavaScript
+      tiene incorporadas todas las herramientas necesarias para escribir y ejecutar pruebas
+
+    caracteristicas
+      zero-configuration
+        diseñado para ser utilizado con mínima configuración
+          permite a los desarrolladores comenzar a escribir pruebas rápidamente
+
+      mocking fácil
+        ofrece una forma sencilla de simular módulos, timers y otros aspectos de tu aplicación
+          útil para pruebas unitarias aisladas.
+
+      cobertura de código integrada
+        jest puede generar informes de cobertura de código para saber qué partes del código no están siendo probadas.
+
+      snapshot testing
+        permite a los desarrolladores capturar "instantáneas" del estado de los componentes de react
+        y otros datos de la UI para detectar cambios no deseados a lo largo del tiempo.
+
+      compatible con typescript
+        se integra bien con typescript
+          permite escribir pruebas para proyectos basados en este superset de javascript
+
+      ejecución paralela de pruebas
+        jest ejecuta pruebas en paralelo
+          acelera el proceso de testing, especialmente en proyectos grandes.
+
+      entornos de prueba configurables
+        puede simular entornos de navegador y node.js
+          util para pruebas que dependen de características específicas de estos entornos
+
+  vitest
+    framework de pruebas moderno para JavaScript
+    diseñado como una alternativa más rápida y eficiente a otros frameworks como Jest
+    especialmente adecuado para proyectos que utilizan Vite
+
+    caracteristicas
+      alta velocidad
+        aprovecha la arquitectura de vite para ofrecer
+          tiempos de inicio rápidos y una recompilación eficiente
+            resulta en una experiencia de prueba más rápida
+
+      soporte nativo ESM
+        al estar construido sobre vite, vitest soporta nativamente módulos ESM
+        lo cual está en línea con las tendencias modernas de desarrollo de javascript
+
+      compatible con jest
+        diseñado para ser compatible con jest
+          permite a los usuarios migrar fácilmente sus pruebas existentes de jest a vitest
+
+Usando Vitest
+  documentacion
+    https://vitest.dev/guide/
+
+  instalar vitest
+    npm install -D vitest
+
+  agregar script a package.json
+    {
+      "scripts": {
+        // ...otros scripts,
+        "test": "vitest"
+      }
+    }
+
+  nombrar archivos que contienen tests con .test.js o .test.jsx o .test.ts o .test.tsx
+
+    cuando ejecutas vitest se ejecutan todos eso archivos
+
+      si pones el ejemplo de las pruebas que se mencionaban anteriormente
+        en un archivo como my-test.test.js
+          se ejecutarian estas pruebas con vitest
+
+  ejecutar vitest
+
+    npm run test
+
+      esto corre vitest en modo watch (checa los archivos de tests por algun cambio)
+
+puedes chequear las aserciones que vienen en vitest aqui
+
+  https://vitest.dev/api/expect.html
+
+otras consideraciones para armar tests
+
+  la funcion it
+    es un alias de la funcion 'test' (es lo mismo)
+      pero encaja mejor al escribir el test como una frase
+
+  describe
+    solamente una forma de agrupar tus tests
+      para que aparezcan juntos en los resultados de las pruebas
+      cuando se ejecutan todas las pruebas con el comando
+
+  metodos it.todo y it.skip
+    it.todo: el metodo aun no esta completo asi que no se ejecutara
+    it.skip: el metodo esta completo pero por alguna razon no lo ejecutaremos
+
+  metodo expect.hasAssertions()
+    si un test no lanza un error siempre pasara
+      pero si no haces nunca un expect dentro del test entonces nunca lanzara un error
+        y esos serian falsos positivos
+          expect.hasAssertions() se asegura de que tengas al menos un expect en tu test

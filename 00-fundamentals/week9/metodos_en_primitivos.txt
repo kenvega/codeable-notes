@@ -1,0 +1,47 @@
+en JavaScript existen 7 tipos de datos primitivos
+  string, number, boolean, undefined, null, bigint y symbol
+
+  estos datos representan un valor inmutable y son extremadamente sencillos
+
+por otro lado existen tambien objetos
+  son datos complejos y mutables
+  pueden tener propiedades y métodos, los datos primitivos no
+
+entonces por que esto es posible
+  ejemplo
+    let cadena = "ejemplo";
+
+    cadena.length; // 8
+    cadena.toUpperCase(); // 'EJEMPLO'
+
+  acaso el valor "ejemplo" tiene una propiedad llamada length y un método llamado toUpperCase?
+
+  esto es lo que ocurre cuando escribimos la expresión cadena.length
+
+    el motor de JavaScript se da cuenta que
+      estamos intentado acceder a una propiedad sobre un string (que es un dato primitivo)
+
+    internamente, JavaScript crea un objeto temporal utilizando la función constructora apropiada
+      en este caso utilizará la función String
+        objeto = new String(cadena);
+
+    ya sabemos que el objeto que construye tiene como prototipo el objeto almacenado en String.prototype
+
+    el resultado (objeto en este caso) es un objeto con propiedades individuales y métodos heredados de su prototipo
+
+    luego de eso recien empieza la búsqueda de la propiedad length
+
+    encuentra que length es una propiedad "propia" (con valor 7 para este caso de string 'ejemplo') y lo retorna
+
+    finalmente elimina el objeto temporal de la memoria
+
+  en términos coloquiales se dice que JavaScript "envuelve" los datos primitivos
+    en un objeto para añadirle temporalmente propiedades y métodos en tiempo de ejecución
+
+  esto ocurre solamente para los datos primitivos del tipo string, number y boolean
+    cada tipo de dato tiene su función constructora correspondiente String, Number y Boolean
+
+    los datos del tipo undefined, null, bigint y symbol no cuentan con una función constructora
+
+
+

@@ -28,10 +28,29 @@ Introducción
     si te encuentras con algo que es undefined puedes intuir que es un error o que "se te olvidó" asignar un valor
       mientras que cuando te encuentras con null sabes que tú o alguien colocó ese valor intencionalmente
 
-    
-  Booleans
 
-Operadores lógicos
+  Booleans
+    solo existen dos valores booleanos: true y false
+
+    "truthy" y "falsy"
+      todos los valores de JavaScript pueden traducirse en un valor booleano true o false
+        esto se logra mediante la función constructora Boolean
+          ejm
+            Boolean("Hola"); // true -- entonces "Hola" es truthy
+            Boolean(null); // false -- entonces "null" es falsy
+            Boolean(1000); // true -- entonces 1000 es truthy
+
+        en general es mas facil recordar que valores son falsy, el resto seria truthy
+          los valores falsy son
+            Boolean(false); // false
+            Boolean(undefined); // false
+            Boolean(null); // false
+            Boolean(""); // false
+            Boolean(0); // false
+            Boolean(NaN); // false
+
+            * Boolean([]) // truthy (un array vacio no es falsy)
+
   Numbers
   BigInts
   Strings

@@ -73,3 +73,9 @@ test("decimals are rounded to 5 after the point", () => {
   // nothing from 0.30000000000000004 is removed
   expect(0.2 + 0.1).not.toBeCloseTo(0.3, 50);
 });
+
+// throw test
+test("expect rejects toThrow", async ({ expect }) => {
+  const promise = Promise.reject(new Error("Test message you can send"));
+  await expect(promise).rejects.toThrowError("Test message you can"); // this should be included in the Error message
+});

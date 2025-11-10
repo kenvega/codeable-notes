@@ -1,0 +1,283 @@
+quote de kent c doods
+  "Cuanto más se parezcan tus pruebas a la forma en que se utiliza tu software, más confianza pueden brindarte."
+    https://twitter.com/kentcdodds/status/977018512689455106
+
+sobre los tipos de usuarios para tu codigo relacionado con los tests
+  el usuario final que interactúa con tu código (haciendo clic en botones, etc.).
+  otros desarrolladores que usan nuestro código (renderizando componentes, llamando a funciones, etc.).
+  no incluyas un tercer usuario como el test user: https://kentcdodds.com/blog/avoid-the-test-user
+
+Cuando haces tests de implementation details introduces a un nuevo usuario. El test user
+
+  Implementation details
+    "are things which users of your code will not typically use, see, or even know about"
+      source: https://kentcdodds.com/blog/testing-implementation-details#why-is-testing-implementation-detailsbad
+
+    si tu entras a hacer tests con los nombres de tus estados
+      eso es algo que a tu usuario no le importa ni tampoco ve
+      no le importa si ese estado es un valor primitivo o es un array
+      a ese usuario le importa lo que se renderiza solamente
+      asi que tus tests no deberian estar testeando los estados sino lo que se renderiza
+
+        si terminas testeando los estados estas testeando implementation details y terminarias con tests fragiles
+          estos tests incluso pueden dar falsos negativos cuando cambies tu codigo
+
+
+usuario desarrollador
+  renderizará nuestro componente utilizando ReactDOM
+  y pasará props y/o lo envolverá en un proveedor de contexto
+
+usuario final
+  interactuará con la UI (haciendo clic en botones, etc.)
+  y esperará que ocurra algo
+
+para ejecutar tests para componentes de react
+  necesitas tener un concepto de DOM
+    pero Node.js no tiene un DOM como tal asi que se necesita la libreria jsdom
+
+    asi que instalamos jsdom
+      npm install -D jsdom
+
+    luego cada que se quiera usar jsdom para hacer test de react
+      se usa una directiva (un comentario especial) al inicio del archivo 
+
+      ejm
+        // @vitest-environment jsdom
+
+        import { expect, test } from "vitest";
+
+        test("El objeto document debe existir", () => {
+          expect(document).toBeDefined();
+        });
+
+al implementar de manera "manual" los tests normalmente se tienen estos problemas
+
+  selección de elementos del DOM
+    se hardcodea la posicion de botones a presionar
+      entonces si la estructura de componentes cambia los tests se rompen
+
+  simulación superficial de interacciones
+    se usa el metodo click en botones
+      pero en la vida real se disparan mas eventos
+        mousedown, focus, mouseup y otros
+
+  potenciales filtraciones de memoria
+    debes recordar desmontar los componentes de react
+      con lineas como estas
+        ReactDOM.unmountComponentAtNode(document.body.firstElementChild)
+
+React Testing Library (RTL)
+
+  solución muy ligera para probar componentes de React
+
+  proporciona funciones de utilidad sobre react-dom y react-dom/test-utils
+    de una manera que fomenta mejores prácticas de prueba
+
+  basada en
+    "Cuanto más se parezcan tus pruebas a la forma en que se utiliza tu software, más confianza pueden brindarte"
+
+  install
+    npm install -D @testing-library/react
+
+  metodo render de RTL
+    para renderizar un componente de React en el DOM virtual (jsdom)
+
+  metodo cleanup de RTL
+    para desmontar formalmente los componentes que se montan en un test antes de empezar el siguiente test
+
+    la podemos ejecutar después de cada test con afterEach de Vitest
+
+    se puede configurar RTL para que ejecute automaticamente la funcion cleanup luego de cada test tambien
+      solo se necesita cambiar el archivo vite.config.js
+      luego de eso ya no es necesario agregar afterEach(() => cleanup());
+
+      ejemplo de config:
+
+        import { defineConfig } from "vite";
+        import react from "@vitejs/plugin-react";
+
+        // https://vitejs.dev/config/
+        export default defineConfig({
+          plugins: [react()],
+          // esta parte se agrega a test. con eso ya no es necesario usar cleanup en afterEach
+          // it just makes afterEach global so RTL can register afterEach(cleanup) for you
+          test: {
+            globals: true,
+          },
+        });
+
+  act y fireEvent
+
+    React 18 exige que los eventos que cambian de estado y generan un re-render estén envueltos en la función act
+
+      ejm 
+        incrementButton.click(); // no funcionaria en el test de counter
+
+        act(() => incrementButton.click()); // si funciona en el test de counter
+
+    tambien se puede usar fireEvent
+      ejm
+        fireEvent.click(incrementButton) // seria lo mismo pero es mas legible en lugar de envolverlo en act
+
+    ambos vienen de RTL
+      import { fireEvent, act } from "@testing-library/react";
+
+  userEvent
+
+    simular un click no es exactamente la misma experiencia que tiene el usuario en la vida real
+      hay muchos mas eventos y como RTL quiere hacer que los tests se parezcan bastante a la experiencia real
+        ellos ofrecen una libreria que te permite simular esos eventos
+
+          npm install -D @testing-library/user-event
+
+    la idea es configurar un usuario
+      segun la documentacion https://testing-library.com/docs/user-event/intro/#writing-tests-with-userevent
+
+      ejm
+        import userEvent from '@testing-library/user-event'
+
+        test('description', async () => {
+          const user = userEvent.setup();
+
+          // ...
+        })
+
+
+    estos son algunos de los eventos que ofrece
+      await user.click(element);
+      await user.dblClick(element);
+      await user.hover(element);
+      await user.unhover(element);
+      await user.type(input, "texto a ingresar por el usuario");
+      await user.clear(input);
+
+    y la idea seria que ya no se usa fireEvent sino userEvent
+
+
+como evitar amarrar el test a los detalles de la implementacion
+
+  hacer esto
+    const incrementButton = document.body.querySelectorAll("button")[2]
+
+      implica que dependes de la implementacion de tus componentes
+        si la estructura cambia entonces tu test se rompe pero probablemente el componente funcione bien aun
+
+  para que nuestros test sean más resilientes a cambios menores
+    RTL nos ofrece un conjunto "Queries" (se ejecutan sobre el metodo screen que tambien lo da RTL)
+      métodos que nos permiten seleccionar elementos del DOM
+        utilizando en la medida de lo posible un mecanismo similar al del usuario final
+
+        podemos seleccionar elementos
+          ByText
+            busca elementos por su contenido de texto
+
+          ByLabelText
+            busca un <label> con un texto determinado pero selecciona el <input> asociado
+
+          ByPlaceholderText
+            busca un <input> en base al texto placeholder
+
+          ByDisplayValue
+            busca un <input> por su valor
+            en el caso de input y textarea es por su contenido
+            en el caso de select es por el valor que se muestra al usuario (no el valor interno)
+
+          ByRole
+            busca elementos por su "rol"
+            muchos elementos HTML tienen roles nativos incorporados
+            también es posible agregar roles a mano usando los atributos aria-*
+
+        cada una de estas estrategias de búsqueda puede ser utilizada con 6 tipos de queries
+          get, getAll, query, queryAll, find y findAll
+
+          ejm: para ByText los métodos disponibles para buscar son
+            getByText
+            getAllByText
+            queryByText
+            queryAllByText
+            findByText
+            findAllByText
+
+        tabla referencia
+          para elementos singulares
+            | Type of query | 0 Matches   | 1 Match        | > 1 Matches | Retry(Async/Await) |
+            | ------------- | ----------- | -------------- | ----------- | ------------------ |
+            | getBy...      | Throw error | Return element | Throw error | no                 |
+            | queryBy...    | Return null | Return element | Throw error | no                 |
+            | findBy...     | Throw error | Return element | Throw error | yes                |
+            |               |             |                |             |                    |
+
+          para elementos multiples
+            | Type of query | 0 Matches   | 1 Match        | > 1 Matches  | Retry(Async/Await) |
+            | ------------- | ----------- | -------------- | ------------ | ------------------ |
+            | getAllBy...   | Throw error | Return array   | Return array | no                 |
+            | queryAllBy... | Return []   | Return array   | Return array | no                 |
+            | findAllBy...  | Throw error | Return array   | Return array | yes                |
+            |               |             |                |              |                    |
+
+    se usan en conjunto con el metodo screen
+      import { render, screen } from "@testing-library/react";
+
+      render(<Counter />);
+
+      const message = screen.getByText("Counter", { exact: false });
+      // usando regex -> screen.getByText(/counter/i);
+
+      expect(message.textContent).toBe("Counter: 0");
+
+      ...
+
+      const incrementButton = screen.getByRole("button", {
+        name: "+",
+      });
+
+    con screen tambien se puede hacer debug
+      sirve para saber lo que se quiere seleccionar
+        screen.debug()
+
+    para poder ver que seleccionar
+      primero hacer debug
+        luego puedes pegar el resultado en https://testing-playground.com/
+
+          y con eso saber como seleccionar haciendo click en el playground interactivo
+
+  extender aserciones con jest-dom
+
+    se usa
+      expect(element.textContent).toBe("Some value")
+
+    no esta mal, pero se puede verificar directamente texto en un elemento asi
+      expect(element).toHaveTextContent("Some value")
+
+    si te parece que queda algo mas claro y legible asi
+      entonces seguro te interesa instalar jest-dom
+
+    jest-dom
+      es una librería que proporciona un conjunto de métodos
+      para hacer afirmaciones específicamente sobre elementos del DOM y su estado
+        también se le conoce como una librería de 'matchers'
+
+      algunos matchers que ofrece son
+        toBeInTheDocument()
+          verifica que un elemento se encuentre presente en el DOM
+
+        toBeDisabled()
+          verifica que un elemento este deshabilitado
+
+        toBeRequired()
+          verifica que un elemento es requerido
+
+        toHaveTextContent()
+          verifica que un elemento tiene un texto dado
+
+    instalar jest-dom
+      npm install -D @testing-library/jest-dom
+
+
+
+
+recordar
+
+  * en RTL para saltar un test se usa test.skip
+
+  * puedes usar https://testing-playground.com/ para poder conseguir selectores

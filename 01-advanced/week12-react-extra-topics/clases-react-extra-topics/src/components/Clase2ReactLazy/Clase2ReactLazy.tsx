@@ -4,9 +4,9 @@ import Summary from "../components_clase2/Summary";
 // import Stories from "../components_clase2/Stories";
 const Comments = React.lazy(() => import("../components_clase2/Comments")); // usar este metodo para reducir el tiempo de carga inicial
 const Stories = React.lazy(() => import("../components_clase2/Stories")); // efectos mas notables activando fast/low 4g y disabling cache en dev tools
-import styles from "./Clase2.module.css";
+import styles from "./Clase2ReactLazy.module.css";
 
-const Clase2 = () => {
+const Clase2ReactLazy = () => {
   const [page, setPage] = React.useState("summary");
 
   return (
@@ -43,4 +43,4 @@ const Clase2 = () => {
   );
 };
 
-export default Clase2;
+export default Clase2ReactLazy;

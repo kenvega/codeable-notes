@@ -1,0 +1,13 @@
+orden
+funcionalidades completas
+diseño. que se vea atractivo
+navegabilidad
+facilidad de uso
+sencillez
+
+domingo 16 nov 23:59
+
+repo en https://github.com/codeableorg/react-evaluation-kenvega
+
+
+

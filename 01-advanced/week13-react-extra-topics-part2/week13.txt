@@ -1,0 +1,3 @@
+se siguio viendo testing, mocking y spying
+
+solo el ultimo dia de esta semana se vio algo de node. pero se contara para la siguiente semana

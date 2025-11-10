@@ -1,0 +1,38 @@
+Introducción
+
+  existen tipos de datos en javascript
+
+  Undefined
+    solo existe un valor para este tipo de dato: undefined
+
+    el valor existe y es tan real como cualquier otro valor
+
+    representa la idea de que no hemos definido un valor intencionalmente
+
+    si bien podemos "invocar" el valor undefined escribiéndolo a mano al igual que podemos escribir 2 o "hola"
+      lo más común es que undefined aparezca de manera "natural"
+        aparece cuando JavaScript no sabe qué valor asignar
+          ejemplo
+            si solo declaramos una variable pero no le asignamos un valor
+              entonces JavaScript le asignará internamente el valor undefined
+
+    si una variable tiene valor undefined
+      de todos modos la variable si existe
+        solo que apunta al valor undefined
+
+  Null
+    solo existe un valor de este tipo: null
+
+    para transmitir intencionalmente que el valor está ausente
+
+    si te encuentras con algo que es undefined puedes intuir que es un error o que "se te olvidó" asignar un valor
+      mientras que cuando te encuentras con null sabes que tú o alguien colocó ese valor intencionalmente
+
+    
+  Booleans
+
+Operadores lógicos
+  Numbers
+  BigInts
+  Strings
+  Symbols

@@ -80,4 +80,25 @@ objeto event en los handlers
 pregunta
   dame un ejemplo de codigo donde target y currentTarget sean distintos y eso pueda llevar a un bug
 
+    ejemplo: si tienes un boton:
+      <button class="delete" data-id="42">
+        <svg><!-- icon --></svg>
+        Delete
+      </button>
 
+      // situacion de bug: usar 'target' para leer los atributos del elemento boton
+      document.querySelectorAll('.delete').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          // si en realidad haces click en el <svg> entonces e.target === <svg> y ese realmente no tendra un dataset.id
+          const id = e.target.dataset.id; // <-- undefined sometimes → bug!
+          // ...deleteItem(id) // blows up or deletes the wrong thing
+        });
+      });
+
+    // usando currentTarget cuando necesitas el elemento al que el handler esta realmente asignado
+    document.querySelectorAll('.delete').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const id = e.currentTarget.dataset.id; // always "42" here
+        deleteItem(id);
+      });
+    });

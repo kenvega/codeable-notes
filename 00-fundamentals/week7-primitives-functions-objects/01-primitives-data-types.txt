@@ -51,6 +51,61 @@ Introducción
 
             * Boolean([]) // truthy (un array vacio no es falsy)
 
+    short-circuit operation
+      para operador &&, la regla es la siguiente:
+        si el primer operando es true (o "truthy"), retorna inmediatamente el valor del segundo operando (sin importar qué valor sea)
+        si el primer operando es false (o "falsy"), retorna inmediatamente ese valor (sin siquiera evaluar el segundo operando)
+
+        ejemplos
+          "Hola" && true; // true
+          false && "falso"; // false
+          10 && 20; // 20
+          undefined && null; // undefined
+
+      para el operador ||, la regla es la siguiente:
+        si el primer operando es true (o "truthy"), retorna inmediatamente ese valor (sin siquiera evaluar el segundo operando)
+        si el primer operando es false (o "falsy"), retorna inmediatamente el valor del segundo operando (sin importar qué valor sea)
+
+        ejemplos
+          "Hola" || true; // "Hola"
+          false || "falso"; // "falso"
+          10 || 20; // 10
+          undefined || null; // null
+
+    operador ! (not)
+      si el operando es true o "truthy" retornará false, de lo contrario retornará true
+        ejemplos
+          !true; // false
+          !false; // true
+          !"Hola"; // false
+          !10; // false
+          !undefined; // true
+
+    multiples operadores lógicos
+
+      es posible encadenar multiples operadores lógicos
+        javaScript ejecutará los operadores en orden de aparición
+
+        los operadores lógicos && y || son "binarios"
+          actúan solo sobre 2 operandos
+            ejemplo para algo asi:
+              true && false && true || false && !false
+
+            para JavaScript, el primer && del ejemplo se lee así:
+              true && (...el segundo operando)
+
+            se sabe que el primer operando es true así que retornará el valor del segundo operando
+              //          ↓↓Nos concentramos en esta parte ahora↓↓
+              true &&     false && (...el segundo operando)
+
+            nos encontramos otra vez con un && pero el primer operando es false
+              entonces, el resultado de esta operación false
+                sin importar el valor del segundo operando (siguiendo la regla de corto-circuito)
+                  JavaScript no necesita calcular más resultados a la derecha
+
+                entonces
+                  true && false && true || false && !false; // false
+
   Numbers
   BigInts
   Strings

@@ -1,27 +1,33 @@
 import s from "./Home.module.css";
 import reactIconUrl from "../../assets/react-icon-lg.svg";
+import { useNavigate } from "react-router-dom";
+import Button from "../Button";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className={s.wrapper}>
       <img src={reactIconUrl} />
       <h1 className={s.title}>React Evaluation</h1>
-      <p className={s.name}>Nombre Apellido</p>
+      <p className={s.name}>Ken Vega</p>
       <div className={s.buttons}>
-        <button
+        <Button
+          variant="outline"
           onClick={() => {
-            /* completar */
+            navigate("/color-game");
           }}
         >
           Color Game
-        </button>
-        <button
+        </Button>
+        <Button
+          variant="outline"
           onClick={() => {
-            /* completar */
+            navigate("/doable");
           }}
         >
           Doable
-        </button>
+        </Button>
       </div>
     </div>
   );

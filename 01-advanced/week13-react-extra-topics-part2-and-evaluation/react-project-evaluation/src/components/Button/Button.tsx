@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 type ButtonProps = {
   size?: "sm" | "md" | "lg";
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "outline";
   children: ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 

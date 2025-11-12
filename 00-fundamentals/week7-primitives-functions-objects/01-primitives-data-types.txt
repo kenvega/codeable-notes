@@ -107,6 +107,37 @@ Introducción
                   true && false && true || false && !false; // false
 
   Numbers
+    Otros lenguajes de programación utilizan diferentes tipos de datos para representar diferentes tipos de números
+      para JavaScript todo tipo de número es un Number
+        sea negativo, positivo, flotante, o numero entero
+
+    sintaxis para operaciones no tan intuitivas
+      % - Módulo o Residuo:
+            Devuelve el resto de una división entera.
+              7 % 3; // 1, porque 7 dividido entre 3 tiene un cociente de 2 y un resto de 1.
+
+      ** - Exponenciación:
+            Eleva el primer número a la potencia del segundo número.
+              2 ** 3; // 8
+
+      - (Operador unario negativo):
+          Devuelve el valor negativo de su operando.
+            let x = 5;
+            -x; // -5
+
+      + (Operador unario positivo):
+          Devuelve su operando convertido a un número.
+          A menudo se utiliza para convertir cadenas de texto a números,
+          pero si el operando ya es un número, no tiene ningún efecto.
+
+          let x = "3"; // el string "3"
+          +x; // 3, el número 3
+
+    matemática de punto flotante
+      es una forma de representar números reales en sistemas informáticos
+      
+
+
   BigInts
   Strings
   Symbols

@@ -135,7 +135,44 @@ Introducción
 
     matemática de punto flotante
       es una forma de representar números reales en sistemas informáticos
-      
+        sirve para representar números muy grandes y muy pequeños de manera eficiente
+        su efecto secundario es que no siempre ser 100% precisa
+          el mundo ideal de las matemáticas, los números reales son infinitos
+            las computadoras no tienen la capacidad de representar esa infinidad de números
+            la cantidad de números que existen en el universo de JavaScript es finita
+
+            es por eso que ocurren cosas como esta:
+              console.log(0.1 + 0.2);  // 0.30000000000000004
+
+            internamente, 0.1 y 0.2 no son representados con precisión absoluta
+              llevando a pequeños errores de redondeo al sumarlos
+
+            otros lenguajes que implementan matemática de punto flotante tienen el mismo inconveniente
+
+      JavaScript puede representar con precisión los números enteros entre
+        Number.MIN_SAFE_INTEGER y Number.MAX_SAFE_INTEGER
+
+        Si intentamos hacer cálculos que sobrepasan estos límites empezaremos a perder precisión también:
+
+          console.log(Number.MAX_SAFE_INTEGER + 1); // 9007199254740992 (funciona)
+          console.log(Number.MAX_SAFE_INTEGER + 2); // 9007199254740992 (error)
+          console.log(Number.MAX_SAFE_INTEGER + 3); // 9007199254740994 (funciona)
+          console.log(Number.MAX_SAFE_INTEGER + 4); // 9007199254740996 (funciona)
+          console.log(Number.MAX_SAFE_INTEGER + 5); // 9007199254740996 (error)
+
+    Numeros especiales
+      el estándar de matemática de punto flotante que utiliza JavaScript
+        incorpora ciertos valores especiales
+          son valores se utilizan para representar resultados de ciertas operaciones particulares
+
+            let a = 1 / 0; // Infinity
+            let b = 0 / 0; // NaN
+            let c = -a; // -Infinity
+            let d = 1 / c; // -0
+
+      NaN significa "Not a Number"
+        es el resultado de una operación aritmética y no es un valor null ni tampoco undefined
+          es por eso que tiene sentido definir un valor especial inválido para este caso de Number
 
 
   BigInts

@@ -59,7 +59,15 @@ obtener el cuerpo de respuesta
       }
 
 pregunta
-  una promesa a se pasa fulfilled incluso si un server responde con un error como por ejemplo 401? o en esos casos pasa rejected?
+  una promesa a se pasa resolved incluso si un server responde con un error como por ejemplo 401? o en esos casos pasa rejected?
+  cuando se hace un request a un servidor con una promesa cuando es que se considera rejected?
+    respuestas
+      eso depende del desarrollador en realidad
+        las promesas no saben de codigos de error 401 o 200 o etc
+        las promesas solo saven de resolved or rejected
+          asi que si tu escribes tu request desde cero con una promesa
+            tu decides si la promesa se hace resolve o reject dependiendo del codigo
 
-  cuando se hace un request a un servidor con una promesa cuando es que se considera rejected? si por ejemplo 
+            en fetch independientemente del codigo igual pasa a resolved. solo pasa a reject si es que falla en low level request
+            en axios si el codigo no es algo que esta en rango de 2xx entonces lo considera reject
 

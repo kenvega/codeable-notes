@@ -21,10 +21,14 @@ interface AuthProviderProps {
 const AuthContext = React.createContext<{
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
+  signup: (email: string, password: string) => Promise<void>;
   logout: () => void;
 }>({
   isAuthenticated: false,
   login: async () => {
+    return Promise.resolve();
+  },
+  signup: async () => {
     return Promise.resolve();
   },
   logout: () => {},
@@ -99,7 +103,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, signup }}>
       {children}
     </AuthContext.Provider>
   );

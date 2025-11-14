@@ -1,6 +1,7 @@
 import styles from "./ColorGame.module.css";
 import { getRandomColors, getStatus, rgbString, statusMessage } from "./utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { rgbColors } from "../../constants";
 import Button from "../Button";
 
 function ColorGame() {
@@ -11,29 +12,29 @@ function ColorGame() {
   const [attempts, setAttempts] = useState<number[]>([]);
 
   const [target, setTarget] = useState(
-    Math.floor(Math.random() * colors.length) // este valor no deberia recalcularse mas abajo. deberia ser el mismo
+    Math.floor(Math.random() * colors.length)
   );
-  useEffect(() => {
-    setTarget(Math.floor(Math.random() * colors.length)); // calcular este valor aleatoriamente cuando ya se hace arriba esta mal
-  }, [colors]);
 
   function handleReset() {
+    const nextColors = getRandomColors(numOfColors);
+    // reset game
     setAttempts([]);
-    setColors(getRandomColors(numOfColors));
-    setTarget(Math.floor(Math.random() * colors.length));
+    setColors(nextColors);
+    setTarget(Math.floor(Math.random() * nextColors.length));
   }
 
   function handleChangeNumber(event: React.ChangeEvent<HTMLInputElement>) {
     const newNumOfColors = parseInt(event.target.value, 10);
+    const nextColors = getRandomColors(newNumOfColors);
+
     setNumOfColors(newNumOfColors);
-    // reset game after new number of colors
+    // reset game
     setAttempts([]);
-    setColors(getRandomColors(newNumOfColors));
+    setColors(nextColors);
+    setTarget(Math.floor(Math.random() * nextColors.length));
   }
 
   const status = getStatus(attempts, target, numOfColors);
-
-  console.log("colors[target]: ", colors[target]);
 
   return (
     <div className={styles.wrapper}>
@@ -42,8 +43,20 @@ function ColorGame() {
         Guess which color correspond to the following RGB code
       </p>
 
-      {/* TODO: aqui usar un map y poner dentro de un container el valor con el numero */}
-      <div className={styles["rgb-wrapper"]}>{rgbString(colors[target])}</div>
+      <div className={styles["rgb-wrapper"]}>
+        {colors[target].map((colorPart, index) => {
+          return (
+            <div
+              key={index}
+              className={styles.rgb}
+              style={{ borderColor: rgbColors[index] }}
+            >
+              <p className={styles["color-number"]}>{colorPart}</p>
+              <p>{rgbColors[index]}</p>
+            </div>
+          );
+        })}
+      </div>
       <div className={styles.dashboard}>
         <div className={styles["number-input"]}>
           <label htmlFor="colors"># Colors</label>
@@ -62,15 +75,18 @@ function ColorGame() {
       </div>
       <div className={styles.squares}>
         {colors.map((color, index) => {
-          const backgroundColor = rgbString(color);
-          const opacity = attempts.includes(index) ? "0" : "100";
+          const backgroundColor =
+            status === "win" ? rgbString(colors[target]) : rgbString(color);
+          const opacity =
+            attempts.includes(index) && status !== "win" ? "0" : "100";
 
           return (
             <button
               key={index}
               style={{ backgroundColor, opacity }}
+              disabled={status !== "playing"}
               onClick={() => {
-                /* completar */
+                setAttempts([...attempts, index]);
               }}
               className={styles.square}
             ></button>

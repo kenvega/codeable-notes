@@ -220,4 +220,35 @@ Introducción
 
               `La suma de 5 + 4 es ${5 + 4}`; // 'La suma de 5 + 4 es 9'
 
+    modelo mental para strings
+      existe un valor único para cada String posible
+
+      cada vez que escribamos una cadena en nuestro código
+        debemos imaginar que estamos invocando a una cadena que ya existía en el universo de JavaScript
+
+      es imposible que todas las cadenas posibles se almacenen físicamente en la memoria de una computadora
+        pero es posible imaginar que todas las cadenas posibles existen en nuestra mente
+
+    concatenación de strings
+
+      el operador de concatenación +
+        podemos decir que el operador de concatenación y el operador de suma utilizan el mismo símbolo
+          que solo uno de ellos va a actuar en determinada circunstancia
+
+          si los operandos son números
+            se aplicará el operador de suma
+          si los operandos con strings
+            se aplicará concatenación
+
+          el operador de concatenación retorna una nueva cadena que es la unión de las dos cadenas que operó:
+            let union = "Hello" + " there";
+            console.log(union); // 'Hello there'
+
+    Symbols
+      se define de la siguiente manera
+        let abracadabra = Symbol();
+        console.log(typeof(abracadabra)); // "symbol"
+
+
+
   Symbols

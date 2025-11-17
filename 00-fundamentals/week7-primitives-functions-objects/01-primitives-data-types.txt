@@ -174,7 +174,50 @@ Introducción
         es el resultado de una operación aritmética y no es un valor null ni tampoco undefined
           es por eso que tiene sentido definir un valor especial inválido para este caso de Number
 
-
   BigInts
-  Strings
+
+    un tipo de dato que puedo no tener límites
+    en nuestro universo digital, hay un número infinito de BigInts, uno por cada entero que conocemos en matemáticas
+    según las especificaciones, los BigInts tienen precisión arbitraria
+
+    ejm
+      let cuchuMil = 9007199254740991n; // ¡La "n" al final lo convierte en un BigInt!
+      console.log(cuchuMil + 1n); // 9007199254740992n
+      console.log(cuchuMil + 2n); // 9007199254740993n
+      console.log(cuchuMil + 3n); // 9007199254740994n
+      console.log(cuchuMil + 4n); // 9007199254740995n
+      console.log(cuchuMil + 5n); // 9007199254740996n
+
+    los BigInts no tienen problemas con redondeos y son ideales para cálculos financieros
+      donde la precisión es fundamental
+
+    la desventaja es que la s operaciones con números extremadamente grandes pueden consumir tiempo y recursos
+      no podemos albergar todos los BigInts posibles en la memoria de una computadora
+        si lo intentáramos, tarde o temprano, nuestra máquina colapsaría
+
+    * Los BigInts son una incorporación reciente en JavaScript, por lo que aún no son ampliamente utilizados.
+
+  Strings (o tambien llamados Cadenas de texto)
+
+    existen dos formas de definir literalmente un String cadena: usando comillas simples o comillas dobles
+      console.log(typeof("¡Hola!")); // "string"
+      console.log(typeof('¡Hola!')); // "string"
+
+    un String vacío sigue siendo un String válido:
+
+      console.log(typeof('')); // "string"
+
+    existe una tercera forma de crear una cadena
+      utilizando un "template string" (plantilla de texto)
+        un template string se crea utilizando tildes invertidas (backticks)
+
+          console.log(typeof(`Template String`)); // "string"
+
+        permite incrustar expresiones dentro de la cadena
+          que se evaluarán y se convertirán en su valor correspondiente cuando la cadena se interpreta
+            las expresiones que se colocan entre ${} son evaluadas por el motor de JavaScript
+              y su resultado es convertido a String para ser incrustado en la cadena inicial
+
+              `La suma de 5 + 4 es ${5 + 4}`; // 'La suma de 5 + 4 es 9'
+
   Symbols

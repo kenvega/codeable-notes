@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, expect, test } from "vitest";
-import Counter from "../components/components_clase3/Counter";
+import Counter from "../../components/components_clase3/Counter";
 import { fireEvent, render, act, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -42,7 +42,6 @@ describe("Counter", () => {
   test("decrements by one when decrement button is clicked", async () => {
     const user = userEvent.setup();
     render(<Counter />);
-
     const message = document.body.querySelector("h1");
     const buttons = document.body.querySelectorAll("button");
     const decrementButton = buttons[0];

@@ -1,11 +1,10 @@
-import * as React from "react";
 import clsx from "clsx";
-import s from "./App.module.css";
+import styles from "./App.module.css";
 
 import reactIconUrl from "../../assets/react-icon-lg.svg";
-import Home from "../Home";
-import ColorGame from "../ColorGame";
-import Doable from "../Doable";
+
+import { useNavigate, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const navigation = [
   {
@@ -19,38 +18,36 @@ const navigation = [
 ];
 
 function App() {
-  const [page, setPage] = React.useState("/");
+  const navigate = useNavigate();
 
   return (
-    <div className={s.wrapper}>
-      <header className={s.header}>
+    <div className={styles.wrapper}>
+      <header className={styles.header}>
         <button
-          className={s.logo}
+          className={styles.logo}
           onClick={() => {
-            /* completar */
+            navigate("/");
           }}
         >
           <img src={reactIconUrl} /> React Evaluation
         </button>
-        <nav className={s.nav}>
+
+        <nav className={styles.nav}>
           {navigation.map((item) => (
-            <button
+            <NavLink
               key={item.to}
-              className={clsx(s["nav-item"], page === item.to && s.current)}
-              onClick={() => {
-                /* completar */
-              }}
+              to={item.to}
+              className={({ isActive }) =>
+                clsx(styles["nav-item"], isActive && styles.current)
+              }
             >
               {item.name}
-            </button>
+            </NavLink>
           ))}
         </nav>
       </header>
-      <main className={s.main}>
-        {/* Utiliza la variable 'page' para renderizar solo uno de los siguientes */}
-        <Home />
-        <ColorGame />
-        <Doable />
+      <main className={styles.main}>
+        <Outlet />
       </main>
     </div>
   );

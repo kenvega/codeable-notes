@@ -3,7 +3,7 @@
 import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
 import { beforeEach, describe, expect, test } from "vitest";
-import Counter from "../components/components_clase3/Counter";
+import Counter from "../../components/components_clase3/Counter";
 
 let rootDiv;
 

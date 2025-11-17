@@ -1,0 +1,20 @@
+para cuando quieres testear casos en los que
+  las interacciones del usuario no solo generan cambios en la UI
+
+  porque en algunos casos las interacciones de usuarios
+    ingresan datos
+    disparan ejecucion de funciones
+
+  por ejemplo para un formulario de login 
+    necesitas asegurarte de que
+      el usuario pueda encontrar los campos en el formulario
+      rellenar su información
+      validar que, cuando envíen el formulario, los datos enviados sean correctos
+
+se suelen pasar funciones ficticias y se verifican si funcionan
+  esto es muy comun en react
+    por eso en vitest y en jest ya hay utilidades que ofrecen hacer esto
+
+
+funciones mock
+

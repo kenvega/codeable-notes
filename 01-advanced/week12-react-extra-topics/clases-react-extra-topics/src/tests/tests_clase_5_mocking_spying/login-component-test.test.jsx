@@ -3,7 +3,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
-import Login from "../components/components_clase5/Login";
+import Login from "../../components/components_clase5/Login";
 
 describe("Login", () => {
   // con las herramientas que tenemos hasta ahora se puede probar el componente de Login de esta manera:

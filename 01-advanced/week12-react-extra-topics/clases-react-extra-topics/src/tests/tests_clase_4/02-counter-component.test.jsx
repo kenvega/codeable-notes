@@ -5,7 +5,7 @@
 import { createRoot } from "react-dom/client";
 import { act } from "react-dom/test-utils";
 import { describe, expect, test } from "vitest";
-import Counter from "../components/components_clase3/Counter";
+import Counter from "../../components/components_clase3/Counter";
 
 describe("Counter", () => {
   test("start with the counter on 0", async () => {

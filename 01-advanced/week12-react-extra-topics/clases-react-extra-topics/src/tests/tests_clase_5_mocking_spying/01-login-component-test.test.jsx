@@ -4,9 +4,9 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, test } from "vitest";
 import Login from "../../components/components_clase5/Login";
+// con las herramientas que tenemos hasta ahora se puede probar el componente de Login de esta manera:
 
 describe("Login", () => {
-  // con las herramientas que tenemos hasta ahora se puede probar el componente de Login de esta manera:
   test("submit the form calls onSubmitForm with username and password", async () => {
     const user = userEvent.setup();
 

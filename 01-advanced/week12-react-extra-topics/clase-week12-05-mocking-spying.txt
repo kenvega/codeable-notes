@@ -16,5 +16,102 @@ se suelen pasar funciones ficticias y se verifican si funcionan
     por eso en vitest y en jest ya hay utilidades que ofrecen hacer esto
 
 
-funciones mock
+Usando Vitest mock functions
+
+  funciones mock de Vitest
+    dan capacidades nuevas
+      - aserciones especiales como toHaveBeenCalled -- https://vitest.dev/api/expect.html#tohavebeencalled
+      - habilidad para simular implementacion
+          mas info en la documentacion https://vitest.dev/api/vi.html#mocking-functions-and-objects
+
+  cuando usamos un mock function
+    podemos hacer aserciones sobre varios aspectos de la función
+      ejemplos:
+
+        toHaveBeenCalled
+          verifica que la función fue llamada/ejecutada al menos una vez
+        toHaveBeenCalledTimes
+          verifica que la función fue llamada un número de veces específico
+        toHaveBeenCalledWith
+          verifica que haya sido llamada con ciertos argumentos específicos
+        toHaveBeenLastCalledWith
+          verifica que haya sido llamada con ciertos argumentos en su última ejecución
+
+Pruebas de integración con backend
+
+  si queremos que nuestras pruebas reflejen exactamente el comportamiento del usuario
+    pues también deberían iniciar peticiones al backend
+      pero hay inconvenientes para crear pruebas de componentes de react que hagan peticiones al backend
+
+        - dependencia del entorno del servidor
+            si el servidor esta caido o no hay red los tests fallarian
+
+        - inconsistencia de datos
+            las pruebas se pueden afectar dependiendo de los datos que hayan en el servidor
+
+        - velocidad de ejecucion
+            las peticiones a servidores reales pueden ser muy lentas y aumenta el tiempo de ejecucion de pruebas
+
+        - dificultad en el control del estado
+            dificil preparar y controlar el estado exacto del servidor para cada prueba
+              sobre todo si se trata de pruebas pararelas o concurrentes
+
+        - costo de infraestructura
+            hacer peticiones reales puede incurrir en costos adicionales
+              sobre todo si se usan servicios en la nube que cobran por trafico de red o carga de servidor
+
+        - dificultad en probar casos de error
+            probar como se manejan los errores del servidor puede ser complicado en un entorno real
+              ejm: codigos de estado 500, tiempo de espera agotado, etc
+
+        - efectos secundarios indeseados
+            las pruebas pueden modificar el estado del servidor de manera irreversible o indeseada
+              podria afectar a otros procesos de pruebas
+
+  por eso se usan funciones mock. un entorno controlado que simula las respuestas del servidor
+    se sacrifica un poco de confianza en las pruebas por velocidad
+
+  * en contextos especificos se recomienda hacer pruebas end-to-end (E2E)
+      con Cypress, o Playwright para tener pruebas mas reales a costo de velocidad y potenciales costos
+
+
+vi.spyOn
+
+  es un wrapper para una funcion
+    permite ver
+      cuantas veces una funcion se llamo
+        con que argumentos se llamo, que retorno, etc
+      si se desea, se puede cambiar el comportamiento de la funcion (esto es mock implementation)
+        de una manera segura y reversible
+
+  ejm simplificado de uso
+    si se hace
+      vi.spyOn(obj, "methodName")
+
+      se reemplaza el obj.methodName con una funcion mock
+        pero aun se sabe cual es la implementacion original
+        graba el comportamiento de las llamadas que se tuvo en esa funcion
+        puede ser configurse el comportamiento de la funcion
+
+    ejm de uso de spyOn
+      const logSpy = vi.spyOn(console, "log");
+
+      console.log("hello", 123);
+
+      // assertions
+      expect(logSpy).toHaveBeenCalledTimes(1);
+      expect(logSpy).toHaveBeenCalledWith("hello", 123);
+
+      // restore original
+      logSpy.mockRestore();
+
+  
+
+
+
+
+
+
+
+
 

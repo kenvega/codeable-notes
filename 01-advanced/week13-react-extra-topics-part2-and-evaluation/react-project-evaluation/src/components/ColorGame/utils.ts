@@ -6,16 +6,20 @@ export function getRandomColor() {
   ];
 }
 
-export function rgbString(color) {
+export function rgbString(color: number[]): string {
   const [r, g, b] = color;
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-export function getRandomColors(n) {
+export function getRandomColors(n: number): number[][] {
   return [...Array(n)].map(() => getRandomColor());
 }
 
-export function getStatus(attempts, target, numOfColors) {
+export function getStatus(
+  attempts: number[],
+  target: number,
+  numOfColors: number
+): "playing" | "win" | "lose" {
   if (attempts.length === numOfColors - 1) return "lose";
   if (attempts.includes(target)) return "win";
   return "playing";

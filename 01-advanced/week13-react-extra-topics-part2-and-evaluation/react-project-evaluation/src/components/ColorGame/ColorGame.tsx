@@ -63,6 +63,7 @@ function ColorGame() {
           <input
             id="colors"
             type="number"
+            data-testid="colors"
             value={numOfColors}
             onChange={handleChangeNumber}
             step={3}

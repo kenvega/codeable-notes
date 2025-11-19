@@ -1,4 +1,6 @@
-export function sortTasks(tasks, sortBy) {
+import type { Task } from "../../services/tasks";
+
+export function sortTasks(tasks: Task[], sortBy: string) {
   switch (sortBy) {
     case "due_date-desc": {
       return [...tasks].sort(
@@ -21,7 +23,10 @@ export function sortTasks(tasks, sortBy) {
   }
 }
 
-export function filterTasks(tasks, filters) {
+export function filterTasks(
+  tasks: Task[],
+  filters: { onlyPending: boolean; onlyImportant: boolean }
+) {
   return tasks.filter((task) => {
     const { onlyPending, onlyImportant } = filters;
     if (onlyPending && onlyImportant) return !task.completed && task.important;

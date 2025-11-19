@@ -1,29 +1,33 @@
 import * as React from "react";
 import s from "./Unauthenticated.module.css";
+import { useAuth } from "../../contexts/authContext";
+import Button from "../Button";
 
 function Unauthenticated() {
-  //TODO: Obtener del contexto login y signup
-  const login = (email: string, password: string) => {
-    console.log("Email:", email);
-    console.log("Password:", password);
-    return Promise.resolve("Login success");
-  };
-  const signup = (email: string, password: string) => {
-    console.log("Email:", email);
-    console.log("Password:", password);
-    return Promise.resolve("Signup success");
-  };
+  const { login, signup } = useAuth();
 
   const [status, setStatus] = React.useState("idle");
   const [activeTab, setActiveTab] = React.useState("login");
   const [signUpErrors, setSignUpErrors] = React.useState(null);
 
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  function handleInputChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+    name: "email" | "password"
+  ) {
+    const { value } = event.target;
+
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  }
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    // obtener datos del formulario
-    const email = "";
-    const password = "";
 
     setStatus("loading");
 
@@ -74,6 +78,8 @@ function Unauthenticated() {
             type="email"
             name="email"
             placeholder="user@example.com"
+            value={email}
+            onChange={(event) => handleInputChange(event, "email")}
             required
           />
         </div>
@@ -83,13 +89,15 @@ function Unauthenticated() {
             type="password"
             id="password"
             name="password"
+            value={password}
+            onChange={(event) => handleInputChange(event, "password")}
             required
             minLength={6}
           />
         </div>
-        <button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isLoading}>
           {isLoading ? "Loading..." : buttonText}
-        </button>
+        </Button>
       </form>
       {hasError && (
         <p className={s["error-message"]}>

@@ -22,6 +22,11 @@ export type TaskData = {
   completed?: boolean;
 };
 
+export type EditTaskData = {
+  important?: boolean;
+  completed?: boolean;
+};
+
 export async function getTasks() {
   const token = window.localStorage.getItem(tokenKey);
 
@@ -77,7 +82,7 @@ export async function createTask(taskData: TaskData) {
   }
 }
 
-export async function editTask(id: number, editData: TaskData) {
+export async function editTask(id: number, editData: EditTaskData) {
   const token = window.localStorage.getItem(tokenKey);
 
   const options = {

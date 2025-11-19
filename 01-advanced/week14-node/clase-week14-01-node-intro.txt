@@ -1,0 +1,213 @@
+* la primera clase de node se dio la semana pasada el viernes
+    pero se consideró ponerlo todo en un mismo archivo para esta semana
+
+
+introduccion a node
+
+  ofrece soluciones eficientes
+  escalables
+  puede manejar millones de usuarios sin presentar bloqueos
+
+  tiene naturaleza no bloqueante
+
+  está orientada a eventos
+
+  versatil
+    puedes crear paginas web simples como aplicaciones muy complejas
+
+  tiene integracion con Electron
+    asi que con node puedes crear apps para Mac y windows
+      y con Ionic puedes crear apps mobiles tmb
+
+  otra ventaja es poder construir aplicaciones complejas
+    de principio a fin usando un solo lenguaje
+
+objetivo
+  construir aplicaciones web (principalmente RESTful APIs) usando node.js
+
+la web: arquitectura cliente - servidor
+  al abrir una pagina web / aplicacion web
+
+    - para que el navegador muestro "algo" en la pantalla
+        primero necesita saber qué archivos procesar (HTML, CSS, JavaScript, imágenes, etc.).
+
+    - para obtener esos archivos
+        el usuario escribe una url en la barra de direcciones y presiona 'enter'
+        digamos que la url es: http://server.com/index.html
+
+    - el navegador inicia una solicitud/request y la envía por internet
+        esa solicitud contiene la información necesaria para
+          viajar desde la tarjeta de red del cliente,
+          pasando por el router/modem de su hogar, por la red de computadoras interconectadas (Internet),
+          hasta llegar a su destino:
+            el servidor ubicado en la dirección server.com
+
+    - un servidor no es más que una computadora que esta ejecutando un programa que su tarea es "escuchar"
+        cualquier solicitud que pueda llegar y retornar una respuesta adecuada.
+
+    - cuando la solicitud llega al servidor, este inspecciona la solicitud y determina qué proceso realizar
+        en este caso, se está solicitando el recurso/archivo llamado index.html
+
+    - el servidor accede a su sistema de archivos (su disco duro) y busca el archivo requerido
+        si lo encuentra, copia su contenido y lo agrega al mensaje de respuesta (response)
+
+    - agrega también información adicional entre la cual se encuentra el código de estado
+        como el archivo index.html se encontró exitosamente y será retornado, el código de estado será "ok" (código 200)
+
+    - una vez el mensaje de respuesta esta completo
+        el servidor lo envía de vuelta al cliente por medio de su tarjeta de red
+        este mensaje viaja una ve más por internet hasta llegar a la computadora del cliente
+
+    - el cliente recibe el mensaje de respuesta y lo procesa mostrando en la pantalla el archivo HTML recibido
+
+  las solicitudes tambien se pueden hacer asi
+    formularios web
+    solicitudes por JavaScript con fetch
+
+  una solicitud, de manera general, es un mensaje que dispara una acción en el servidor
+    esa acción puede ser realmente cualquier cosa
+
+    tambien se puede devolver archivos en formato json
+
+  entonces el servidor puede
+    escuchar por la red solicitudes
+    leer su disco duro
+
+    esto antes no se podia hacer con js hasta que llego node
+
+
+Node js
+
+  para poder acceder a las características internas de la computador
+    tarjeta de red, sistema de archivos, etc.
+      Node.js está construido en base al motor V8 de Google que está escrito en C++
+        aunque escribamos nuestro código en JavaScript
+          este se ejecuta en un entorno que está profundamente arraigado en C++
+
+  node proporciona un conjunto de módulos a través de una API de alto nivel
+    diseñada para ser utilizada directamente en JavaScript
+
+    estos módulos abstraen muchas de las funcionalidades de bajo nivel
+      permiten a los desarrolladores
+        trabajar con redes, sistemas de archivos, y otras operaciones de sistema
+          sin tener que sumergirse en C++ o detalles de bajo nivel
+
+        interactuar directamente con el sistema operativo y el hardware de la computadora
+          de formas que no son posibles ejecutando JavaScript en un navegador
+
+  entre los módulos más importantes del núcleo de Node.js se encuentran
+    - http: para crear servidores HTTP y realizar peticiones como cliente
+
+    - fs: funciones para leer y escribir archivos, y manipular el sistema de archivos
+
+    - path: manejo y transformación de rutas de archivos y directorios
+
+    - os: proporciona información y control sobre el sistema operativo
+
+    - events: facilita la creación y gestión de eventos y la clase EventEmitter
+
+    - stream: trabajo con flujos de datos (streams) para lectura y escritura eficiente
+
+    - buffer: manejo de datos binarios a través de secuencias de bytes
+
+    - child_process: ejecución de procesos externos y comandos del sistema
+
+    - url: utilidades para la resolución y análisis de URLs
+
+    - crypto: funciones de criptografía para seguridad
+
+    - dns: consultas DNS y resolución de nombres de dominio
+
+    - net: creación de aplicaciones basadas en protocolos de red (TCP, IPC)
+
+    - tls/sl: implementación del protocolo TLS/SSL para comunicaciones seguras
+
+
+setup de proyecto de node con typescript
+
+    commandos para el setup
+        mkdir node-playground
+
+        cd node-playground
+
+        npm init -y # this creates the package.json file
+
+        npm install -D typescript @types/node nodemon ts-node
+
+    librerias que se instalan
+        @types/node: proporciona definiciones de tipos TypeScript para los módulos del núcleo de Node.js
+                      permite tener autocompletado y verificación de tipos para las API de Node.js
+
+        nodemon: monitorea los cambios en el código fuente y reinicia automáticamente el servidor
+                    para no tener que reiniciarlo manualmente cada vez que hacemos cambios en el código
+
+        ts-node: permite ejecutar directamente aplicaciones escritas en TypeScript en Node.js
+                    sin necesidad de compilar previamente el código TypeScript a JavaScript
+
+    comandos para la configuracion del servidor
+        npx tsc --init
+            este comando genera el archivo tsconfig.json
+
+    lo puedes modificar
+        {
+          "compilerOptions": {
+            /* Language and Environment */
+            "target": "ESNext",
+
+            /* Modules */
+            "module": "NodeNext",
+            "rootDir": "./src",
+
+            /* Emit */
+            "outDir": "./build",
+
+            /* Interop Constraints */
+            "esModuleInterop": true,
+            "forceConsistentCasingInFileNames": true,
+
+            /* Type Checking */
+            "strict": true,
+            "noImplicitThis": true,
+            "useUnknownInCatchVariables": true,
+            "noUnusedLocals": true,
+            "noUnusedParameters": true,
+            "noImplicitReturns": true,
+            "noFallthroughCasesInSwitch": true,
+            "noImplicitOverride": true,
+            "noPropertyAccessFromIndexSignature": true,
+
+            /* Completeness */
+            "skipLibCheck": true
+          }
+        }
+
+    crea un index.js
+        mkdir src
+        touch src/index.ts
+
+    pon codigo en tu index.js
+        console.log("Node.js + TypeScript");
+
+    añade scripts a package.json
+        ...
+        "scripts": {
+          "dev": "nodemon src/index.ts",
+          "build": "tsc",
+          "start": "node build/index.js",
+          "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        ...
+
+        explicacion
+          dev: ejecuta src/index.ts usando nodemon
+                  se podrá ejecutar directamente sin necesidad de compilar
+                  gracias a la librería node-ts que instalamos previamente
+                  adicionalmente nodemon volverá a ejecutar el archivo cada vez que detecte un cambio
+
+          build: ejecuta tsc para compilar el código TypeScript a JavaScript en el directorio build
+
+          start: ejecuta el archivo build/index.js utilizando node ("versión de producción")
+
+    puedes ejecutar luego
+        npm run dev
+

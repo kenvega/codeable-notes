@@ -249,6 +249,9 @@ Introducción
         let abracadabra = Symbol();
         console.log(typeof(abracadabra)); // "symbol"
 
+      se usan en objetos como una manera de guardar información oculta para el común de los usuario
+
+      es raro que utilicemos símbolos al construir aplicaciones web
 
 
   Symbols

@@ -1,0 +1,38 @@
+cómo Node.js interactúa con las solicitudes HTTP 
+
+cómo podemos manipular estas solicitudes y respuestas para satisfacer nuestras necesidades
+
+para crear un servidor web se puede usar http
+  http es uno de los módulos núcleo de Node.js
+
+    codigo
+
+      import http from "node:http";
+
+      const requestListener: http.RequestListener = (_req, response) => {
+        response.end("Hola Codeable");
+      };
+
+      const server = http.createServer(requestListener);
+      server.listen(5500);
+
+    para probar que funciona
+
+      en navegador ve a http://localhost:5500
+
+      usando curl puedes hacer : curl http://localhost:5500
+
+    como funciona
+      requestListener es similar a como cuando se usa document.addEventListener("click", eventListener)
+        se escucha y se programa como responder
+
+      createServer hace lo que dice que hara. usa el modulo de http de node asi que es low level
+        crearlo no es suficiente por eso se necesita la linea siguiente para escuchar
+
+      esto inicia un "proceso" en la computadora que se mantiene activo indefinidamente
+        por eso que al ejecutar el script, el programa "no termina"
+
+    
+
+
+

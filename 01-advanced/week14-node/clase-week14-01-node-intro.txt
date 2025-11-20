@@ -122,6 +122,9 @@ Node js
 
     - tls/sl: implementación del protocolo TLS/SSL para comunicaciones seguras
 
+  * el objetivo de Node.js es que podamos
+      escribir el código JavaScript que ya conocemos (declarar variables, funciones, etc.)
+        y delegar las tareas de bajo nivel a los módulos del núcleo de Node.js
 
 setup de proyecto de node con typescript
 
@@ -147,6 +150,7 @@ setup de proyecto de node con typescript
     comandos para la configuracion del servidor
         npx tsc --init
             este comando genera el archivo tsconfig.json
+              este archivo le dice como compilar el codigo typescript a javascript
 
     lo puedes modificar
         {
@@ -210,4 +214,35 @@ setup de proyecto de node con typescript
 
     puedes ejecutar luego
         npm run dev
+
+* sobre las opciones de configuracion en tsconfig.json
+    por defecto venia con esta config
+      verbatimModuleSyntax: true (significa no reescribas los imports/exports a commonJS)
+
+        cuando se remueve esto
+          se mantiene el proyecto con commonJS (el estilo antiguo en node)
+
+          aun se puede escribir codigo en typescript con syntaxis moderna como
+            import http from "node:http";
+
+          pero cuando se transpile se terminara usando commonJS
+            // build/index.js (generated)
+            "use strict";
+            var http_1 = require("node:http"); // 👈 TS rewrote this
+
+        tambien se puede poner el proyecto ESM (modern module system)
+
+          en package.json se agrega
+            {
+              "type": "module"
+            }
+
+          asi se puede mantener estas configs de tsconfig.json intactas como venian por defecto
+            "module": "nodenext",
+            "verbatimModuleSyntax": true
+
+          de esta forma typescript ya no reescribe los imports a require
+
+            cuando node checa el package.json y ve el type: module
+              notara que el proyecto usa ES modules asi que correrá los imports/exports de manera nativa
 

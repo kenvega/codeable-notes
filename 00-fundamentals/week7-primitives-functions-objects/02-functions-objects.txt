@@ -1,4 +1,48 @@
 objetos
 
+  son valores mutables
+    se pueden modificar
+
+  los primitivos son inmutables(no se pueden modificar)
+
+  modelo mental
+    let chanchitos = 3;
+    let mosqueteros = 3;
+
+    cada vez que escribimos el valor 3
+      no creamos un número 3
+        sino que hacemos referencia al valor 3 que ya existe previamente
+
+    los objetos son diferentes
+      JavaScript nos permite crear nuevos objetos a nuestra voluntad
+      cada vez que usamos {} estamos creando un nuevo objeto
+
 funciones
 
+  las funciones son valores
+    valores que almacenan bloques de codigo entre sus llaves
+
+  al igual que con los objetos
+    en cada iteración estamos creado una nueva función utilizando una "function expression"
+
+      ejm
+        aqui se pasa el mismo valor siempre porque es un valor inmutable
+          for (let i = 0; i < 5; i++) {
+            console.log(100);
+          }
+
+        aqui se pasan 5 objetos diferentes porque cada que se usa el literal {} se crea un objeto distinto
+          for (let i = 0; i < 5; i++) {
+            console.log({});
+          }
+
+        aqui se pasan 5 funciones distintas porque al definirla como function expression cada vez es distinta
+          for (let i = 0; i < 5; i++) {
+            console.log(function() {});
+          }
+
+  las funciones son valores y podemos apuntar variables a ellas, al igual que con números u objetos.
+
+    let contarEnanos = function() { return 7; };
+    let enanos = contarEnanos;
+    console.log(enanos); // aqui no saldra 7. sino saldra la funcion a la que se esta apuntando. porque nunca se ejecuto a la funcion

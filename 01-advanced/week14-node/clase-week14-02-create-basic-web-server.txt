@@ -10,7 +10,7 @@ para crear un servidor web se puede usar http
       import http from "node:http";
 
       const requestListener: http.RequestListener = (_req, response) => {
-        response.end("Hola Codeable");
+        response.end("Hola Mundo");
       };
 
       const server = http.createServer(requestListener);
@@ -32,7 +32,31 @@ para crear un servidor web se puede usar http
       esto inicia un "proceso" en la computadora que se mantiene activo indefinidamente
         por eso que al ejecutar el script, el programa "no termina"
 
-    
+    recibiendo una solicitud
+      - cuando una nueva solicitud HTTP llega al servidor se emite el evento "request"
+      - el servidor se prepara para ejecutar todos los callbacks (listeners) registrados para el evento "request"
+      - la preparación consiste en crear dos objetos de JavaScript:
+          - un objeto del tipo IncomingMessage que se crea a partir de la información del request entrante
+              este objeto contiene propiedades como headers (que contiene las cabeceras del request),
+              url (un string de la URL del request) y métodos como read() que nos permitiría leer la data (el body) del request
+          - un objeto del tipo ServerResponse que contiene un conjunto de métodos
+              permite configurar el mensaje de respuesta (como write() o setHeaders())
+              y enviarlo de vuelta al cliente (con end())
+      - luego de crear estos objetos, nodejs ejecuta uno por uno los callbacks registrados para el evento "request"
+          en el ejemplo
+            se ejecuta el callback requestListener pasando los objetos IncomingMessage y ServerResponse como argumentos
+            esta ejecución se agrega al Call Stack de JavaScript
+      - la ejecución de este callback genera un nuevo contexto de ejecución
+          primero se asignan los argumentos a los parámetros de la función (como variables locales)
+          y luego se ejecuta el cuerpo de la función
+      - el cuerpo contiene una sola línea
+          que llama al método end del objeto del tipo ServerResponse (almacenado en la variable res)
+          pasando como argumento el string "Hola Mundo"
+          este llamado se agrega al call stack
+      - el método end agrega el string "Hola Mundo" al mensaje HTTP de respuesta
+          gestionado internamente por nodejs y lo envía inmediatamente de vuelta al cliente
+            con ello, la función end finaliza y se retira del Call Stack
+      - finalizado el método end(), el callback "requestListener" también finaliza
+          su contexto de ejecución desaparece junto a cualquier variable local que se haya creado y se retira del Call Stack
 
-
-
+   

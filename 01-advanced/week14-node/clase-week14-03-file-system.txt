@@ -1,0 +1,29 @@
+módulo fs (File System) 
+  Permite leer, escribir, modificar y eliminar archivos (operaciones CRUD)
+
+Se carga el módulo fs, un objeto con varios métodos para el manejo de archivos
+Se ejecuta el método readFile que inicia un proceso de lectura en Node.js. Se crea una conexión con el disco duro de la computadora, se ubica el archivo y se empieza a cargar. Node.js almacena internamente el callback (cb) para ser ejecutado cuando el proceso de carga finalice.
+Cuando el archivo terminó de cargarse en memoria, Node.js llama al callback (cb) pasando null como error para el primer argumento y el contenido del archivo cómo segundo argumento.
+Se agrega este llamado al Call Stack y se ejecuta. Se crea el contexto de ejecución, se asigna los argumentos a los parámetros de la función y se evalúa el cuerpo de la función.
+Como la variable err es null, no entra al primer if quedando solo ejecutar el console.log. (se omitió agregar esta llamada al Call Stack por brevedad).
+
+
+para evitar infinite loops crea un nodemon.json
+  {
+    "ignore": ["src/**/*.json"]
+  }
+
+  por si modificas un archivo json no volvera a ejecutar el archivo
+
+puedes hacer distintas cosas basado en el metodo del request del server
+
+  const server = http.createServer((req, res) => {
+    const method = req.method;
+
+    if (method === 'GET') {
+      // Manejar solicitud GET
+    } else if (method === 'POST') {
+      // Manejar solicitud POST
+    }
+  });
+

@@ -1,0 +1,57 @@
+enrutamiento
+  es "registrar" manejadores (handlers) para distintos tipos de solicitudes HTTP a rutas específicas
+
+  se logra mediante el uso de métodos asociados al objeto app de Express, como get, post, put, y otros
+
+
+ejemplos
+  app.get("/", (req, res) => {
+    // manejar solicitud GET a '/'
+  });
+  app.post("/", (req, res) => {
+    // manejar solicitud POST a '/'
+  });
+  app.put("/", (req, res) => {
+    // manejar solicitud PUT a '/'
+  });
+  app.patch("/", (req, res) => {
+    // manejar solicitud PATCH a '/'
+  });
+  app.delete("/", (req, res) => {
+    // manejar solicitud DELETE a '/'
+  });
+
+
+tambien existe app.all
+  app.all("/", (req, res) => {
+    // maneja cualquier solicitud a '/' (GET, POST, DELETE, PATCH, etc.)
+  });
+
+la ruta puede ser un string o un patron o tambien regex
+
+  string '/home'
+
+  patron '/(home)?' -- hace match con "/", "/home"
+
+  regex /^\/blog\/(\d{4})\/(\d{2})\/(\d{2})$/ -- hace match con cosas como /blog/2024/01/31
+
+parametros de ruta
+
+  /users/:userId -- "/users/10" -- req.params será -> { userId: "10" }
+
+  /blog/:year/:month/:day -- "/blog/2024/01/20" -- req.params será -> { year: "2024", month: "01", day: "20" }
+
+tipos de respuesta al cliente
+
+  res.send
+
+  res.json
+
+  res.sendFile
+
+  res.status
+
+  res.render
+
+  res.redirect
+

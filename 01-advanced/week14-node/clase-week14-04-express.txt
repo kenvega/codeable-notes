@@ -1,0 +1,80 @@
+install/setup express
+
+creas carpeta de proyecto
+  mkdir express-playground
+  cd express-playground
+
+instala paquetes
+  npm init -y
+  npm install express
+  npm install -D typescript @types/node nodemon ts-node @types/express
+
+crea archivo de tsconfig.json
+  npx tsc --init
+
+actualiza el tsconfig.json con esto
+  {
+    "compilerOptions": {
+      /* Language and Environment */
+      "target": "ESNext",
+
+      /* Modules */
+      "module": "NodeNext",
+      "rootDir": "./src",
+
+      /* Emit */
+      "outDir": "./build",
+
+      /* Interop Constraints */
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+
+      /* Type Checking */
+      "strict": true,
+      "noImplicitThis": true,
+      "useUnknownInCatchVariables": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitOverride": true,
+      "noPropertyAccessFromIndexSignature": true,
+
+      /* Completeness */
+      "skipLibCheck": true
+    }
+  }
+
+pon scripts en package.json
+
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+codigo inicial de app de express
+
+  import express from "express";
+
+  const app = express();
+  const port = 3000;
+
+  app.get("/", (req, res) => {
+    console.log(`${req.method} ${req.url}`);
+    res.send("Hola Mundo con Express y TypeScript!");
+  });
+
+  app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
+  });
+
+explicacion
+  crea una instancia de una aplicación de Express
+    está lista para ser configurada para escuchar, manipular y responder solicitudes web
+
+  cuando ejecutamos app.listen() iniciamos la aplicación de Express
+    escuchando activamente al puerto estipulado
+    este es un proceso de largo aliento que se mantendrá "prendido"
+      hasta que lo cerremos manualmente usando "control + c"

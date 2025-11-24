@@ -1,0 +1,10 @@
+20 nov 2025
+
+middleware en expressjs
+
+  un handler no tiene next, un middleware si lo tiene
+
+
+router
+  componentes que te ayudan a mapear las rutas de la aplicacion
+

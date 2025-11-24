@@ -1,0 +1,46 @@
+cookies
+  se guardan a nivel del navegador, no se guardan en el servidor
+
+app.get('/set-cookie', (req,res) => {
+  res.cookie('theme', 'dark')
+  res.send('Cookie establecida')
+})
+
+el cookie se envia como respuesta en los headers
+
+
+
+se pueden leer las cookies automaticamente en cada peticion
+  podemos leer el encabezado "Cookie" mediante req.headers.cookie:
+
+  app.get("/get-cookie", (req, res) => {
+    const cookie = req.headers.cookie; // "theme=dark"
+    res.send(`Cookie: ${cookie}`);
+  });
+
+    esto solo esta devolviendo de vuelta el cookie que ya venia en el header del request que hizo el navegador
+      solo esta devolviendo esa misma cookie que ya estaba en el navegador
+
+
+
+cuando se lee el cookie en el server es un string
+  para poder parsear el contenido del cookie a json
+    se usa cookie-parser
+
+    npm install cookie-parser
+    npm install -D @types/cookie-parser
+
+
+  se define siempre al inicio para que aplique a lo que esta debajo
+
+    app.use(cookieParser())
+
+    app.use('/users', userRouter)
+    ...
+
+  ya luego se puede usar asi
+    app.get("/get-cookie", (req, res) => {
+      res.json({cookies: req.cookies}); // { cookies: { theme: "dark" } }
+    });
+
+

@@ -1,0 +1,7 @@
+psqL -U postgres -h localhost -p 5432 -d movielens
+
+los indices hacen mas rapidas las consultas
+  mejoran rendimiento de las tablas cuando hay muchos registros
+    hacen que operaciones como select sean mas rapidas
+      tambien existen por un tema de integridad de datos
+

@@ -54,7 +54,7 @@ pon scripts en package.json
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 
-codigo inicial de app de express
+codigo inicial de app de express en el archivo <root>/src/index.ts
 
   import express from "express";
 

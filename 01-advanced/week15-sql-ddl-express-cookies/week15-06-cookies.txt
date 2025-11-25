@@ -23,7 +23,7 @@ se pueden leer las cookies automaticamente en cada peticion
 
 
 
-cuando se lee el cookie en el server es un string
+cuando se lee el cookie en el server se obtiene un string
   para poder parsear el contenido del cookie a json
     se usa cookie-parser
 

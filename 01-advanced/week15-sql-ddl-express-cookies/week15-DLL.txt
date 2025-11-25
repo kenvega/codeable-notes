@@ -1,0 +1,38 @@
+DDL - data definition language (18 nov 2025)
+
+  para crear bases de datos desde cero
+  para poblar la base de datos
+
+que se aprendera
+  cláusula CREATE DATABASE
+
+  cláusula CREATE TABLE
+
+  propiedad SERIAL para auto incremento
+
+  tipos de datos de atributos como INTEGER, VARCHAR, DATE, BOOLEAN
+
+  restricciones de atributos NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, CHECK
+
+  cláusula ALTER TABLE y cláusula ADD CONSTRAINT
+
+  cláusula INSERT INTO - VALUES
+
+Diagramas de Relación-Entidad (ERD)
+
+  https://www.youtube.com/watch?v=QpdhBUYk7Kk
+  https://www.youtube.com/watch?v=-CuY5ADwn24&t=381s
+
+SQLBolt
+  de las lecciones 13 al 18 son las que tienen que ver
+
+Codecademy
+  aprender SQL aqui - en este caso relacionado lo importante es el tema de manipulacion
+    https://www.codecademy.com/courses/learn-sql/lessons/manipulation/exercises/sql
+
+Ejercicios de PostgreSQL
+  practica los conceptos desarrollando los ejercicios
+    https://pgexercises.com/questions/updates/
+
+
+

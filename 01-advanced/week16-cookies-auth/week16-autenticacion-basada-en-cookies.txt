@@ -1,0 +1,38 @@
+autenticación simple con usuarios en memoria
+
+  empezamos con un arreglo de usuarios en memoria
+
+  para crear un nuevo usuario respondemos a una petición POST a /signup simplemente agregando el usuario al arreglo de usuarios
+
+  cuando un usuario inicia sesión (POST a /login), verificamos si el usuario existe y si la contraseña coincide. Luego, almacenamos el ID del usuario en una cookie
+
+  cuando el usuario accede a /user, verificamos si la cookie existe y si el ID almacenado le pertenece efectivamente a un usuario
+
+  cuando el usuario cierra sesión (POST a /logout), borramos la cookie en el cliente
+
+
+no guardar contraseñas en texto plano
+
+  instala bcrypt
+
+    npm install bcrypt
+    npm install -D @types/bcrypt
+
+
+no es recomendable guardar datos sensibles como el ID de un usuario en una cookie
+
+  se prefiere guardar el ID en una sesion
+
+  la sesion es un objeto donde se puede almacenar todo tipo de informacion del usuario
+
+    por ahora solo guardaremos el id del usuario en la sesion
+
+  las sesiones las almacenaremos en un objeto en memoria
+
+
+  un ejemplo del objeto session
+    {
+      "2342-34-123-123123-3423": "2342-34-123-123123-3423"
+    }
+
+    esto es lo que se devuelve al 

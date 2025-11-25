@@ -1,0 +1,36 @@
+Igualdad Estricta: a === b (triple igual).
+Igualdad Débil: a == b (doble igual).
+Igualdad de Mismo Valor: Object.is(a, b).
+
+
+Same Value Equality: Object.is(a, b)
+  Object.is(a, b)
+    retorna true o false dependiendo si a y b son el mismo valor:
+
+      console.log(Object.is(2, 2)); // true
+      console.log(Object.is({}, {})); // false
+
+    para cuando se trata de objetos
+      recuerda que cada vez que utilizas el literal {}, estas creando un nuevo objeto
+
+      ejemplo
+        let manzana = {};
+        let pera = manzana;
+        let naranja = pera;
+        pera = {};
+
+
+        console.log(Object.is(manzana, pera)); // false
+        console.log(Object.is(pera, naranja)); // true
+        console.log(Object.is(naranja, manzana)); // false
+
+          * toma en cuenta mis primeras impresiones eran estas
+            console.log(Object.is(manzana, pera)); // false
+            console.log(Object.is(pera, naranja)); // true
+            console.log(Object.is(naranja, manzana)); // false
+
+              mi modelo mental estaba mal
+                pensaba que la redireccion de pera a un nuevo objeto cambiaria tambien la de naranja
+                  pero no, una vez ya se ejecuta la linea de let naranja = pera
+                    se queda naranja apuntando al objeto original
+                      y luego cuando pera se reasigna al nuevo objeto, para ese momento naranja ya no esta ligado a pera

@@ -19,10 +19,9 @@ Same Value Equality: Object.is(a, b)
         let naranja = pera;
         pera = {};
 
-
         console.log(Object.is(manzana, pera)); // false
-        console.log(Object.is(pera, naranja)); // true
-        console.log(Object.is(naranja, manzana)); // false
+        console.log(Object.is(pera, naranja)); // false
+        console.log(Object.is(naranja, manzana)); // true
 
           * toma en cuenta mis primeras impresiones eran estas
             console.log(Object.is(manzana, pera)); // false
@@ -34,3 +33,8 @@ Same Value Equality: Object.is(a, b)
                   pero no, una vez ya se ejecuta la linea de let naranja = pera
                     se queda naranja apuntando al objeto original
                       y luego cuando pera se reasigna al nuevo objeto, para ese momento naranja ya no esta ligado a pera
+
+                        al final de estas lineas el modelo mental queda asi
+                          manzana apunta al primer objeto creado
+                          pera apunta al segundo objeto creado
+                          naranja apunta al primer objeto creado

@@ -8,7 +8,7 @@ const port = 5500;
 app.use(cookieParser()); // Poblar req.cookies con objetos de cookies
 app.use(express.json()); // Transformar req.body a JSON
 
-const sessions: { [sessionId: string]: { userId: string } } = {};
+const sessions = {};
 
 // Arreglo de usuarios en memoria:
 // El id será un string ya que usaremos 'crypto.randomUUID()' para generarlo
@@ -57,6 +57,11 @@ app.post("/login", async (req, res) => {
     // Guardamos el id de sesión en una cookie
     res.cookie("sessionId", sessionId, { httpOnly: true });
     res.send("Login exitoso");
+  }
+
+  if (isValid) {
+    res.cookie("userId", user.id, { httpOnly: true });
+    res.send("Login exitoso");
   } else {
     res.status(401).send("Credenciales incorrectas");
   }
@@ -67,7 +72,6 @@ app.get("/user", (req, res) => {
   const session = sessions[sessionId];
 
   const user = users.find((u) => u.id === session?.userId);
-
   if (user) {
     res.json(user);
   } else {

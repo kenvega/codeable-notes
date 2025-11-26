@@ -19,7 +19,15 @@ no guardar contraseñas en texto plano
     npm install -D @types/bcrypt
 
 
+  * cuando haces pruebas en insonmia puedes ver que en la parte de manage cookies se queda agregado una cookie
+      ocurre cuando haces login por esta linea en el codigo
+        res.cookie("userId", user.id, { httpOnly: true });
+
 no es recomendable guardar datos sensibles como el ID de un usuario en una cookie
+
+  en el ejemplo usando bcrypt se podia notar que se podia ver el id del usuario en la cookie que se enviaba
+    userId=03dfed82-ab9b-494d-a26a-937489ac3d39; Path=/; HttpOnly; Domain=localhost
+      ese userId es generado pero de todos modos no es seguro enviarlo al navegador
 
   se prefiere guardar el ID en una sesion
 

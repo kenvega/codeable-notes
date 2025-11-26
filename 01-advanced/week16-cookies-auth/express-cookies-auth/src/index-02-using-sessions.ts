@@ -8,6 +8,8 @@ const port = 5500;
 app.use(cookieParser()); // Poblar req.cookies con objetos de cookies
 app.use(express.json()); // Transformar req.body a JSON
 
+const sessions = {};
+
 // Arreglo de usuarios en memoria:
 // El id será un string ya que usaremos 'crypto.randomUUID()' para generarlo
 const users: { id: string; email: string; password: string }[] = [];
@@ -48,6 +50,16 @@ app.post("/login", async (req, res) => {
   const isValid = await bcrypt.compare(password, user.password);
 
   if (isValid) {
+    // Generamos un id de sesión
+    const sessionId = crypto.randomUUID();
+    // Guardamos el id el usuario en la sesión
+    sessions[sessionId] = { userId: user.id };
+    // Guardamos el id de sesión en una cookie
+    res.cookie("sessionId", sessionId, { httpOnly: true });
+    res.send("Login exitoso");
+  }
+
+  if (isValid) {
     res.cookie("userId", user.id, { httpOnly: true });
     res.send("Login exitoso");
   } else {
@@ -55,11 +67,23 @@ app.post("/login", async (req, res) => {
   }
 });
 
+// app.get("/user", (req, res) => {
+//   const userId = req.cookies.userId;
+
+//   const user = users.find((u) => u.id === userId);
+
+//   if (user) {
+//     res.json(user);
+//   } else {
+//     res.status(403).send("Acceso denegado");
+//   }
+// });
+
 app.get("/user", (req, res) => {
-  const userId = req.cookies.userId;
+  const sessionId = req.cookies.sessionId;
+  const session = sessions[sessionId];
 
-  const user = users.find((u) => u.id === userId);
-
+  const user = users.find((u) => u.id === session?.userId);
   if (user) {
     res.json(user);
   } else {
@@ -68,7 +92,7 @@ app.get("/user", (req, res) => {
 });
 
 app.post("/logout", (_req, res) => {
-  res.clearCookie("userId");
+  res.clearCookie("sessionId");
   res.send("Logout exitoso");
 });
 

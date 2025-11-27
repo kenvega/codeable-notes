@@ -38,3 +38,29 @@ Same Value Equality: Object.is(a, b)
                           manzana apunta al primer objeto creado
                           pera apunta al segundo objeto creado
                           naranja apunta al primer objeto creado
+
+  Object.is vs ===
+
+    Object.is tenía una clara correspondencia en nuestro modelo mental
+    las variables que apuntan al mismo valor tienen "igualdad de mismo valor"
+
+    en casi todos los casos, la misma intuición funciona para la igualdad estricta
+      ejemplo
+        2 === 2 es verdadero porque 2 siempre "invoca" el mismo valor
+        {} === {} es falso porque cada {} crea un valor diferente
+
+    hay dos casos raros donde
+      el comportamiento de === es diferente de Object.is
+        considéralos como excepciones a la regla
+
+        NaN === NaN es falso, aunque son el mismo valor.
+        -0 === 0 y 0 === -0 son verdaderos, aunque son valores diferentes.
+
+    si necesitas verificar si una variable es NaN tienes las siguientes alternativas
+      let resultado = NaN;
+      resultado === NaN; // false
+
+      // Alternativas:
+      Object.is(resultado, NaN); // true
+      Number.isNaN(resultado); // true
+      resultado !== resultado; // true // muy hacky. recomendado usar las 2 primeras

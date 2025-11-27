@@ -39,8 +39,82 @@ no es recomendable guardar datos sensibles como el ID de un usuario en una cooki
 
 
   un ejemplo del objeto session
-    {
-      "2342-34-123-123123-3423": "2342-34-123-123123-3423"
+    sessions:  {
+      '79f8f8cb-b841-4e59-bffd-e1744aecb588': { userId: 'dde73ff8-108f-4682-897c-d771a90aa879' }
     }
 
-    esto es lo que se devuelve al 
+    lo que se pasa en la cookie ahora es 79f8f8cb-b841-4e59-bffd-e1744aecb588 y ya no el userId
+      asi ya no esta expuesto el userId
+
+en lugar de crear sesiones en memoria es mejor usar express-session
+  es un middleware para facilitar el manejo de sesiones
+
+  funcionalidades principales
+
+    gestión de sesiones
+      mantiene un estado a través de las solicitudes HTTP
+      cada usuario recibe una cookie de sesión única automáticamente
+        que se utiliza para recuperar los datos de su sesión almacenados en el servidor
+
+    almacenamiento de datos de sesión
+      por defecto, express-session almacena los datos de sesión en la memoria del servidor
+        sin embargo, para aplicaciones de producción
+          es posible usar un almacén de sesiones más persistente y escalable como una base de datos
+
+    seguridad
+      ofrece opciones para mejorar la seguridad de las cookies de sesión
+        como el uso de firmas digitales.
+
+  setup de epxress-session
+    instalacion
+      npm install express-session
+      npm install -D @types/express-session
+
+    configuras el middleware en tu aplicación Express
+
+      import session from "express-session";
+
+      // tambien extiende la interfaz SessionData para que el objeto req.session acepte una llave userId
+      declare module "express-session" {
+        interface SessionData {
+          userId: string;
+        }
+      }
+
+      // aqui se configura el middleware
+      app.use(
+        session({
+          secret: "session-secret",
+          resave: false,
+          saveUninitialized: true,
+          cookie: { httpOnly: true },
+        })
+      );
+
+    * con este middleware seteado
+        toda petición que llegue al servidor creará un sessionId único
+          y la guardará en una cookie llamada "connect.sid"
+          este sessionId se gestionará internamente por express-session
+            lo único que tenemos que hacer nosotros es agregar propiedades al objeto req.session
+
+  explicacion
+    la funcion session() se configura con propiedades
+      secret
+        Una clave secreta para firmar la cookie de sesión
+        Debe ser un string aleatorio para proteger la sesión.
+
+      resave
+        Fuerza a la sesión a ser guardada en el almacén de sesiones (memoria o base de datos)
+          incluso si no se modificó durante la solicitud
+        Generalmente se establece en false para no utilizar recursos innecesarios y solo guardar la sesión cuando esta se modifica
+
+      saveUninitialized
+        Fuerza a una sesión no inicializada a ser guardada en el almacén
+        Una sesión no inicializada es una nueva sesión que aún no ha sido modificada
+          Por ejemplo, cuando el cliente hace un request a "/signup", si esta opción es true se creará una nueva sesión incluso esta ruta no interactúa con req.session.
+
+      cookie
+        Objeto de opciones de regular para una cookie incluyendo maxAge, expires, httpOnly, sameSite, domain, path, secure y signed.
+
+almacenar en memoria es solo para pruebas y entorno de desarrollo
+  

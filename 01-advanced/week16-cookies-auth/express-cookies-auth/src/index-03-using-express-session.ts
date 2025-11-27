@@ -1,6 +1,13 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import bcrypt from "bcrypt";
+import session from "express-session";
+
+declare module "express-session" {
+  interface SessionData {
+    userId: string;
+  }
+}
 
 const app = express();
 const port = 5500;
@@ -8,7 +15,14 @@ const port = 5500;
 app.use(cookieParser()); // Poblar req.cookies con objetos de cookies
 app.use(express.json()); // Transformar req.body a JSON
 
-const sessions = {};
+app.use(
+  session({
+    secret: "session-secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { httpOnly: true },
+  })
+);
 
 // Arreglo de usuarios en memoria:
 // El id será un string ya que usaremos 'crypto.randomUUID()' para generarlo
@@ -50,17 +64,9 @@ app.post("/login", async (req, res) => {
   const isValid = await bcrypt.compare(password, user.password);
 
   if (isValid) {
-    // Generamos un id de sesión
-    const sessionId = crypto.randomUUID();
-    // Guardamos el id el usuario en la sesión
-    sessions[sessionId] = { userId: user.id };
-    // Guardamos el id de sesión en una cookie
-    res.cookie("sessionId", sessionId, { httpOnly: true });
-    res.send("Login exitoso");
-  }
-
-  if (isValid) {
-    res.cookie("userId", user.id, { httpOnly: true });
+    // Guardamos el id del usuario en la sesión
+    // cookie de sesión es manejada por 'express-session' y es guardada en 'req.session' automáticamente
+    req.session.userId = user.id;
     res.send("Login exitoso");
   } else {
     res.status(401).send("Credenciales incorrectas");
@@ -68,10 +74,12 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  const sessionId = req.cookies.sessionId;
-  const session = sessions[sessionId];
+  // leemos el id del usuario desde la sesión directamente ya no desde la cookie
+  // esto debido a que 'express-session' maneja la cookie de sesión automáticamente
+  const userId = req.session.userId;
 
-  const user = users.find((u) => u.id === session?.userId);
+  const user = users.find((u) => u.id === userId);
+
   if (user) {
     res.json(user);
   } else {
@@ -79,9 +87,18 @@ app.get("/user", (req, res) => {
   }
 });
 
-app.post("/logout", (_req, res) => {
-  res.clearCookie("sessionId");
-  res.send("Logout exitoso");
+app.post("/logout", (req, res) => {
+  // borramos la sesión del lado del servidor
+  req.session.destroy((error) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send("Error al cerrar sesión");
+      return;
+    }
+    // Opcionalmente, borramos la sesión del lado del cliente también
+    res.clearCookie("connect.sid");
+    res.send("Logout exitoso");
+  });
 });
 
 app.listen(port, () => console.log(`Escuchando al puerto ${port}`));

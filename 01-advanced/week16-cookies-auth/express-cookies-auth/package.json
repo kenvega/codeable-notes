@@ -15,12 +15,14 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.5",
+    "@types/express-session": "^1.18.2",
     "@types/node": "^24.10.1",
     "nodemon": "^3.1.11",
     "ts-node": "^10.9.2",

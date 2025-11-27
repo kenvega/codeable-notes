@@ -8,7 +8,8 @@ const port = 5500;
 app.use(cookieParser()); // Poblar req.cookies con objetos de cookies
 app.use(express.json()); // Transformar req.body a JSON
 
-const sessions = {};
+// const sessions: { [key: string]: { userId: string } } = {};
+const sessions: Record<string, { userId: string }> = {};
 
 // Arreglo de usuarios en memoria:
 // El id será un string ya que usaremos 'crypto.randomUUID()' para generarlo
@@ -57,33 +58,18 @@ app.post("/login", async (req, res) => {
     // Guardamos el id de sesión en una cookie
     res.cookie("sessionId", sessionId, { httpOnly: true });
     res.send("Login exitoso");
-  }
-
-  if (isValid) {
-    res.cookie("userId", user.id, { httpOnly: true });
-    res.send("Login exitoso");
   } else {
     res.status(401).send("Credenciales incorrectas");
   }
 });
 
-// app.get("/user", (req, res) => {
-//   const userId = req.cookies.userId;
-
-//   const user = users.find((u) => u.id === userId);
-
-//   if (user) {
-//     res.json(user);
-//   } else {
-//     res.status(403).send("Acceso denegado");
-//   }
-// });
-
 app.get("/user", (req, res) => {
   const sessionId = req.cookies.sessionId;
   const session = sessions[sessionId];
+  // console.log("sessions: ", sessions);
 
   const user = users.find((u) => u.id === session?.userId);
+
   if (user) {
     res.json(user);
   } else {

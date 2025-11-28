@@ -1,0 +1,24 @@
+las propiedades de los objetos estan compuestas de la forma llave: valor
+  el valor de una propiedad puede ser cualquier valor primitivo (números, cadenas, booleanos, etc.)
+  pero también puede ser otro objeto
+    los objetos son muy flexibles
+
+ejercicio
+  let sherlock = {
+    apellido: 'Holmes',
+    direccion: { ciudad: 'Londres' }
+  };
+
+  let john = {
+    apellido: 'Watson',
+    direccion: sherlock.direccion
+  };
+
+  john.apellido = 'Lennon';
+  john.direccion.ciudad = 'Nueva York';
+
+  console.log(sherlock.apellido); // ? // 'Holmes'
+  console.log(sherlock.direccion.ciudad); // 'Nueva York'
+  console.log(john.apellido); // 'Lennon'
+  console.log(john.direccion.ciudad); // 'Nueva York'
+

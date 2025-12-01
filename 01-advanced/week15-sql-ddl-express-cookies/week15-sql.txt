@@ -5,3 +5,7 @@ los indices hacen mas rapidas las consultas
     hacen que operaciones como select sean mas rapidas
       tambien existen por un tema de integridad de datos
 
+
+install
+  https://www.youtube.com/watch?v=23Df9dj4pao
+

@@ -46,7 +46,7 @@ no es recomendable guardar datos sensibles como el ID de un usuario en una cooki
     lo que se pasa en la cookie ahora es 79f8f8cb-b841-4e59-bffd-e1744aecb588 y ya no el userId
       asi ya no esta expuesto el userId
 
-en lugar de crear sesiones en memoria es mejor usar express-session
+express-session: en lugar de crear sesiones en memoria es mejor usar express-session
   es un middleware para facilitar el manejo de sesiones
 
   funcionalidades principales
@@ -117,4 +117,114 @@ en lugar de crear sesiones en memoria es mejor usar express-session
         Objeto de opciones de regular para una cookie incluyendo maxAge, expires, httpOnly, sameSite, domain, path, secure y signed.
 
 almacenar en memoria es solo para pruebas y entorno de desarrollo
-  
+
+  para produccion se necesita conexiones con psql
+    setup para conectarse a psql
+
+      npm install connect-pg-simple
+      npm install -D @types/connect-pg-simple
+
+    crea una base de datos y unas tablas
+
+      database cookie-auth
+
+      tabla users
+        CREATE TABLE users (
+          id SERIAL PRIMARY KEY,
+          email varchar(255) NOT NULL UNIQUE,
+          password varchar(60) NOT NULL
+        );
+
+      para poder usar connect-pg-simple segun su documentacion necesitas crear una tabla de session
+
+        en la doc oficial dice que debes correr lo que esta en este archivo sql en los node_modules
+          node_modules/connect-pg-simple/table.sql
+
+          este es su contenido:
+
+            CREATE TABLE "session" (
+              "sid" varchar NOT NULL COLLATE "default",
+              "sess" json NOT NULL,
+              "expire" timestamp(6) NOT NULL
+            )
+            WITH (OIDS=FALSE);
+
+            ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+            CREATE INDEX "IDX_session_expire" ON "session" ("expire");
+
+          source: https://github.com/voxpelli/node-connect-pg-simple/blob/c46daef6d06d257a0fb946ad90b9fb9a652bbe90/table.sql
+
+    configura la conexion con pg
+      import { Pool } from "pg";
+
+      // exportamos el pool porque 'connect-pg-simple' lo necesitará
+      export const pool = new Pool({
+        host: "localhost",
+        port: 5432,
+        database: "cookie-auth",
+        user: "tu-usuario",
+        password: "tu-contraseña",
+      });
+
+      export const query = (text: string, params?: (string | number | boolean)[]) => {
+        return pool.query(text, params);
+      };
+
+    configuramos express-session
+      en store le pasas la parte de configuracion para la base de datos
+
+      import session from "express-session";
+      import connect from "connect-pg-simple";
+      import { pool } from "./db";
+
+      const pgSession = connect(session);
+
+      app.use(
+        session({
+          store: new pgSession({ pool }),
+          secret: "session-secret",
+          resave: false,
+          saveUninitialized: true,
+          cookie: { httpOnly: true },
+        })
+      );
+
+* this is what an AI told me express-session does
+
+  it gives you the same pattern you built… but with all the annoying parts handled consistently:
+
+    cookie parsing + session lookup is done for you on every request
+
+    the cookie value is a signed session id (tamper-resistant) and is managed automatically
+
+    you get req.session as a little per-user storage object
+
+    built-in support for expires/maxAge, rolling sessions, regeneration, etc
+
+    pluggable session stores (MemoryStore, Redis, database…), which matters for restarts + scaling
+
+  How express-session works behind the scenes
+    Browser sends Cookie: connect.sid=... (default name)
+
+    express-session middleware
+      - Reads the cookie
+      - Verifies the cookie signature using your secret (so clients can’t forge or alter a session id)
+      - Extracts the session id (sid)
+      - Loads session data from the session store using that sid
+
+    It attaches the result to req.session.
+
+    When you modify req.session
+      at the end of the request it saves it back to the store
+      and may send an updated Set-Cookie header (new session, changed expiration, rolling, etc)
+
+    Important: by default, the cookie still only contains the session id (plus signature). Your userId stays in the store
+
+  What changed conceptually with express-session?
+
+    Before
+      sessions[sessionId] = { userId } and manually set cookie
+
+    After
+      req.session.userId = ... and the middleware handles cookie + storage

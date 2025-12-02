@@ -22,3 +22,36 @@ ejercicio
   console.log(john.apellido); // 'Lennon'
   console.log(john.direccion.ciudad); // 'Nueva York'
 
+recuerda
+  en este codigo
+    let sherlock = {
+      apellido: 'Holmes',
+      edad: 64,
+    };
+
+  sherlock sigue siendo una variable, pero apellido y edad no lo son. Son propiedades
+  A diferencia de las variables, las propiedades pertenecen a un objeto en particular.
+
+  las propiedades tienen un rol similar a las variables
+    son como etiquetas que apuntan a un valor
+    pero las propiedades parten siempre desde un objeto
+
+  las propiedades no "contienen" valores
+    solo apuntan hacia ellos
+
+  los valores son independientes a nuestro código
+    tanto las variables como propiedades siempre apuntan a valores
+
+  las propiedades de un objeto son case sensitive
+
+notacion de corchetes
+
+  Si no conocemos el nombre de una propiedad con anticipación
+  pero lo conseguimos y almacenamos en una variable
+  podemos usar la "notación de corchetes" ([]) para leerlo el valor de la propiedad:
+
+    let sherlock = { apellido: 'Holmes', edad: 64 };
+    let nombrePropiedad = prompt('¿Qué quieres saber?');
+    alert(sherlock[nombrePropiedad]); // Leer propiedad por su nombre
+
+

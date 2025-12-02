@@ -1,0 +1,4 @@
+autorizacion vs autenticacion
+  autenticacion es verificar que un usuario es quien dice ser
+  autorizacion es decidir si el usuario tiene permisos para acceder a un recurso
+

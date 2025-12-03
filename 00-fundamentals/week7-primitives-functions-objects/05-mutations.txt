@@ -1,0 +1,40 @@
+checa este codigo
+  codigo
+    let sherlock = {
+      apellido: 'Holmes',
+      direccion: { ciudad: 'Londres' }
+    };
+
+    let john = {
+      apellido: 'Watson',
+      direccion: sherlock.direccion
+    };
+
+    john.apellido = 'Lennon';
+    john.direccion.ciudad = 'Nueva York';
+
+    console.log(sherlock.dirección.ciudad); // "Nueva York"
+
+  por que ocurre este cambio?
+
+    es porque una propiedad siempre apunta a un valor
+      no puede apuntar a otra propiedad o una variable
+
+mutacion
+  es una forma elegante de decir 'cambio'
+
+    ejm seria lo mismo decir estas 2 oraciones
+      cambiamos una propiedad de un objeto
+      mutamos un objeto (y su propiedad)
+
+  se le dice mutar para ser consciente de que se debe ser muy intencionado al hacerlo
+
+  en el codigo
+    john.apellido = 'Lennon';
+    john.direccion.ciudad = 'Nueva York';
+
+    la primera linea muta el objeto al que apunta la variable john (cambia la propiedad del objeto)
+      se muta la propiedad apellido
+
+    la segunda linea no muta el objeto al que la variable john apunta
+      sino que muta el objeto al que se alcanza a traves de john.direccion (a ese objeto tambien se llega a traves de sherlock.direccion)

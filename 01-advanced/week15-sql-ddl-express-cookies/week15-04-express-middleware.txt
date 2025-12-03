@@ -8,3 +8,61 @@ middleware en expressjs
 router
   componentes que te ayudan a mapear las rutas de la aplicacion
 
+express router
+  express.Router permite crear manejadores de rutas (un router)
+    todos modulares y de manera independiente
+
+    un router es una instancia de middleware y rutas que funciona como un sistema de enrutamiento "mini-aplicación"
+      osea que puedes definir rutas y middleware en un router
+        que luego pueden ser incorporados en la aplicación principal de Express
+
+  caracteristicas de express.Router
+    modularidad
+      permite dividir la lógica de enrutamiento en diferentes archivos o módulos
+        código se vuelve más manejable y fácil de entender, especialmente en aplicaciones grandes
+
+    reutilización
+      los routers pueden ser reutilizados en diferentes partes de la aplicación
+        o incluso en diferentes aplicaciones Express
+
+    middleware y rutas
+      al igual que una aplicación Express, un router puede tener su propio middleware y rutas definidas
+        puedes aplicar middleware específico a un router
+          que se ejecutará solo para las rutas definidas en ese router
+
+    montaje flexible
+      los routers pueden montarse en una ruta específica de la aplicación principal
+        todas las rutas definidas en el router se basarán en la ruta en la que se monte el router
+
+  ejemplo
+    puedes separar todas las rutas de usuario en un archivo especifico
+      archivo: user-router.js
+        import express from "express";
+        const router = express.Router();
+
+        router.get('/', (req, res) => {
+          res.send('Lista de usuarios');
+        });
+
+        router.post('/', (req, res) => {
+          res.send('Crear un usuario');
+        });
+
+        export default router;
+
+    luego incorporas las rutas en la app principal
+      archivo: index.ts
+        import express from "express";
+        import userRouter from "./user-router";
+        const app = express();
+        const port = 5500;
+
+        // Montar el router en la ruta '/users'
+        app.use('/users', userRouter);
+
+        app.listen(port, () => {
+          console.log(`Servidor corriendo en http://localhost:${port}`);
+        });
+
+
+manejo de errores en middleware

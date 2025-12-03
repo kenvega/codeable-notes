@@ -3,7 +3,6 @@ enrutamiento
 
   se logra mediante el uso de métodos asociados al objeto app de Express, como get, post, put, y otros
 
-
 ejemplos
   app.get("/", (req, res) => {
     // manejar solicitud GET a '/'
@@ -41,17 +40,24 @@ parametros de ruta
 
   /blog/:year/:month/:day -- "/blog/2024/01/20" -- req.params será -> { year: "2024", month: "01", day: "20" }
 
-tipos de respuesta al cliente
+manejadores de ruta (handlers)
 
-  res.send
+  el segundo parametro que pasamos es el route handler o request handler
+    este procesa la solicitud y envia una respuesta al cliente
+      puede incluir consultas a la base de datos, realizar calculos, o devolver datos en el caso de las APIs
+      
 
-  res.json
+  tipos de respuesta al cliente
 
-  res.sendFile
+    res.send
 
-  res.status
+    res.json
 
-  res.render
+    res.sendFile
 
-  res.redirect
+    res.status
+
+    res.render
+
+    res.redirect
 

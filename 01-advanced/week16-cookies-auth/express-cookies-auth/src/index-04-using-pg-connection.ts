@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import session from "express-session";
 import connect from "connect-pg-simple";
 import { Pool } from "pg";
-import { getUserByEmail, createUser } from "./helpers.ts";
+import { getUserByEmail, createUser, getUser } from "./helpers.ts";
 
 const pgSession = connect(session);
 
@@ -43,10 +43,6 @@ app.use(
   })
 );
 
-// Arreglo de usuarios en memoria:
-// El id será un string ya que usaremos 'crypto.randomUUID()' para generarlo
-const users: { id: string; email: string; password: string }[] = [];
-
 app.post("/signup", async (req, res) => {
   const { email, password } = req.body;
 
@@ -67,7 +63,7 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  const user = users.find((u) => u.email === email);
+  const user = await getUserByEmail(email);
 
   if (!user) {
     res.status(401).send("Credenciales incorrectas");
@@ -86,12 +82,17 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/user", (req, res) => {
+app.get("/user", async (req, res) => {
   // leemos el id del usuario desde la sesión directamente ya no desde la cookie
   // esto debido a que 'express-session' maneja la cookie de sesión automáticamente
   const userId = req.session.userId;
 
-  const user = users.find((u) => u.id === userId);
+  if (!userId) {
+    res.status(403).send("Acceso denegado");
+    return;
+  }
+
+  const user = await getUser(Number(userId));
 
   if (user) {
     res.json(user);

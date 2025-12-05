@@ -38,3 +38,12 @@ mutacion
 
     la segunda linea no muta el objeto al que la variable john apunta
       sino que muta el objeto al que se alcanza a traves de john.direccion (a ese objeto tambien se llega a traves de sherlock.direccion)
+
+const y mutaciones
+
+  las variables apuntan a un objeto
+  los objetos pueden mutar (sus propiedades pueden apuntar a otros valores)
+
+  cuando se declara una variable con const
+    solo la flecha que apunta de la variable al objeto ya no se puede mover
+      pero ese objeto aun puede mutar asi que sus propiedades pueden apuntar a otros valores

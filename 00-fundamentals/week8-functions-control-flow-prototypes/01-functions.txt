@@ -1,0 +1,31 @@
+funciones
+  un tipo de objeto especial que permite almacenar un bloque de codigo
+
+  las funciones son valores (no variables)
+    asi que se pueden asignar a variables como cualquier otro valor
+
+function expression
+  ejemplo:
+
+    let nombreFuncion = function() {
+      // cuerpo de la función
+    }
+
+function declaration
+  ejemplo:
+
+    function nombreFuncion() {
+      // cuerpo de la función
+    }
+
+incluso las function declaration aunque parezca que no son valores
+  porque no se ve uso de 'let' o 'const' si crean una variable internamente
+
+    ejemplo:
+
+      function saludar() {
+        console.log("¡Hola, mundo!");
+      }
+
+      saludar = "Otro valor";
+      console.log(saludar); // "Otro valor"

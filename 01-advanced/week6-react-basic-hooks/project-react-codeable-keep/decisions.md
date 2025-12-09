@@ -1,4 +1,0 @@
-# Decisiones
-
-## Estructuras de Datos
-...

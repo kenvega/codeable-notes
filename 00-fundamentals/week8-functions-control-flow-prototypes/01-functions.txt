@@ -29,3 +29,34 @@ incluso las function declaration aunque parezca que no son valores
 
       saludar = "Otro valor";
       console.log(saludar); // "Otro valor"
+
+scope (alcance)
+
+  determina la visibilidad o accesibilidad de variables
+
+  variables locales
+    variables definidas dentro de una función son locales
+    no pueden ser accedidas fuera de la función
+      ejemplo
+        function mostrarMensaje() {
+          let mensaje = "Soy una variable local"; 
+          console.log(mensaje);
+        }
+
+        mostrarMensaje(); // Soy una variable local
+        console.log(mensaje); // Error: mensaje no está definido
+
+  variables externas
+    variables definidas fuera de la función
+    pueden ser accedidas desde el interior de la función
+      ejemplo
+        let mensajeExterno = "Soy una variable externa";
+
+        function mostrarMensajeExterno() {
+          console.log(mensajeExterno);
+        }
+
+        mostrarMensajeExterno(); // Soy una variable externa
+
+shadowing
+  

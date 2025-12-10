@@ -5,7 +5,7 @@ DROP DATABASE IF EXISTS express_pg_evaluation_kenvega_db;
 CREATE DATABASE express_pg_evaluation_kenvega_db;
 
 -- connecta con la base de datos creada
-\ c express_pg_evaluation_kenvega_db;
+\c express_pg_evaluation_kenvega_db;
 
 -- crea la tabla users
 CREATE TABLE users (

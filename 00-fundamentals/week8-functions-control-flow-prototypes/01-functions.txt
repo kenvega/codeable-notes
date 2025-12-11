@@ -59,4 +59,38 @@ scope (alcance)
         mostrarMensajeExterno(); // Soy una variable externa
 
 shadowing
-  
+  para el caso en el que se tengan mismos nombres de variables
+    con variables externas y variables locales
+    los valores de variables locales seran las utilizadas dentro de la funcion
+      ejm
+        let nombre = "Sebastian";
+
+        function saludarJuan() {
+          let nombre = "Juan";
+          console.log("Hola" + " " + nombre);
+        }
+
+        saludarJuan(); // "Hola Juan"
+        console.log(nombre); // "Sebastian"
+
+parametros con valores por defecto
+  ejemplo
+    function crearSaludo(nombre = "desconocido") {
+      return "Hola, " + nombre + "!";
+    }
+
+    console.log(crearSaludo()); // "Hola, desconocido!"
+    console.log(crearSaludo("Andrea")); // "Hola, Andrea!"
+
+convenciones al nombrar funciones
+
+  claro y descriptivo
+    el nombre de la función debe ser un reflejo de lo que hace: calcularPromedio(), obtenerFechaActual()
+
+  usar camelcase
+    la convención más común en javascript es el camelcase
+      donde la primera palabra comienza en minúscula y las siguientes en mayúscula: obtenerDatosUsuario()
+    es la misma convención que seguiremos para los nombres de variables y propiedades
+
+  evitar nombres genéricos
+    nombres como func1(), data(), ejecutar() no son descriptivos y dificultan la lectura del código

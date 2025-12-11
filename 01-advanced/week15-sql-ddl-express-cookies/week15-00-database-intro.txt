@@ -1,0 +1,24 @@
+que son bases de datos?
+  https://www.youtube.com/watch?v=Ls_LzOZ7x0c
+
+que son diagramas de Relación-Entidad (ERD)
+  https://www.youtube.com/watch?v=wR0jg0eQsZA
+
+consultas SQL (SQL queries)
+  SQL es el lenguaje para
+    generar, manipular y recuperar datos de una base de datos relacional
+
+que se aprendio en esta clase
+  recuperar datos con la cláusula SELECT - FROM
+  agregar restricciones con la cláusula WHERE y operadores SQL (=, !=, LIKE, NOT LIKE, %, _, IN, NOT IN)
+  ordenar los resultados con ORDER BY
+  filtrar datos usando DISTINCT
+  limitar el número de filas a mostrar con LIMIT y OFFSET
+  crear salidas personalizadas con la cláusula CASE
+
+recursos
+  SQLBolt - https://sqlbolt.com/
+    lecciones y ejercicios interactivos diseñados para ayudarte a aprender SQL rápidamente
+
+  PostgreSQL Exercises - https://pgexercises.com/
+    conjunto interactivo de ejercicios SQL que son un poco más desafiantes que los anteriores

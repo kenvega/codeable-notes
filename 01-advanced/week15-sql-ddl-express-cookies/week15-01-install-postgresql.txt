@@ -1,0 +1,21 @@
+Postgres
+  es un sistema de gestión de bases de datos relacionales (RDBMS)
+
+  destaca por su robustez, escalabilidad, y cumplimiento con los estándares SQL
+
+  principales características
+    es de código abierto y libre
+
+    soporta una gran parte del estándar SQL y ofrece características adicionales
+
+    es extensible
+      los usuarios pueden definir sus propios tipos de datos, operadores personalizados y funciones
+
+    tiene extensiones construidas y soportadas por la comunidad
+      ejemplo
+        "PostGIS" para dar soporte a datos geográficos
+          con esta extensió PostgreSQL se convierte en un sistema de base de datos espacial
+            que puede utilizarse para aplicaciones de información geográfica (GIS)
+
+    es conocido por su alta estabilidad y su capacidad de manejar grandes volúmenes de datos con un buen rendimiento y eficiencia
+

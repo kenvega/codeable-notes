@@ -1,0 +1,17 @@
+Estructuras de Control de Flujo - Control Flow (If, for, while, etc)
+  son un mecanismo para cambiar el comportamiento de ejecucion de los scripts
+    por defecto se ejecuta de arriba hacia abajo y linea por linea
+
+estructuras básicas de control de flujo en JavaScript
+  condicionales
+    if, else if, else
+
+  bucles/loops
+    for
+    while
+    do...while
+    for...of
+    for...in
+
+  seleccion multiple
+    switch case

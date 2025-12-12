@@ -19,3 +19,21 @@ Postgres
 
     es conocido por su alta estabilidad y su capacidad de manejar grandes volúmenes de datos con un buen rendimiento y eficiencia
 
+instalacion de postgres
+  MacOS - https://youtu.be/23Df9dj4pao
+  WSL / Linux - https://youtu.be/_yjQ2C-a7BE
+  Windows - https://youtu.be/JpECm3FsV3o
+
+creacion de base de datos, tablas
+
+  ten un archivo sql para crear las bases de datos
+    ejemplo: usa el archivo week15-01-movielens-database.sql
+
+  luego corre estos comandos
+    createdb movielens
+
+    psql -d movielens < movielens.sql
+
+conexion a base de datos
+
+  

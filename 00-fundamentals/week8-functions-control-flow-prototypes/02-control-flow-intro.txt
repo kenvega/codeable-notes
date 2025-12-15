@@ -8,10 +8,20 @@ estructuras básicas de control de flujo en JavaScript
 
   bucles/loops
     for
-    while
-    do...while
-    for...of
-    for...in
+      ejecuta un bloque de código un número específico de veces
 
-  seleccion multiple
-    switch case
+    while
+      ejecuta un bloque de código mientras una condición especificada sea verdadera
+
+    do...while
+      similar a while, pero ejecuta el bloque de código al menos una vez antes de verificar la condición
+
+    for...of
+      itera sobre los valores de un objeto iterable
+
+    for...in
+      itera sobre las propiedades enumerables de un objeto
+
+  seleccion multiple / switch case
+    'switch' evalua una expresión y luego
+    se ejecuta el código asociado a una etiqueta 'case' en caso los valores coincidan

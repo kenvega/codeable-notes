@@ -1,0 +1,38 @@
+join queries
+  se necesitan para responder a preguntas que combinan informacion de multiples tablas
+  los join queries juntas esa informacion
+
+  ejemplos de casos de uso
+    ¿Cuántas películas ha calificado cada usuario?
+    ¿Cuántos usuarios han calificado cada película?
+
+normalización
+
+INNER JOIN
+
+OUTER JOIN
+
+sql expressions
+
+aggregates
+  COUNT
+  MIN
+  MAX
+  AVG
+  SUM
+
+filtros
+  GROUP BY
+  HAVING
+
+recursos
+  https://www.codecademy.com/courses/learn-sql/lessons/aggregate-functions
+  https://www.codecademy.com/courses/learn-sql/lessons/multiple-tables
+
+postgres ejercicios
+  https://pgexercises.com/questions/joins/
+  https://pgexercises.com/questions/aggregates/
+
+herramientas para hacer diagramas
+  http://www.lucidchart.com/
+  http://www.draw.io/

@@ -36,4 +36,15 @@ creacion de base de datos, tablas
 
 conexion a base de datos
 
-  
+  ejecuta este comando
+    psql -d movielens
+
+      verias una respuesta asi
+        psql (16.0)
+        Type "help" for help.
+        movielens=#
+
+    en este nuevo prompt ya se pueden escribir los comandos como 
+      SELECT * FROM genres;
+
+* siempre termina las sentencias con ';'

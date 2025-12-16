@@ -1,0 +1,36 @@
+switch-case
+  útil para decidir entre múltiples opciones
+
+  switch(expresión) {
+    case expresionCase1:
+      // código a ejecutar si la expresión es igual a expresionCase1
+      break;
+    case expresionCase2:
+      // código a ejecutar si la expresión es igual a expresionCase2
+      break;
+    // ... puedes tener tantos case como necesites ...
+    default:
+      // código a ejecutar si la expresión no es igual a ninguno de los valores anteriores
+  }
+
+se usa break para salir del switch después de que se cumple una condición
+
+utiliza default para capturar cualquier caso que no coincida con ningún case
+
+puedes agrupar case para compartir el mismo código entre diferentes condiciones
+  ejemplo
+    switch (dia) {
+      case "lunes":
+      case "martes":
+      case "miércoles":
+      case "jueves":
+          console.log("Un día laborable.");
+          break;
+      case "viernes":
+          console.log("¡Casi fin de semana!");
+          break;
+      case "sábado":
+      case "domingo":
+          console.log("Día de descanso.");
+          break;
+    }

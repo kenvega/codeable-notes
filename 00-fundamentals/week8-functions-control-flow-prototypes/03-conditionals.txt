@@ -1,0 +1,18 @@
+condiciones
+  permiten que los programas tomen decisiones
+
+la declaración if evalúa y ejecuta un bloque de código si la condición es truthy
+
+la declaración else se usa para manejar el caso en que la condición es falsy
+
+no es necesario que la condición sea un valor booleano, cualquier valor truthy o falsy es válido
+
+else if permite evaluar múltiples condiciones en secuencia
+
+solo un bloque dentro de la estructura completa if... else if ...else se ejecutará
+
+cualquier expresión puede ser usada como condición
+
+operador ternario (? :)
+  es una expresión que retorna un valor en base a una condición
+    es una alternativa más concisa al if-else en ciertos casos

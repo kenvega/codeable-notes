@@ -1,4 +1,12 @@
 -- Lista el title y los genres de todas las películas
+SELECT
+  movies.title,
+  genres.name
+FROM
+  movies
+  JOIN genres_movies ON movies.id = genres_movies.movie_id
+  JOIN genres ON genres.id = genres_movies.genre_id;
+
 -- Lista todos los ids de los usuarios y el nombre de su ocupación
 -- Lista el número de películas agrupadas por género
 -- Recupera solo el género que tiene más películas asociadas

@@ -1,0 +1,56 @@
+middlewares en express
+  app.get("/", (req, res, next) => {
+    // hacer algo interesante y luego...
+
+    // pasar control al siguiente handler
+    next();
+  });
+
+
+
+multiples handlers al declarar una ruta
+  app.get(
+    "/",
+    (_req, _res, next) => {
+      console.log("Primer handler");
+      next();
+    },
+    (_req, _res, next) => {
+      console.log("Segundo handler");
+      next();
+    },
+    (_req, res) => {
+      console.log("Tercer handler");
+      res.send("Finaliza el ciclo solicitud-respuesta");
+    }
+  );
+
+
+  const handler1: RequestHandler = (_req, _res, next) => {
+    console.log("Primer handler");
+    next();
+  };
+  const handler2: RequestHandler = (_req, _res, next) => {
+    console.log("Segundo handler");
+    next();
+  };
+  const handler3: RequestHandler = (_req, res) => {
+    console.log("Tercer handler");
+    res.send("Finaliza el ciclo solicitud-respuesta");
+  };
+
+  // Como argumentos independientes
+  app.get("/", handler1, handler2, handler3);
+
+  // Como un arreglo de handlers
+  app.get("/", [handler1, handler2, handler3]);
+
+  // Como una combinación
+  app.get("/", [handler1, handler2], handler3);
+
+
+multiples rutas que responden al mismo endpoint
+método app.use()
+handlers modulares con express.Router
+middleware para manejo de errores
+middlewares incluidos en Express

@@ -1,0 +1,30 @@
+bucles
+  son una herramienta de control de flujo
+  que repetirán un bloque de código mientras se cumpla una condición específica
+
+  en js los mas conocidos son
+    for, while y do...while
+
+bucle for
+  for (let i = 0; i < 5; i++) {
+    console.log(i); // Imprimirá los números del 0 al 4
+  }
+bucle while
+  let i = 0;
+  while (i < 5) {
+    console.log(i); // Imprimirá los números del 0 al 4
+    i++;
+  }
+bucle do...while
+  similar al while pero con una diferencia
+    el bloque de código se ejecuta al menos una vez antes de que se compruebe la condición
+
+  let i = 0;
+  do {
+    console.log(i); // Imprimirá los números del 0 al 4
+    i++;
+  } while (i < 5);
+
+break y continue
+consideraciones finales
+resumen

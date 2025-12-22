@@ -26,5 +26,21 @@ bucle do...while
   } while (i < 5);
 
 break y continue
+  break
+    "rompe" el bucle y termina su ejecución inmediatamente
+      desplaza el control del programa a la siguiente línea después del bucle
+
+    usar cuando queires salir del bucle antes de que haya completado todas sus iteraciones
+
+  continue
+    "salta" una iteración en el bucle
+      cuando el bucle se encuentra con continue
+        omite el resto del código que se encuentra en esa iteración y pasa directamente a la siguiente
+
 consideraciones finales
-resumen
+  usa un bucle for cuando
+    sepas cuántas veces quieres que se repita el código
+
+  usa while o do...while cuando
+    la cantidad de repeticiones se determine por una condición
+      que no está necesariamente ligada a un contador

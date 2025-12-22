@@ -50,6 +50,36 @@ multiples handlers al declarar una ruta
 
 
 multiples rutas que responden al mismo endpoint
+
+  otra forma de registrar multiples handlers a una misma ruta
+    es declarando multiples rutas con la misma combinación de método + ruta
+
+  ejm
+    const handler1: RequestHandler = (_req, _res, next) => {
+      console.log("Primer handler");
+      next();
+    };
+    const handler2: RequestHandler = (_req, _res, next) => {
+      console.log("Segundo handler");
+      next();
+    };
+    const handler3: RequestHandler = (_req, res) => {
+      console.log("Tercer handler");
+      res.send("Finaliza el ciclo solicitud-respuesta");
+    };
+
+    app.get("/", handler1);
+    app.get("/", handler2);
+    app.get("/", handler3);
+
+  cada ruta puede tener multiples handlers tambien
+    ejm
+      //... definicion de los mismos handlers del ejemplo anterior...
+
+      // Multiples rutas
+      app.get("/", handler1, handler2); // <- multiples handlers
+      app.get("/", handler3);
+
 método app.use()
 handlers modulares con express.Router
 middleware para manejo de errores

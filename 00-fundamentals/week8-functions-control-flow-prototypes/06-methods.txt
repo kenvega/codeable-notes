@@ -1,0 +1,28 @@
+las funciones son valores (como los strings y numbers)
+  asi que se pueden asociar a una propiedad de un objeto
+
+cuando usas console.log()
+  tambien estas usando una funcion dentro de un objeto
+
+se llama "método" a una propiedad de un objeto que apunta a una función
+  es solo un nombre para un caso especifico. no hay nada en especial en el fondo
+  es solo para poder diferenciar 'metodo' de 'funcion'
+
+una funcion se puede llamar con su nombre directamente
+  un metodo se llama a traves de su objeto
+
+  ejemplo
+    function saludar() {
+      console.log("¡Hola!");
+    }
+
+    saludar(); // llamamos a la función por su nombre
+
+    const persona = {
+      nombre: "Luis",
+      saludar: function() {
+        console.log("¡Hola!");
+      }
+    };
+
+    persona.saludar(); // llamamos al método a partir de su objeto

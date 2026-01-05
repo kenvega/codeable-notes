@@ -8,8 +8,39 @@ FROM
   JOIN genres ON genres.id = genres_movies.genre_id;
 
 -- Lista todos los ids de los usuarios y el nombre de su ocupación
+SELECT
+  users.id,
+  occupations.name
+FROM
+  users
+  JOIN occupations ON users.occupation_id = occupations.id;
+
 -- Lista el número de películas agrupadas por género
+SELECT
+  genres.name,
+  COUNT(movies.id) AS number_of_movies
+FROM
+  genres
+  JOIN genres_movies ON genres.id = genres_movies.genre_id
+  JOIN movies ON movies.id = genres_movies.movie_id
+GROUP BY
+  genres.name;
+
 -- Recupera solo el género que tiene más películas asociadas
+SELECT
+  genres.name,
+  COUNT(movies.id) AS number_of_movies
+FROM
+  genres
+  JOIN genres_movies ON genres.id = genres_movies.genre_id
+  JOIN movies ON movies.id = genres_movies.movie_id
+GROUP BY
+  genres.name
+ORDER BY
+  number_of_movies DESC
+LIMIT
+  1;
+
 -- Lista todos los títulos de las películas y el número de géneros asociados que cada una tiene
 -- Lista el número de usuarios por ocupación
 -- Lista el título de la película y su calificación promedio ordenados desde la mejor calificada hasta la peor calificada

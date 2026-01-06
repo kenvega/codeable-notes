@@ -26,3 +26,53 @@ una funcion se puede llamar con su nombre directamente
     };
 
     persona.saludar(); // llamamos al método a partir de su objeto
+
+crear metodos
+  definiendo la función directamente en el objeto
+
+    const pokemon = {
+      especie: "Pikachu",
+      saludar: function() {
+        console.log("Pikachu saluda");
+      },
+      // otra forma en ES6
+      saludar2() {
+        console.log("Pikachu saluda");
+      }
+    };
+
+  referenciando una función existente
+
+    function pikachuSaluda() {
+      console.log("Pikachu saluda");
+    }
+
+    const pokemon = {
+      especie: "Pikachu",
+      saludar: pikachuSaluda,
+    };
+
+de que sirve colocar la función dentro del objeto? 
+  al estar "encapsulados" en sus objetos, no "contaminan" el scope global de tu programa
+
+  en vez de llenar el scope global con varios nombres de funciones
+    function volarAvion() { /* implementación... */ }
+    function volarAve() { /* implementación... */ }
+
+  se usan metodos
+    const ave = {
+      // ...otras propiedades de ave
+      volar() {
+        /* implementación... */
+      }
+    }
+
+    const avion = {
+      // ...otras propiedades de avion
+      volar() {
+        /* implementación... */
+      }
+    }
+
+definicion de objeto actualizada
+  un objeto es un conjunto de propiedades y métodos relacionados

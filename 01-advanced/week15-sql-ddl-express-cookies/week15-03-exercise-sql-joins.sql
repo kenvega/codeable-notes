@@ -42,6 +42,16 @@ LIMIT
   1;
 
 -- Lista todos los títulos de las películas y el número de géneros asociados que cada una tiene
+SELECT
+  movies.title,
+  COUNT(genres.id) AS number_of_genres
+FROM
+  movies
+  JOIN genres_movies ON movies.id = genres_movies.movie_id
+  JOIN genres ON genres.id = genres_movies.genre_id
+GROUP BY
+  movies.title;
+
 -- Lista el número de usuarios por ocupación
 -- Lista el título de la película y su calificación promedio ordenados desde la mejor calificada hasta la peor calificada
 -- Lista la calificación promedio por género

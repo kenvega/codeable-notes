@@ -53,8 +53,54 @@ GROUP BY
   movies.title;
 
 -- Lista el número de usuarios por ocupación
+SELECT
+  occupations.name,
+  COUNT(users.id) AS number_of_users
+FROM
+  occupations
+  JOIN users ON occupations.id = users.occupation_id
+GROUP BY
+  occupations.name;
+
 -- Lista el título de la película y su calificación promedio ordenados desde la mejor calificada hasta la peor calificada
+SELECT
+  movies.title,
+  AVG(ratings.rating) AS average_rating
+FROM
+  movies
+  JOIN ratings ON movies.id = ratings.movie_id
+GROUP BY
+  movies.title
+ORDER BY
+  average_rating DESC;
+
 -- Lista la calificación promedio por género
+SELECT
+  genres.name,
+  AVG(ratings.rating) AS average_rating
+FROM
+  genres
+  JOIN genres_movies ON genres.id = genres_movies.genre_id
+  JOIN movies ON movies.id = genres_movies.movie_id
+  JOIN ratings ON movies.id = ratings.movie_id
+GROUP BY
+  genres.name;
+
 -- Recupera la película más popular de 1995
+SELECT
+  movies.title,
+  COUNT(ratings.id) AS number_of_ratings
+FROM
+  movies
+  JOIN ratings ON movies.id = ratings.movie_id
+WHERE
+  movies.release_year = 1995
+GROUP BY
+  movies.title
+ORDER BY
+  number_of_ratings DESC
+LIMIT
+  1;
+
 -- Recupera la edad promedio de los usuarios que han calificado la película "Eye for an Eye (1996)"
 -- Lista las 10 mejores películas para Abogados estrenadas entre 1990 y 1995

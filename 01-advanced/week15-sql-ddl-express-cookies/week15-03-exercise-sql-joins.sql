@@ -103,4 +103,31 @@ LIMIT
   1;
 
 -- Recupera la edad promedio de los usuarios que han calificado la película "Eye for an Eye (1996)"
+SELECT
+  AVG(users.age) AS average_age
+FROM
+  users
+  JOIN ratings ON users.id = ratings.user_id
+  JOIN movies ON ratings.movie_id = movies.id
+WHERE
+  movies.title = 'Eye for an Eye (1996)';
+
 -- Lista las 10 mejores películas para Abogados estrenadas entre 1990 y 1995
+SELECT
+  movies.title,
+  AVG(ratings.rating) AS average_rating
+FROM
+  movies
+  JOIN ratings ON movies.id = ratings.movie_id
+  JOIN users ON ratings.user_id = users.id
+  JOIN occupations ON users.occupation_id = occupations.id
+WHERE
+  occupations.name = 'Lawyer'
+  AND movies.release_date > '1990-01-01'
+  AND movies.release_date < '1996-01-01'
+GROUP BY
+  movies.title
+ORDER BY
+  average_rating DESC
+LIMIT
+  10;

@@ -1,0 +1,22 @@
+introduccion a 'this' keyword
+
+  como resolver este problema hasta ahora con lo que sabemos?
+    function saludar() {
+      // ¿Cómo podemos implementar esta función?
+    }
+
+    const persona1 = {
+      nombre: "Simon",
+      saludar: saludar
+    }
+
+    const persona2 = {
+      nombre: "Micaela",
+      saludar: saludar
+    }
+
+    persona1.saludar(); // Imprime: "Hola, mi nombre es Simon"
+    persona2.saludar(); // Imprime: "Hola, mi nombre es Micaela"
+
+  si la funcion función saludar no tiene ningún parámetro. ¿Cómo sabe qué nombre debe imprimir?
+

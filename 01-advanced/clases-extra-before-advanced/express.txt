@@ -1,0 +1,7 @@
+en express para que puedas acceder al formdata enviada por un formulario a traves de un POST
+  necesitas usar middleware que pondra esa data en req.body
+
+    app.use(express.urlencoded())
+
+      toma el string que se envia en formdata y lo pasa a un objeto que se agrega a req.body
+

@@ -20,3 +20,55 @@ introduccion a 'this' keyword
 
   si la funcion función saludar no tiene ningún parámetro. ¿Cómo sabe qué nombre debe imprimir?
 
+this keyword
+
+  const persona = {
+    nombre: "Simon",
+    imprimeThis() {
+      console.log(this);
+    }
+  }
+
+  persona.imprimeThis(); // esto imprimira el objeto al que apunta la variable persona
+                         // osea imprimiria esto
+                         //    { nombre: "Simon", imprimeThis: function imprimeThis() {} }
+
+  'this' se evalua cuando se llama a imprimeThis
+    como el objeto persona llamo a esa funcion entonces 'this' apunta al objeto persona
+
+this se define durante la ejecucion
+
+  ejemplo de codigo para mostrar el punto
+    function imprimeThis() {
+      console.log(this) // Cuando declaramos la función no sabemos a quién apuntará `this`
+    }
+
+    const persona = {
+      nombre: "Simon",
+      imprimeThis: imprimeThis
+    }
+
+    const auto = {
+      marca: "Toyota",
+      imprimeThis: imprimeThis
+    }
+
+    // Cuando ejecutamos las funciones se define `this`:
+
+    persona.imprimeThis(); // { nombre: "Simon", imprimeThis: function... }
+    auto.imprimeThis(); // { marca: "Toyota", imprimeThis: function... }
+
+  cada vez que se llama a imprimeThis
+    se crea un nuevo contexto de ejecución, y en ese momento se define 'this'
+
+'this' en otros contextos
+
+  cuando 'this' no aparece como parte de ejecucion de un metodo
+
+  en el navegador normalmente se refiere al objeto global 'window'
+    console.log(this === window);  // true, en navegadores
+
+  en una funcion fuera de un objeto
+    'this' en modo estricto seria undefined
+      sin modo estricto sería tambien el objeto 'window'
+

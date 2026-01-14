@@ -72,3 +72,14 @@ this se define durante la ejecucion
     'this' en modo estricto seria undefined
       sin modo estricto sería tambien el objeto 'window'
 
+ejemplo de referencia rapido de uso de 'this'
+
+  const persona = {
+    nombre: "Simon",
+    apellido: "Grau",
+    obtenerNombreCompleto() {
+      return this.nombre + " " + this.apellido;
+    }
+  }
+
+  console.log(persona.obtenerNombreCompleto()); // Imprime: Simon Grau

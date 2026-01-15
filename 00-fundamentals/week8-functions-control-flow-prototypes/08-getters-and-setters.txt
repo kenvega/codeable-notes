@@ -1,0 +1,17 @@
+intro
+  en este snippet
+    const persona = {
+      nombre: "Simon",
+      apellido: "Grau",
+      obtenerNombreCompleto() {
+        return this.nombre + " " + this.apellido;
+      }
+    }
+
+    console.log(persona.obtenerNombreCompleto());  // Simon Grau
+
+  que tal si quisiéramos que el "nombre completo" fuera tratado como una propiedad y no como un método?
+
+getters
+
+  

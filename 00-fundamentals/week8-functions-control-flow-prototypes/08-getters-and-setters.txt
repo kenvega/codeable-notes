@@ -14,4 +14,74 @@ intro
 
 getters
 
-  
+  permite definir una propiedad cuyo valor será el valor de retorno del método getter con el mismo nombre
+
+  ejemplo
+    const persona = {
+      nombre: "Simon",
+      apellido: "Grau",
+      get nombreCompleto() {
+        return this.nombre + " " + this.apellido;
+      }
+    };
+
+    console.log(persona.nombreCompleto);  // Simon Grau
+
+  puedes notar en el ejemplo que se puede acceder a 'nombreCompleto' como si fuera una propiedad y no un método
+
+  para obtener el valor de la propiedad nombreCompleto, JavaScript ejecuta el getter nombreCompleto
+
+setters
+
+  permite definir o cambiar el valor de una propiedad
+
+  se ejecutan cuando se asigna un valor a una propiedad
+    permitiendo realizar operaciones adicionales o validaciones durante esa asignación
+
+  ejemplo
+    const persona = {
+      nombre: "Simon",
+      apellido: "Grau",
+      get nombreCompleto() {
+        return this.nombre + " " + this.apellido;
+      },
+      set nombreCompleto(valor) {
+        if (typeof valor !== "string") return; // solo aceptamos strings
+
+        const partes = valor.split(" "); // dividimos el string en un arreglo
+        this.nombre = partes[0];
+        this.apellido = partes[1];
+      }
+    };
+
+    persona.nombreCompleto = "Maria González";
+    console.log(persona.nombre);    // Maria
+    console.log(persona.apellido);  // González
+
+  al evaluar la expresión persona.nombreCompleto = "Maria González"
+    javaScript ejecuta el método setter 'nombreCompleto' pasando como parámetro el valor "Maria González"
+
+  usando el setter, hemos actualizado las propiedades nombre y apellido del objeto persona
+
+beneficios de Getters y Setters
+
+  Validación
+    podemos validar los datos antes de que sean asignados
+
+  Flexibilidad
+    Nos brindan la capacidad de transformar o calcular datos antes de retornarlos o almacenarlos
+
+  Encapsulamiento
+    En POO, el encapsulamiento permite esconder o proteger detalles internos del objeto
+      y exponer solo lo que es necesario
+
+    Si bien los getters y setters en JavaScript nos acercan a este "ideal", no es suficiente
+      Nada nos impide leer y modificar directamente las propiedades nombre y apellido.
+
+        ejm
+          persona.nombre = "Pedro"; // se puede modificar directamente sin usar el setter
+          persona.nombre; // "Pedro"; se puede leer directamente sin usar el getter
+
+    Para lograr un verdadero encapsulamiento
+      se necesita combinar los setters y getters con conceptos más avanzados de JavaScript
+        como lo son las Clases y Variables Privadas

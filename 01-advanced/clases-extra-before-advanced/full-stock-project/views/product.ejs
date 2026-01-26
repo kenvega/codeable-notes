@@ -1,0 +1,31 @@
+<section class="product">
+  <div class="container product__container">
+    <div class="product__image">
+      <img
+        src="<%= product.imgSrc %>"
+        alt="<%= product.title %>"
+        class="product__image_content"
+      />
+    </div>
+    <div class="product__info">
+      <h1 class="product__title"><%= product.title %></h1>
+      <p class="product__price">S/ <%= product.price %></p>
+      <p class="product__description"><%= product.description %></p>
+      <form method="post" action="/cart/add">
+        <input type="text" name="productId" value="<%= product.id %>" hidden />
+        <button class="button button--xl product__button" type="submit">
+          Agregar al Carrito
+        </button>
+      </form>
+      <div class="separator product__separator"></div>
+      <div class="product__features">
+        <h2 class="product__features_title">Características</h2>
+        <ul class="product__features_list">
+          <% for(const feature of product.features) { %>
+          <li><%= feature %></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

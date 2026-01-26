@@ -1,0 +1,39 @@
+prototipos intro
+
+  como es esto posible?
+
+    let spiderman = {};
+    console.log(spiderman.identidad); // output: "Peter Parker"
+
+  usualmente obtenemos undefined cuando una propiedad no existe
+    esto es gracias a los prototipos
+
+prototipos concepto
+  ejemplo
+    let humano = {
+      corazon: true
+    };
+
+    let maryJean = {
+      pelo: "rojo"
+    };
+
+    // si luego hacemos esto obtenemos undefined
+    console.log(maryJean.corazon); // undefined
+
+    // pero podemos indicarle para que continúe buscando la propiedad faltante en otro objeto
+    maryJean.__proto__ = humano;
+
+    // y luego obtendriamos esto
+    console.log(maryJean.corazon); // true
+
+
+  __proto__ no es una propiedad
+    sino un setter de una propiedad oculta llamada [[Prototype]]
+      el valor que asignamos a __proto__ se convierte en el prototipo del objeto
+
+  Como una analogia muy simple
+    Es como cuando te hacen una pregunta y tu respondes
+      "Yo no se, pero quizá Pepito sabe, pregúntale a él."
+        Cuando una propiedad no existe en un objeto, JavaScript le "preguntará" a su prototipo
+

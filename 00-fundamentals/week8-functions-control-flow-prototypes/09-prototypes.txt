@@ -37,3 +37,84 @@ prototipos concepto
       "Yo no se, pero quizá Pepito sabe, pregúntale a él."
         Cuando una propiedad no existe en un objeto, JavaScript le "preguntará" a su prototipo
 
+cadena de prototipos
+  se busca por todos los prototipos hasta que se encuentra la propiedad que se busca
+    si no se encuentra ahí recién se manda un error
+
+  ejemplo
+    let mamifero = {
+      poneHuevos: false
+    }
+
+    let humano = {
+      corazon: true
+    };
+
+    humano.__proto__ = mamifero;
+
+    let maryJean = {
+      pelo: "rojo"
+    };
+
+    maryJean.__proto__ = humano;
+
+    console.log(maryJean.poneHuevos); // false
+
+shadowing
+  si una propiedad ya se encuentra, no importa si su prototipo tiene la misma propiedad
+    se devuelve la primera propiedad que se encuentra en la cadena
+
+  ejemplo
+    let humano = {
+      corazon: true
+      pelo: "natural",
+    };
+
+    let maryJean = {
+      pelo: "rojo"
+    };
+
+    maryJean.__proto__ = humano;
+
+    console.log(humano.pelo); // "natural"
+    console.log(maryJean.pelo); // "rojo"
+
+  si quieres saber si un objeto tiene una propiedad definida en si mismo
+    o si su propiedad viene por prototipos
+      puedes usar hasOwnProperty
+
+        ejemplo
+          console.log(humano.hasOwnProperty('pelo')); // true
+          console.log(maryJean.hasOwnProperty('pelo')); // true
+
+asignaciones de propiedades sabiendo que existen prototipos
+  asi tengas un prototipo con una propiedad que no se tiene
+    si se asigna un valor a esa propiedad no se asigna a su objeto 'padre' prototipo
+      se asigna al mismo objeto que no tenia esa propiedad
+
+  ejemplo
+    let humano = {
+      corazon: true
+    };
+
+    let maryJean = {
+      pelo: "rojo"
+    };
+
+    maryJean.__proto__ = humano
+
+    maryJean.corazon = false;
+
+    console.log(humano.corazon); // true
+    console.log(maryJean.corazon); // false
+
+prototipo del objeto por defecto
+  let obj = {};
+  console.log(obj.__proto__); // no es 'null' ni 'undefined'
+
+  obj.__proto__ apunta al Protoipo por defecto
+    este tiene funciones del objeto como
+      .toString
+      .hasOwnProperty
+      etc
+

@@ -112,9 +112,43 @@ prototipo del objeto por defecto
   let obj = {};
   console.log(obj.__proto__); // no es 'null' ni 'undefined'
 
-  obj.__proto__ apunta al Protoipo por defecto
+  obj.__proto__ apunta al Prototipo por defecto
     este tiene funciones del objeto como
       .toString
       .hasOwnProperty
       etc
 
+  esto explica porque todos los objetos parecen tener propiedades 'integradas'
+    son solo las propiedades normales en el Prototipo de Objeto por defecto
+      ejm
+        let humano = {
+          corazon: true
+        };
+        console.log(humano.hasOwnProperty); // (función)
+        console.log(humano.toString); // (función)
+
+contaminacion del prototipo
+  a este punto seguro ya tienes una idea de como puede ocurrir esto
+    let spiderman = {};
+    console.log(spiderman.identidad); // "Peter Parker"
+
+  la única manera de que la propiedad identidad retorne "Peter Parker"
+    es agregando esta propiedad al Prototipo de Objeto
+
+      let spiderman = {};
+      spiderman.__proto__.identidad = "Peter Parker";
+
+      let batman = {};
+
+      console.log(spiderman.identidad); // "Peter Parker"
+      console.log(batman.identidad); // "Peter Parker"
+
+  mutar un prototipo compartido por diferentes objetos
+    es conocido como "Contaminación del Prototipo"
+
+  antes esta técnica se utilizó para agregar funcionalidad a JavaScript
+    pero actualmente se considera una mala práctica
+      porque es mejor evitar posibles conflictos de nombres de propiedades
+        ya que JavaScript evoluciona constantemente
+
+otras observaciones de __proto__

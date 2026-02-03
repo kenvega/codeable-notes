@@ -152,3 +152,31 @@ contaminacion del prototipo
         ya que JavaScript evoluciona constantemente
 
 otras observaciones de __proto__
+
+  puedes definir __proto__ cuando defines un objeto (raro pero es posible)
+    ejemplo:
+
+      let humano = {
+        corazon: true
+      };
+
+      let maryJean = {
+        pelo: "rojo",
+        __proto__: humano // esto funciona
+      };
+
+  el uso de __proto__ directamente no es recomendado
+    lo mejor es usar funciones que JavaScript nos da como setPrototypeOf y getPrototypeOf
+
+      ejemplo:
+
+        let humano = {
+          corazon: true
+        };
+
+        let maryJean = {
+          pelo: "rojo",
+        };
+
+        Object.setPrototypeOf(maryJean, humano);
+        console.log(Object.getPrototypeOf(maryJean)); // { corazon: true }

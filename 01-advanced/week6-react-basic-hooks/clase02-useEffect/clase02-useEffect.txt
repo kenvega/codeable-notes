@@ -1,5 +1,5 @@
 efectos secundarios
-  es cualquier interaccion que salga del evento de nuestro scope de funcion
+  es cualquier interaccion con un sistema que no es propio del lenguaje
     ejm
       modificar una variable global
       acciones de entrada y salida (ejm usar console.log, localStorage)

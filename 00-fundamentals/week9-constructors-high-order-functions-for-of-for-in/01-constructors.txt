@@ -1,0 +1,35 @@
+intro
+  existían dos maneras de crear un nuevo objeto
+
+    usando un objeto literal (usando directamente las llaves {})
+      ejemplo: let miObjeto = {}
+
+    usando la función constructora
+      ejemplo: let miObjeto = new Object()
+
+  ambos producen el mismo resultado
+    un objeto "vacío" cuyo prototipo apunta al "Object Prototype" (Prototipo de Objeto)
+
+  cómo el Prototipo de Objeto se convierte en el prototipo por defecto de un objeto vacío?
+
+creando objetos
+
+  analiza este codigo
+    let animal = {};
+    animal.nombre = "Leo";
+    animal.energia = 10;
+
+    animal.comer = function (cantidad) {
+      console.log(`${this.nombre} está comiendo.`);
+      this.energia += cantidad;
+    };
+
+    animal.dormir = function (tiempo) {
+      console.log(`${this.nombre} está durmiendo.`);
+      this.energia += tiempo;
+    };
+
+    animal.jugar = function (tiempo) {
+      console.log(`${this.nombre} está jugando.`);
+      this.energia -= tiempo;
+    };

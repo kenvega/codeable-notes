@@ -33,3 +33,4 @@ creando objetos
       console.log(`${this.nombre} está jugando.`);
       this.energia -= tiempo;
     };
+

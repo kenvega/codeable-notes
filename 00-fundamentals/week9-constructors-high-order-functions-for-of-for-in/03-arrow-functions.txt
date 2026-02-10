@@ -1,0 +1,7 @@
+intro
+  desde el año 2015, con el lanzamiento de ES6 (ECMAScript 2015)
+    se introdujo una nueva manera de declarar funciones: las Arrow Functions
+
+sintaxis
+  let nombreFuncion = (arg1, arg2, ..., argN) => expresión;
+

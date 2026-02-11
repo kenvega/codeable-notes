@@ -5,3 +5,23 @@ intro
 sintaxis
   let nombreFuncion = (arg1, arg2, ..., argN) => expresión;
 
+  multiples formas de definir una funcion
+    // Function Declaration
+    function suma(a, b) {
+      return a + b;
+    }
+
+    // Function Expression
+    let suma = function(a, b) {
+      return a + b;
+    }
+
+    // Arrow Function
+    let suma = (a, b) => a + b;
+
+las funciones declaradas usando arrow functions no definen su propio this.
+
+  en funciones "tradicionales"
+    - el valor de this dentro de una función tradicional está determinado por cómo se llama la función.
+    - no está definido por dónde la función fue declarada en el código.
+    - puede cambiar dependiendo del contexto.

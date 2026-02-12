@@ -1,17 +1,12 @@
 import express from "express";
+import cookiesMiddleware from "cookie-parser";
 import layoutMiddleware from "express-ejs-layouts";
 
-import { db } from "./data/db.js";
-
-function globalDataMiddleware(req, res, next) {
-  res.locals.categories = db.categories;
-  res.locals.cart = db.cart;
-  next();
-}
-
-function notFoundMiddleware(req, res) {
-  res.status(404).render("404");
-}
+import { readDb, writeDb } from "./data/db.js";
+import { globalDataMiddleware } from "./middlewares/globalDataMiddleware.js";
+import { notFoundMiddleware } from "./middlewares/notFoundMiddleware.js";
+import * as cartsController from "./controllers/cartsController.js";
+import * as productsController from "./controllers/productsController.js";
 
 const app = express();
 
@@ -21,6 +16,9 @@ app.use(express.static("public"));
 // Middleware para procesar la data de formularios y almacenarlo en req.body
 app.use(express.urlencoded());
 
+// Middleware para parsear las cookies y almacenarlo en req.cookies
+app.use(cookiesMiddleware());
+
 // Configura EJS como motor de plantillas
 app.set("view engine", "ejs");
 app.use(layoutMiddleware);
@@ -29,11 +27,16 @@ app.use(layoutMiddleware);
 app.use(globalDataMiddleware);
 
 // Rutas
+
+// Home
 app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/:categorySlug", (req, res, next) => {
+// Categories
+app.get("/:categorySlug", async (req, res, next) => {
+  const db = await readDb();
+
   const categorySlug = req.params.categorySlug;
 
   // Obtener la categoría desde la base de datos
@@ -56,100 +59,48 @@ app.get("/:categorySlug", (req, res, next) => {
   });
 });
 
-app.get("/products/:id", (req, res) => {
-  // Convertir el id del producto a número
-  const id = Number(req.params.id);
-  // Buscar el producto por su id
-  const product = db.products.find((product) => product.id === id);
+// Products
+app.get("/products/:id", productsController.renderProduct);
 
-  res.render("product", { product });
-});
+// Carts
+app.get("/cart", cartsController.renderCart);
+app.post("/cart/add", cartsController.addCartItem);
+app.post("/cart/delete-item", cartsController.deleteCartItem);
+app.post("/cart/update-item", cartsController.updateCartItem);
 
-app.post("/cart/add", (req, res, next) => {
-  const productId = Number(req.body.productId);
-
-  const product = db.products.find((product) => product.id === productId);
-
-  // El producto esta en carrito?
-  const cartItem = db.cart.items.find((item) => item.product.id === product.id);
-
-  // Si sí está, añadir 1 a la cantidad actual
-  if (cartItem) {
-    cartItem.quantity += 1;
-    cartItem.subtotal += product.price;
-  } else {
-    // Si no está, crear y añadir el Item para este producto
-    const newItem = {
-      product: {
-        id: product.id,
-        title: product.title,
-        imgSrc: product.imgSrc,
-        price: product.price,
-      },
-      quantity: 1,
-      subtotal: product.price,
-    };
-    db.cart.items.push(newItem);
-  }
-
-  db.cart.total += product.price;
-  db.cart.totalQuantity += 1;
-
-  // res.redirect("/products/" + product.id);
-
-  // Redirigir a la URL que nos hizo la petición
-  res.redirect(req.get("Referer"));
-});
-
-app.post("/cart/delete-item", (req, res) => {
-  const productId = Number(req.body.productId);
-
-  const cart = db.cart;
-
-  const index = cart.items.findIndex((item) => item.product.id === productId);
-  const item = cart.items[index];
-
-  cart.total -= item.subtotal;
-  cart.totalQuantity -= item.quantity;
-
-  cart.items.splice(index, 1);
-
-  res.redirect("/cart");
-});
-
-app.post("/cart/update-item", (req, res) => {
-  const productId = Number(req.body.productId);
-  const quantity = Number(req.body.quantity);
-
-  const cart = db.cart;
-
-  const item = cart.items.find((item) => item.product.id === productId);
-
-  const deltaQuantity = quantity - item.quantity;
-  const deltaSubTotal = deltaQuantity * item.product.price;
-
-  item.quantity += deltaQuantity;
-  item.subtotal += deltaSubTotal;
-
-  // si item.quantity === 0, eliminar el item
-  // ESTO HACE QUE REPITAMOS LA LOGICA!!!
-
-  cart.totalQuantity += deltaQuantity;
-  cart.total += deltaSubTotal;
-
-  res.redirect("/cart");
-});
-
-app.get("/cart", (req, res) => {
-  res.render("cart");
-});
-
+// Orders
 app.get("/checkout", (req, res) => {
   res.render("checkout");
 });
 
 app.get("/order-confirmation", (req, res) => {
-  res.render("order-confirmation");
+  const orderId = req.query.orderId;
+
+  // verificar que la orden existe
+
+  res.render("order-confirmation", { orderId });
+});
+
+app.post("/orders/create", async (req, res) => {
+  const db = await readDb();
+  const cartId = res.locals.cart.id;
+  const cart = db.carts.find((cart) => cart.id === cartId);
+
+  const { email, ...shippingInfo } = req.body;
+
+  const newOrder = {
+    id: Math.random() * 10 ** 17,
+    email,
+    orderDetails: cart,
+    shippingInfo,
+  };
+
+  db.orders.push(newOrder);
+  await writeDb(db);
+
+  res.cookie("cartId", undefined, { maxAge: 0 });
+
+  res.redirect("/order-confirmation?orderId=" + newOrder.id);
 });
 
 // Manejador de rutas no encontradas

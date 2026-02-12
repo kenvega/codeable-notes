@@ -25,3 +25,22 @@ las funciones declaradas usando arrow functions no definen su propio this.
     - el valor de this dentro de una función tradicional está determinado por cómo se llama la función.
     - no está definido por dónde la función fue declarada en el código.
     - puede cambiar dependiendo del contexto.
+
+  las funciones declaradas como arrow function siguen otras reglas:
+    - no definen su propio this.
+    - capturan el valor de this del contexto circundante (es decir, el valor de this donde se declara la función de flecha).
+
+  ejemplo
+    const escuela = {
+      nombre: "Codeable",
+      mostrarNombre: function() {
+          console.log(this.nombre);
+      }
+      mostrarNombre2: () => {
+          console.log(this.nombre); // this del contexto circundante, en este caso es el objeto global
+      }
+    };
+
+    escuela.mostrarNombre(); // "Codeable"
+    escuela.mostrarNombre2(); // undefined
+

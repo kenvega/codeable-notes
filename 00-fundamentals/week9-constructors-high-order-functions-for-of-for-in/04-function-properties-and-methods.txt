@@ -1,0 +1,15 @@
+Propiedades de funciones
+
+  1. name
+
+  2. length
+
+  3. arguments
+
+Métodos del Prototipo de Función
+
+  1. bind()
+
+  2. call()
+
+  3. apply()

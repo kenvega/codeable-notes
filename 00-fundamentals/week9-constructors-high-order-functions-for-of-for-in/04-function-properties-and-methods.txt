@@ -13,3 +13,6 @@ Métodos del Prototipo de Función
   2. call()
 
   3. apply()
+
+
+

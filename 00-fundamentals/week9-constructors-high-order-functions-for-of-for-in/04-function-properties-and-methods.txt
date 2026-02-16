@@ -1,10 +1,43 @@
+las funciones en JavaScript son objetos
+    significa que pueden tener propiedades y métodos
+
+cuando creamos una función
+  el objeto que se crea tiene propiedades predefinidas
+
 Propiedades de funciones
 
   1. name
+      propiedad apunta al nombre de una función
+        function holaMundo() {}
+        console.log(holaMundo.name); // "holaMundo"
 
   2. length
+      retorna con cuántos parámetros requeridos se declaró la función
+        function sumar(a, b, c = 0) {
+          return a + b + c;
+        }
+
+        console.log(sumar.length); // 2 -- el parámetro 'c' tiene un valor por defecto asi que tampoco cuenta
 
   3. arguments
+      este objeto contiene todos los argumentos que se pasaron a una función
+        aunque es útil, su uso ha sido desplazado en favor de los parámetros "rest"
+
+        function mostrarArgumentos() {
+          console.log(arguments) // <- imprimimos el valor del objeto arguments
+        }
+
+        mostrarArgumentos(1, 'hola', true, { escuela: "Codeable" });
+
+        /* Imprime:
+        {
+          '0': 1,
+          '1': 'hola',
+          '2': true,
+          '3': { escuela: 'Codeable' },
+          length: 4
+        }
+        */
 
 Métodos del Prototipo de Función
 

@@ -23,6 +23,11 @@ Propiedades de funciones
       este objeto contiene todos los argumentos que se pasaron a una función
         aunque es útil, su uso ha sido desplazado en favor de los parámetros "rest"
 
+        no toma en cuenta la cantidad de parámetros declarados en la función
+          sino la cantidad de argumentos enviados en la invocación de la misma
+
+        este objeto no esta disponible en funciones de flecha
+
         function mostrarArgumentos() {
           console.log(arguments) // <- imprimimos el valor del objeto arguments
         }

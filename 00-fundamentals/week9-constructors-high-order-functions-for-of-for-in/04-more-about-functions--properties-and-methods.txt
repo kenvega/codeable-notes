@@ -46,7 +46,20 @@ Propiedades de funciones
 
 Métodos del Prototipo de Función
 
+  estos metodos existen gracias al Prototipo de Función (Function Prototype)
+
+  estos son solo los metodos mas relevantes
+
   1. bind()
+      permite establecer el valor de this de una función y crear una nueva función con ese contexto
+
+        function saludar() {
+          console.log(`¡Hola! Mi nombre es ${this.nombre}.`);
+        }
+
+        const saludo = saludar.bind({nombre: "Juan"});
+
+        saludo(); // ¡Hola! Mi nombre es Juan.
 
   2. call()
 

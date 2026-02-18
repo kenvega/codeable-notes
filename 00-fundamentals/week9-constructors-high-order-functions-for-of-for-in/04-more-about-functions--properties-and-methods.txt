@@ -53,6 +53,7 @@ Métodos del Prototipo de Función
   1. bind()
       permite establecer el valor de this de una función y crear una nueva función con ese contexto
 
+      ejemplo
         function saludar() {
           console.log(`¡Hola! Mi nombre es ${this.nombre}.`);
         }
@@ -62,8 +63,24 @@ Métodos del Prototipo de Función
         saludo(); // ¡Hola! Mi nombre es Juan.
 
   2. call()
+      permite llamar a una función con un objeto específico como this y con argumentos individuales
+        no se crea una nueva función
+          sino que reusa una función existente
+            pasando el objeto al que apuntará this y los argumentos necesarios
+
+      ejemplo
+        function presentar(titulo, ciudad) {
+          console.log(`${titulo} ${this.nombre}, de ${ciudad}.`);
+        }
+
+        const persona = { nombre: "Juan" };
+        presentar.call(persona, "Sr.", "Lima"); // Sr. Juan, de Lima.
 
   3. apply()
+      similar a call()
+        la diferencia es que los argumentos los pasamos como un array
+          en lugar de argumentos individuales
 
-
+      ejemplo
+        presentar.apply(persona, ["Sr.", "Lima"]); // Sr. Juan, de Lima.
 

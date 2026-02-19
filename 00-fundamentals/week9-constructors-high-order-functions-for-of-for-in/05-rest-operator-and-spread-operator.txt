@@ -1,0 +1,27 @@
+Rest Parameters y Spread Syntax
+  introducidas con ES6 (en 2015)
+  facilitan el trabajo con múltiples argumentos, arreglos y objetos
+
+rest parameters (tambien llamados 'resto de parametros')
+  se usa en funciones
+
+  permite capturar un numero indefinido de argumentos y agruparlos en un array
+
+  ejemplo de uso
+    si quisieramos una funcion que nos permita sumar todos los argumentos
+      independientemente de cuantos argumentos se le pase a una funcion
+
+        function sumarTodos(...numeros) {
+          let result = 0;
+
+          for(let i = 0; i < numeros.length; i++) {
+            result += numeros[i]
+          }
+
+          return result;
+        }
+
+        console.log(sumarTodos(1, 2, 3)); // 6
+        console.log(sumarTodos(10, 20, 30, 40, 50)); // 150
+
+    tambien se puede

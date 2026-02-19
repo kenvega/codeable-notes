@@ -1,0 +1,58 @@
+
+CODEABLE PRO
+
+preguntas:
+- cuando hablariamos sobre temas de entrevistas y negociaciones de mejoras de salario? recuerdo que se mencionaba en pro
+- entendia que luego tambien partners a los que podian recomendarnos para postular? eso cuando ocurriría?
+- por cual canal podriamos haberles comunicado problemas? porque ayer estuvimos tratando pero no se recibio respuesta
+
+para tomar en cuenta:
+- en la plataforma el link para entrar a las clases en vivo esta roto
+
+
+que se hara
+  vamos a trabajar en features bajo un mismo codigo especial
+
+  vamos a dividirnos entre pequeños equipos
+
+  vamos a trabajar con un kanban de log de tareas
+    github.com/orgs/codeableorg/projects/264/views/1
+
+
+  github.com/codeableorg/fullstock-api-pro-0226
+  github.com/codeableorg/fullstock-pro-0226
+
+  primera tarea
+    revisa el codigo base
+    normalmente te dan entre 3 dias y hasta 2 semanas en onboarding
+
+    toma el MVP y completalo para llevarlo a produccion
+      tareas
+        conecta el front con el back (las funciones ahorita son mock functions)
+
+  8:18. dice que es lo que se necesita para entender en un onboarding
+
+  sus pasos
+    revisar package.json para ver dependencias
+    ver si trabaja con vite (para que?)
+    en el main.tsx cuando hay react-router
+      se ve los providers que se tienen que poner que dan contexto
+        se pone de mas general a menos general
+
+  a las 9pm habla de providers
+    el provider pasa informacion
+      para evitar repeticion de codigo
+    services
+      lo que realmente se comunica con el backend para traer la informacion
+
+      el prompt que uso el wey
+        luego de analizar el frontend "fullstock-pro-0226", dame un diagrama de secuencia en mermaid acerca de lo que sucede al ingresar a:
+        http://localhost:5173/polos
+        solo en cuanto al frontend
+
+
+- metaframework - fullstack react pero basado en react-router
+- se puede usar react-router como un competidor a next.js
+    le llaman react-router framework mode
+- 
+

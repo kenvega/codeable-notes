@@ -1,0 +1,24 @@
+convenciones de conventional commits
+  feat: Mensaje
+  fix: Mensaje
+  refactor: Mensaje
+  docs: Mensaje
+
+gitflow
+  ramas
+    main -- es produccion
+    development -- rama development
+
+  ramas de ejemplo para crear
+    feat/integrar-login-con-backend
+    fix/mensaje-mensaje
+    test/descripcion-test
+    chore/mantenimiento
+    refactor/descripcion-en-guiones
+
+  para crear su rama
+    git checkout -b feat/nombre-rama
+
+todo el codigo en ingles
+
+hoy armar el PR correspondiente

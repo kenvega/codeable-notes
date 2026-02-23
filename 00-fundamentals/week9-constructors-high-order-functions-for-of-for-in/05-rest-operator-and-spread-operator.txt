@@ -24,8 +24,46 @@ rest parameters (tambien llamados 'resto de parametros')
         console.log(sumarTodos(1, 2, 3)); // 6
         console.log(sumarTodos(10, 20, 30, 40, 50)); // 150
 
-    tambien se puede
+    tambien se puede combinar paraemtros requeridos
+      parámetros opcionales (con valor por defecto) y el "resto" de parámetros (con la sintaxis ...)
 
+        function ejemplo(a, b, c = 0, ...resto) {
+          console.log("Requeridos: ", a, b);
+          console.log("Opcional: ", c);
+          console.log("Resto: ", resto);
+        }
 
+        ejemplo(10, 20, 30, 40, 50);
+        /* Imprime
+        Requeridos: 10 20
+        Opcional: 30
+        Resto: [40, 50]
+        */
 
+      el nombre de la variable luego de los tres puntos (...) es irrelevante (puede ser cualquier nombre)
+        es muy común utilizar ...rest o ...args
 
+spread syntax (uso es muy común en arreglos y objetos)
+
+  si el operador "rest" nos permitía agrupar elementos
+  el operador "spread" nos permite desagrupar o expandir elementos agrupados
+
+  uso en arreglos
+    recuerada: un arreglo es un conjunto o lista de elementos ordenados
+    el operador spread (...) nos permite desagrupar el arreglo en elementos individuales
+
+      // Para crear un arreglo incluyendo los elementos de otro arreglo
+
+      const arr1 = [1, 2, 3];
+      const arr2 = [...arr1, 4, 5];
+      console.log(arr2); // [1, 2, 3, 4, 5]
+
+      // Para que los elementos de un arreglo pasen como argumentos individuales a una función
+
+      let suma = (a, b) => a + b;
+
+      const nums = [10, 30]
+      console.log(suma(...nums)); // 40
+
+  uso en objetos
+    

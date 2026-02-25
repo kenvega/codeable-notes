@@ -42,6 +42,3 @@ entonces por que esto es posible
     cada tipo de dato tiene su función constructora correspondiente String, Number y Boolean
 
     los datos del tipo undefined, null, bigint y symbol no cuentan con una función constructora
-
-
-

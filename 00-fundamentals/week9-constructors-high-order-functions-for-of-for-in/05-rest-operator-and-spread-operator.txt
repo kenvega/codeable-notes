@@ -49,7 +49,7 @@ spread syntax (uso es muy común en arreglos y objetos)
   el operador "spread" nos permite desagrupar o expandir elementos agrupados
 
   uso en arreglos
-    recuerada: un arreglo es un conjunto o lista de elementos ordenados
+    recuerda: un arreglo es un conjunto o lista de elementos ordenados
     el operador spread (...) nos permite desagrupar el arreglo en elementos individuales
 
       // Para crear un arreglo incluyendo los elementos de otro arreglo
@@ -66,4 +66,12 @@ spread syntax (uso es muy común en arreglos y objetos)
       console.log(suma(...nums)); // 40
 
   uso en objetos
-    
+    recuerda: un objeto es un conjunto de propiedades
+    el operador spread (...) nos permite descomponer/expandir un objeto en sus propiedades individuales
+
+      // Para crear un objeto a partir de las propiedades de otro
+
+      const datos1 = { nombre: "Juan", apellido: "Perez" };
+      const persona = { ...datos1, pais: "Mexico", ciudad: "Guadalajara" }
+
+      console.log(persona); // {nombre: 'Juan', apellido: 'Perez', pais: 'Mexico', ciudad: 'Guadalajara'}

@@ -1,0 +1,15 @@
+git rebase -i HEAD~3
+  para juntar commits (3 es para trabajar con los ultimos 3 commits)
+
+git push --force-with-lease
+  para respetar commits de otras personas. te da warning
+
+
+git branch -m nombre-nuevo
+  cambiar nombre de rama
+
+    git push -u origin nombre-nuevo
+      se sube una rama nueva. no se borra
+
+        git push origin --delete nombre-viejo
+          para borrar rama antigua

@@ -1,0 +1,20 @@
+para ver que forma tiene el "objeto primitivo" String:
+
+  let cadena = new String("codeable");
+  console.log(cadena);
+
+  verás que es un objeto que tiene una propiedad por cada carácter del string
+
+  tambien tiene un propiedad 'length' con la cantidad de caracteres
+
+Imitando String con FakeString
+
+  function FakeString(string) {
+    this.length = 0;
+    this.PrimitiveValue = string;
+
+    for (const caracter of string) {
+      this[this.length] = caracter;
+      this.length++;
+    }
+  }

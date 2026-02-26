@@ -13,3 +13,11 @@ git branch -m nombre-nuevo
 
         git push origin --delete nombre-viejo
           para borrar rama antigua
+
+git checkout <nombre-rama>
+git fetch origin
+git reset --hard origin/<nombre-rama>
+
+    para poder traer todos los cambios de remoto a tu rama ba-feature-cors
+      y olvida todo lo que tengas en tu local
+

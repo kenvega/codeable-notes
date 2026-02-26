@@ -9,12 +9,47 @@ para ver que forma tiene el "objeto primitivo" String:
 
 Imitando String con FakeString
 
-  function FakeString(string) {
-    this.length = 0;
-    this.PrimitiveValue = string;
+  se puede empezar por
 
-    for (const caracter of string) {
-      this[this.length] = caracter;
-      this.length++;
+    function FakeString(string) {
+      this.length = 0;
+      this.PrimitiveValue = string;
+
+      for (const caracter of string) {
+        this[this.length] = caracter;
+        this.length++;
+      }
     }
-  }
+
+  luego se pone a prueba con
+    let cadena = new String("Codeable es genial");
+    let fakeCadena = new FakeString("Codeable es genial");
+
+    console.log(cadena);
+    console.log(fakeCadena);
+
+    // Podemos acceder a sus propiedades:
+
+    console.log(cadena[3]); // "e"
+    console.log(fakeCadena[3]); // "e"
+
+    console.log(cadena.length); // 18
+    console.log(fakeCadena.length); // 18
+
+otros metodos
+
+  chartAt
+    let cadena = "Codeable es genial";
+    console.log(cadena.charAt(0));   // "C"
+    console.log(cadena.charAt(7));   // "e"
+    console.log(cadena.charAt(NaN));   // "C"
+    console.log(cadena.charAt(100));   // ""
+
+  implementacion simulada
+    FakeString.prototype.charAt = function (index) {
+      // Establecer valores por defecto y manejar casos especiales
+      if (index === undefined || isNaN(index)) index = 0;
+      if (index < 0 || index >= this.length) return "";
+
+      return this[index];
+    };

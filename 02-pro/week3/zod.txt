@@ -1,0 +1,47 @@
+por que usar zod
+  para poder realizar una validacion robusta en los controladores
+
+    antes se hacia validacion en cada controlador
+      tiende a duplicar codigo y es propenso a errores
+
+        // Ejemplo actual en auth.controller.ts
+        const errors: Record<string, string[]> = {};
+
+        if (!email) {
+          errors["email"] = ["El campo email es obligatorio"];
+        } else if (!email.includes("@")) {
+          errors["email"] = ["Formato de correo inválido"];
+        }
+
+        if (!password) {
+          errors["password"] = ["El campo contraseña es obligatorio"];
+        } else if (password.length < 6) {
+          errors["password"] = ["La contraseña debe tener al menos 6 caracteres"];
+        }
+
+      las validaciones tambien son muy basicas
+        una libreria podria validar mas claramente si hay un formato correcto de email?
+
+      si hay una nueva validacion podria significar que tendriamos que cambiar varios archivos
+
+      no hay forma de reutilizar validaciones comunes entre diferentes endpoints
+
+Por qué Zod?
+  TypeScript First: Diseñada específicamente para TypeScript con inferencia de tipos automática
+  Runtime + Compile Time: Validación en tiempo de ejecución con seguridad de tipos en tiempo de compilación
+  API Declarativa: Sintaxis limpia y expresiva
+  Zero Dependencies: Sin dependencias externas
+  Pequeña: Bundle size mínimo
+  Excelente Ecosistema: Amplia adopción en la comunidad
+
+con zod la validacion seria asi
+
+  const registerSchema = z.object({
+    email: z.email("Formato de correo inválido"),
+    // ... más validaciones
+  });
+
+  const validatedData = registerSchema.parse(req.body);
+  // Si la validación es exitosa `validatedData` tiene el tipo correcto y los datos validados
+  // Si la validación falla, Zod lanza un error del tipo ZodError
+

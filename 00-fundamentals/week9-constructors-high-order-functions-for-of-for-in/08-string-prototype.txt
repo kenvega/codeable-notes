@@ -45,11 +45,43 @@ otros metodos
     console.log(cadena.charAt(NaN));   // "C"
     console.log(cadena.charAt(100));   // ""
 
-  implementacion simulada
-    FakeString.prototype.charAt = function (index) {
-      // Establecer valores por defecto y manejar casos especiales
-      if (index === undefined || isNaN(index)) index = 0;
-      if (index < 0 || index >= this.length) return "";
+    implementación simulada
+      FakeString.prototype.charAt = function (index) {
+        // Establecer valores por defecto y manejar casos especiales
+        if (index === undefined || isNaN(index)) index = 0;
+        if (index < 0 || index >= this.length) return "";
 
-      return this[index];
-    };
+        return this[index];
+      };
+
+  substring
+    let cadena = "Codeable es genial";
+    console.log(cadena.substring(0, 8));   // "Codeable"
+    console.log(cadena.substring(9));      // "es genial"
+
+    implementación simulada
+      FakeString.prototype.substring = function (indexStart, indexEnd) {
+        // Establecer valores por defecto y manejar casos especiales
+        if (indexStart < 0 || isNaN(indexStart)) indexStart = 0;
+        if (indexEnd === undefined || indexEnd > this.length) indexEnd = this.length;
+        if (indexEnd < 0 || isNaN(indexEnd)) indexEnd = 0;
+        if (indexStart > indexEnd) {
+          let temp = indexStart;
+          indexStart = indexEnd;
+          indexEnd = temp;
+        }
+
+        let result = "";
+
+        for (let i = indexStart; i < indexEnd; i++) {
+          result += this[i];
+        }
+
+        return result;
+      };
+
+Al crear una instancia de un string mediante el constructor new String()
+  obtenemos un objeto con propiedades para cada carácter del string
+    con el índice del carácter como nombre de la propiedad
+
+Los objetos string también heredan una gran cantidad de métodos del prototipo de String

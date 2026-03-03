@@ -45,3 +45,7 @@ con zod la validacion seria asi
   // Si la validación es exitosa `validatedData` tiene el tipo correcto y los datos validados
   // Si la validación falla, Zod lanza un error del tipo ZodError
 
+
+playground para hacer pruebas de validacion
+
+  https://zod-playground.vercel.app/

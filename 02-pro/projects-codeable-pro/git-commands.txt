@@ -18,6 +18,16 @@ git checkout <nombre-rama>
 git fetch origin
 git reset --hard origin/<nombre-rama>
 
-    para poder traer todos los cambios de remoto a tu rama ba-feature-cors
+    para poder traer todos los cambios de remoto a tu rama <nombre-rama>
       y olvida todo lo que tengas en tu local
+
+
+git reset --soft HEAD~1
+  desempaqueta el ultimo commit y lo deja en staging area
+
+
+para poder editar un commit antiguo (por ejemplo el trasantepenultimo)
+
+  git rebase -i HEAD~3
+
 

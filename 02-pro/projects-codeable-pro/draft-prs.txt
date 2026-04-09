@@ -1,0 +1,2 @@
+si tienes un PR en progreso dejalo como draft
+  asi no activas github actions que consumen recursos/dinero a la empresa con cada commit que haces

@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base palette */
+    --white: hsl(0 0% 100%);
+    --black: hsl(0 0% 0%);
+    --base-background: var(--white);
+
+    /* Accent scale */
+    --accent-1: hsl(240 33% 99%);
+    --accent-2: hsl(240 33% 98%);
+    --accent-3: hsl(240 33% 97%);
+    --accent-4: hsl(240 33% 94%);
+    --accent-5: hsl(240 33% 90%);
+    --accent-6: hsl(240 33% 83%);
+    --accent-7: hsl(240 73% 80%);
+    --accent-8: hsl(240 73% 74%);
+    --accent-9: hsl(240 62% 57%);
+    --accent-10: hsl(240 61% 52%);
+    --accent-11: hsl(240 54% 51%);
+    --accent-12: hsl(240 55% 22%);
+    --accent-a1: hsl(240 100% 50% / 0.01);
+    --accent-a2: hsl(240 100% 50% / 0.03);
+    --accent-a3: hsl(240 90% 47% / 0.06);
+    --accent-a4: hsl(240 100% 50% / 0.1);
+    --accent-a5: hsl(240 100% 50% / 0.15);
+    --accent-a6: hsl(240 100% 50% / 0.2);
+    --accent-a7: hsl(240 90% 45% / 0.28);
+    --accent-a8: hsl(240 85% 43% / 0.39);
+    --accent-a9: hsl(240 75% 38% / 0.64);
+    --accent-a10: hsl(240 72% 35% / 0.68);
+    --accent-a11: hsl(240 67% 34% / 0.67);
+    --accent-a12: hsl(240 85% 14% / 0.85);
+    --accent-contrast: var(--white);
+
+    /* Neutral scale */
+    --neutral-1: hsl(240 9% 99%);
+    --neutral-2: hsl(240 8% 98%);
+    --neutral-3: hsl(240 7% 95%);
+    --neutral-4: hsl(240 7% 92%);
+    --neutral-5: hsl(240 6% 89%);
+    --neutral-6: hsl(240 6% 86%);
+    --neutral-7: hsl(240 8% 83%);
+    --neutral-8: hsl(240 11% 76%);
+    --neutral-9: hsl(240 9% 59%);
+    --neutral-10: hsl(240 8% 53%);
+    --neutral-11: hsl(240 7% 41%);
+    --neutral-12: hsl(240 10% 14%);
+    --neutral-a1: hsl(240 100% 33% / 0.01);
+    --neutral-a2: hsl(240 100% 33% / 0.02);
+    --neutral-a3: hsl(240 100% 20% / 0.06);
+    --neutral-a4: hsl(240 100% 18% / 0.09);
+    --neutral-a5: hsl(240 100% 20% / 0.12);
+    --neutral-a6: hsl(240 100% 18% / 0.15);
+    --neutral-a7: hsl(240 100% 18% / 0.2);
+    --neutral-a8: hsl(240 100% 19% / 0.27);
+    --neutral-a9: hsl(240 100% 13% / 0.45);
+    --neutral-a10: hsl(240 100% 11% / 0.5);
+    --neutral-a11: hsl(240 100% 8% / 0.62);
+    --neutral-a12: hsl(240 100% 4% / 0.89);
+    --neutral-contrast: var(--white);
+
+    /* Semantic colors */
+    --background: var(--base-background);
+    --foreground: var(--neutral-12);
+    --accent-background: var(--accent-3);
+    --accent-foreground: var(--accent-11);
+    --muted-background: var(--neutral-a2);
+    --muted-foreground: var(--neutral-11);
+    --primary-background: var(--accent-9);
+    --primary-foreground: var(--accent-contrast);
+    --secondary-background: var(--neutral-3);
+    --secondary-foreground: var(--neutral-11);
+    --border: var(--neutral-7);
+    --outline: var(--accent-11);
+    --separator: var(--neutral-6);
+    --primary-background-hover: var(--accent-10);
+    --secondary-background-hover: var(--neutral-4);
+    --border-hover: var(--neutral-8);
+
+    /* Font stacks */
+    --family-text:
+      "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+    --family-heading: var(--family-text);
+    --family-display:
+      "Protest Guerrilla", "Protest Strike", "Stencil", "Impact", sans-serif;
+    --family-code:
+      "Source Code Pro", "Menlo", "Consolas", "Monaco", "Courier New", monospace;
+    --family-emphasis:
+      "Lora", "Georgia", "Palatino Linotype", "Book Antiqua", "Times New Roman",
+      serif;
+
+    /* Font aliases */
+    --font-sans: var(--family-text);
+    --font-mono: var(--family-code);
+    --font-display: var(--family-display);
+    --family-monospace: var(--family-code);
+
+    /* Font sizes */
+    --font-size-3: 0.75rem;
+    --font-size-3-5: 0.875rem;
+    --font-size-4: 1rem;
+    --font-size-4-5: 1.125rem;
+    --font-size-5: 1.25rem;
+    --font-size-6: 1.5rem;
+    --font-size-7-5: 1.875rem;
+    --font-size-9: 2.25rem;
+    --font-size-12: 3rem;
+    --font-size-15: 3.75rem;
+    --font-size-18: 4.5rem;
+    --font-size-24: 6rem;
+    --font-size-32: 8rem;
+
+    /* Legacy font aliases */
+    --font-4: var(--font-size-4);
+
+    /* Line heights */
+    --leading-3: 0.75rem;
+    --leading-4: 1rem;
+    --leading-5: 1.25rem;
+    --leading-6: 1.5rem;
+    --leading-7: 1.75rem;
+    --leading-8: 2rem;
+    --leading-9: 2.25rem;
+    --leading-10: 2.5rem;
+    --leading-none: 1;
+
+    /* Letter spacing */
+    --tracking-tighter: -0.05em;
+    --tracking-tight: -0.025em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.025em;
+    --tracking-wider: 0.05em;
+    --tracking-widest: 0.1em;
+
+    /* Spacing scale */
+    --space-px: 1px;
+    --space-0-5: 0.125rem;
+    --space-1: 0.25rem;
+    --space-1-5: 0.375rem;
+    --space-2: 0.5rem;
+    --space-2-5: 0.625rem;
+    --space-3: 0.75rem;
+    --space-3-5: 0.875rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-7: 1.75rem;
+    --space-8: 2rem;
+    --space-9: 2.25rem;
+    --space-10: 2.5rem;
+    --space-11: 2.75rem;
+    --space-12: 3rem;
+    --space-14: 3.5rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-28: 7rem;
+    --space-32: 8rem;
+    --space-36: 9rem;
+    --space-40: 10rem;
+    --space-44: 11rem;
+    --space-48: 12rem;
+    --space-52: 13rem;
+    --space-56: 14rem;
+    --space-60: 15rem;
+    --space-64: 16rem;
+    --space-72: 18rem;
+    --space-80: 20rem;
+    --space-96: 24rem;
+    --space-full: 9999px;
+
+    /* Radius scale */
+    --rounded-none: 0;
+    --rounded-xs: 0.125rem;
+    --rounded-sm: 0.25rem;
+    --rounded-md: 0.375rem;
+    --rounded-lg: 0.5rem;
+    --rounded-xl: 0.75rem;
+    --rounded-2xl: 1rem;
+    --rounded-3xl: 1.5rem;
+    --rounded-full: 9999px;
+
+    /* Radius aliases */
+    --radius-sm: var(--rounded-sm);
+    --radius-md: var(--rounded-md);
+    --radius-lg: var(--rounded-lg);
+    --rounded-3: var(--rounded-md);
+
+    /* Width scale */
+    --width-3xs: 16rem;
+    --width-2xs: 18rem;
+    --width-xs: 20rem;
+    --width-sm: 24rem;
+    --width-md: 28rem;
+    --width-lg: 32rem;
+    --width-xl: 36rem;
+    --width-2xl: 42rem;
+    --width-3xl: 48rem;
+    --width-4xl: 56rem;
+    --width-5xl: 64rem;
+    --width-6xl: 72rem;
+    --width-7xl: 80rem;
+    --width-body: 65ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --base-background: var(--neutral-1);
+
+      --accent-1: hsl(240 22% 10%);
+      --accent-2: hsl(244 25% 12%);
+      --accent-3: hsl(237 38% 20%);
+      --accent-4: hsl(236 45% 27%);
+      --accent-5: hsl(237 41% 32%);
+      --accent-6: hsl(239 36% 37%);
+      --accent-7: hsl(240 34% 44%);
+      --accent-8: hsl(241 36% 52%);
+      --accent-9: hsl(240 60% 60%);
+      --accent-10: hsl(242 64% 64%);
+      --accent-11: hsl(246 100% 83%);
+      --accent-12: hsl(242 94% 94%);
+      --accent-a1: hsl(240 99% 60% / 0.05);
+      --accent-a2: hsl(244 94% 64% / 0.09);
+      --accent-a3: hsl(237 100% 66% / 0.23);
+      --accent-a4: hsl(236 100% 65% / 0.35);
+      --accent-a5: hsl(237 98% 67% / 0.42);
+      --accent-a6: hsl(239 97% 71% / 0.48);
+      --accent-a7: hsl(240 99% 73% / 0.56);
+      --accent-a8: hsl(240 99% 74% / 0.67);
+      --accent-a9: hsl(240 99% 71% / 0.83);
+      --accent-a10: hsl(242 100% 74% / 0.86);
+      --accent-a11: hsl(246 100% 83%);
+      --accent-a12: hsl(242 100% 94%);
+      --accent-contrast: var(--white);
+
+      --neutral-1: hsl(240 6% 7%);
+      --neutral-2: hsl(220 6% 10%);
+      --neutral-3: hsl(225 6% 14%);
+      --neutral-4: hsl(210 7% 16%);
+      --neutral-5: hsl(214 7% 19%);
+      --neutral-6: hsl(213 8% 23%);
+      --neutral-7: hsl(213 8% 28%);
+      --neutral-8: hsl(212 8% 38%);
+      --neutral-9: hsl(219 6% 44%);
+      --neutral-10: hsl(222 5% 49%);
+      --neutral-11: hsl(216 7% 71%);
+      --neutral-12: hsl(220 9% 94%);
+      --neutral-a1: hsl(0 0% 0%);
+      --neutral-a2: hsl(184 63% 91% / 0.04);
+      --neutral-a3: hsl(211 66% 92% / 0.08);
+      --neutral-a4: hsl(198 73% 90% / 0.11);
+      --neutral-a5: hsl(208 95% 92% / 0.15);
+      --neutral-a6: hsl(208 91% 92% / 0.19);
+      --neutral-a7: hsl(208 100% 93% / 0.25);
+      --neutral-a8: hsl(208 100% 93% / 0.36);
+      --neutral-a9: hsl(216 88% 93% / 0.43);
+      --neutral-a10: hsl(220 86% 95% / 0.48);
+      --neutral-a11: hsl(212 87% 97% / 0.71);
+      --neutral-a12: hsl(220 100% 99% / 0.94);
+      --neutral-contrast: var(--white);
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}

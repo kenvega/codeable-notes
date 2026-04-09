@@ -1,0 +1,14 @@
+el valor de la cookie con express-session se formatea asi:
+
+  cookie value = s:<sid>.<signature>
+
+  ejemplo:
+    si tu sid es
+      XG8w3TebEmIDKncktf24lcMBgn-SkdyO
+
+    entonces tu cookie value sera (el que puedes ver en dev tools)
+      s%3AXG8w3TebEmIDKncktf24lcMBgn-SkdyO.eWbXgR3NJbqqFvjy295TiXi3x9l3nqCOpqUheJ8suFc
+
+
+
+
